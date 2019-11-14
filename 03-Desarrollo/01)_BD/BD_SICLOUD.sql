@@ -18,8 +18,10 @@ ID_factura integer auto_increment not null,
 total float(20,2),
 fecha date,
 sub_total float(20,2),
-iva float(20,2),
-primary key (ID_factura));
+iva float(20,2)
+);
+
+
 
 
 create table sicloud.tipo_medida (
