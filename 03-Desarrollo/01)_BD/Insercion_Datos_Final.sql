@@ -13,7 +13,7 @@ values		(default,'Gmail'),
 			(default,'hotmail');
 
 
-insert into sicloud.Rol (ID_rol_n, nom_rol)
+insert into sicloud.rol (ID_rol_n, nom_rol)
 values 		(default,'administrador'),
 			(default,'Bodega'),
 			(default,'Supervisor'),
