@@ -1,4 +1,5 @@
 
+#drop database sicloud;
 Create database sicloud;
 use sicloud;
 
@@ -39,15 +40,16 @@ total float(20,2) not null,
 fecha date not null,
 sub_total float(20,2),
 iva float(20,2),
+FK_c_tipo_pago int not null,
 primary key (ID_factura)
 );
 
-
-
-
-
-
-
+create table sicloud.tipo_pago(
+ID_tipo_pago int auto_increment not null,
+nom_tipo_pago varchar(45) not null,
+primary key (ID_tipo_pago)
+);
+alter table sicloud.factura add constraint tipo_pago foreign key (FK_c_tipo_pago) references sicloud.tipo_pago(ID_tipo_pago) on update cascade;
 
 
 create table sicloud.tipo_medida (
@@ -111,7 +113,7 @@ FK_rol int(3) not null,
 FK_us varchar(25) not null,
 FK_tipo_doc varchar(5) not null,
 fecha_asignacion date not null,
-estado bit not null);
+estado varchar (3) not null);
 alter table sicloud.rol_usuario add constraint FK_rol foreign key(FK_rol) references sicloud.rol(ID_rol_n) on update cascade;
 alter table sicloud.rol_usuario add constraint FK_us_FK_tipo_doc foreign key(FK_us, FK_tipo_doc) references sicloud.usuario(ID_us, FK_tipo_doc) on update cascade;
 alter table sicloud.rol_usuario add primary key(FK_rol, FK_us, FK_tipo_doc);
