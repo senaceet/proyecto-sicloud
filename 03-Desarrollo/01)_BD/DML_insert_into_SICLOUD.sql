@@ -74,25 +74,25 @@ values 		(default, 'Electricos'),
             
             
 insert into sicloud.producto (ID_prod, nom_prod, val_prod, stok_prod, estado_prod, CF_categoria, CF_tipo_medida)
-values		('353740283-X', 'DESTORNILLADOR', '89900', '5', 'Disponible', 1, 4),
-			('176974732-X', 'TRONZADORA', '716000', '5', 'Disponible', 2, 4),
-			('430911542-X', 'PULIDORA', '659000', '5', 'Disponible', 3, 4),
-			('977439101-2', 'Toolrich', '124950', '5', 'Disponible', 4, 4),
-			('858585173-2', 'Alicates', '59950', '5', 'Disponible', 5, 4),
-			('052906344-1', 'Destornilladores', '35950', '5', 'Disponible', 6, 4),
-			('557446856-5', 'Taladro', '99950', '5', 'Disponible', 1, 4),
-			('663802943-6', 'Pegadit', '9950', '5', 'Disponible', 2, 4),
-			('204117246-0', 'Compresor', '79950', '5', 'Disponible', 3, 4),
-			('488403281-0', 'Linterna', '49950', '5', 'Disponible', 4, 4),
-			('788000073-9', 'Sierra', '559900', '5', 'Disponible', 5, 4),
-			('155797259-1', 'Llave', '22900', '5', 'Disponible', 6, 4),
-			('669185112-9', '5 llaves', '13900', '5', 'Disponible', 1, 4),
-			('509004757-X', 'Pintura', '114900', '5', 'Disponible', 2, 4),
-			('578938987-2', 'VinilBlanco', '134900', '5', 'Disponible', 3, 4),
-			('625438600-3', 'Laca', '259900', '5', 'Disponible', 4, 4),
-			('980895374-3', 'Cerrojo', '29900', '5', 'Disponible', 5, 4),
-			('348386312-5', 'Cerradura', '56900', '5', 'Disponible', 6, 4),
-			('507330309-1', 'Grapadora', '154900', '5', 'Disponible', 1, 4);
+values		('353740283-X', 'DESTORNILLADOR', '89900', 5.0, 'Disponible', 1, 4),
+			('176974732-X', 'TRONZADORA', '716000', 5.0, 'Disponible', 2, 4),
+			('430911542-X', 'PULIDORA', '659000', 5.0, 'Disponible', 3, 4),
+			('977439101-2', 'Toolrich', '124950', 5.0, 'Disponible', 4, 4),
+			('858585173-2', 'Alicates', '59950', 5.0, 'Disponible', 5, 4),
+			('052906344-1', 'Destornilladores', '35950', 5.0, 'Disponible', 6, 4),
+			('557446856-5', 'Taladro', '99950', 5.0, 'Disponible', 1, 4),
+			('663802943-6', 'Pegadit', '9950', 5.0, 'Disponible', 2, 4),
+			('204117246-0', 'Compresor', '79950', 5.0, 'Disponible', 3, 4),
+			('488403281-0', 'Linterna', '49950', 5.0, 'Disponible', 4, 4),
+			('788000073-9', 'Sierra', '559900', 5.0, 'Disponible', 5, 4),
+			('155797259-1', 'Llave', '22900', 5.0, 'Disponible', 6, 4),
+			('669185112-9', '5 llaves', '13900', 5.0, 'Disponible', 1, 4),
+			('509004757-X', 'Pintura', '114900', 5.0, 'Disponible', 2, 4),
+			('578938987-2', 'VinilBlanco', '134900', 5.0, 'Disponible', 3, 4),
+			('625438600-3', 'Laca', '259900', 5.0, 'Disponible', 4, 4),
+			('980895374-3', 'Cerrojo', '29900', 5.0, 'Disponible', 5, 4),
+			('348386312-5', 'Cerradura', '56900', 5.0, 'Disponible', 6, 4),
+			('507330309-1', 'Grapadora', '154900', 5.0, 'Disponible', 1, 4);
 
 
 insert into sicloud.usuario (ID_us,nom1,nom2,ape1,ape2,fecha,pass,foto,correo,FK_tipo_doc)
@@ -117,27 +117,32 @@ values		('1636012383599','Irma','Rosalyn','Mullen','Cote','1990-08-15','IKC07VII
 			('1691012831199','Blake','Angela','Schroeder','Knight','1993-03-02','BMH07NRZ2UY','C:\img\us.png','natoque.penatibus.et@quistristiqueac.ca', 'CC'),
 			('1698091149999','Cedric',null,'Webster',null,'1991-06-10','WSF42WGJ0OS','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC');
             
-            
+                 
 insert into sicloud.det_factura (FK_det_factura, FK_det_prod, cantidad, CF_us, CF_tipo_doc)
 values 		(1, '353740283-X', 2, '1636012383599', 'CE'),
-			(2, '176974732-X', 2, '1695062224499', 'CE'),
-            (3, '430911542-X', 2, '1662041247199', 'CC'),
-            (4, '977439101-2', 2, '1660062872399', 'CC'),
-            (5, '858585173-2', 2, '1668040515399', 'CC'),
-            (6, '052906344-1', 2, '1662101568299', 'CC'),
-            (7, '557446856-5', 2, '1694050100899', 'CC'),
-            (8, '663802943-6', 2, '1628012272099', 'CC'),
+			(2, '176974732-X', 7, '1695062224499', 'CE'),
+            (3, '430911542-X', 9, '1662041247199', 'CC'),
+            (4, '977439101-2', 12, '1660062872399', 'CC'),
+            (5, '858585173-2', 3, '1668040515399', 'CC'),
+            (6, '052906344-1', 6, '1662101568299', 'CC'),
+            (7, '557446856-5', 8, '1694050100899', 'CC'),
+            (8, '663802943-6', 3, '1628012272099', 'CC'),
             (9, '204117246-0', 2, '1608051762299', 'CC'),
-            (10, '488403281-0', 2, '1670072699699', 'CC'),
-            (11, '788000073-9', 2, '1676090228999', 'CC'),
-            (12, '155797259-1', 2, '1623083099799', 'CC'),
+            (10, '488403281-0', 15, '1670072699699', 'CC'),
+            (11, '788000073-9', 12, '1676090228999', 'CC'),
+            (12, '155797259-1', 16, '1623083099799', 'CC'),
             (13, '669185112-9', 2, '1687060309399', 'CC'),
             (14, '509004757-X', 2, '1654011145999', 'CC'),
             (15, '578938987-2', 2, '1692090422599', 'CC'),
             (16, '625438600-3', 2, '1624060419399', 'CC'),
             (17, '980895374-3', 2, '1651011048199', 'CC'),
             (18, '348386312-5', 2, '1680091992499', 'CC'),
-            (19, '507330309-1', 2, '1691012831199', 'CC');
+            (19, '507330309-1', 2, '1691012831199', 'CC')
+            ;
+            
+            
+            
+		
 
 
 insert into sicloud.rol_usuario(FK_rol,FK_us,FK_tipo_doc,fecha_asignacion,estado)
