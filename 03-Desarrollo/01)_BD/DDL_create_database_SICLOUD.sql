@@ -1,5 +1,5 @@
 
-#drop database sicloud;
+drop database sicloud;
 Create database sicloud;
 use sicloud;
 
