@@ -36,10 +36,10 @@ primary key (ID_acronimo));
 
 create table sicloud.factura(
 ID_factura integer auto_increment not null,
-total float(20,2) not null,
+total int not null,
 fecha date not null,
-sub_total float(20,2),
-iva float(20,2),
+sub_total int not null,
+iva int not null,
 FK_c_tipo_pago int not null,
 primary key (ID_factura)
 );
@@ -70,8 +70,8 @@ primary key (ID_medida)
 create table sicloud.producto( 
 ID_prod varchar(40) not null,
 nom_prod varchar(30) not null,
-val_prod float(15,3) not null,
-stok_prod float(15,3) not null,
+val_prod int not null,
+stok_prod int not null,
 estado_prod varchar(20) not null,
 CF_categoria int not null,
 CF_tipo_medida int not null);
@@ -99,7 +99,7 @@ alter table sicloud.usuario modify correo varchar(50);
 create table sicloud.det_factura(
 FK_det_factura int not null,
 FK_det_prod varchar(40) not null,
-cantidad float(25,2) not null,
+cantidad int not null,
 CF_us varchar(25) not null,
 CF_tipo_doc varchar(5) not null);
 alter table sicloud.det_factura add constraint FK_det_factura foreign key (FK_det_factura) references sicloud.factura(ID_factura) on update cascade;
@@ -133,7 +133,7 @@ alter table sicloud.rol_usuario add primary key(FK_rol, FK_us, FK_tipo_doc);
  create table sicloud.det_orden (
  FK_ord int not null,
  FK_prod varchar(40) not null,
- cantidad_prod float(20,2) not null);
+ cantidad_prod int not null);
 alter table sicloud.det_orden add constraint FK_ord foreign key (FK_ord) references sicloud.orden_entrada(ID_ord) on update cascade;
 alter table sicloud.det_orden add constraint FK_prod foreign key (FK_prod) references sicloud.producto(ID_prod) on update cascade;
  alter table  sicloud.det_orden add primary key(FK_ord, FK_prod);
