@@ -139,6 +139,6 @@ select F.fecha  as "Fecha", U.ID_us as "No. Documento", U.nom1 as "Primer Nombre
 from sicloud.usuario U join rol_usuario RU on RU.FK_us = U.ID_us
 join sicloud.rol R on RU.FK_rol = R.ID_rol_n
 join sicloud.det_factura DF on DF.CF_us = ID_us
-join sicloud.factura F on F.ID_factura = DF.FK_det_facturaCalculoIVA
+join sicloud.factura F on F.ID_factura = DF.FK_det_factura
 join sicloud.producto P on P.ID_prod = FK_det_prod
 order by fecha asc;
