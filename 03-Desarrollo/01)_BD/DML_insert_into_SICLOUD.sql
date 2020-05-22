@@ -117,6 +117,32 @@ values		('1636012383599','Irma','Rosalyn','Mullen','Cote','1990-08-15','IKC07VII
 			('1691012831199','Blake','Angela','Schroeder','Knight','1993-03-02','BMH07NRZ2UY','C:\img\us.png','natoque.penatibus.et@quistristiqueac.ca', 'CC'),
 			('1698091149999','Cedric',null,'Webster',null,'1991-06-10','WSF42WGJ0OS','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC');
             
+            
+insert into sicloud.puntos ( Id_puntos, puntos, fecha, FK_us ,FK_tipo_doc  )
+values (  default, 50,  "1990-08-15", "1636012383599", "CE" ),
+        (  default, 45,  "1998-08-15", "1695062224499", "CE" ),
+        (  default, 35,  "2003-05-15", "1662041247199", "CC" ),
+         (  default, 35,  "2003-05-15", "1662041247199", "CC" ),
+         ( default, 23, "2004-05-06", '1668040515399', "CC"  ),
+         ( default, 22, "2012-05-06", '1662101568299', "CC"  ),
+          ( default, 44, "2013-05-06", '1694050100899', "CC"  ),
+          ( default, 33, "2014-05-06", '1628012272099', "CC"  ),
+           ( default, 100, "2015-05-06", '1608051762299', "CC"  ),
+            ( default, 120, "2016-05-06", '1670072699699', "CC"  ),
+             ( default, 33, "2017-05-06", '1676090228999', "CC"  ),
+             ( default, 200, "2018-05-06", '1623083099799', "CC"  ),
+              ( default, 2, "2018-10-06", '1687060309399', "CC"  ),
+               ( default, 20, "2018-01-06", '1654011145999', "CC"  ),
+                ( default, 203, "2018-01-07", '1692090422599', "CC"  ),
+                 ( default, 3, "2019-01-07", '1624060419399', "CC"  ),
+                 ( default, 5, "2020-01-09", '1651011048199', "CC"  ),
+                 ( default, 15, "2021-01-09", '1680091992499 ', "CC"  ),
+                  ( default, 22, "2021-01-10", '1691012831199 ', "CC"  ),
+                   ( default, 2, "2021-01-4", '1698091149999 ', "CC"  );
+        
+
+
+            
                  
 insert into sicloud.det_factura (FK_det_factura, FK_det_prod, cantidad, CF_us, CF_tipo_doc)
 values 		(1, '353740283-X', 2, '1636012383599', 'CE'),

@@ -1,5 +1,6 @@
 
-drop database sicloud;
+
+#DROP DATABASE sicloud
 Create database sicloud;
 use sicloud;
 
@@ -96,6 +97,19 @@ alter table sicloud.usuario add primary key (ID_us, FK_tipo_doc);
 alter table sicloud.usuario modify correo varchar(50);
 
 
+create table sicloud.puntos(
+Id_puntos int not null,
+puntos int(5),
+fecha date,
+FK_us varchar(25) not null,
+FK_tipo_doc varchar(5) not null);
+alter table sicloud.puntos add constraint FK_tipo_doc_puntos foreign key ( FK_us, FK_tipo_doc ) references sicloud.usuario(ID_us, FK_tipo_doc) on update cascade;
+alter table sicloud.puntos add primary key ( Id_puntos, FK_us, FK_tipo_doc );
+alter table sicloud.puntos modify column Id_puntos  int not null auto_increment; 
+
+
+
+
 create table sicloud.det_factura(
 FK_det_factura int not null,
 FK_det_prod varchar(40) not null,
@@ -106,6 +120,12 @@ alter table sicloud.det_factura add constraint FK_det_factura foreign key (FK_de
 alter table sicloud.det_factura add constraint FK_det_factura_1 foreign key (FK_det_prod) references sicloud.producto(ID_prod) on update cascade;
 alter table sicloud.det_factura add constraint CF_us_CF_tipo_doc foreign key (CF_us, CF_tipo_doc) references sicloud.usuario(ID_us, FK_tipo_doc) on update cascade;
 alter table sicloud.det_factura add primary key (FK_det_factura, FK_det_prod); 
+
+
+
+
+
+
 
 
 create table sicloud.rol_usuario(
