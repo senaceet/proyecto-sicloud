@@ -34,15 +34,23 @@ function cardtitulo($x){
     ?>
 
 <div class ="container-pt-4"></div>
-<div class = "card card-body col-md-4 text-center mx-auto bk-rgb"><h4><?php echo $titulo ?></h4>
+<div class = "card card-body col-md-4 text-center mx-auto bk-rgb "><h4><?php echo $titulo ?></h4>
 </div><br><br>
 <?php    
 return $titulo;
 }?>
 
 
+<?php
+function cardtituloS($x){
+$titulo = $x;
 
-
+?>
+<div class = "col-md-8 mx-auto card card-body text-center bk-rgb"><h5><?php echo $titulo ?></h5>
+</div><br><br>
+<?php    
+return $titulo;
+}?>
 
 
 
