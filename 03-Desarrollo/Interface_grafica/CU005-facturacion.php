@@ -1,6 +1,6 @@
 <?php
-require 'nav-CU007.php';
-require 'plantilla.php';
+require 'plantillas/nav-CU007-facturacion.php';
+require 'plantillas/plantilla.php';
 inihtml();
 ?>
 <!-- col 12 -->

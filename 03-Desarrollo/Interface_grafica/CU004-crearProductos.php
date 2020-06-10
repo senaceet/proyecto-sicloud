@@ -117,7 +117,7 @@ $d = new Conexion;
                                     
                                                     <input type="hidden" name="accion" value="insertUsuario">
                                                     <!-- BOTON A ENLACE TABLA -->  
-                                                    <div class = "form-group "><a class = "btn btn-primary form-control" href="CU005-crearProductos.php?accion=verProducto">Ver productos existentes</a></div>
+                                                    <div class = "form-group "><a class = "btn btn-primary form-control" href="CU004-crearProductos.php?accion=verProducto">Ver productos existentes</a></div>
 
                                          </form>
 

@@ -2,8 +2,7 @@
 
 include_once 'plantillas/plantilla.php';
 require 'clases/class.medida.php';
-include_once 'clases/class.usuario.php';
-//require 'clases/class.usuario.php';
+require 'clases/class.usuario.php';
 //include_once 'clases/class.conexion.php';
 
 
@@ -61,13 +60,13 @@ require 'plantillas/nav.php';
 
                     </div>
                     <div class = "col-md-6"><br>
-                    <form action="CU009-controlUsuarios.php" method = "POST">
+                    <form action="CU0013-ControlUsuarios.php" method = "POST">
                         <div class = "form-group"><input type="text" class="form-control col-md col-lg-4 " placeholder="ID usuario " name = "documento" ></div>
                         <input type="hidden" value= "bId"  name = "accion">
                         <div class = "form-group "><input class = "btn btn-primary form-control col-md col-lg-4" type="submit" value="Buscar id"></div>
                         </form>
 
-                            <form action="CU009-controlUsuarios.php" method="POST">
+                            <form action="CU0013-ControlUsuarios.php" method="POST">
 
 
                             <div class= "form-group">
@@ -86,7 +85,7 @@ require 'plantillas/nav.php';
 
                     <?php // Busqueda por id
 
-                            $usuario =  Usuario::ningunDato($id = '1662101568299');
+                            $usuario =  Usuario::ningunDato();
                             $datos = $usuario -> selectUsuario();
                   
                    if(  (isset($_POST['accion'])) &&  ($_POST['accion'] == 'bId')){
@@ -131,19 +130,18 @@ require 'plantillas/nav.php';
         <thead>
 
             <tr>
-                <th>Tipo doc</th>
-                <th>Documento</th>
-                <th>P. Nombre</th>
-                <th>S. Nombre</th>
-                <th>P. Apellido</th>
-                <th>S. Apellido</th>
-                <th>Fecha</th>
-                <th>Foto</th>
-                <th>Correo</th>
-                <th>Estado</th>
-                <th>Accion</th>
-            </tr>
-<!-- U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.fecha, U.foto, U.correo, R_U.estado -->
+                <td>Tipo doc</td>
+                <td>Documento</td>
+                <td>P. Nombre</td>
+                <td>S. Nombre</td>
+                <td>P. Apellido</td>
+                <td>S. Apellido</td>
+                <td>Fecha</td>
+                <td>Foto</td>
+                <td>Correo</td>
+                <td>Estado</td>
+                <td>Accion</td>
+
  
                 
                 <?php 
@@ -170,7 +168,7 @@ require 'plantillas/nav.php';
             <td><?php echo $row['correo']?></td>
             <td><?php echo $row['estado']?></td>
             <td>
-                <a   href="metodos/get.php?accion=editar&&id  <?php echo $row['ID_us'] ?> " class = "btn btn-secondary"><i class ="fas fa-marker"></i></a> 
+                <a   href="metodos/get.php?accion=editar&&id=  <?php echo $row['ID_us'] ?> " class = "btn btn-secondary"><i class ="fas fa-marker"></i></a> 
                 <a href="metodos/get.php?accion=aprobarUsuario&&id= <?php echo $row['ID_us']   ?>" class = "btn btn-success"><i class ="fas fa-check-square"></i>  </a> 
                 <a href="metodos/get.php?accion=desactivarUsuario&&id=  <?php echo $row['ID_us']   ?>  " class = "btn btn-danger"><i class ="far fa-trash-alt"></i></a>
             </td>
