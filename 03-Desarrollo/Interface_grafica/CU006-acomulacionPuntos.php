@@ -1,12 +1,12 @@
 <?php
-require 'nav.php';
-require 'plantilla.php';
+include_once 'plantillas/nav.php';
+include_once 'plantillas/plantilla.php';
 inihtml();
 
 cardtitulo("Acumulación de puntos de compra");
 
 ?>
-<div class = "card card-body text-center bk-rgb col-md-10 mx-auto">
+<div class = "card card-body text-center col-md-10 mx-auto">
  <!--<div class="container">-->
 <div class =" container-fluid ">
     <div class = "card card-body "> 

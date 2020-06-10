@@ -1,6 +1,6 @@
 <?php
-require 'plantilla.php';
-require 'nav.php';
+include_once 'plantillas/plantilla.php';
+include_once 'plantillas/nav.php';
 inihtml();
 ?>
 
@@ -23,22 +23,6 @@ inihtml();
         <div class = "col-md-3"></div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

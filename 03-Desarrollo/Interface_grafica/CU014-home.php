@@ -1,6 +1,6 @@
 <?php
-require 'nav.php';
-require 'plantilla.php';
+require 'plantillas/nav.php';
+require 'plantillas/plantilla.php';
 inihtml();
 
 

@@ -1,7 +1,8 @@
 <?php
-require 'plantilla.php';
-require 'nav.php';
+include_once 'plantillas/plantilla.php';
+
 inihtml();
+include_once 'plantillas/nav.php';
 
 ?>
 <!-- Encabesado solicitud -->

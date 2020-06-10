@@ -1,8 +1,13 @@
 <?php
-require 'nav.php';
-require 'plantilla.php';
-require 'class.usuario.php';
+
+include_once 'plantillas/plantilla.php';
+require 'clases/class.medida.php';
+//require 'clases/class.usuario.php';
+//include_once 'clases/class.conexion.php';
+
+
 inihtml();
+require 'plantillas/nav.php';
 ?>
 <div class ="container-fluid">
 
@@ -23,11 +28,13 @@ inihtml();
                             <div class ="row">
                                 <!-- option de impresion -->
                                 <div class ="col-md col-lg-5"><br>
-                                    <select name="op" class = "form-control" >
-                                        <option value="CSV">CSV</option>
-                                        <option value="Excel">Excel</option>
-                                        <option value="PDF">PDF</option>
-                                    </select><br>
+
+
+
+
+
+
+
                                     <div class = "form-group"><input type="number" class ="form-control "></div>
 
                                 </div>
@@ -74,31 +81,37 @@ inihtml();
                             </form>
                             
 
-
+                            
 
                     <?php // Busqueda por id
+
+                            $usuario =  Usuario::ningunDato($id = '1662101568299');
+                            $datos = $usuario -> selectUsuario();
+                  
                    if(  (isset($_POST['accion'])) &&  ($_POST['accion'] == 'bId')){
                        if($_POST['documento']>0){
                         $id = $_POST['documento'];
-                        $usuario = Usuario::ningunDato();
+                        $usuario = Usuario::ningunDato();  
                         $datos = $usuario -> selectIdUsuario($id);
                     }else{ echo"<script>alert('Error, digita ID de usuario')</script>";}     }
-                    // todos los regusitros
-                    //if(  (isset($_POST['accion'])) &&  ($_POST['accion'] == 'todo')){
-                     //   $usuario = Usuario::ningunDato();
-                    //    $datos = $usuario -> selectUsuario();
-                   // }
+
+
+                   
+        
                    if(  (isset($_POST['accion'])) &&  ($_POST['accion'] == 'estado')){
 
-                    if (     (isset($_POST['estado']))  ){
+                 if (     (isset($_POST['estado']))  ){
                         
 
                         if($_POST['estado'] == "a"){ $estado = 1; }else{ $estado = 0; }
                        $usuario = Usuario::ningunDato();
                        $datos = $usuario -> selectUsuariosPendientes($estado);
+                    
                    
                     }
-                     }
+
+                    
+                 }
 
 
                     ?>
@@ -110,23 +123,25 @@ inihtml();
     </div>
 </div><br><br>
 
+<div class="col-lg-12">
+                    <div class="table-responsive">    
 
-
-    <table class = "  table table-bordered  table-striped bg-white table-sm col-md-10 col-sm-4 col-xs-12 mx-auto">
+    <table id="example" style="width:100%"  class = " col-lg-12  table-bordered  table-striped bg-white   mx-auto">
         <thead>
 
             <tr>
-                <td>Tipo doc</td>
-                <td>Documento</td>
-                <td>P. Nombre</td>
-                <td>S. Nombre</td>
-                <td>P. Apellido</td>
-                <td>S. Apellido</td>
-                <td>Fecha</td>
-                <td>Foto</td>
-                <td>Correo</td>
-                <td>Estado</td>
-                <td>Accion</td>
+                <th>Tipo doc</th>
+                <th>Documento</th>
+                <th>P. Nombre</th>
+                <th>S. Nombre</th>
+                <th>P. Apellido</th>
+                <th>S. Apellido</th>
+                <th>Fecha</th>
+                <th>Foto</th>
+                <th>Correo</th>
+                <th>Estado</th>
+                <th>Accion</th>
+            </tr>
 <!-- U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.fecha, U.foto, U.correo, R_U.estado -->
  
                 
@@ -154,9 +169,9 @@ inihtml();
             <td><?php echo $row['correo']?></td>
             <td><?php echo $row['estado']?></td>
             <td>
-                <a   href=" get.php?accion=editar&&id  <?php $row['ID_us'] ?>; " class = "btn btn-secondary">Editar</a> 
-                <a href="get.php?accion=aprobar" class = "btn btn-success">Aprobar</a>
-                <a href="get.php?accion=eliminar" class = "btn btn-danger">Deshabilitar</a>
+                <a   href="metodos/get.php?accion=editar&&id  <?php echo $row['ID_us'] ?> " class = "btn btn-secondary"><i class ="fas fa-marker"></i></a> 
+                <a href="metodos/get.php?accion=aprobarUsuario&&id= <?php echo $row['ID_us']   ?>" class = "btn btn-success"><i class ="fas fa-check-square"></i>  </a> 
+                <a href="metodos/get.php?accion=desactivarUsuario&&id=  <?php echo $row['ID_us']   ?>  " class = "btn btn-danger"><i class ="far fa-trash-alt"></i></a>
             </td>
         </tbody>
         <?php 
@@ -164,7 +179,7 @@ inihtml();
          }}
         ?>
     </table>
-
+    </div></div><!-- div de tablas -->
 
 
 </div>
