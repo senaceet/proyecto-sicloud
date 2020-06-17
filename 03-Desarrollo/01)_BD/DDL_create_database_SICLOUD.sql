@@ -1,6 +1,6 @@
 
 
-#DROP DATABASE sicloud
+DROP DATABASE sicloud;
 Create database sicloud;
 use sicloud;
 
@@ -236,3 +236,5 @@ alter table sicloud.direccion add constraint FK_barrio_FK_Localidad_FK_Ciudad fo
 alter table sicloud.direccion add primary key (ID_dir, FK_barrio, FK_Localidad, FK_Ciudad);
 alter table sicloud.direccion modify ID_dir int auto_increment;
 
+use sicloud;
+SELECT p.ID_prod, p.nom_prod , p.stok_prod , p.val_prod ,p.CF_tipo_medida FROM  producto p INNER JOIN tipo_medida tm on p.CF_tipo_medida = tm.ID_medida;
