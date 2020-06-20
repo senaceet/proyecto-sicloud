@@ -1,7 +1,7 @@
 <?php
 include_once 'plantillas/nav.php';
 include_once 'plantillas/plantilla.php';
-inihtml();
+include_once 'plantillas/inihtml.php';
 ?>
 
     <header>

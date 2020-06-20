@@ -1,7 +1,7 @@
 <?php
 include_once 'plantillas/plantilla.php';
-include_once 'plantillas/nav.php';
-inihtml();
+include_once 'plantillas/navN1.php';
+include_once 'plantillas/inihtml.php';
 ?>
 
 
@@ -27,5 +27,5 @@ inihtml();
 
 
 <?php
-finhtml();
+require_once 'plantillas/finhtml.php';
 ?>
