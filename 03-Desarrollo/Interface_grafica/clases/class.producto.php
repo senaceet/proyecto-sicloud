@@ -115,9 +115,9 @@ class Producto
     {
         include_once 'class.conexion.php';
         $db = new Conexion;
-       $sql = "SELECT C.ID_categoria , C.nom_categoria , P.ID_prod , P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod , P.estado_prod , T.ID_medida , T.nom_medida , T.acron_medida,nom_empresa
+        $sql = "SELECT C.ID_categoria , C.nom_categoria , P.ID_prod , P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod , P.estado_prod , T.ID_medida , T.nom_medida , T.acron_medida,nom_empresa
 FROM SICLOUD.categoria C JOIN SICLOUD.producto P on ID_categoria = CF_categoria JOIN sicloud.tipo_medida T  JOIN det_producto ON ID_prod = FK_prod
-JOIN empresa_provedor ON FK_rut = ID_rut WHERE P.ID_prod = '$id' LIMIT 1"; 
+JOIN empresa_provedor ON FK_rut = ID_rut WHERE P.ID_prod = '$id' LIMIT 1";
 
         //$sql = "SELECT C.ID_categoria , C.nom_categoria , P.ID_prod , P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod , P.estado_prod, T.ID_medida , T.nom_medida , T.acron_medida FROM SICLOUD.categoria C JOIN SICLOUD.producto P on ID_categoria = CF_categoria JOIN sicloud.tipo_medida T WHERE ID_prod = '$id'   LIMIT 1 ";
         $a =  $db->query($sql);
@@ -174,23 +174,23 @@ JOIN empresa_provedor ON FK_rut = ID_rut WHERE P.ID_prod = '$id' LIMIT 1";
     }
 
 
-    static function inserCatidadProducto($cant, $stock, $id ){
+    static function inserCatidadProducto($cant, $stock, $id)
+    {
         include_once 'class.conexion.php';
         $c = new Conexion;
         $t = $stock + $cant;
         // UPDATE sicloud.producto SET stok_prod = '8' WHERE ID_prod = '0529063441';
         $sql = "UPDATE sicloud.producto SET stok_prod = '$t' WHERE ID_prod = '$id' ";
         $c->query($sql);
-        
+
 
         if ($c) {
             $_SESSION['message'] = "Agrego existencia";
             $_SESSION['color'] = "success";
         } else {
-            $_SESSION['message'] = "Error al agregar existencio";
+            $_SESSION['message'] = "Error al agregar existencia";
             $_SESSION['color'] = "danger";
         }
-        header("location: ../CU003-ingresoProducto.php??accion=verProducto");
-    
+        header("location: ../CU003-ingresoProducto.php?accion=verProducto");
     }
 }

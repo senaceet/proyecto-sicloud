@@ -84,11 +84,12 @@ if (isset($_POST['submit'])) {
         $fecha_as = $_POST['fecha_a'];
         $estado = "0";
 
-        ///pendinete revision
+        // Insersion a usuario
         $usuario = new Usuario($ID_us,  $nom1, $nom2, $ape1, $ape2, $fecha, $pass, $foto, $correo, $FK_tipo_doc);
         $r = $usuario->insertUsuario();
         if ($r = true) {
 
+            // despues de insertar usuario realiza insersion a rol
             $FK = new Rol_us($FK_rol, $ID_us, $FK_tipo_doc, $fecha_as, $estado);
             $i = $FK->insertrRolUs();
 
@@ -96,7 +97,7 @@ if (isset($_POST['submit'])) {
                 $_SESSION['message'] = "Se creo usuario y rol";
                 $_SESSION['color'] = "success";
             } else {
-                $_SESSION['message'] = "Erro al crear usuario";
+                $_SESSION['message'] = "Error al crear usuario";
                 $_SESSION['color'] = "danger";
             }
             header("location: ../CU002-registrodeUsuario.php ");
@@ -170,7 +171,7 @@ if (isset($_POST['submit'])) {
         $id = $_GET['id'];
         $stock = $_POST['stok'];
         $cantidad = $_POST['cantidad'];
-        print_r($_GET);
+        //print_r($_GET);
 
         $c = Producto::inserCatidadProducto($cantidad, $stock,  $id);
     } // fin de sumar producto

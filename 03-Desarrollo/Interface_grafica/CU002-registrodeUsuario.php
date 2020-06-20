@@ -6,6 +6,7 @@ include_once 'clases/class.documento.php';
 include_once 'clases/class.rol.php';
 include_once 'clases/class.login.php';
 include_once 'session/sessiones.php';
+include_once 'session/valsession.php';
 
 cardtitulo("Registro de Usuarios");
 ?>

@@ -1,7 +1,9 @@
 <?php
 include_once 'plantillas/nav.php';
 include_once 'plantillas/plantilla.php';
-inihtml();
+include_once 'plantillas/inihtml.php';
+include_once 'session/sessiones.php';
+include_once 'session/valsession.php';
 
 cardtitulo("Acumulación de puntos de compra");
 

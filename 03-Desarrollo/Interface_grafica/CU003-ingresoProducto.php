@@ -8,6 +8,7 @@ include_once 'clases/class.proveedor.php';
 include_once 'plantillas/inihtml.php';
 include_once 'plantillas/navN2.php';
 include_once 'session/sessiones.php';
+include_once 'session/valsession.php';
 
 
 

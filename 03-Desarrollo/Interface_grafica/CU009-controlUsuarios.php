@@ -10,6 +10,7 @@ include_once 'clases/class.usuario.php';
 include_once 'plantillas/inihtml.php';
 include_once 'plantillas/navN1.php';
 include_once 'session/sessiones.php';
+include_once 'session/valsession.php';
 ?>
 <div class="container-fluid">
 

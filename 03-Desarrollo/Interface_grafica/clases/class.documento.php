@@ -1,5 +1,5 @@
 <?php
-require 'class.conexion.php';
+
 
 
 class Documento{
@@ -23,6 +23,7 @@ class Documento{
 
 
     static function verDocumeto(){
+        include_once 'class.conexion.php';
         $db = new Conexion; 
         $sql = "SELECT * FROM tipo_doc";
         $result = $db->query($sql);

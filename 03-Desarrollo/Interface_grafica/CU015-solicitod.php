@@ -4,6 +4,7 @@ include_once 'plantillas/plantilla.php';
 include_once 'plantillas/inihtml.php';
 include_once 'plantillas/navN1.php';
 include_once 'session/sessiones.php';
+include_once 'session/valsession.php';
 
 ?>
 <!-- Encabesado solicitud -->
@@ -129,36 +130,12 @@ include_once 'session/sessiones.php';
 </div><br><br><br><br>
 
 <footer>
-    <div class="col-md-12 footer">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="card card-body col-md-5">
-                <h6>Horario: </h6>
-            </div>
-            <div class="card card-body col-md-5">
-                <div class="col-md-1"></div>
-                <ul>
-                    <li>Direcccion dddddd</li>
-                    <li>Correo @@@@</li>
-                    <li>Telefono 444444 </li>
-                </ul>
-                <div class="container-fulid">
-                </div>
+  
 
-            </div>
+<?php
+include_once 'plantillas/footer.php';
 
-
-
-
-
-
-
-
-
-
-
-        </div>
-    </div>
+?>
 </footer>
 
 

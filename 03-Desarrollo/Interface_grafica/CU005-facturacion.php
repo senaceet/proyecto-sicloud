@@ -3,6 +3,8 @@ require 'plantillas/nav-CU007-facturacion.php';
 require 'plantillas/plantilla.php';
 include_once 'session/sessiones.php';
 include_once 'plantillas/inihtml.php';
+include_once 'session/sessiones.php';
+include_once 'session/valsession.php';
 ?>
 <!-- col 12 -->
 <div class="col-md-12">

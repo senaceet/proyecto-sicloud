@@ -7,6 +7,8 @@ include_once 'clases/class.usuario.php';
 include_once 'clases/class.medida.php';
 include_once 'clases/class.proveedor.php';
 include_once 'plantillas/inihtml.php';
+include_once 'session/sessiones.php';
+include_once 'session/valsession.php';
 
 
 
