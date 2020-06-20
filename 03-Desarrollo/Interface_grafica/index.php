@@ -30,7 +30,7 @@ echo "Soy index en modulos";
                     <div class="form-group"><input class="form-control" placeholder="Contraseña" type="password" name="pass"></div>
                     <input type="hidden" name="accion" value="login">
                     <input type="submit" name="btnLogin" value="Ingresar" class="form-control btn btn-primary"><br><br>
-                    <a href="RecupContraseña.php">¿ a olvidado contraseña ?</a>
+                    <a href="CU0010-recuperarContrasena.php">¿ a olvidado contraseña ?</a>
                 </form>
             </div><!-- Fin de card form -->
 
