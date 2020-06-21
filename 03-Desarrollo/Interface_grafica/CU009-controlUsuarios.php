@@ -1,5 +1,5 @@
 <?php
-
+include_once 'plantillas/navgeneral.php';
 include_once 'plantillas/plantilla.php';
 include_once  'clases/class.medida.php';
 include_once 'clases/class.usuario.php';

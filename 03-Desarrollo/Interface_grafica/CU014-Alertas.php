@@ -1,5 +1,5 @@
 <?php
-include_once 'plantillas/nav.php';
+include_once 'plantillas/navgeneral.php';
 include_once 'plantillas/plantilla.php';
 include_once 'clases/class.categoria.php';
 include_once 'clases/class.producto.php';

@@ -1,4 +1,5 @@
 <?php
+include_once 'plantillas/navgeneral.php';
 require 'plantillas/nav-CU007-facturacion.php';
 require 'plantillas/plantilla.php';
 include_once 'session/sessiones.php';
