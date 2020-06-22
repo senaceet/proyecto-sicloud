@@ -289,10 +289,17 @@ if (isset($_POST['submit'])) {
 
 
 
-
+    //../metodos/post.php?accion=insertPago
+    if($_POST['accion'] = 'insertPago'){
+        echo print_r ($_POST);
+        echo "esto en insert pago";
+    }
 
 
 
 } else {
-    echo "<script>alert('Estas ingresando por url, ingresa de manera incorrecta att Javier');</script>";
+
+
+
+  echo "<script>alert('Estas ingresando por url, ingresa de manera incorrecta att Javier');</script>";
 }// fin de else fi no existe submit por post

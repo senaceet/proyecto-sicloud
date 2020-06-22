@@ -15,9 +15,10 @@ echo "Soy index en modulos";
 if(isset($_POST['btnLogin'])){
     $ID_us =($_POST['nDoc']);
    $pass=($_POST['pass']);
+   $doc = $_POST['tDoc'];
 
 
-   $res = Usuario::DocPass($ID_us, $pass);
+   $res = Usuario::DocPass($ID_us, $pass, $doc);
 
     if ($res->num_rows == 0 ){
     $_SESSION['message'] = "Usuario o contraseña incorrecta";  $_SESSION['color'] = "danger";

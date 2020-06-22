@@ -131,6 +131,8 @@ if (isset($_SESSION['message'])) {
 if (isset($_GET['accion'])) {
     //echo print_r($_GET);
     if ($_GET['accion'] == 'verProducto'); {
+
+
 ?>
 
 
@@ -160,8 +162,8 @@ if (isset($_GET['accion'])) {
                         <td><?php echo $row['val_prod'] ?></td>
                         <td><?php echo $row['stok_prod'] ?></td>
                         <td><?php echo $row['estado_prod'] ?></td>
-                        <td><?php echo $row['CF_categoria'] ?></td>
-                        <td><?php echo $row['CF_tipo_medida'] ?></td>
+                        <td><?php echo $row['nom_categoria'] ?></td>
+                        <td><?php echo $row['nom_medida'] ?></td>
                         <td>
                             <a class="btn btn-dark mx-auto icon-edit " href="forms/editarProducto.php?id=<?php echo $row['ID_prod'] ?>"><i class="fas fa-marker"></i></a>
                             <a class="btn btn-danger icon-trash " href="metodos/get.php?accion=EliminarProducto&&id=<?php echo $row['ID_prod'] ?>"><i class="far fa-trash-alt"></i></a>
@@ -174,6 +176,9 @@ if (isset($_GET['accion'])) {
             <?php  } // fin de while 
             ?>
         </table>
+
+
+
 
 <?php
 

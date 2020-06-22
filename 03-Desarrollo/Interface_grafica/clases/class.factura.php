@@ -80,22 +80,6 @@ static function verjoinFactura(){
 
 
 
-/// <td> 121312323123 </td>
-// <td> alejandro </td>
-//<td> David </td>
-//<td> Gutierrez </td>
-//<td> Pulido </td>
-//<td> Martillo </td>
-///<td> 20/04/19</td>
-//<td> Efectivo </td>
-//<td> 19.0000 </td>
-
-
-
-
-
-
-
 
 
 

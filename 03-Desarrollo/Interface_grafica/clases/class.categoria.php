@@ -146,7 +146,8 @@ class Categoria
     {
         include_once 'class.conexon.php';
         $d = new Conexion;
-        $sql = "SELECT * FROM categoria";
+        $sql = "SELECT * FROM categoria
+        order by nom_categoria asc";
         $result = $d->query($sql);
         return $result;
     } // fin de ver categoria
