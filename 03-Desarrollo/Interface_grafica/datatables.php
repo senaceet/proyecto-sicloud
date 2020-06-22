@@ -1,7 +1,7 @@
 <?php 
 include_once 'clases/class.conexion.php';
 include_once 'plantillas/plantilla.php';
-include_once 'plantillas/navgeneral.php';
+include_once 'plantillas/nav.php';
 
 
 inihtml();

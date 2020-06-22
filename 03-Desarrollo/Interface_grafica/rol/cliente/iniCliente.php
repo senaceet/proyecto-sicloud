@@ -40,16 +40,6 @@ if (isset($_SESSION['message'])) {
 
 
 
-
-
-
-
-
-
-
-
-
-
 <?php
 
 include_once 'plantillas/finhtml.php';

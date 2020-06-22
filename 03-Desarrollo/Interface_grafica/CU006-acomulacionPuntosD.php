@@ -1,5 +1,4 @@
 <?php
-include_once 'plantillas/navgeneral.php';
 include_once 'plantillas/nav.php';
 include_once 'plantillas/plantilla.php';
 include_once 'plantillas/inihtml.php';

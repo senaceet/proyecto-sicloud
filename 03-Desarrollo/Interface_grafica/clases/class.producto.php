@@ -93,7 +93,11 @@ class Producto
     {
         include_once 'class.conexion.php';
         $db = new Conexion;
-        $sql = "SELECT * FROM producto";
+        $sql = "SELECT P.ID_prod , P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod , C.nom_categoria , M.nom_medida
+from sicloud.producto P join sicloud.categoria C on C.ID_categoria = P.CF_categoria
+join sicloud.tipo_medida M on P.CF_tipo_medida = M.ID_medida
+order by P.nom_prod asc;
+        ";
         $result = $db->query($sql);
         return $result;
     } // fin de ver productos
@@ -192,5 +196,33 @@ JOIN empresa_provedor ON FK_rut = ID_rut WHERE P.ID_prod = '$id' LIMIT 1";
             $_SESSION['color'] = "danger";
         }
         header("location: ../CU003-ingresoProducto.php?accion=verProducto");
+    }
+
+
+
+    static function verProductosAlfa($id){
+        include_once 'class.conexion.php';
+        $c = new Conexion;
+        $sql = "SELECT nom_prod , stok_prod , nom_categoria  from sicloud.producto sp
+        join sicloud.categoria sc on sp.CF_categoria = sc.ID_categoria 
+        WHERE ID_categoria = $id 
+        order by nom_prod asc";
+        $dat = $c->query($sql);
+        return $dat ; 
+    }
+
+
+
+    static function ConteoProductosT(){
+        include_once 'class.conexion.php';
+        $c = new Conexion;
+        $sql = "SELECT nom_prod , sum(stok_prod) as total
+        FROM sicloud.producto
+        GROUP BY nom_prod
+        UNION
+        SELECT estado_prod, sum(stok_prod) as total
+        FROM sicloud.producto";
+        $dat = $c->query($sql);
+        return $dat;
     }
 }

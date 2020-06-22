@@ -1,21 +1,24 @@
 <?php
-include_once 'plantillas/navgeneral.php';
 require 'plantillas/nav-CU007-facturacion.php';
 require 'plantillas/plantilla.php';
 include_once 'session/sessiones.php';
 include_once 'plantillas/inihtml.php';
 include_once 'session/sessiones.php';
 include_once 'session/valsession.php';
+include_once 'clases/class.usuario.php';
 ?>
 <!-- col 12 -->
 <div class="col-md-12">
     <div class="row">
+        
 
         <!-- col 2 -->
-        <div class="col-md-4"></div>
+        <div class="col-md-4">
+    
+        </div>
         <!-- 8 -->
         <div class="col-md-4">
-            <div class="card card-body text-center bk-rgb">
+            <div class="card card-body text-center ">
                 <h5>Facturación</h5><br>
                 <form action="factura.php">
                     <div class="form-group">
@@ -32,7 +35,14 @@ include_once 'session/valsession.php';
                     <input type="submit" class="form-control btn btn-primary" name="RegistroProducto" value="Registrar" required><br><br>
                     <input type="submit" class="form-control btn btn-primary" name="VisualizarFactura" value="Visualizar factura"><br>
                 </form>
-            </div>
+                <div class=""><br>
+                            <form action="CU009-controlUsuarios.php" method="POST">
+                                <div class="form-group"><input type="text" class="form-control  " placeholder="ID usuario " name="documento"></div>
+                                <input type="hidden" value="bId" name="accion">
+                                <div class="form-group "><input class="btn btn-block btn-primary form-control " type="submit" value="Buscar id"></div>
+                            </form>
+                        </div>
+            </div><!--  -->
         </div>
     </div>
     <!-- col 2 -->
@@ -40,5 +50,39 @@ include_once 'session/valsession.php';
 
 </div>
 <?php
+
+
+
+
+$usuario =  Usuario::ningunDato($id = '1662101568299');
+$datos = $usuario->selectUsuario();
+
+if ((isset($_POST['accion'])) &&  ($_POST['accion'] == 'bId')) {
+    if ($_POST['documento'] > 0) {
+        $id = $_POST['documento'];
+        $usuario = Usuario::ningunDato();
+        $datos = $usuario->selectIdUsuario($id);
+    } else {
+        echo "<script>alert('Error, digita ID de usuario')</script>";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 include_once 'plantillas/finhtml.php';
 ?>

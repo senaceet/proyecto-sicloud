@@ -29,26 +29,27 @@ echo "modulo administracion";
       <div class="card card-body">
         <div class="card card-body">
 
-          <h5 class="mx-auto tex-cennter text-succes "><?php if (isset($_SESSION['usuario'])) {
-                                                          echo "Bienvenido " . $_SESSION['usuario']['nom2'];
-                                                        } ?></h5>
+          <h5 class="mx-auto tex-cennter text-succes ">
+            <?php if (isset($_SESSION['usuario'])) {
+              echo "Bienvenido " . $_SESSION['usuario']['nom2'];
+            } ?></h5>
 
 
 
-<?php
-if (isset($_SESSION['message'])) {
-?>
-  <!-- alerta boostrap -->
-  <div class=" col-md-4 text-center mx-auto alert alert-<?php echo $_SESSION['color']   ?> alert-dismissible fade show" role="alert">
-    <?php echo  $_SESSION['message']  ?>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+          <?php
+          if (isset($_SESSION['message'])) {
+          ?>
+            <!-- alerta boostrap -->
+            <div class=" col-md-4 text-center mx-auto alert alert-<?php echo $_SESSION['color']   ?> alert-dismissible fade show" role="alert">
+              <?php echo  $_SESSION['message']  ?>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
-<?php
-}
-setMessage() ?>
+          <?php
+          }
+          setMessage() ?>
 
 
           <div class="card card-body  my-2">
@@ -60,7 +61,7 @@ setMessage() ?>
                   <a class="btn btn-primary mx-auto btn-block" href="tablaCategoria.php">Productos por categoria</a>
                 </div><!-- fin de col de 4 1 -->
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="">Cantidad de procuntos registrados</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="tablaRegistro.php">Cantidad de procuntos registrados</a>
 
                 </div><!-- fin de col de 4 2 -->
                 <div class="col-md-4 ">
@@ -83,6 +84,7 @@ setMessage() ?>
                 </div><!-- fin de col de 4 1 -->
                 <div class="col-md-4 ">
                   <a class="btn btn-primary mx-auto btn-block" href="../../CU003-ingresoProducto.php ">Ingreso de producto pedido</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="../../forms/edicionProductoTabla.php">Editar productos</a>
 
                 </div><!-- fin de col de 4 2 -->
                 <div class="col-md-4 ">
@@ -92,7 +94,7 @@ setMessage() ?>
               </div><!-- fin de row -->
             </div><!-- fin de col-md-12 -->
           </div><!-- fin de card producto -->
-<!-- fin de sesion producos ------------------------------  -->
+          <!-- fin de sesion producos ------------------------------  -->
 
         </div><!-- fin de card 2 -->
       </div><!-- fin de card 1-->
