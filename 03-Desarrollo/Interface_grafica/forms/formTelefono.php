@@ -1,14 +1,13 @@
 <?php
 include_once '../plantillas/plantilla.php';
 include_once '../clases/class.medida.php';
-include_once '../clases/class.empresa.php';
+include_once '../clases/class.telefono.php';
 
 include_once '../plantillas/inihtml.php';
 include_once '../plantillas/navN2.php';
-
+cardtitulo("Empresa");
 include_once '../metodos/get.php';
 include_once '../session/sessiones.php';
-cardtitulo("Empresa");
 ?>
 
 <div class="container-fluid col-md col-xl-7">
@@ -33,10 +32,10 @@ cardtitulo("Empresa");
             <?php setMessage();
             } ?>
             <div class="card">
-                <div class="card-header">Registro Empresa</div>
+                <div class="card-header">Registro Telefono</div>
                 <div class="card-body">
                     <form action="../metodos/post.php" method="POST">
-                        <div class="form-group"><input class="form-control" type="text" name="ID_rut" placeholder="Rut" required autofocus maxlength="20"></div>
+                        <div class="form-group"><input class="form-control" type="text" name="ID_tel" placeholder="Rut" required autofocus maxlength="20"></div>
                         <div class="form-group"><input class="form-control" type="text" name="nom_empresa" placeholder="Empresa" required autofocus maxlength="50"></div>
                         <input type="hidden" name="accion" value="insertEmpresa">
                         <div class="form-group"><input class="form-control btn btn-primary" type="submit" name="submit" value="enviar"></div>

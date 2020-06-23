@@ -9,7 +9,7 @@ include_once '../../clases/class.conexion.php';
 include_once '../../clases/class.usuario.php';
 //include_once '../../session/sessionIni.php';
 //include_once 'metodos/sessiones.php';
-session_start();
+
 
 if(isset($_SESSION['usuario'])){
     print_r($_SESSION['usuario']);

@@ -261,5 +261,4 @@ static function verUsarioId($idg)
 
 
 
-
 }// fin de clase usaurio

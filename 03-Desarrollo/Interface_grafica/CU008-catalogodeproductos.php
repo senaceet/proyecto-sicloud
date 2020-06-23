@@ -1,6 +1,8 @@
 <?php
-include_once 'plantillas/navgeneral.php';
 include_once 'plantillas/inihtml.php';
+include_once 'plantillas/navN1.php';
+include_once 'session/sessiones.php';
+include_once 'session/valsession.php';
 ?>
 
 <div class="col-md-12 mt-5">
@@ -140,7 +142,11 @@ include_once 'plantillas/inihtml.php';
     </div>
 </div>
 
-<?php include_once 'plantillas/footer.php'; ?>
+<?php 
+
+include_once 'plantillas/footer.php'; 
+include_once 'plantillas/finhtml.php';
+?>
 
 
 

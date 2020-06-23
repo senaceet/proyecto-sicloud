@@ -62,7 +62,39 @@ if(!isset($_SESSION['usuario'])){
             $us = $_SESSION['usuarion']['nom1'];
             $_SESSION['message'] = " Bienvenido: Comercial ";
             $us = $_SESSION['usuarion']['nom1']; 
-         }
+         
+
+         //-------------------------------------------------------------------
+         //ROL
+         //Proveedor
+      }elseif($_SESSION['usuario']['ID_rol_n'] == 5){
+         echo "hola estoy en inicio Comercial";
+         header("location: rol/proveedor/iniProveedor.php");
+         $us = $_SESSION['usuarion']['nom1'];
+         $_SESSION['message'] = " Bienvenido: Proveedor ";
+         $us = $_SESSION['usuarion']['nom1']; 
+
+         //----------------------------------------------------------------
+         //ROL
+         //Supervisor
+      }elseif($_SESSION['usuario']['ID_rol_n'] == 6){
+         echo "hola estoy en inicio Comercial";
+         header("location: rol/supervisor/iniSupervisor.php");
+         $us = $_SESSION['usuarion']['nom1'];
+         $_SESSION['message'] = " Bienvenido: Proveedor ";
+         $us = $_SESSION['usuarion']['nom1']; 
+
+
+         //------------------------------------------------------------
+         //ROL
+         //cliente
+      }elseif($_SESSION['usuario']['ID_rol_n'] == 7){
+         echo "hola estoy en inicio Comercial";
+         header("location: rol/cliente/iniCliente.php");
+         $us = $_SESSION['usuarion']['nom1'];
+         $_SESSION['message'] = " Bienvenido: Proveedor ";
+         $us = $_SESSION['usuarion']['nom1']; }
+
     
 
 

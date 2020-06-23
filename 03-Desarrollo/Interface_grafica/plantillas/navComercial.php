@@ -1,6 +1,7 @@
 <?php
 include_once 'inihtml.php';
 include_once 'plantilla.php';
+
 session_start();
 //nclude_once '../session/sessionIni.php'
 
@@ -19,10 +20,10 @@ session_start();
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto mx-auto">
       <li class="nav-item active">
-        <a class="nav-link lead px-4 " href="#">INICIO<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead px-4 " href="../../CU0019-ServiciosPortal.php">INICIO<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle lead px-4 " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle lead px-4 " href="../../Vision-home.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           FERRETERIA
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -31,7 +32,7 @@ session_start();
           <a class="dropdown-item" href="#">VISION</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link lead px-4 " href="#">CATALOGO DE PRODUCTOS<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead px-4 " href="../../CU008-catalogodeproductos.php">CATALOGO DE PRODUCTOS<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link lead px-4 " href="#">PROMOCIONES<span class="sr-only">(current)</span></a>
@@ -42,7 +43,7 @@ session_start();
       <li class="nav-item dropdown active">
           <a class="nav-link dropdown-toggle lead px-5" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-          <?php   echo  $_SESSION['usuario']['nom1']   ?><span class="sr-only">(current)</span>
+          <?php   if(isset($_SESSION['usuario'])){ echo  $_SESSION['usuario']['nom1']; }    ?><span class="sr-only">(current)</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#pendiente">Mis datos</a>

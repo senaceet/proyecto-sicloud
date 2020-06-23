@@ -6,13 +6,15 @@ include_once '../../plantillas/navN3.php';
 include_once '../../clases/class.categoria.php';
 include_once '../../clases/class.producto.php';
 
-
-
+?>
+<div class="my-4">
+<?php
 cardtitulo("Vista por categoria");
+?>
+</div>
 
 
-
-
+<?php
 if (isset($_SESSION['message'])) {
 ?>
     <!-- alerta boostrap -->

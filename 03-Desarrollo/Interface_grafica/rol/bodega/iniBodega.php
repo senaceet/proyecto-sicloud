@@ -5,18 +5,19 @@ include_once '../../plantillas/plantilla.php';
 include_once '../../plantillas/navN3.php';
 
 //include_once 'metodos/sessiones.php';
-session_start();
+//session_start();
+
+
 
 if (isset($_SESSION['usuario'])) {
   print_r($_SESSION['usuario']);
 }
-
-
-cardtitulo("Modulo de inventario");
-
-
-echo "modulo administracion";
 ?>
+
+
+  <?php
+  cardtitulo("Modulo de inventario");
+  ?>
 
 
 
@@ -31,7 +32,7 @@ echo "modulo administracion";
 
           <h5 class="mx-auto tex-cennter text-succes ">
             <?php if (isset($_SESSION['usuario'])) {
-              echo "Bienvenido " . $_SESSION['usuario']['nom2'];
+              echo "Bienvenido " . $_SESSION['usuario']['nom1'];
             } ?></h5>
 
 

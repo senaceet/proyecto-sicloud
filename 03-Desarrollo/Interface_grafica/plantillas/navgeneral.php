@@ -1,4 +1,5 @@
 <?php
+
 include_once 'inihtml.php';
 include_once 'plantilla.php';
 ?>
@@ -14,7 +15,7 @@ include_once 'plantilla.php';
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto mx-auto">
       <li class="nav-item active">
-        <a class="nav-link lead px-4 " href="#">INICIO<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead px-4 " href="index.php">INICIO<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle lead px-4 " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,7 +27,7 @@ include_once 'plantilla.php';
           <a class="dropdown-item" href="#">VISION</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link lead px-4 " href="#">CATALOGO DE PRODUCTOS<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead px-4 " href="CU008-catalogodeproductos.php">CATALOGO DE PRODUCTOS<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link lead px-4 " href="#">PROMOCIONES<span class="sr-only">(current)</span></a>

@@ -2,7 +2,7 @@
 include_once '../plantillas/plantilla.php';
 include_once '../clases/class.rol.php';
 include_once '../plantillas/inihtml.php';
-include_once '../plantillas/nav2.php';
+include_once '../plantillas/navN2.php';
 cardtitulo("Rol");
 include_once '../metodos/get.php';
 include_once '../session/sessiones.php';

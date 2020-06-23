@@ -1,8 +1,8 @@
 <?php
 require '../plantillas/plantilla.php';
-require '../plantillas/navN2.php';
+
 include_once '../plantillas/inihtml.php';
-//session_start();
+include_once '../plantillas/navN2.php';
 include_once '../clases/class.documento.php';
 include_once '../clases/class.rol.php';
 include_once '../clases/class.login.php';

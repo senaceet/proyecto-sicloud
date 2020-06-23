@@ -3,11 +3,12 @@
 include_once '../plantillas/plantilla.php';
 include_once '../clases/class.medida.php';
 include_once '../plantillas/inihtml.php';
-include_once '../plantillas/nav2.php';
-cardtitulo("Medida");
+include_once '../plantillas/navN2.php';
+
 include '../metodos/get.php';
 include_once '../session/sessiones.php';
 include_once '../session/valsession.php';
+cardtitulo("Medida");
 ?>
 
 <div class="container-fluid col-md col-xl-6  ">

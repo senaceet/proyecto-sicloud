@@ -6,7 +6,7 @@ include_once 'clases/class.producto.php';
 include_once 'clases/class.medida.php';
 include_once 'clases/class.proveedor.php';
 include_once 'plantillas/inihtml.php';
-include_once 'plantillas/navN2.php';
+include_once 'plantillas/navN1.php';
 include_once 'session/sessiones.php';
 include_once 'session/valsession.php';
 

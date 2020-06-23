@@ -1,7 +1,8 @@
 <?php
 require 'plantillas/plantilla.php';
-include_once 'plantillas/navN1.php';
+
 include_once 'plantillas/inihtml.php';
+include_once 'plantillas/navN1.php';
 include_once 'clases/class.documento.php';
 include_once 'clases/class.rol.php';
 include_once 'clases/class.login.php';
@@ -116,6 +117,9 @@ cardtitulo("Registro de Usuarios");
                     <input type="file" class="custom-file-input" id="customFile" name="foto">
                     <label class="custom-file-label" for="customFile">Seleccione una imagen desde su equipo</label>
                 </div><br><br>
+
+                <h5>Digite su Telefono: </h5>
+                    <input class="form-control" type="varchar" name="tel" required autofocus maxlength="25"><br>
 
                 <h5> Correo </h5>
                 <input class="form-control" type="email" name="correo" required autofocus maxlength="25"><br>

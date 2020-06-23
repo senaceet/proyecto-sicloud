@@ -1,10 +1,10 @@
 <?php 
-session_start();
+
 
 //--------------------------------
 //mensaje
+session_start();
 if(isset($_SESSION['message'])){
-print_r( $_SESSION['message']);
 }
 
 //------------------------------

@@ -56,7 +56,7 @@ include_once 'session/sessionIni.php';
                     <input type="hidden" name="accion" value="login">
                     <input type="submit" name="btnLogin" value="Ingresar" class="form-control btn btn-primary"><br><br>
                     <h5>¿No tienes cuenta?</h5>
-                    <a href="CU004-RegistrodeUsuario.php" class="form-control btn btn-primary">Registrarse</a><br><br>
+                    <a href="CU002-registrodeUsuario.php" class="form-control btn btn-primary">Registrarse</a><br><br>
                 </form>
                 
             </div><!-- Fin de card form -->

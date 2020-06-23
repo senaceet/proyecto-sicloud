@@ -5,8 +5,8 @@
 include_once '../../plantillas/inihtml.php';
 include_once '../../plantillas/plantilla.php';
 include_once '../../plantillas/navN3.php';
-//include_once 'metodos/sessiones.php';
-session_start();
+include_once '../../session/sessiones.php';
+
 
 if(isset($_SESSION['usuario'])){
     print_r($_SESSION['usuario']);

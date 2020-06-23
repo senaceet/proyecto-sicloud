@@ -1,5 +1,7 @@
 use sicloud;
 
+
+
 insert into sicloud.log_error(ID_error,descrip_error,fecha,hora)
 values		(default,'Error correo electronico no valido','2018-12-04','14:14:00'),
 			(default,'Error en la contraseña por favor digitela de nuevo','2019-07-05','13:24:54'),
@@ -17,8 +19,10 @@ insert into sicloud.rol (ID_rol_n, nom_rol)
 values 		(default,'administrador'),
 			(default,'Bodega'),
 			(default,'Supervisor'),
-			(default,'Ventas');
-
+			(default,'Ventas'),
+            (default,'Proveedor'),
+            (default,'Supervisor'),
+           (default,'Cliente');
 
 insert into sicloud.tipo_doc (ID_acronimo, nom_doc)
 values 		('CC', 'Cedula'),
@@ -116,6 +120,16 @@ values		('1636012383599','Irma','Rosalyn','Mullen','Cote','1990-08-15','IKC07VII
 			('1680091992499','Gloria',null,'Kirkland','Cote','1981-03-10','CFJ88XPJ2RM','C:\img\us.png','est.vitae@fermentum.edu', 'CC'),
 			('1691012831199','Blake','Angela','Schroeder','Knight','1993-03-02','BMH07NRZ2UY','C:\img\us.png','natoque.penatibus.et@quistristiqueac.ca', 'CC'),
 			('1698091149999','Cedric',null,'Webster',null,'1991-06-10','WSF42WGJ0OS','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC');
+            insert into sicloud.usuario (ID_us,nom1,nom2,ape1,ape2,fecha,pass,foto,correo,FK_tipo_doc)
+values
+            ('1','Javier',null,'Reyes',null,'1991-06-10','1','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
+            ('2','Fabian',null,'Lopez',null,'1991-06-10','2','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
+             ('3','Alejandro',null,'Lopez',null,'1991-06-10','3','C:\img\us.png','Curae.Phasellus@sr.com', 'CC'),
+             ('4','Fabian','pepito','perez',null,'1991-06-10','4','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
+			('5','Andres',null,'Daza',null,'1991-06-10','5','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
+            ('6','Sandra',null,'Daza',null,'1991-06-10','6','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
+            ('7','Milena',null,'Karen',null,'1991-06-10','7','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC');
+             
             
             
 insert into sicloud.puntos ( Id_puntos, puntos, fecha, FK_us ,FK_tipo_doc  )
@@ -192,6 +206,17 @@ values		(1,1636012383599,'CE',"2019-02-17","1"),
 			(4,1680091992499,'CC',"2019-02-18","1"),
 			(1,1691012831199,'CC',"2019-08-16","1"),
 			(1,1698091149999,'CC',"2019-01-24","1");
+            insert into sicloud.rol_usuario(FK_rol,FK_us,FK_tipo_doc,fecha_asignacion,estado)
+values     (1,1,'CC',"2019-01-24","1"),
+			(2,2,'CC',"2019-01-24","1"),
+            (3,3,'CC',"2019-01-24","1"),
+            (4,4,'CC',"2019-01-24","1"),
+            (5,5,'CC',"2019-01-24","1"),
+            (6,6,'CC',"2019-01-24","1"),
+            (7,7,'CC',"2019-01-24","1");
+            
+    
+            
             
 
 insert into sicloud.orden_entrada (ID_ord, fecha_ingreso, CF_rol, CF_rol_us, CF_tipo_doc)

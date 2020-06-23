@@ -5,12 +5,13 @@ include_once '../../plantillas/plantilla.php';
 include_once '../../plantillas/navN3.php';
 include_once '../../clases/class.categoria.php';
 include_once '../../clases/class.producto.php';
-
-
-
-cardtitulo("Conteo de productos");
-
 ?>
+
+<div class="my-4">
+    <?php
+    cardtitulo("Conteo de productos");
+    ?>
+</div>
 
 
 <div class="col-md-4 p-2 mx-auto my-4 ">
