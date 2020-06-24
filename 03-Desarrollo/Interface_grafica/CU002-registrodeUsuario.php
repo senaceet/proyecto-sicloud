@@ -17,7 +17,7 @@ cardtitulo("Registro de Usuarios");
     <div class="row">
         <div class="col-md-10 card card-body mx-auto">
             <h5></h5>
-            <form class="form-group" action="metodos/post.php" method="POST">
+            <form class="form-group" action="metodos/post.php" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card text-center card-title">

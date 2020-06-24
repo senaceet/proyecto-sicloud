@@ -128,7 +128,7 @@ if (isset($_POST['submit'])) {
     //PRODUCTO------------------------------------------------------------------------------------
     // Update
     if ($_POST['accion'] == 'insertProductoUpdate') {
-        $id = $_GET['id'];;
+        $id = $_GET['id'];
         include_once '../session/sessiones.php';
         $ID_prod = $_POST['ID_prod'];
         $nom_prod = $_POST['nom_prod'];
@@ -137,6 +137,16 @@ if (isset($_POST['submit'])) {
         $estado_prod = $_POST['estado_prod'];
         $CF_categoria = $_POST['CF_categoria'];
         $CF_tipo_medida = $_POST['CF_tipo_medida'];
+
+//--------------------------------------------------------------------------------------------
+
+
+
+
+//---------------------------------------------------------------------------------------------
+
+
+
 
         $producto = new Producto($ID_prod, $nom_prod, $val_prod, $stok_prod, $estado_prod, $CF_categoria, $CF_tipo_medida);
         $_SESSION['producto'] = $producto;

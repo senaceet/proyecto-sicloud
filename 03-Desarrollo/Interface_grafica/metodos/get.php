@@ -7,6 +7,7 @@ include_once '../clases/class.producto.php';
 include_once '../clases/class.usuario.php';
 include_once '../clases/class.rol.php';
 include_once '../clases/class.medida.php';
+include_once '../clases/class.error.php';
 //---------------------------------------------------------------
 
 if ((isset($_GET['id'])) && (isset($_GET['accion']))) {
@@ -79,6 +80,15 @@ if ((isset($_GET['id'])) && (isset($_GET['accion']))) {
         $id = $_GET['id'];
         Rol::eliminarRol($id);
     }
+
+
+    //-------------------------------------------------------------------------
+    //ERROR
+    //Eliminar
+    if ($_GET['accion'] == 'eliminarError') {
+        $id = $_GET['id'];
+        ErrorLog::eliminarErrorLog($id);
+    }
 } // fin de isset accion y id
 
 
@@ -113,7 +123,6 @@ if (isset($_GET['cerrarSesion'])) {
     $_SESSION['message'] = "Cerro sesion";
     echo "cerro sesion";
 }
-
 
 
 
