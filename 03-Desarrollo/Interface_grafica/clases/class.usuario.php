@@ -161,8 +161,8 @@ class Usuario
     return $result;
   } // Fin de select usuario
 
-//ver usuario por un registro id
-static function verUsarioId($idg)
+  //ver usuario por un registro id
+  static function verUsarioId($idg)
   {
     include_once 'class.conexion.php';
     $db_usuario = new Conexion();
@@ -222,14 +222,14 @@ static function verUsarioId($idg)
     $sql = " UPDATE sicloud.rol_usuario SET rol_usuario.estado = 0 WHERE rol_usuario.FK_us = $id ";
     $conexion->query($sql);
     // if($insert){ echo "<script>alert('Se desactivo cuenta');</script>";   echo "<script>window.location.replace('../CU009-controlUsuarios.php');</script>"; }else{ echo "<script>alert(no se ha activado');</script>"; echo "<script>window.location.remplace('../CU009-controlUsuarios.php');</script>"; } 
-     if ($conexion) {
-       $_SESSION['message'] = "Desactivo cuenta de usuario";
-       $_SESSION['color'] = "danger";
-     } else {
-       $_SESSION['message'] = "Error al descativar cuenta";
-       $_SESSION['color'] = "danger";
-     }
-     header("location: ../CU009-controlUsuarios.php ");
+    if ($conexion) {
+      $_SESSION['message'] = "Desactivo cuenta de usuario";
+      $_SESSION['color'] = "danger";
+    } else {
+      $_SESSION['message'] = "Error al descativar cuenta";
+      $_SESSION['color'] = "danger";
+    }
+    header("location: ../CU009-controlUsuarios.php ");
   } // fin de desactibar cuenta
 
 
@@ -256,9 +256,17 @@ static function verUsarioId($idg)
   } // fin de comparar contraseña de clase usuario
 
 
-
-
-
-
-
+  static function inserTfoto($destino)
+  {
+    include_once 'class.conexion.php';
+    $c = new Conexion;
+    $sql = "INSERT INTO usuario(foto) VALUES ('$destino')
+    where ID_us = 2";
+    $resultado = $c->query($sql);
+    if ($resultado == true) {
+      echo "<script>alert('Registro exitoso')</script>";
+    } else {
+      echo "<script>alert('Error al registrar')</script>";
+    }
+  }
 }// fin de clase usaurio

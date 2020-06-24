@@ -30,9 +30,7 @@ if ((isset($_GET['id']))) {
                             <?php
 
                             $c = new Conexion;
-                            $sql = "SELECT * FROM sicloud.empresa_provedor WHERE ID_rut = $id ";
-                            $datos = $c->query($sql);
-                            //$datos = Empresa::verDatoPorId($id);
+                            $datos = Empresa::verDatoPorId($id);
                             while ($row = $datos->fetch_array()) {
 
                             ?>

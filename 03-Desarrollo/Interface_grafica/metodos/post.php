@@ -73,9 +73,21 @@ if (isset($_POST['submit'])) {
         $ape2 = $_POST['ape2'];
         $fecha = $_POST['fecha'];
         $pass = $_POST['pass'];
-        $foto = $_POST['foto'];
+       // $foto = $_POST['foto'];
         $correo = $_POST['correo'];
         $FK_tipo_doc = $_POST['FK_tipo_doc'];
+
+
+        
+        $foto=$_FILES["foto"]["name"];
+        $ruta=$_FILES["foto"]["tmp_name"];
+        $destino="plantillas/" .$foto;
+        copy($ruta, $destino);
+        Usuario::inserTfoto($destino);
+
+
+
+
 
         // captura de rol_usuario
         $FK_rol = $_POST['FK_rol'];
@@ -139,6 +151,15 @@ if (isset($_POST['submit'])) {
         $CF_tipo_medida = $_POST['CF_tipo_medida'];
 
 //--------------------------------------------------------------------------------------------
+//Insertar foto
+
+
+
+
+ 
+       
+
+
 
 
 
