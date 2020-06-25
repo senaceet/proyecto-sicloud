@@ -3,8 +3,8 @@ include_once '../plantillas/plantilla.php';
 include_once '../clases/class.medida.php';
 include_once '../clases/class.telefono.php';
 
-include_once '../plantillas/inihtml.php';
-include_once '../plantillas/navN2.php';
+include_once '../plantillas/cuerpo/inihtmlN2.php';
+include_once '../plantillas/nav/navN2.php';
 cardtitulo("Empresa");
 include_once '../metodos/get.php';
 include_once '../session/sessiones.php';
@@ -71,8 +71,8 @@ include_once '../session/sessiones.php';
 
                     <!-- formEdicion.php?accion=editarMedia&&id=<?php// echo $row['ID_medida'] ?> -->
                     <td>
-                        <a href="   ../forms/formEdicionEmpresa.php?id=<?php echo $row['ID_rut'] ?> " class="btn btn-secondary"><i class="fas fa-marker"></i></a>
-                        <a href="../metodos/get.php?accion=eliminarEmpresa&&id=<?php echo $row['ID_rut'] ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                        <a href="   ../forms/formEdicionEmpresa.php?id=<?php echo $row['ID_rut'] ?> " class="btn btn-circle btn-secondary"><i class="fas fa-marker"></i></a>
+                        <a href="../metodos/get.php?accion=eliminarEmpresa&&id=<?php echo $row['ID_rut'] ?>" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
 
                         <!--  get.php?accion=editarMedia?id= -->
                         <!-- edit.php?id=<?//php  echo  $row['id_sitio']  ?> -->
@@ -91,5 +91,5 @@ include_once '../session/sessiones.php';
 </div><!-- Fin container -->
 
 <?php
-include_once '../plantillas/finhtml.php';
+include_once '../plantillas/cuerpo/finhtml.php';
 ?>

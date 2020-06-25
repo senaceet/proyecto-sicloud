@@ -1,14 +1,15 @@
 <?php
 
-include_once '../../plantillas/inihtml.php';
+
 include_once '../../plantillas/plantilla.php';
-include_once '../../plantillas/navN3.php';
 include_once '../../clases/class.categoria.php';
 include_once '../../clases/class.producto.php';
 include_once '../../clases/class.conexion.php';
 require '../../clases/class.factura.php';
 include_once '../../session/sessiones.php';
 include_once '../../session/valsession.php';
+include_once '../../plantillas/cuerpo/inihtmlN3.php';
+include_once '../../plantillas/nav/navN3.php';
 
 
 
@@ -132,5 +133,5 @@ if(isset($_POST['accion'])){
         <?php
         }// fin de isset consulta
 
-        include_once '../../plantillas/finhtml.php';
+        include_once '../../plantillas/cuerpo/finhtml.php';
         ?>

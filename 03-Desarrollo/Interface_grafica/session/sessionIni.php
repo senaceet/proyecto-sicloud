@@ -30,7 +30,7 @@ if(!isset($_SESSION['usuario'])){
         echo "hola estoy en inicio admin";
         //$_SESSION['usuario']['nom1'];
         header("location: rol/admin/iniAdmin.php");
-         $us = $_SESSION['usuarion']['nom1'];
+  
         $_SESSION['message'] = " Bienvenido: Administrador ";
     
        //----------------------------------------------------------------------
@@ -40,7 +40,7 @@ if(!isset($_SESSION['usuario'])){
             echo "hola estoy en inicio Bodega";
               //$_SESSION['usuario']['nom1'];
         header("location: rol/bodega/iniBodega.php");
-        $us = $_SESSION['usuarion']['nom1'];
+
        $_SESSION['message'] = " Bienvenido: Inventario ";
 
        //----------------------------------------------------------------------
@@ -50,7 +50,7 @@ if(!isset($_SESSION['usuario'])){
             echo "hola estoy en inicio Supervisor";
             header("location: rol/supervisor/iniSupervisor.php");
             $us = $_SESSION['usuarion']['nom1'];
-           $_SESSION['message'] = " Bienvenido: Supervisor ";
+ 
            $us = $_SESSION['usuarion']['nom1'];
 
         //----------------------------------------------------------------------
@@ -59,9 +59,8 @@ if(!isset($_SESSION['usuario'])){
          }elseif($_SESSION['usuario']['ID_rol_n'] == 4){
             echo "hola estoy en inicio Comercial";
             header("location: rol/comercial/iniComercial.php");
-            $us = $_SESSION['usuarion']['nom1'];
             $_SESSION['message'] = " Bienvenido: Comercial ";
-            $us = $_SESSION['usuarion']['nom1']; 
+
          
 
          //-------------------------------------------------------------------
@@ -70,9 +69,8 @@ if(!isset($_SESSION['usuario'])){
       }elseif($_SESSION['usuario']['ID_rol_n'] == 5){
          echo "hola estoy en inicio Comercial";
          header("location: rol/proveedor/iniProveedor.php");
-         $us = $_SESSION['usuarion']['nom1'];
          $_SESSION['message'] = " Bienvenido: Proveedor ";
-         $us = $_SESSION['usuarion']['nom1']; 
+  
 
          //----------------------------------------------------------------
          //ROL
@@ -80,9 +78,7 @@ if(!isset($_SESSION['usuario'])){
       }elseif($_SESSION['usuario']['ID_rol_n'] == 6){
          echo "hola estoy en inicio Comercial";
          header("location: rol/supervisor/iniSupervisor.php");
-         $us = $_SESSION['usuarion']['nom1'];
          $_SESSION['message'] = " Bienvenido: Proveedor ";
-         $us = $_SESSION['usuarion']['nom1']; 
 
 
          //------------------------------------------------------------
@@ -91,9 +87,9 @@ if(!isset($_SESSION['usuario'])){
       }elseif($_SESSION['usuario']['ID_rol_n'] == 7){
          echo "hola estoy en inicio Comercial";
          header("location: rol/cliente/iniCliente.php");
-         $us = $_SESSION['usuarion']['nom1'];
          $_SESSION['message'] = " Bienvenido: Proveedor ";
-         $us = $_SESSION['usuarion']['nom1']; }
+      }
+
 
     
 

@@ -1,9 +1,9 @@
 <?php 
-require 'class.conexion.php';
-require_once 'plantilla.php';
 
-include_once 'plantillas/navgeneral.php';
-inihtml();
+
+include_once '../../plantillas/cuerpo/inihtmlN3.php';
+include_once '../../plantillas/nav/navN3.php';
+include_once '../../plantillas/plantilla.php';
 
 cardtitulo("<h4><em>Bienvenido a Comercial</em></h4>");
 ?>
@@ -27,5 +27,5 @@ cardtitulo("<h4><em>Bienvenido a Comercial</em></h4>");
     </div>
 </div>
 <?php 
-finhtml();
+include_once '../../plantillas/cuerpo/finhtml.php';
 ?>

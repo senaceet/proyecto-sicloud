@@ -1,13 +1,13 @@
 <?php
-include_once '../plantillas/plantilla.php';
+include_once '../plantillas/plantillaN2.php';
 include_once '../clases/class.conexion.php';
 include_once '../clases/class.categoria.php';
 include_once '../clases/class.producto.php';
 include_once '../clases/class.medida.php';
 include_once '../clases/class.proveedor.php';
 //palntilla
-include_once '../plantillas/inihtml.php';
-include_once '../plantillas/navN2.php';
+include_once '../plantillas/cuerpo/inihtmlN2.php';
+include_once '../plantillas/nav/navN2.php';
 include_once '../session/sessiones.php';
 cardtitulo("Editar producto");
 ?>
@@ -157,8 +157,8 @@ if (isset($_GET['accion'])) {
                         <td><?php echo $row['CF_categoria'] ?></td>
                         <td><?php echo $row['CF_tipo_medida'] ?></td>
                         <td>
-                            <a class="btn btn-success mx-auto icon-edit " href="metodos/get.php?accion=EditarProducto&&id=<?php echo $row['ID_prod'] ?>"><i class="fas fa-marker"></i></a>
-                            <a class="btn btn-danger icon-trash " href="metodos/get.php?accion=EliminarProducto&&id=<?php echo $row['ID_prod'] ?>"><i class="far fa-trash-alt"></i></a>
+                            <a class="btn btn-circle btn-success mx-auto icon-edit " href="metodos/get.php?accion=EditarProducto&&id=<?php echo $row['ID_prod'] ?>"><i class="fas fa-marker"></i></a>
+                            <a class="btn btn-circle btn-danger icon-trash " href="metodos/get.php?accion=EliminarProducto&&id=<?php echo $row['ID_prod'] ?>"><i class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>
 
@@ -172,6 +172,6 @@ if (isset($_GET['accion'])) {
 
     } // fin de accion ver producto
 } // fin de asset get accion
-include_once '../plantillas/finhtml.php';
+include_once '../plantillas/cuerpo/finhtml.php';
 
 ?>

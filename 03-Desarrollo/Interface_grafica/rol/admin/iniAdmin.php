@@ -1,9 +1,10 @@
 
 <?php 
 //  rol/admin/iniAdmin.php
-include_once '../../plantillas/navN3.php';
+
 include_once '../../plantillas/plantilla.php';
-include_once '../../plantillas/inihtml.php';
+include_once '../../plantillas/cuerpo/inihtmlN3.php';
+include_once '../../plantillas/nav/navN3.php';
 include_once '../../clases/class.empresa.php';
 include_once '../../clases/class.conexion.php';
 include_once '../../clases/class.usuario.php';
@@ -97,8 +98,8 @@ if (isset($_SESSION['message'])) {
 
                     <!-- formEdicion.php?accion=editarMedia&&id=<?php// echo $row['ID_medida'] ?> -->
                     <td>
-                        <a href="   ../forms/formEdicionEmpresa.php?id=<?php echo $row['ID_rut'] ?> " class="btn btn-secondary"><i class="fas fa-marker"></i></a>
-                        <a href="../metodos/get.php?accion=eliminarEmpresa&&id=<?php echo $row['ID_rut'] ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                        <a href="   ../forms/formEdicionEmpresa.php?id=<?php echo $row['ID_rut'] ?> " class="btn btn-circle btn-secondary"><i class="fas fa-marker"></i></a>
+                        <a href="../metodos/get.php?accion=eliminarEmpresa&&id=<?php echo $row['ID_rut'] ?>" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
 
                         <!--  get.php?accion=editarMedia?id= -->
                         <!-- edit.php?id=<?//php  echo  $row['id_sitio']  ?> -->
@@ -116,13 +117,7 @@ if (isset($_SESSION['message'])) {
 
 
 
-
-
-
-
-
-
 <?php
 
-include_once '../../plantillas/finhtml.php';
+include_once '../../plantillas/cuerpo/finhtml.php';
 ?>

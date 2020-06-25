@@ -2,8 +2,8 @@
 
 include_once '../plantillas/plantilla.php';
 include_once '../clases/class.medida.php';
-include_once '../plantillas/inihtml.php';
-include_once '../plantillas/navN2.php';
+include_once '../plantillas/cuerpo/inihtmlN2.php';
+include_once '../plantillas/nav/navN2.php';
 
 include '../metodos/get.php';
 include_once '../session/sessiones.php';
@@ -71,8 +71,8 @@ cardtitulo("Medida");
                     <td><?php echo $row['nom_medida'] ?></td>
                     <td><?php echo $row['acron_medida'] ?></td>
                     <td>
-                        <a href=" formEdicionMedida.php?accion=editarMedia&&id=<?php echo $row['ID_medida'] ?>; " class="btn btn-secondary"><i class="fas fa-marker"></i></a>
-                        <a href="../metodos/get.php?accion=eliminarMedida&&id=<?php echo $row['ID_medida'] ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                        <a href=" formEdicionMedida.php?accion=editarMedia&&id=<?php echo $row['ID_medida'] ?>; " class="btn btn-circle btn-secondary"><i class="fas fa-marker"></i></a>
+                        <a href="../metodos/get.php?accion=eliminarMedida&&id=<?php echo $row['ID_medida'] ?>" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tbody>
         <?php
@@ -87,5 +87,5 @@ cardtitulo("Medida");
 </div><!-- Fin container -->
 <?php
 //finhtml();
-require '../plantillas/finhtml.php';
+require '../plantillas/cuerpo/finhtml.php';
 ?>

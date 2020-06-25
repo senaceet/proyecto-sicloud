@@ -1,12 +1,12 @@
 <?php
-include_once '../plantillas/plantilla.php';
+include_once '../plantillas/plantillaN2.php';
 
 include_once '../clases/class.empresa.php';
 include_once '../clases/class.conexion.php';
 include_once '../clases/class.categoria.php';
 include_once '../clases/class.rol.php';
-include_once '../plantillas/inihtml.php';
-include_once '../plantillas/navN2.php';
+include_once '../plantillas/cuerpo/inihtmlN2.php';
+include_once '../plantillas/nav/navN2.php';
 include_once '../session/sessiones.php';
 
 
@@ -49,5 +49,5 @@ if ((isset($_GET['id']))) {
   <!--  -->
 <?php
 }
-include_once '../plantillas/finhtml.php';
+include_once '../plantillas/cuerpo/finhtml.php';
 ?>

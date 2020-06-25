@@ -1,6 +1,7 @@
 <?php
 include_once '../../clases/class.producto.php';
-include_once '../../plantillas/inihtml.php';
+include_once '../../plantillas/cuerpo/inihtmlN3.php';
+include_once '../../plantillas/nav/navN3.php';
 
 ?>
 
@@ -48,5 +49,5 @@ include_once '../../plantillas/inihtml.php';
 
 
 <?php
-include_once '../../plantillas/inihtml.php';
+include_once '../../plantillas/cuerpo/inihtml.php';
 ?>

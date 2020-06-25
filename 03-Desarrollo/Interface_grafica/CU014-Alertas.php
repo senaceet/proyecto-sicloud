@@ -1,13 +1,13 @@
 <?php
 
-include_once 'plantillas/plantilla.php';
+include_once 'plantillas/plantillaN1.php';
 include_once 'clases/class.categoria.php';
 include_once 'clases/class.producto.php';
 include_once 'clases/class.usuario.php';
 include_once 'clases/class.medida.php';
 include_once 'clases/class.proveedor.php';
 include_once 'plantillas/inihtml.php';
-include_once 'plantillas/navN1.php';
+include_once 'plantillas/nav/navN1.php';
 include_once 'session/sessiones.php';
 include_once 'session/valsession.php';
 

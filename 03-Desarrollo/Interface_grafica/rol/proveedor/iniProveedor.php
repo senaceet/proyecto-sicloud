@@ -1,11 +1,8 @@
 
 <?php 
-//  rol/admin/iniAdmin.php
-include_once '../../plantillas/inihtml.php';
-include_once '../../plantillas/navN3.php';
+include_once '../../plantillas/cuerpo/inihtmlN3.php';
+include_once '../../plantillas/nav/navN3.php';
 include_once '../../plantillas/plantilla.php';
-//include_once '../../session/sessionIni.php';
-//include_once 'metodos/sessiones.php';
 
 
 
@@ -18,7 +15,7 @@ if(isset($_SESSION['usuario'])){
 ?>
 <div class="my-4">
 <?php
-cardtitulo("Modulo Cliente");
+cardtitulo('Modulo Probedor');
 ?>
 </div>
 <?php
@@ -50,5 +47,5 @@ if (isset($_SESSION['message'])) {
 
 <?php
 
-include_once '../../plantillas/finhtml.php';
+include_once '../../plantillas/cuerpo/finhtml.php';
 ?>

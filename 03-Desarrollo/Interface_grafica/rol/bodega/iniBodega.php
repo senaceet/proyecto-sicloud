@@ -1,8 +1,9 @@
 <?php
 
-include_once '../../plantillas/inihtml.php';
+include_once '../../plantillas/cuerpo/inihtmlN3.php';
+include_once '../../plantillas/cuerpo/inihtmlN3.php';
+include_once '../../plantillas/nav/navN3.php';
 include_once '../../plantillas/plantilla.php';
-include_once '../../plantillas/navN3.php';
 
 //include_once 'metodos/sessiones.php';
 //session_start();
@@ -51,22 +52,51 @@ if (isset($_SESSION['usuario'])) {
           <?php
           }
           setMessage() ?>
+<img class="rounded-circle mx-auto" src="http://ferretero.pe/wp-content/uploads/2018/12/Ferretero-C%C3%B3mo-gestionar-ventas-en-Ferretero.jpg" width ="200px"
+	height = "200px"alt="">
+
+
+           <!-- Tasks Card Example -->
+  <div class="col-xl-6 col-md-8 mb-4 mx-auto">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Bodega</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
           <div class="card card-body  my-2">
-            <h3 class="mx-auto">Consultas</h3><!-- incio de card consultas -->
+            <h4 class="mx-auto">Informes</h4><!-- incio de card consultas -->
             <div class="col-md-12 my-2">
               <!-- sesion de prodcutos -->
               <div class="row">
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="tablaCategoria.php">Productos por categoria</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="tablaCategoria.php"> <i class="fas fa-fw fa-folder"></i>Productos por categoria</a>
                 </div><!-- fin de col de 4 1 -->
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="tablaRegistro.php">Cantidad de procuntos registrados</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="tablaRegistro.php"> <i class="fas fa-fw fa-chart-area"></i>Cantidad de procuntos</a>
 
                 </div><!-- fin de col de 4 2 -->
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="">Stok por categorias</a>
+                  <a class="btn btn-primary mx-auto btn-block" href=""><i class="fas fa-search fa-sm"></i>Stok por categorias</a>
 
                 </div><!-- fin de col de 4 3 -->
               </div><!-- fin de row -->
@@ -76,20 +106,20 @@ if (isset($_SESSION['usuario'])) {
           <!-- inicio de sesion productos ------------------------------------------------------  -->
 
           <div class="card card-body my-2">
-            <h3 class="mx-auto">Acciones</h3><!-- inicio de card productos -->
+            <h4 class="mx-auto">Procesos</h4><!-- inicio de card productos -->
             <div class="col-md-12 my-2">
               <!-- sesion de prodcutos -->
               <div class="row">
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="../../CU004-crearProductos.php">Crear producto</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="../../CU004-crearProductos.php">  <i class="fas fa-fw fa-wrench"></i>Crear producto</a>
                 </div><!-- fin de col de 4 1 -->
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="../../CU003-ingresoProducto.php ">Ingreso de producto pedido</a>
-                  <a class="btn btn-primary mx-auto btn-block" href="../../forms/edicionProductoTabla.php">Editar productos</a>
+                  <a class="btn btn-info mx-auto btn-block" href="../../CU003-ingresoProducto.php "> <i class="fas fa-check"></i>Ingreso de producto pedido</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="../../forms/edicionProductoTabla.php">  <i class="fas fa-fw fa-wrench"></i>Editar productos</a>
 
                 </div><!-- fin de col de 4 2 -->
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="../../CU0018-RegistroPedido.php">Solicitar pedido</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="../../CU0018-RegistroPedido.php"><i class="fas fa-arrow-right"></i>Solicitar pedido</a>
 
                 </div><!-- fin de col de 4 3 -->
               </div><!-- fin de row -->
@@ -104,6 +134,7 @@ if (isset($_SESSION['usuario'])) {
 </div><!-- container fluid -->
 
 
+
 <?php
 
 ?>
@@ -111,17 +142,9 @@ if (isset($_SESSION['usuario'])) {
 
 
 
-
-
-
-
-
-
-
-
-
-
+              
+     
 <?php
 
-include_once '../../plantillas/finhtml.php';
+include_once '../../plantillas/cuerpo/finhtml.php';
 ?>

@@ -1,8 +1,9 @@
 <?php
 include_once '../plantillas/plantilla.php';
 include_once '../clases/class.categoria.php';
-include_once '../plantillas/inihtml.php';
-include_once '../plantillas/navN2.php';
+include_once '../plantillas/cuerpo/inihtmlN2.php';
+include_once '../plantillas/nav/navN2.php';
+include_once '../plantillas/plantilla.php';
 cardtitulo("Categoria");
 include_once '../metodos/get.php';
 include_once '../session/sessiones.php';
@@ -57,9 +58,9 @@ include_once '../session/sessiones.php';
                     <td><?php echo $row['ID_categoria'] ?></td>
                     <td><?php echo $row['nom_categoria'] ?></td>
                     <td>
-                        <a href="   ../forms/formEdicionCategoria.php?id=<?php echo $row['ID_categoria'] ?> " class="btn btn-secondary">
+                        <a href="   ../forms/formEdicionCategoria.php?id=<?php echo $row['ID_categoria'] ?> " class="btn btn-circle btn-secondary">
                             <i class="fas fa-marker"></i>
-                            <a href="../metodos/get.php?accion=eliminarCategoria&&id=<?php echo $row['ID_categoria'] ?>" class="btn btn-danger">
+                            <a href="../metodos/get.php?accion=eliminarCategoria&&id=<?php echo $row['ID_categoria'] ?>" class="btn btn-circle btn-danger">
                                 <i class="far fa-trash-alt"></i>
                             </a>
                     </td>
@@ -74,5 +75,5 @@ include_once '../session/sessiones.php';
 </div><!-- Fin container -->
 
 <?php
-include_once '../plantillas/finhtml.php';
+include_once '../plantillas/cuerpo/finhtml.php';
 ?>

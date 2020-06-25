@@ -1,8 +1,5 @@
-<?php
 
-include_once 'inihtml.php';
-include_once 'plantilla.php';
-?>
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <a class="navbar-brand ml-4" href="#">
@@ -40,6 +37,3 @@ include_once 'plantilla.php';
 </nav>
         
 
-<?php
-include_once 'finhtml.php';
-?>

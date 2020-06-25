@@ -1,8 +1,8 @@
 <?php
-require 'plantillas/plantilla.php';
+require 'plantillas/plantillaN1.php';
 
-include_once 'plantillas/inihtml.php';
-include_once 'plantillas/navN1.php';
+include_once 'plantillas/cuerpo/inihtmlN1.php';
+include_once 'plantillas/nav/navN1.php';
 include_once 'clases/class.documento.php';
 include_once 'clases/class.rol.php';
 include_once 'clases/class.login.php';

@@ -1,7 +1,9 @@
 <?php
-include_once 'plantillas/navgeneral.php';
+include_once 'plantillas/plantilla.php';
+include_once 'plantillas/nav/navgeneral.php';
 require 'clases/class.documento.php';
 require 'clases/class.login.php';
+include_once 'plantillas/cuerpo/inihtmlN1.php';
 include_once 'session/sessionIni.php';
 
 ?>
@@ -157,3 +159,7 @@ include_once 'session/sessionIni.php';
         </div>
     </div>
 
+<?php 
+include_once 'plantillas/cuerpo/finhtml.php';
+
+?>

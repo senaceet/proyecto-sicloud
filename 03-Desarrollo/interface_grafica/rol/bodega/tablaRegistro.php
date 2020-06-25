@@ -1,10 +1,11 @@
 <?php
 
-include_once '../../plantillas/inihtml.php';
-include_once '../../plantillas/plantilla.php';
-include_once '../../plantillas/navN3.php';
+
+include_once '../../plantillas/cuerpo/inihtmlN3.php';
+include_once '../../plantillas/nav/navN3.php';
 include_once '../../clases/class.categoria.php';
 include_once '../../clases/class.producto.php';
+include_once '../../plantillas/plantilla.php';
 ?>
 
 <div class="my-4">
@@ -37,5 +38,5 @@ include_once '../../clases/class.producto.php';
 </div><!-- fin de div tabla responce -->
 
 <?php
-include_once '../../plantillas/finhtml.php';
+include_once '../../plantillas/cuerpo/finhtml.php';
 ?>

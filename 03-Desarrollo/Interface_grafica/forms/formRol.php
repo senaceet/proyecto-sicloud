@@ -1,8 +1,8 @@
 <?php
 include_once '../plantillas/plantilla.php';
 include_once '../clases/class.rol.php';
-include_once '../plantillas/inihtml.php';
-include_once '../plantillas/navN2.php';
+include_once '../plantillas/cuerpo/inihtmlN2.php';
+include_once '../plantillas/nav/navN2.php';
 cardtitulo("Rol");
 include_once '../metodos/get.php';
 include_once '../session/sessiones.php';
@@ -67,10 +67,10 @@ include_once '../session/valsession.php';
 
 
                     <td>
-                        <a href="   ../forms/editarRol.php?id=<?php echo $row['ID_rol_n'] ?> " class="btn btn-secondary">
+                        <a href="   ../forms/editarRol.php?id=<?php echo $row['ID_rol_n'] ?> " class="btn btn-circle btn-secondary">
                             <i class="fas fa-marker"></i>
 
-                            <a href="../metodos/get.php?accion=eliminarRol&&id=<?php echo $row['ID_rol_n'] ?>" class="btn btn-danger">
+                            <a href="../metodos/get.php?accion=eliminarRol&&id=<?php echo $row['ID_rol_n'] ?>" class="btn btn-circle btn-danger">
                                 <i class="far fa-trash-alt"></i>
                             </a>
                     </td>
@@ -86,5 +86,5 @@ include_once '../session/valsession.php';
 </div><!-- Fin container -->
 
 <?php
-include_once '../plantillas/finhtml.php';
+include_once '../plantillas/cuerpo/finhtml.php';
 ?>

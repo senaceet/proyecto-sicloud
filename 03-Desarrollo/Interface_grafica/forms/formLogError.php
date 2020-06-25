@@ -5,8 +5,8 @@ include_once '../plantillas/plantilla.php';
 
 
 
-include_once '../plantillas/inihtml.php';
-include_once '../plantillas/navN2.php';
+include_once '../plantillas/cuerpo/inihtmlN2.php';
+include_once '../plantillas/nav/navN2.php';
 
 include_once '../metodos/get.php';
 include_once '../session/sessiones.php';
@@ -65,7 +65,7 @@ cardtitulo("Log error");
 
                     <!-- formEdicion.php?accion=editarMedia&&id=<?php// echo $row['ID_medida'] ?> -->
                     <td>
-                        <a href="../metodos/get.php?accion=eliminarError&&id=<?php echo $row['ID_error'] ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                        <a href="../metodos/get.php?accion=eliminarError&&id=<?php echo $row['ID_error'] ?>" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
 
                         <!--  get.php?accion=editarMedia?id= -->
                         <!-- edit.php?id=<?//php  echo  $row['id_sitio']  ?> -->
@@ -84,5 +84,5 @@ cardtitulo("Log error");
 </div><!-- Fin container -->
 
 <?php
-include_once '../plantillas/finhtml.php';
+include_once '../plantillas/cuerpo/finhtml.php';
 ?>

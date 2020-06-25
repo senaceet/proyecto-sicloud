@@ -1,8 +1,8 @@
 <?php
-require '../plantillas/plantilla.php';
+include_once '../plantillas/plantilla.php';
 
-include_once '../plantillas/inihtml.php';
-include_once '../plantillas/navN2.php';
+include_once '../plantillas/cuerpo/inihtmlN2.php';
+include_once '../plantillas/nav/navN2.php';
 include_once '../clases/class.documento.php';
 include_once '../clases/class.rol.php';
 include_once '../clases/class.login.php';
@@ -78,7 +78,7 @@ cardtitulo('Mis datos')
 
 
 <?php
-include_once  '../plantillas/finhtml.php';
+include_once  '../plantillas/cuerpo/finhtml.php';
 ?>
 
                
