@@ -70,7 +70,7 @@ if (isset($_SESSION['usuario'])) {
 
                 </div><!-- fin de col de 4 2 -->
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="">Stok por categorias</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="CU009-controlUsuarios.php">Manejo de Usuarios</a>
 
                 </div><!-- fin de col de 4 3 -->
               </div><!-- fin de row -->
@@ -79,27 +79,7 @@ if (isset($_SESSION['usuario'])) {
 
           <!-- inicio de sesion productos ------------------------------------------------------  -->
 
-          <div class="card card-body my-2">
-            <h3 class="mx-auto">Acciones</h3><!-- inicio de card productos -->
-            <div class="col-md-12 my-2">
-              <!-- sesion de prodcutos -->
-              <div class="row">
-                <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="../../CU004-crearProductos.php">Crear producto</a>
-                </div><!-- fin de col de 4 1 -->
-                <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="../../CU003-ingresoProducto.php ">Ingreso de producto pedido</a>
-                  <a class="btn btn-primary mx-auto btn-block" href="../../forms/edicionProductoTabla.php">Editar productos</a>
-
-                </div><!-- fin de col de 4 2 -->
-                <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="../../CU0018-RegistroPedido.php">Solicitar pedido</a>
-
-                </div><!-- fin de col de 4 3 -->
-              </div><!-- fin de row -->
-            </div><!-- fin de col-md-12 -->
-          </div><!-- fin de card producto -->
-          <!-- fin de sesion producos ------------------------------  -->
+      
 
         </div><!-- fin de card 2 -->
       </div><!-- fin de card 1-->
