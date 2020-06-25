@@ -1,16 +1,16 @@
 <?php
 
-include_once '../../plantillas/inihtml.php';
+include_once '../../plantillas/cuerpo/inihtmlN3.php';
+include_once '../../plantillas/nav/navN3.php';
 include_once '../../plantillas/plantilla.php';
-include_once '../../plantillas/navN3.php';
 include_once '../../clases/class.categoria.php';
 include_once '../../clases/class.producto.php';
 
 ?>
 <div class="my-4">
-<?php
-cardtitulo("Vista por categoria");
-?>
+    <?php
+    cardtitulo("Vista por categoria");
+    ?>
 </div>
 
 
@@ -35,7 +35,7 @@ if (isset($_SESSION['message'])) {
     <div class="card-body">
         <h5 class="card-title text-center ">Seleccione Categora</h5>
         <!-- INI--FORM PRODUCTO--------------------------------------------------------------------------------- -->
-        <form action="tablaCategoria.php" method="GET">
+        <form action="TablaProductos.php" method="GET">
             <select name="p" class="form-control">
                 <?php
                 $datos = Categoria::verCategoria();
@@ -78,8 +78,6 @@ if (isset($_GET['consulta'])) {
             $datos = Producto::verProductosAlfa($id);
             while ($row = $datos->fetch_array()) {
             ?>
-
-
                 <tbody>
                     <tr>
                         <td> <?php echo $row['nom_prod']  ?></td>
@@ -87,17 +85,9 @@ if (isset($_GET['consulta'])) {
                         <td> <?php echo $row['nom_categoria']  ?></td>
                     </tr>
                 </tbody>
-
-
             <?php    }  ?>
-
         </table>
-
     </div><!-- fin de div tabla responce -->
-
-
-
-
 
 
 
@@ -107,14 +97,6 @@ if (isset($_GET['consulta'])) {
 
 
 ?>
-
-
-
-
-
-
-
-
 
 
 <?php

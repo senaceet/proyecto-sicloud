@@ -9,7 +9,7 @@ include_once 'session/sessiones.php';
 ?>
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar-fixed-top navbar navbar-expand-lg navbar-dark bg-dark navbar navbar-expand-lg  sticky-top">
 <a class="navbar-brand ml-4" href="#">
     <img src="fonts/logoportal.png" width="250" height="65" alt="">
   </a>
