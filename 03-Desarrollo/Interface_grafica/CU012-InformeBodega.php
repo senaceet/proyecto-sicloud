@@ -5,7 +5,7 @@ include_once 'plantillas/inihtml.php';
 include_once 'session/sessiones.php';
 include_once 'session/valsession.php';
 
-cardtitulo("Informe de ventas");
+cardtitulo("Informe de Bodega");
 
 ?>
 <div class="card card-body text-center col-md-10 mx-auto">
@@ -36,7 +36,7 @@ cardtitulo("Informe de ventas");
                             <option>XML</option>
                         </select><br>
 
-                        <div class="form-group"> <input class="btn btn-primary form-control" type="submit" value="Descargar CSV"> </div>
+                        <div class="form-group"> <input class="btn btn-primary form-control" type="submit" value="Descargar"> </div>
                         <a class="btn btn-block btn-primary my-2" href="CU0011-tablaVentas.php">Vizualizar informe</a>
                     </div><!-- fin de segunda columna de 6 -->
                 </form>

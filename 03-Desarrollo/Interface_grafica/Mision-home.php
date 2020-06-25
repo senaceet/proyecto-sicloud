@@ -9,8 +9,7 @@ include_once 'session/sessiones.php';
 <div class="container">
   <div class="row">
     <div class="card card-body text-center bk-rgb col-xs col-sm col-md col-lg-12">
-      <img class="rounded-circle" src="https://source.unsplash.co/" alt="">
-      <h5>Visión</h5><br>
+      <h5>Misión</h5><br>
     </div>
   </div>
 </div>
