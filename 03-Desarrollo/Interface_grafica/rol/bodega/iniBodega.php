@@ -83,7 +83,7 @@ if (isset($_SESSION['usuario'])) {
             </div>
 
 
-          <div class="card card-body  my-2">
+          <div class="card card-body   my-2">
             <h4 class="mx-auto">Informes</h4><!-- incio de card consultas -->
             <div class="col-md-12 my-2">
               <!-- sesion de prodcutos -->
@@ -96,7 +96,7 @@ if (isset($_SESSION['usuario'])) {
 
                 </div><!-- fin de col de 4 2 -->
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href=""><i class="fas fa-search fa-sm"></i>Stok por categorias</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="../../CU014-Alertas.php"><i class="fas fa-search fa-sm"></i>Sistema de alertas</a>
 
                 </div><!-- fin de col de 4 3 -->
               </div><!-- fin de row -->

@@ -237,7 +237,7 @@ JOIN empresa_provedor ON FK_rut = ID_rut WHERE P.ID_prod = '$id' LIMIT 1";
         $c = new Conexion;
         $sql = "SELECT  P.ID_prod ,  P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod  , P.CF_tipo_medida , C.ID_categoria , C.nom_categoria
         FROM producto P JOIN categoria C ON  P.CF_categoria = C.ID_categoria
-        where C.ID_categoria = '$id' 
+        where C.ID_categoria = $id 
         order by P.nom_prod asc";
         $consulta = $c->query($sql);
         return $consulta;

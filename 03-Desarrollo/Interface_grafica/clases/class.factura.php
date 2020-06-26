@@ -147,4 +147,20 @@ group by dia";
         $i = $c->query($sql);
         return $i;
     }
+
+
+
+
+    // valida factura en un periodo de fechas
+
+    static function verIntervaloFecha($fechaIni, $fechaFin){
+     include_once 'class.conexion.php';
+     $c = new Conexion;
+     $sql = "SELECT * FROM factura
+     where fecha <= '$fechaFin' and  fecha >= '$fechaIni' 
+     order by fecha asc";
+     $arr = $c->query($sql);
+     return $arr;
+      
+            }
 }

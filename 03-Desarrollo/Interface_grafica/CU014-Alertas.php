@@ -96,7 +96,7 @@ $id =  $_POST['categoria'];
                     $po  = 10 * $row['stok_prod'];
                     $po = $po . "%";
 
-
+                    $c = "text";
                     if ($p < 2){
                         $c = "danger";
                     } elseif ($p < 6) {
@@ -104,12 +104,12 @@ $id =  $_POST['categoria'];
                     } elseif ($p < 7) {
                         $c = "success";
                     }
-                    $c = "bg-" . $c;
+                    $c = "bg-".$c;
 
                 ?>
                     <h4 class="small font-weight-bold"><?php echo $row['nom_prod']  ?> <span class="float-right"><?php echo  " Cantidad de productos; " . $p ?></span> </h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar <?php echo $c ?>" role="progressbar" style="width:<?php echo $po; ?>" aria-valuenow="20%" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar <?php echo $c ?>" role="progressbar" style="width:<?php echo $po; ?>" aria-valuenow= <?php echo $c ?> aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 <?php
                 }// fin de while producto
@@ -136,6 +136,18 @@ $id =  $_POST['categoria'];
                         <?php
                         $datos = Producto::verProductos();
                         while ($row = $datos->fetch_array()) {
+
+
+                            
+                    if ($p < 2){
+                        $c = "danger";
+                    } elseif ($p < 6) {
+                        $c = "warning";
+                    } elseif ($p < 7) {
+                        $c = "success";
+                    }
+                    $c = "bg-" . $c;
+
                         ?>
                             <tbody>
                                 <tr>
