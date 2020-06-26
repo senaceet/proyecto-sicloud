@@ -1,10 +1,5 @@
 <?php
 include_once '../../session/sessiones.php';
-//nclude_once '../session/sessionIni.php'
-
-
-
-
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top navbar-expand-lg  fixed-top sticky-top">

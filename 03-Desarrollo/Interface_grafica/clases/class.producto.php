@@ -200,7 +200,8 @@ JOIN empresa_provedor ON FK_rut = ID_rut WHERE P.ID_prod = '$id' LIMIT 1";
 
 
 
-    static function verProductosAlfa($id){
+    static function verProductosAlfa($id)
+    {
         include_once 'class.conexion.php';
         $c = new Conexion;
         $sql = "SELECT nom_prod , stok_prod , nom_categoria  from sicloud.producto sp
@@ -208,12 +209,13 @@ JOIN empresa_provedor ON FK_rut = ID_rut WHERE P.ID_prod = '$id' LIMIT 1";
         WHERE ID_categoria = $id 
         order by nom_prod asc";
         $dat = $c->query($sql);
-        return $dat ; 
+        return $dat;
     }
 
 
 
-    static function ConteoProductosT(){
+    static function ConteoProductosT()
+    {
         include_once 'class.conexion.php';
         $c = new Conexion;
         $sql = "SELECT nom_prod , sum(stok_prod) as total
@@ -224,5 +226,20 @@ JOIN empresa_provedor ON FK_rut = ID_rut WHERE P.ID_prod = '$id' LIMIT 1";
         FROM sicloud.producto";
         $dat = $c->query($sql);
         return $dat;
+    }
+
+
+
+    // METODO para ver los productos de una categoria 
+    static function verPorCategoria($id)
+    {
+        include_once 'class.conexion.php';
+        $c = new Conexion;
+        $sql = "SELECT  P.ID_prod ,  P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod  , P.CF_tipo_medida , C.ID_categoria , C.nom_categoria
+        FROM producto P JOIN categoria C ON  P.CF_categoria = C.ID_categoria
+        where C.ID_categoria = '$id' 
+        order by P.nom_prod asc";
+        $consulta = $c->query($sql);
+        return $consulta;
     }
 }

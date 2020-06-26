@@ -1,8 +1,8 @@
 <?php
 include_once 'plantillas/plantilla.php';
 include_once 'plantillas/nav/navgeneral.php';
-require 'clases/class.documento.php';
-require 'clases/class.login.php';
+include_once 'clases/class.documento.php';
+include_once 'clases/class.login.php';
 include_once 'plantillas/cuerpo/inihtmlN1.php';
 include_once 'session/sessionIni.php';
 
@@ -159,6 +159,15 @@ include_once 'session/sessionIni.php';
         </div>
     </div>
 
+
+
+    <footer class="sticky-footer bg-dark">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Sicloud</span>
+          </div>
+        </div>
+      </footer>
 <?php 
 include_once 'plantillas/cuerpo/finhtml.php';
 

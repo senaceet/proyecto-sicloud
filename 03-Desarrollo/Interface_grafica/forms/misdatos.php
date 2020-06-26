@@ -21,7 +21,6 @@ cardtitulo('Mis datos')
             <?php
 
                 $id = $_SESSION['usuario']['ID_us'];
-                        //include_once '../clases/class.conexion.php';
                         $c = new Conexion();
 
                         $datos = Usuario::selectUsuarios($id);
