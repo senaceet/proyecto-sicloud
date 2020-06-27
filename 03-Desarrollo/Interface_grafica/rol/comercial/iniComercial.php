@@ -48,13 +48,13 @@ include_once '../../plantillas/cuerpo/inihtmlN3.php';
 include_once '../../plantillas/nav/navN3.php';
 include_once '../../plantillas/plantilla.php';
 
-cardtitulo("<h4><em>Bienvenido a Comercial</em></h4>");
+cardtitulo("Modulo Comercial");
 ?>
 
 
 
 
-<div class="col-md-10 mt-5 my-4 mx-auto">
+<div class="col-md-10 my-4 mx-auto">
     <div class="row">
         <div class="col-md-12 text-center text-white">
             <h5 class = " text-dark">Los mejores productos en IMCOABHER</h5>
@@ -69,7 +69,7 @@ cardtitulo("<h4><em>Bienvenido a Comercial</em></h4>");
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img class="d-block w-100" src="../../fonts/f.jpg" alt="First slide" >
+                <img class="d-block w-100" src="../../fonts/slideprod0.jpg" alt="First slide" >
                 </div>
                 <div class="carousel-item">
                 <img class="d-block w-100" src="../../fonts/slideprod1.jpg" alt="Second slide" >
@@ -86,30 +86,34 @@ cardtitulo("<h4><em>Bienvenido a Comercial</em></h4>");
             </div>
         </div>
     </div>
-</div>
+</div><hr class="border ">
 
-<script src="funciones.js"></script>
-<div class="col-md-12">
+<div class="col-md-10 mt-5 my-4 mx-auto">
     <div class="row">
-    <div class = "card card-body text-center mx-auto bk-rgb col-md-8">
-      <div class="col-md-3">
-      <input type="submit" class="form-control btn btn-primary" id="btn1" name="Registro" value="Registro de Cliente" href="Index_ComercialAjax.php?cod=1"><br><br>
-      </div>
-      <div class="col-md-3">
-      <input type="submit" class="form-control btn btn-primary" id="btn2" name="Consulta" value="Consulta de Cliente" href="Index_ComercialAjax.php?cod=2"><br><br>
-      </div>
-      <div class="col-md-3">
-      <input type="submit" class="form-control btn btn-primary" id="btn3" name="Catalogo" value="Catalogo de Productos" href="Index_ComercialAjax.php?cod=3"><br><br>
-      </div>
-      <div class="col-md-3">
-      <input type="submit" class="form-control btn btn-primary" id="btn4" name="Facturacion" value="Facturacion" href="Index_ComercialAjax.php?cod=4"><br><br>
-      </div>
-    </div>
+        <div class="col-md-10 card card-body mx-auto shadow p-3 mb-5 bg-white rounded">
+            <div class="card card-body shadow p-3 mb-5 bg-white rounded text-center lead"><h5 class="my-4">USUARIOS</h5>
+                <div class="row mx-3">
+                    <a class="btn btn-primary btn-block text-decoration-none " href="../../CU009-controlUsuarios.php">Control de Usuarios</a>
+                    <a class="btn btn-primary btn-block text-decoration-none " href="../../CU006-acomulaciondepuntos.php">Acomulacion de Puntos</a>
+                    <a class="btn btn-primary btn-block text-decoration-none " href="../../CU005-facturacion.php">Facturacion</a>
+                </div>
+            </div>
+
+            <div class="card card-body shadow p-3 mb-5 bg-white rounded text-center lead"><h5 class="my-4">PRODUCTOS</h5>
+                <div class="row mx-3">
+                    <a class="btn btn-primary btn-block text-decoration-none " href="../../CU008-catalogodeproductos.php">Catalogo de productos</a>
+                </div>
+            </div>
+
+            <div class="card card-body shadow p-3 mb-5 bg-white rounded text-center lead"><h5 class="my-4">INFORMES</h5>
+                <div class="row mx-3">
+                    <a class="btn btn-primary btn-block text-decoration-none " href="../../CU0011-informeventas.php">Informes de Venta</a>
+                    <a class="btn btn-primary btn-block text-decoration-none " href="../../CU0014-alertas.php">Alertas</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<?php 
-
-?>
 
 
    

@@ -26,10 +26,10 @@
         <a class="nav-link lead px-4 " href="CU008-catalogodeproductos.php">CATALOGO DE PRODUCTOS<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link lead px-4 " href="#">PROMOCIONES<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead px-4 " href="Promociones.php">PROMOCIONES<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link lead pl-4 " href="">CONTACTO<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead pl-4 " href="CU000-contact.php">CONTACTO<span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>
