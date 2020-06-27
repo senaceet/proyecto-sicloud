@@ -58,7 +58,7 @@ cardtitulo("Registro de Usuarios");
                                 </div><!-- fin de columna de 6 -->
                                 <div class="col-md-6">
 
-                                    <h5>Seleccione rol "pendinete aprobar"</h5>
+                                    <h5>Seleccione rol</h5>
                                     <div class="form-group">
 
                                         <select name="FK_rol" class="form-control">
@@ -125,7 +125,7 @@ cardtitulo("Registro de Usuarios");
                 <input class="form-control" type="email" name="correo" required autofocus maxlength="25"><br>
                 <input type="hidden" name="accion" value="insetUsuario">
                 <input class="btn btn-success form-control" type="submit" name="submit" value="Registrar"><br><br><br>
-                <a class="btn btn-success form-control btn-block" href="CU009-controlUsuarios.php">Lista usuario</a>
+                <a class="btn btn-success form-control btn-block" href="CU009-controlusuarios.php">Lista usuario</a>
             </form>
         </div>
     </div>

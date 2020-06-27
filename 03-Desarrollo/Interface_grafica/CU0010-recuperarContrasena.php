@@ -16,7 +16,7 @@ include_once 'session/valsession.php';
             <div class = " radix  card card-body text-center bk-rgb borde-1-card ">
                 <h3 class = "card-title">Recuperar contraseña</h3><br><br>
                 <h5 class = "card-text">Ingrese correo electronico para enviar lin de restablecimiento de contraseña</h5><br><br>
-                <form action="RecuperarContrasena.php" method="POST">
+                <form action="CU0010-recuperarcontrasena.php" method="POST">
                 <div class = "form-group" ><input type="text" class ="form-control" placeholder="Ingrese correo"></div><br><br>
                 <input type="submit" class ="form-control btn btn-primary">
                 </form>

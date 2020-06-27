@@ -96,7 +96,7 @@ if (isset($_SESSION['usuario'])) {
 
                 </div><!-- fin de col de 4 2 -->
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="../../CU014-Alertas.php"><i class="fas fa-search fa-sm"></i>Sistema de alertas</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="../../CU014-alertas.php"><i class="fas fa-search fa-sm"></i>Sistema de alertas</a>
 
                 </div><!-- fin de col de 4 3 -->
               </div><!-- fin de row -->
@@ -111,15 +111,15 @@ if (isset($_SESSION['usuario'])) {
               <!-- sesion de prodcutos -->
               <div class="row">
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="../../CU004-crearProductos.php">  <i class="fas fa-fw fa-wrench"></i>Crear producto</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="../../CU004-crearproductos.php">  <i class="fas fa-fw fa-wrench"></i>Crear producto</a>
                 </div><!-- fin de col de 4 1 -->
                 <div class="col-md-4 ">
-                  <a class="btn btn-info mx-auto btn-block" href="../../CU003-ingresoProducto.php "> <i class="fas fa-check"></i>Ingreso de producto pedido</a>
+                  <a class="btn btn-info mx-auto btn-block" href="../../CU003-ingresoproducto.php "> <i class="fas fa-check"></i>Ingreso de producto pedido</a>
                   <a class="btn btn-primary mx-auto btn-block" href="../../forms/edicionProductoTabla.php">  <i class="fas fa-fw fa-wrench"></i>Editar productos</a>
 
                 </div><!-- fin de col de 4 2 -->
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="../../CU0018-RegistroPedido.php"><i class="fas fa-arrow-right"></i>Solicitar pedido</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="../../CU0018-registropedido.php"><i class="fas fa-arrow-right"></i>Solicitar pedido</a>
 
                 </div><!-- fin de col de 4 3 -->
               </div><!-- fin de row -->

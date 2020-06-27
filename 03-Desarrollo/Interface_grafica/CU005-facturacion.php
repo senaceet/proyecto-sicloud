@@ -37,7 +37,7 @@ include_once 'session/valsession.php';
                     <input type="submit" class="form-control btn btn-primary" name="VisualizarFactura" value="Visualizar factura"><br>
                 </form>
                 <div class=""><br>
-                            <form action="CU009-controlUsuarios.php" method="POST">
+                            <form action="CU009-controlusuarios.php" method="POST">
                                 <div class="form-group"><input type="text" class="form-control  " placeholder="ID usuario " name="documento"></div>
                                 <input type="hidden" value="bId" name="accion">
                                 <div class="form-group "><input class="btn btn-block btn-primary form-control " type="submit" value="Buscar id"></div>

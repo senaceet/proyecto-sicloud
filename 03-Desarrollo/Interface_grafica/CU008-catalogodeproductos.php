@@ -46,7 +46,7 @@ include_once 'session/valsession.php';
             <div class="row mb-5 mt-3 ">
                 <div class="border card col-md-11 col-sm-12 col-xs-12 mx-auto pt-3 pb-3 ">
                     <form class="form-inline">
-                        <em class="ml-5"> <a class="text-secondary" href="portal.php">Inicio</a> / <a class="text-secondary" href="CU008-catalogodeproductos.php">Catalogo de productos</a></em>
+                        <em class="ml-5"> <a class="text-secondary" href="index.php">Inicio</a> / <a class="text-secondary" href="CU008-catalogodeproductos.php">Catalogo de productos</a></em>
 
                         <div class="searchandselect" style="margin-left: 35%;">
                            <input class="form-control" type="search" placeholder="Busqueda" aria-label="Search">
@@ -74,7 +74,7 @@ include_once 'session/valsession.php';
                         <h5 class="card-title">Alicates</h5>
                         <p class="card-text lead"><strong>$22.000</strong></p>
                         <p class="card-text text-success">Hasta 12x $ 1.833 sin interés</p>
-                        <a href="CU0015_16(Usuario)-Solicitudf.php" class="btn btn-primary">Comprar</a>
+                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
                 <div class="card col-md-3 mx-1 mx-auto">
@@ -83,7 +83,7 @@ include_once 'session/valsession.php';
                         <h5 class="card-title">Compresor De Mccarthy</h5>
                         <p class="card-text lead"><strong>$349.900</strong></p>
                         <p class="card-text text-success">36x $ 9.719 sin interés</p>
-                        <a href="CU0015_16(Usuario)-Solicitudf.php" class="btn btn-primary">Comprar</a>
+                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
                 <div class="card col-md-3 mx-1 mx-auto">
@@ -92,7 +92,7 @@ include_once 'session/valsession.php';
                         <h5 class="card-title">Destornilladores</h5>
                         <p class="card-text lead"><strong>$19.900</strong></p>
                         <p class="card-text text-success">Hasta 12x $ 1.658 sin interés</p>
-                        <a href="CU0015_16(Usuario)-Solicitudf.php" class="btn btn-primary">Comprar</a>
+                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@ include_once 'session/valsession.php';
                         <h5 class="card-title">Linterna Tactica</h5>
                         <p class="card-text lead"><strong>$14.990</strong></p>
                         <p class="card-text text-success">Hasta 36x $1.200 sin interés</p>
-                        <a href="CU0015_16(Usuario)-Solicitudf.php" class="btn btn-primary">Comprar</a>
+                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
                 <div class="card col-md-3 mx-1 mx-auto">
@@ -112,7 +112,7 @@ include_once 'session/valsession.php';
                         <h5 class="card-title">Pegadit</h5>
                         <p class="card-text lead"><strong>$11.616</strong></p>
                         <p class="card-text text-success">36x $322 sin interés</p>
-                        <a href="CU0015_16(Usuario)-Solicitudf.php" class="btn btn-primary">Comprar</a>
+                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
                 <div class="card col-md-3 mx-1 mx-auto">
@@ -121,7 +121,7 @@ include_once 'session/valsession.php';
                         <h5 class="card-title">Pintura</h5>
                         <p class="card-text lead"><strong>$46.900</strong></p>
                         <p class="card-text text-success">Hasta 36x $ 1.303 sin interés</p>
-                        <a href="CU0015_16(Usuario)-Solicitudf.php" class="btn btn-primary">Comprar</a>
+                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
             </div>

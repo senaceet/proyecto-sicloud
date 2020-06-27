@@ -46,7 +46,7 @@ include_once 'session/sessiones.php';
         <div class="row mb-5 mt-3 ">
                 <div class="border card col-md-11 col-sm-12 col-xs-12 mx-auto pt-3 pb-3 ">
                     <form class="form-inline">
-                        <em class="ml-5"> <a class="text-secondary" href="portal.php">Inicio</a> / <a class="text-secondary" href="CU008-catalogodeproductos.php">Catalogo de productos</a></em>
+                        <em class="ml-5"> <a class="text-secondary" href="index.php">Inicio</a> / <a class="text-secondary" href="CU008-catalogodeproductos.php">Catalogo de productos</a></em>
 
                         <div class="searchandselect" style="margin-left: 35%;">
                            <input class="form-control" type="search" placeholder="Busqueda" aria-label="Search">
@@ -71,7 +71,7 @@ include_once 'session/sessiones.php';
                         <h5 class="card-title">Pulidora</h5>
                         <p class="card-text lead"><strong>$179.600</strong></p>
                         <p class="card-text text-success">Hasta 36x $ 4.989 sin interés</p>
-                        <a href="CU0015_16(Usuario)-Solicitudf.php" class="btn btn-primary">Comprar</a>
+                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
                 <div class="card col-md-3 mx-1 mx-auto">
@@ -80,7 +80,7 @@ include_once 'session/sessiones.php';
                         <h5 class="card-title">Sierra</h5>
                         <p class="card-text lead"><strong>$219.900</strong></p>
                         <p class="card-text text-success">Hasta 36x $ 6.108 sin interés</p>
-                        <a href="CU0015_16(Usuario)-Solicitudf.php" class="btn btn-primary">Comprar</a>
+                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
                 <div class="card col-md-3 mx-1 mx-auto">
@@ -89,7 +89,7 @@ include_once 'session/sessiones.php';
                         <h5 class="card-title">Taladro Inalambrico</h5>
                         <p class="card-text lead"><strong>$199.990</strong></p>
                         <p class="card-text text-success">Hasta 12x $ 16.666 sin interés</p>
-                        <a href="CU0015_16(Usuario)-Solicitudf.php" class="btn btn-primary">Comprar</a>
+                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@ include_once 'session/sessiones.php';
                         <h5 class="card-title">Tronzadora Indrustrial</h5>
                         <p class="card-text lead"><strong>$400.000</strong></p>
                         <p class="card-text text-success">Hasta 12x $ 33.333 sin interés</p>
-                        <a href="CU0015_16(Usuario)-Solicitudf.php" class="btn btn-primary">Comprar</a>
+                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
                 

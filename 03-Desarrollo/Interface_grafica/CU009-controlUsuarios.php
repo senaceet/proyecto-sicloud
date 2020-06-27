@@ -56,13 +56,13 @@ include_once 'session/valsession.php';
 
                         </div>
                         <div class="col-md-6"><br>
-                            <form action="CU009-controlUsuarios.php" method="POST">
+                            <form action="CU009-controlusuarios.php" method="POST">
                                 <div class="form-group"><input type="text" class="form-control col-md col-lg-4 " placeholder="ID usuario " name="documento"></div>
                                 <input type="hidden" value="bId" name="accion">
                                 <div class="form-group "><input class="btn btn-primary form-control col-md col-lg-4" type="submit" value="Buscar id"></div>
                             </form>
 
-                            <form action="CU009-controlUsuarios.php" method="POST">
+                            <form action="CU009-controlusuarios.php" method="POST">
 
 
                                 <div class="form-group">
@@ -73,7 +73,7 @@ include_once 'session/valsession.php';
                                 </div>
 
                                 <input type="hidden" value="estado" name="accion">
-                                <div class="form-group "><input class="btn btn-primary form-control col-md col-lg-4" type="submit" value="Reguistros"></div>
+                                <div class="form-group "><input class="btn btn-primary form-control col-md col-lg-4" type="submit" value="Registros"></div>
                             </form>
 
 

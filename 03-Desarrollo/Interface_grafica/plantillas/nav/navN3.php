@@ -20,9 +20,8 @@ include_once '../../session/sessiones.php';
           FERRETERIA
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">QUIENES SOMOS</a>
-          <a class="dropdown-item" href="#">MISION</a>
-          <a class="dropdown-item" href="#">VISION</a>
+        <a class="dropdown-item" href="../../CU000-quienessomos.php">QUIENES SOMOS</a>
+          <a class="dropdown-item" href="../../CU000-misionyvision.php">MISION Y VISION</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link lead px-4 my-3" href="../../CU008-catalogodeproductos.php">CATALOGO <span class="sr-only">(current)</span></a>
@@ -31,7 +30,7 @@ include_once '../../session/sessiones.php';
         <a class="nav-link lead px-4 my-3" href="#">PROMOCIONES<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link lead pl-4 my-3" href="#">CONTACTO<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead pl-4 my-3" href="">CONTACTO<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown active">
 

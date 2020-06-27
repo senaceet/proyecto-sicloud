@@ -51,7 +51,7 @@ cardtitulo("Registro producto");
                     <div class="form-group"><label for="">Stock Inicial</label><input type="number" class="form-control" placeholder="Stock inicial" name="stok_prod" required autofocus></div>
                     <div class="form-group"><label for="">ID factura Proveedor</label><input type="text" class="form-control" placeholder="Factura proveedor" name="num_fac_ing" autofocus></div>
                     <div class="form-group"><label for="">Fecha de resepcion</label><input type="date" class="form-control" placeholder="Proveedor" value="2020-05-22" min="0000-00-00" max="9999-99-99" name="fecha"></div>
-                    <a class="btn btn-block btn-primary by-2" href="CU003-ingresoProducto.php">Igresar productos</a>
+                    <a class="btn btn-block btn-primary by-2" href="CU003-ingresoproducto.php">Ingresar productos</a>
 
 
                 </div><!-- fin de segunda divicion-->
@@ -100,7 +100,7 @@ cardtitulo("Registro producto");
                     </div><!--  fin de form-group Provedor-->
 
                     <!-- BOTON A ENLACE TABLA -->
-                    <div class="form-group "><a class="btn btn-primary form-control" href="CU004-crearProductos.php?accion=verProducto">Ver productos existentes</a></div>
+                    <div class="form-group "><a class="btn btn-primary form-control" href="CU004-crearproductos.php?accion=verProducto">Ver productos existentes</a></div>
                     </form>
                 </div><!-- fin de tercera divicion -->
             </div><!-- row -->

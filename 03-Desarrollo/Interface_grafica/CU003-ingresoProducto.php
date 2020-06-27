@@ -52,7 +52,7 @@ if (isset($_SESSION['message'])) {
             <br> <input class="btn btn-primary btn-block my-2" type="submit" name="consulta" value="Validar exitencia">
 
         </form>
-        <a class="btn btn-primary btn-block" href="CU004-crearProductos.php">Crear producto</a>
+        <a class="btn btn-primary btn-block" href="CU004-crearproductos.php">Crear producto</a>
         <!-- fin producto-------------------------------------------------------------------------------- -->
 
     </div><!-- fin de card-body-->
@@ -113,7 +113,7 @@ if (isset($_GET['consulta'])) {
                             <!-- BOTON A ENLACE TABLA -->
                             </form>
                             <!-- fin de form cantidad----------------------------------------------------------------------------------------------------------  -->
-                            <div class="form-group "><a class="btn btn-primary form-control" href="CU004-crearProductos.php?accion=verProducto">Ver productos existentes</a></div>
+                            <div class="form-group "><a class="btn btn-primary form-control" href="CU004-crearproductos.php?accion=verProducto">Ver productos existentes</a></div>
 
                         </div><!-- fin de tercera divicion -->
                 </div><!-- row -->
