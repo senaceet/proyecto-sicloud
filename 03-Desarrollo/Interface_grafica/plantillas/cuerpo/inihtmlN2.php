@@ -10,11 +10,7 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/jav.css">
 
- 
-   
 
-    
-    
     <!-- data tables -->
 <!-- Bootstrap CSS -->
    

@@ -1,6 +1,6 @@
 <?php
 
-include_once 'plantillas/plantillaN1.php';
+include_once 'plantillas/plantilla.php';
 include_once 'plantillas/cuerpo/inihtmlN1.php';
 include_once 'plantillas/nav/navN1.php';
 include_once 'clases/class.usuario.php';
@@ -85,5 +85,6 @@ if ((isset($_POST['accion'])) &&  ($_POST['accion'] == 'bId')) {
 
 
 
-include_once 'plantillas/finhtml.php';
+include_once 'plantillas/cuerpo/footerN1.php'; 
+include_once 'plantillas/cuerpo/finhtml.php';
 ?>

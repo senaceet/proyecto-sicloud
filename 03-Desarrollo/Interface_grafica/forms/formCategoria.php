@@ -3,7 +3,6 @@ include_once '../plantillas/plantilla.php';
 include_once '../clases/class.categoria.php';
 include_once '../plantillas/cuerpo/inihtmlN2.php';
 include_once '../plantillas/nav/navN2.php';
-include_once '../plantillas/plantilla.php';
 cardtitulo("Categoria");
 include_once '../metodos/get.php';
 include_once '../session/sessiones.php';

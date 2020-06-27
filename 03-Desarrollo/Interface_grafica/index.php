@@ -106,7 +106,7 @@ include_once 'session/sessionIni.php';
     <div class="col-md-12 mt-5">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 mb-5" >
-                <div class="card text-white" > <img class="card-img" src="https://fierros.com.co/wp-content/uploads/2019/07/Lo-ultimo-740x395.jpg" alt="Card image" width="600px"  height="600px" ><style> .card-img-overlay:hover{ background: black; opacity: 0.75;} </style>
+                <div class="card text-white" > <img class="card-img" src="https://deposeguro.com/wp-content/uploads/2019/05/almacen-para-ferreteria.jpg" alt="Card image" width="600px"  height="600px" ><style> .card-img-overlay:hover{ background: black; opacity: 0.75;} </style>
                     <div class="card-img-overlay">
                         <h5 class="card-title"> <em> <b> NOVEDADES </b></em></h5>
                         <p class="card-text">Aulas móviles han capacitado a más de 70 mil colombianos en construcción e infraestructura</p>
@@ -129,37 +129,10 @@ include_once 'session/sessionIni.php';
 
 
 
-    <div class="seccion3">
-        <div class="container">
-            <footer class="row">
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <h5>Categorías</h5><br>
-                        <a href="#" class="subpaginas">Herramientas Manuales</a><br><br>
-				        <a href="#" class="subpaginas">Herramientas Electricas</a><br><br>
-				        <a href="#" class="subpaginas">Trajes y Equipos</a><br><br>
-                </div>
+<?php
 
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <h5>Información</h5><br>
-                    <a href="#" class="subpaginas">Promociones especiales</a><br><br>
-				        <a href="#" class="subpaginas">Novedades</a><br><br>
-				        <a href="#" class="subpaginas">Términos y condiciones</a><br><br>
-                </div>
-
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <h5 class="contact">Contáctanos</h5>
-                    <img src="fonts/ubicacion.png" class="ubicacion">
-                    <small>CALLE 78 SUR 78 71 IN 123, BOGOTA, BOGOTA, COLOMBIA</small><br><br>
-                    <img src="fonts/telefono.png" class="telefono">
-                    <small>(1)4493237</small><br><br>
-                    <img src="fonts/email.png" class="correo">
-                    <small>imcoabhersas@imcoabher.com</small>
-                </div>
-            </footer>
-        </div>
-    </div>
-
-
+include_once 'plantillas/cuerpo/footerN1.php';
+?>
 
     <footer class="sticky-footer bg-dark">
         <div class="container my-auto">
@@ -169,6 +142,7 @@ include_once 'session/sessionIni.php';
         </div>
       </footer>
 <?php 
-include_once 'plantillas/cuerpo/finhtml.php';
 
+
+include_once 'plantillas/cuerpo/finhtml.php';
 ?>

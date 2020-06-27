@@ -154,77 +154,58 @@ if (isset($_SESSION['message'])) {
 
 
 
-<?php
+    <?php
 
-    if ($_POST['ventas'] == 'mes') {
+            if ($_POST['ventas'] == 'mes') {
 
-?>
+    ?>
 
-    <div class="col-md-4 p-2 mx-auto my-4 ">
-        <table class="table table-bordered  table-striped bg-white table-sm mx-auto   text-center">
+        <div class="col-md-4 p-2 mx-auto my-4 ">
+            <table class="table table-bordered  table-striped bg-white table-sm mx-auto   text-center">
 
 
-            <thead>
-                <tr>
-                    <th>Cantidad de ventas por Mes</th>
-                    <th>Total</th>
-                    <th>Dia cierre ventas</th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr>
+                        <th>Cantidad de ventas por Mes</th>
+                        <th>Total</th>
+                        <th>Dia cierre ventas</th>
+                    </tr>
+                </thead>
 
-            <?php
+                <?php
 
 
                 $datos = Factura::verMes();
                 while ($row = $datos->fetch_array()) {
-            ?>
+                ?>
 
 
-                <tbody>
-                    <tr>
-                        <td> <?php echo $row['cantidad']  ?></td>
-                        <td> <?php echo $row['Total']  ?></td>
-                        <td> <?php echo $row['dia_final_mes']  ?></td>
-                    </tr>
-                </tbody>
+                    <tbody>
+                        <tr>
+                            <td> <?php echo $row['cantidad']  ?></td>
+                            <td> <?php echo $row['Total']  ?></td>
+                            <td> <?php echo $row['dia_final_mes']  ?></td>
+                        </tr>
+                    </tbody>
 
 
-            <?php   } //while
-            ?>
+                <?php   } //while
+                ?>
 
-        </table>
+            </table>
 
-    <?php } // fin de consulta por 
+        <?php } // fin de consulta por 
 
-    ?>
+        ?>
 
-    </div><!-- fin de tabla responce -->
-
-
-
+        </div><!-- fin de tabla responce -->
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php
+    <?php
         } // fin de isset consulta
 
-        include_once '../../plantillas/finhtml.php';
-?>
+        include_once '../../plantillas/cuerpo/finhtml.php';
+    ?>

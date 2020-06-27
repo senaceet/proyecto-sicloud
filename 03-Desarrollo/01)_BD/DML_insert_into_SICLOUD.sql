@@ -78,24 +78,24 @@ values 		(default, 'Electricos'),
             
             
 insert into sicloud.producto (ID_prod, nom_prod, val_prod, stok_prod, estado_prod, CF_categoria, CF_tipo_medida)
-values		('353740283X', 'DESTORNILLADOR', '89900', 5, 'Disponible', 1, 4),
+values		('353740283X', 'DESTORNILLADOR', '89900', 1, 'Disponible', 1, 4),
 			('176974732X', 'TRONZADORA', '716000', 5, 'Disponible', 2, 4),
-			('430911542X', 'PULIDORA', '659000', 5, 'Disponible', 3, 4),
-			('9774391012', 'Toolrich', '124950', 5, 'Disponible', 4, 4),
-			('8585851732', 'Alicates', '59950', 5, 'Disponible', 5, 4),
-			('0529063441', 'Destornilladores', '35950', 5, 'Disponible', 6, 4),
-			('5574468565', 'Taladro', '99950', 5, 'Disponible', 1, 4),
-			('6638029436', 'Pegadit', '9950', 5, 'Disponible', 2, 4),
-			('2041172460', 'Compresor', '79950', 5, 'Disponible', 3, 4),
-			('4884032810', 'Linterna', '49950', 5, 'Disponible', 4, 4),
-			('7880000739', 'Sierra', '559900', 5, 'Disponible', 5, 4),
+			('430911542X', 'PULIDORA', '659000', 6, 'Disponible', 3, 4),
+			('9774391012', 'Toolrich', '124950', 8, 'Disponible', 4, 4),
+			('8585851732', 'Alicates', '59950', 1, 'Disponible', 5, 4),
+			('0529063441', 'Destornilladores', '35950', 3, 'Disponible', 6, 4),
+			('5574468565', 'Taladro', '99950', 2, 'Disponible', 1, 4),
+			('6638029436', 'Pegadit', '9950', 7, 'Disponible', 2, 4),
+			('2041172460', 'Compresor', '79950', 10, 'Disponible', 3, 4),
+			('4884032810', 'Linterna', '49950', 7, 'Disponible', 4, 4),
+			('7880000739', 'Sierra', '559900', 3, 'Disponible', 5, 4),
 			('1557972591', 'Llave', '22900', 5, 'Disponible', 6, 4),
-			('6691851129', '5 llaves', '13900', 5, 'Disponible', 1, 4),
-			('509004757X', 'Pintura', '114900', 5, 'Disponible', 2, 4),
-			('5789389872', 'VinilBlanco', '134900', 5, 'Disponible', 3, 4),
-			('6254386003', 'Laca', '259900', 5, 'Disponible', 4, 4),
-			('9808953743', 'Cerrojo', '29900', 5, 'Disponible', 5, 4),
-			('3483863125', 'Cerradura', '56900', 5, 'Disponible', 6, 4),
+			('6691851129', '5 llaves', '13900', 1, 'Disponible', 1, 4),
+			('509004757X', 'Pintura', '114900', 6, 'Disponible', 2, 4),
+			('5789389872', 'VinilBlanco', '134900', 4, 'Disponible', 3, 4),
+			('6254386003', 'Laca', '259900', 1, 'Disponible', 4, 4),
+			('9808953743', 'Cerrojo', '29900', 8, 'Disponible', 5, 4),
+			('3483863125', 'Cerradura', '56900', 1, 'Disponible', 6, 4),
 			('5073303091', 'Grapadora', '154900', 5, 'Disponible', 1, 4);
 
 
@@ -153,6 +153,10 @@ values (  default, 50,  "1990-08-15", "1636012383599", "CE" ),
                  ( default, 15, "2021-01-09", '1680091992499 ', "CC"  ),
                   ( default, 22, "2021-01-10", '1691012831199 ', "CC"  ),
                    ( default, 2, "2021-01-4", '1698091149999 ', "CC"  );
+                   
+                   
+                   insert into sicloud.puntos ( Id_puntos, puntos, fecha, FK_us ,FK_tipo_doc  )
+values (  default, 200,  "1990-08-15", "7", "CC" );
         
 
 
@@ -408,3 +412,10 @@ values 		(default,'Tony','8','1636012383599','CE','464978345',1,7,1),
 			(default,'Orin','4','1680091992499','CC','467487188',18,7,1),
 			(default,'Graedel','34','1691012831199','CC','632873939',19,7,1),
 			(default,'Portage','809','1698091149999','CC','784044923',1,7,1);
+            
+           
+            
+            
+            
+
+

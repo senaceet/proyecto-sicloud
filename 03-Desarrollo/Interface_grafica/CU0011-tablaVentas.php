@@ -11,9 +11,10 @@ include_once 'session/valsession.php';
 include_once 'session/sessiones.php';
 include_once 'session/valsession.php';
 
+
 cardtitulo("Informe de venta");
 
-$d = new Conexion;
+//$d = new Conexion;
 ?>
 <div class="container">
     <div class="row">
@@ -56,5 +57,7 @@ $d = new Conexion;
 </div>
 
 <?php
-include_once 'plantillas/finhtml.php';
+
+include_once 'plantillas/cuerpo/footerN1.php'; 
+include_once 'plantillas/cuerpo/finhtml.php';
 ?>

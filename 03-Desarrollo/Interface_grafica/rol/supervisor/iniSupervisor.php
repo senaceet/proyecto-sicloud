@@ -26,7 +26,7 @@ if (isset($_SESSION['usuario'])) {
 
 
 
-
+<br><br><br><br><br><br><br><br><br><br>
 
 <div class="container-fluid">
   <div class="row">
@@ -70,7 +70,7 @@ if (isset($_SESSION['usuario'])) {
 
                 </div><!-- fin de col de 4 2 -->
                 <div class="col-md-4 ">
-                  <a class="btn btn-primary mx-auto btn-block" href="../../CU014-alertas.php">Stok por categorias</a>
+                  <a class="btn btn-primary mx-auto btn-block" href="../../CU0014-alertas.php">Stok por categorias</a>
 
                 </div><!-- fin de col de 4 3 -->
               </div><!-- fin de row -->

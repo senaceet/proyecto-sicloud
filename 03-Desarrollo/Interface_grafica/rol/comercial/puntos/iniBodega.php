@@ -28,9 +28,6 @@ if (isset($_SESSION['usuario'])) {
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-10 mx-auto">
-
-
-    
       <div class="card card-body">
         <div class="card card-body">
 

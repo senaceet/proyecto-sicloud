@@ -129,7 +129,7 @@ if(isset($_POST['accion'])){
         <?php
         }// fin de isset consulta
 
-        include_once '../../plantillas/finhtml.php';
+        include_once '../../plantillas/cuerpo/finhtml.php';
         ?>
 
 

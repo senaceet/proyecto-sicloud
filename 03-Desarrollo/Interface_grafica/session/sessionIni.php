@@ -27,7 +27,6 @@ if(!isset($_SESSION['usuario'])){
        //Administrador
        
     if($_SESSION['usuario']['ID_rol_n'] == 1  ){
-        echo "hola estoy en inicio admin";
         //$_SESSION['usuario']['nom1'];
         header("location: rol/admin/iniAdmin.php");
   
@@ -37,7 +36,6 @@ if(!isset($_SESSION['usuario'])){
        //ROL
        //Bodega
          }elseif($_SESSION['usuario']['ID_rol_n'] == 2 ){
-            echo "hola estoy en inicio Bodega";
               //$_SESSION['usuario']['nom1'];
         header("location: rol/bodega/iniBodega.php");
 
@@ -47,7 +45,6 @@ if(!isset($_SESSION['usuario'])){
        //ROL
        //Supervisor
          }elseif($_SESSION['usuario']['ID_rol_n'] == 3){
-            echo "hola estoy en inicio Supervisor";
             header("location: rol/supervisor/iniSupervisor.php");
             $us = $_SESSION['usuarion']['nom1'];
  
@@ -57,7 +54,6 @@ if(!isset($_SESSION['usuario'])){
        //ROL
        //Ventas
          }elseif($_SESSION['usuario']['ID_rol_n'] == 4){
-            echo "hola estoy en inicio Comercial";
             header("location: rol/comercial/iniComercial.php");
             $_SESSION['message'] = " Bienvenido: Comercial ";
 
@@ -67,7 +63,6 @@ if(!isset($_SESSION['usuario'])){
          //ROL
          //Proveedor
       }elseif($_SESSION['usuario']['ID_rol_n'] == 5){
-         echo "hola estoy en inicio Comercial";
          header("location: rol/proveedor/iniProveedor.php");
          $_SESSION['message'] = " Bienvenido: Proveedor ";
   
@@ -76,7 +71,6 @@ if(!isset($_SESSION['usuario'])){
          //ROL
          //Supervisor
       }elseif($_SESSION['usuario']['ID_rol_n'] == 6){
-         echo "hola estoy en inicio Comercial";
          header("location: rol/supervisor/iniSupervisor.php");
          $_SESSION['message'] = " Bienvenido: Proveedor ";
 
@@ -85,9 +79,12 @@ if(!isset($_SESSION['usuario'])){
          //ROL
          //cliente
       }elseif($_SESSION['usuario']['ID_rol_n'] == 7){
-         echo "hola estoy en inicio Comercial";
-         header("location: rol/cliente/iniCliente.php");
+         include_once 'clases/class.usuario.php';
+         $res = Usuario::verPuntosYusuario( $_SESSION['usuario']['ID_us']);
+         $datos =$res->fetch_assoc();
+         $_SESSION['usuario'] = $datos;
          $_SESSION['message'] = " Bienvenido: Proveedor ";
+         header("location: rol/cliente/iniCliente.php");
       }
 
 

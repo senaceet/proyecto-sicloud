@@ -44,7 +44,7 @@ if (isset($_SESSION['message'])) {
     <div class="card-body">
         <h5 class="card-title text-center ">Seleccione Categoria</h5>
         <!-- INI--FORM Categria--------------------------------------------------------------------------------- -->
-        <form action="CU014-alertas.php" method="POST">
+        <form action="CU0014-alertas.php" method="POST">
             <select name="categoria" class="form-control">
 
                 <?php
@@ -170,7 +170,10 @@ $id =  $_POST['categoria'];
                 </div>
             </div>
         </div>
+  
+
 
 <?php
-include_once 'plantillas/finhtml.php';
+//include_once 'plantillas/cuerpo/footerN1.php'; 
+include_once 'plantillas/cuerpo/finhtml.php';
 ?>

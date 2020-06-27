@@ -1,5 +1,5 @@
 <?php
-include_once 'plantillas/plantillaN1.php';
+include_once 'plantillas/plantilla.php';
 include_once 'plantillas/nav/navN1.php';
 include_once 'plantillas/cuerpo/inihtmlN1.php';
 include_once 'session/sessiones.php';
@@ -15,7 +15,7 @@ cardtitulo("Informe de ventas");
         </div><br>
 
 
-        <form action="">
+        <form action="CU0011-informeventas.php">
                 <div class="row">
                     <div class="col-md-6">
                         <!-- derecha -->
@@ -48,5 +48,7 @@ cardtitulo("Informe de ventas");
 
 
 <?php
-include_once 'plantillas/finhtml.php';
+
+include_once 'plantillas/cuerpo/footerN1.php'; 
+include_once 'plantillas/cuerpo/finhtml.php';
 ?>

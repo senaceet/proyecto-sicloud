@@ -72,6 +72,7 @@ include_once '../../session/sessiones.php';
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                 <?php if( isset($_SESSION['usuario'])){ echo"Hola ".$_SESSION['usuario']['nom1']." ".$_SESSION['usuario']['ape1']."<br>";  }   ?>
+                <?php if(isset($_SESSION['usuario']['puntos'])){   echo "Puntos ".$_SESSION['usuario']['puntos'];  }  ?>
                 <div class="dropdown-divider"></div>
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   <em><strong><?php if(isset($_SESSION['usuario'])){ echo $_SESSION['usuario']['nom_rol']; } ?></strong></em>

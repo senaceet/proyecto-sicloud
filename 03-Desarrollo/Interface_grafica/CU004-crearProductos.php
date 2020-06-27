@@ -166,8 +166,8 @@ if (isset($_GET['accion'])) {
                         <td><?php echo $row['nom_categoria'] ?></td>
                         <td><?php echo $row['nom_medida'] ?></td>
                         <td>
-                            <a class="btn btn-dark mx-auto icon-edit " href="forms/editarProducto.php?id=<?php echo $row['ID_prod'] ?>"><i class="fas fa-marker"></i></a>
-                            <a class="btn btn-danger icon-trash " href="metodos/get.php?accion=EliminarProducto&&id=<?php echo $row['ID_prod'] ?>"><i class="far fa-trash-alt"></i></a>
+                            <a class="btn btn-dark btn-circle mx-auto icon-edit " href="forms/editarProducto.php?id=<?php echo $row['ID_prod'] ?>"><i class="fas fa-marker"></i></a>
+                            <a class="btn btn-danger btn-circle icon-trash " href="metodos/get.php?accion=EliminarProducto&&id=<?php echo $row['ID_prod'] ?>"><i class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 </tbody>
@@ -185,6 +185,11 @@ if (isset($_GET['accion'])) {
 
     } // fin de accion ver producto
 } // fin de asset get accion
-include_once 'plantillas/finhtml.php';
 
+
+
+
+
+include_once 'plantillas/cuerpo/footerN1.php'; 
+include_once 'plantillas/cuerpo/finhtml.php';
 ?>

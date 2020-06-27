@@ -118,18 +118,6 @@ if (isset($_SESSION['message'])) {
 
 
 
- 
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
 include_once '../../plantillas/cuerpo/footerN3.php';

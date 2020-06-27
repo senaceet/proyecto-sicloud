@@ -119,7 +119,7 @@ cardtitulo("Registro de Usuarios");
                 </div><br><br>
 
                 <h5>Digite su Telefono: </h5>
-                    <input class="form-control" type="varchar" name="tel" required autofocus maxlength="25"><br>
+                <input class="form-control" type="varchar" name="tel" required autofocus maxlength="25"><br>
 
                 <h5> Correo </h5>
                 <input class="form-control" type="email" name="correo" required autofocus maxlength="25"><br>
@@ -165,7 +165,8 @@ cardtitulo("Registro de Usuarios");
 
 
 
+<?php 
 
-<?php
-include_once  'plantillas/finhtml.php';
+include_once 'plantillas/cuerpo/footerN1.php'; 
+include_once 'plantillas/cuerpo/finhtml.php';
 ?>

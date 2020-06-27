@@ -1,13 +1,29 @@
 <?php
 
-include_once 'plantillas/plantillaN1.php';
+include_once 'plantillas/plantilla.php';
 include_once  'clases/class.medida.php';
 include_once 'clases/class.usuario.php';
+include_once 'clases/class.rol.php';
+//require 'clases/class.usuario.php';
+//include_once 'clases/class.conexion.php';
+
 
 include_once 'plantillas/cuerpo/inihtmlN1.php';
 include_once 'plantillas/nav/navN1.php';
 include_once 'session/sessiones.php';
 include_once 'session/valsession.php';
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
 <div class="container-fluid">
@@ -56,27 +72,52 @@ include_once 'session/valsession.php';
 
                         </div>
                         <div class="col-md-6"><br>
-                            <form action="CU009-controlusuarios.php" method="POST">
-                                <div class="form-group"><input type="text" class="form-control col-md col-lg-4 " placeholder="ID usuario " name="documento"></div>
+                            <form action="CU009-controlUsuarios.php" method="POST">
+                                <div class="form-group"><input type="text" class="form-control col-md col-lg-8 " placeholder="ID usuario " name="documento"></div>
                                 <input type="hidden" value="bId" name="accion">
-                                <div class="form-group "><input class="btn btn-primary form-control col-md col-lg-4" type="submit" value="Buscar id"></div>
+                                <div class="form-group "><input class="btn btn-primary form-control col-md col-lg-8" type="submit" value="Buscar id"></div>
                             </form>
 
-                            <form action="CU009-controlusuarios.php" method="POST">
+                            <form action="CU009-controlUsuarios.php" method="POST">
 
 
                                 <div class="form-group">
-                                    <select name="estado" class="form-control col-md col-lg-4 ">
+                                    <select name="estado" class="form-control col-md col-lg-8 ">
                                         <option value="p">Pendientes</option>
                                         <option value="a">Aprobados</option>
                                     </select>
                                 </div>
 
                                 <input type="hidden" value="estado" name="accion">
-                                <div class="form-group "><input class="btn btn-primary form-control col-md col-lg-4" type="submit" value="Registros"></div>
+                                <div class="form-group "><input class="btn btn-primary form-control col-md col-lg-8" type="submit" value="Reguistros"></div>
                             </form>
 
 
+
+                            
+
+
+                                <div class="form-group">
+                                   
+                                    <form action="CU009-controlUsuarios.php" method="POST">
+                                    <select  name= "rol"  class="form-control col-md col-lg-8 ">
+                                    <?php 
+                                    $datos = Rol::verRol();
+                                    while( $row = $datos->fetch_array()){ 
+                                    ?>
+                              
+                                    <option value="<?php  echo $row['ID_rol_n'] ?>"><?php  echo $row['nom_rol'] ?></option>
+                                       
+                                    <?php }  ?>
+                                    </select>
+
+                                 
+                                    <input  class ="btn btn-primary col-md col-lg-8 my-4"   name = "consultaRol" type="submit">
+                                    </form>   
+
+ 
+                                </div>
+          
 
 
                             <?php // Busqueda por id
@@ -110,7 +151,23 @@ include_once 'session/valsession.php';
                                     $usuario = Usuario::ningunDato();
                                     $datos = $usuario->selectUsuariosPendientes($estado);
                                 }
+
+                         
+
+
+                                
+
+
+
+
                             }
+
+
+                            if(  isset  ($_POST['consultaRol']) ){
+                                $id = $_POST['rol'];
+                                $datos = Usuario::selectUsuarioRol($id);
+                            }
+                                //echo "estoy en rol";
 
 
                             ?>
@@ -186,9 +243,9 @@ include_once 'session/valsession.php';
                     <td><?php echo $row['correo'] ?></td>
                     <td><?php echo $row['estado'] ?></td>
                     <td>
-                        <a href="forms/editarUsuario.php?id= <?php echo $row['ID_us'] ?> " class="btn btn-secondary"><i class="fas fa-marker"></i></a>
-                        <a href="metodos/get.php?accion=aprobarUsuario&&id= <?php echo $row['ID_us']   ?>" class="btn btn-success"><i class="fas fa-check-square"></i> </a>
-                        <a href="metodos/get.php?accion=desactivarUsuario&&id=  <?php echo $row['ID_us']   ?>  " class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                        <a href="forms/editarUsuario.php?id= <?php echo $row['ID_us'] ?> " class="btn btn-secondary btn-circle"><i class="fas fa-marker"></i></a>
+                        <a href="metodos/get.php?accion=aprobarUsuario&&id= <?php echo $row['ID_us']   ?>" class="btn btn-circle btn-success"><i class="fas fa-check-square"></i> </a>
+                        <a href="metodos/get.php?accion=desactivarUsuario&&id=  <?php echo $row['ID_us']   ?>  " class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tbody>
         <?php
@@ -205,5 +262,7 @@ include_once 'session/valsession.php';
 
 
 <?php
-include_once 'plantillas/finhtml.php';
+
+include_once 'plantillas/cuerpo/footerN1.php'; 
+include_once 'plantillas/cuerpo/finhtml.php';
 ?>

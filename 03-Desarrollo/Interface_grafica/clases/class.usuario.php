@@ -269,4 +269,49 @@ class Usuario
       echo "<script>alert('Error al registrar')</script>";
     }
   }
+
+
+  static function  selectUsuarioRol($r){
+    include_once 'class.conexion.php';
+    $c = new Conexion;
+    $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.fecha, U.pass, U.foto, U.correo, R_U.estado
+    FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
+   JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n
+   WHERE R.ID_rol_n = '$r'
+   order by u.nom1 asc";
+  $consulta = $c->query($sql);
+  return $consulta;
+  }
+
+
+
+  // ver puntos usuario
+  static function verPuntosUs(){
+    include_once 'class.conexion.php';
+
+    $c = new Conexion;
+    $sql = "SELECT P.id_puntos, P.puntos, P.fecha , U.nom1 , U.nom2 , U.ape1
+    from puntos P join usuario U ON  P.FK_us =  U.ID_us
+    order by U.nom1 asc";
+    $con = $c->query($sql);
+    return $con;
+  }
+
+  static function verPuntosYusuario($id){
+    include_once 'class.conexion.php';
+    $c = new Conexion;
+    $sql = " SELECT U.ID_us  , U.nom1 , U.nom2 , U.ape1 , U.ape2 , U.fecha , U.pass , U.foto , U.correo , TD.nom_doc , RU.estado , R.ID_rol_n , R.nom_rol , P.puntos
+    FROM tipo_doc TD JOIN usuario U ON TD.ID_acronimo = U.FK_tipo_doc 
+    JOIN rol_usuario RU ON U.ID_us = RU.FK_us 
+    JOIN rol R ON FK_rol = R.ID_rol_n JOIN puntos P ON U.ID_us = P.FK_us
+    WHERE U.ID_us = '$id'";
+    $con = $c->query($sql);
+    return $con;
+  }
+
+  
+
+
+
+
 }// fin de clase usaurio

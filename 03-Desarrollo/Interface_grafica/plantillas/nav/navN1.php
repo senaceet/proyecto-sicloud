@@ -20,18 +20,18 @@ include_once 'session/sessiones.php';
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto mx-auto">
       <li class="nav-item active">
-        <a class="nav-link lead px-4 my-3 " href="../index.php">INICIO<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead px-4 my-3 " href="index.php">INICIO<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle lead px-4 my-3" href="Vision-home.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle lead px-4 my-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           FERRETERIA
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="../CU000-quienessomos.php">QUIENES SOMOS</a>
-          <a class="dropdown-item" href="../CU000-misionyvision.php">MISION Y VISION</a>
+          <a class="dropdown-item" href="CU000-quienessomos.php">QUIENES SOMOS</a>
+          <a class="dropdown-item" href="CU000-misionyvision.php">MISION Y VISION</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link lead px-4 my-3" href="../CU008-catalogodeproductos.php">CATALOGO DE PRODUCTOS<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead px-4 my-3" href="CU008-catalogodeproductos.php">CATALOGO DE PRODUCTOS<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link lead px-4 my-3" href="#">PROMOCIONES<span class="sr-only">(current)</span></a>
@@ -79,6 +79,7 @@ include_once 'session/sessiones.php';
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                 <?php if( isset($_SESSION['usuario'])){ echo"Hola ".$_SESSION['usuario']['nom1']." ".$_SESSION['usuario']['ape1']."<br>";  }   ?>
+                <?php if(isset($_SESSION['usuario']['puntos'])){   echo "Puntos ".$_SESSION['usuario']['puntos'];  }  ?>
                 <div class="dropdown-divider"></div>
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   <em><strong><?php if(isset($_SESSION['usuario'])){ echo $_SESSION['usuario']['nom_rol']; } ?></strong></em>

@@ -101,5 +101,5 @@ if (isset($_GET['consulta'])) {
 
 <?php
 
-include_once '../../plantillas/finhtml.php';
+include_once '../../plantillas/cuerpo/finhtml.php';
 ?>

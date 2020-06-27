@@ -126,5 +126,11 @@ if (isset($_GET['consulta'])) {
 
                     } // fin del while
                 } // fin de isset id get
-                include_once 'plantillas/finhtml.php';
+
+
+
+
+
+include_once 'plantillas/cuerpo/footerN1.php'; 
+include_once 'plantillas/cuerpo/finhtml.php';
 ?>

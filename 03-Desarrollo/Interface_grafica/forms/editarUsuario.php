@@ -1,5 +1,5 @@
 <?php
-include_once '../plantillas/plantillaN2.php';
+include_once '../plantillas/plantilla.php';
 
 include_once '../plantillas/cuerpo/inihtmlN2.php';
 include_once '../plantillas/nav/navN2.php';
