@@ -65,204 +65,220 @@ include_once 'session/valsession.php';
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-12">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-6 "><br>
+                        <div class="col-md-6 col-1 col-sm-1 "><br>
 
                         </div>
-                        <div class="col-md-6"><br>
-                            <form action="CU009-controlUsuarios.php" method="POST">
-                                <div class="form-group"><input type="text" class="form-control col-md col-lg-8 " placeholder="ID usuario " name="documento"></div>
-                                <input type="hidden" value="bId" name="accion">
-                                <div class="form-group "><input class="btn btn-primary form-control col-md col-lg-8" type="submit" value="Buscar id"></div>
-                            </form>
+                        <div class="row">
+                            <div class="card card-body col-md-12 col-12 text-center">Filtros <!-- card de filtros -->
 
-                            <form action="CU009-controlUsuarios.php" method="POST">
+                                <!-- form por id -->
+                                <form action="CU009-controlUsuarios.php" method="POST">
+                                    <div class="form-group"><input type="text" class="form-control " placeholder="ID usuario " name="documento"></div>
+                                    <input type="hidden" value="bId" name="accion">
+                                    <div class="form-group "><input class="btn btn-primary form-control " type="submit" value="Buscar id"></div>
+                                </form>
+                                <!-- fin de form por id -->
 
 
+
+                                <!-- formulario de filtro por estado -->
+                                <form action="CU009-controlUsuarios.php" method="POST">
+                                    <div class="form-group">
+                                        <select name="estado" class="form-control ">
+                                            <option value="p">Pendientes</option>
+                                            <option value="a">Aprobados</option>
+                                        </select>
+                                    </div>
+
+                                    <input type="hidden" value="estado" name="accion">
+                                    <div class="form-group "><input class="btn btn-primary form-control " type="submit" value="Reguistros"></div>
+                                </form><!-- fin de form estado filtro estado de cuenta -->
+
+                                <!-- formulario de filtro por rol -->
                                 <div class="form-group">
-                                    <select name="estado" class="form-control col-md col-lg-8 ">
-                                        <option value="p">Pendientes</option>
-                                        <option value="a">Aprobados</option>
-                                    </select>
-                                </div>
-
-                                <input type="hidden" value="estado" name="accion">
-                                <div class="form-group "><input class="btn btn-primary form-control col-md col-lg-8" type="submit" value="Reguistros"></div>
-                            </form>
-
-
-
-                            
-
-
-                                <div class="form-group">
-                                   
                                     <form action="CU009-controlUsuarios.php" method="POST">
-                                    <select  name= "rol"  class="form-control col-md col-lg-8 ">
-                                    <?php 
-                                    $datos = Rol::verRol();
-                                    while( $row = $datos->fetch_array()){ 
-                                    ?>
-                              
-                                    <option value="<?php  echo $row['ID_rol_n'] ?>"><?php  echo $row['nom_rol'] ?></option>
-                                       
-                                    <?php }  ?>
-                                    </select>
-
-                                 
-                                    <input  class ="btn btn-primary col-md col-lg-8 my-4"   name = "consultaRol" type="submit">
-                                    </form>   
-
- 
-                                </div>
-          
+                                        <select name="rol" class="form-control ">
+                                            <?php
+                                            $datos = Rol::verRol();
+                                            while ($row = $datos->fetch_array()) {
+                                            ?>
+                                                <option value="<?php echo $row['ID_rol_n'] ?>"><?php echo $row['nom_rol'] ?></option>
+                                            <?php
+                                            }  ?>
+                                        </select>
+                                </div><!-- fin de form control -->
+                                <div class="form-group"><input class="form-control btn btn-primary" name="consultaRol" type="submit" value="Filtrar por rol"></div>
+                                </form><!-- fin form ver por rol -->
+                            </div><!-- fin de div card -->
 
 
-                            <?php // Busqueda por id
 
-                            $usuario =  Usuario::ningunDato($id = '1662101568299');
-                            $datos = $usuario->selectUsuario();
 
+
+                            <?php
+
+                            //--- EVENTOS DE FORMULARIO----------------------------------------------------------------------
+
+                            // Filtro por id
                             if ((isset($_POST['accion'])) &&  ($_POST['accion'] == 'bId')) {
                                 if ($_POST['documento'] > 0) {
                                     $id = $_POST['documento'];
                                     $usuario = Usuario::ningunDato();
                                     $datos = $usuario->selectIdUsuario($id);
+                                    $_SESSION['message'] = "Filtro por id";
+                                    $_SESSION['color'] = "info";
                                 } else {
-                                    echo "<script>alert('Error, digita ID de usuario')</script>";
-                                }
-                            }
+                                    $_SESSION['message'] = "No ha digitado el ID del usuario";
+                                    $_SESSION['color'] = "danger";
+                                } // fin de consulta por id
+                            } // fin de isset accion
 
 
 
-
+                            // Filtro por estado de cuenta
                             if ((isset($_POST['accion'])) &&  ($_POST['accion'] == 'estado')) {
-
                                 if ((isset($_POST['estado']))) {
-
-
                                     if ($_POST['estado'] == "a") {
                                         $estado = 1;
+                                        $_SESSION['message'] = "Filtro por cuentas activadas";
+                                        $_SESSION['color'] = "info";
                                     } else {
                                         $estado = 0;
+                                        $_SESSION['message'] = "Filtro por cuentas deshabilitadas";
+                                        $_SESSION['color'] = "info";
                                     }
                                     $usuario = Usuario::ningunDato();
                                     $datos = $usuario->selectUsuariosPendientes($estado);
-                                }
-
-                         
-
-
-                                
+                                } // fin consulta por estado de cuenta
+                            } // fin isset accion
 
 
-
-
-                            }
-
-
-                            if(  isset  ($_POST['consultaRol']) ){
+                            // Filtro por rol de usuario
+                            if (isset($_POST['consultaRol'])) {
                                 $id = $_POST['rol'];
                                 $datos = Usuario::selectUsuarioRol($id);
-                            }
-                                //echo "estoy en rol";
+                            } // fin de isset consulta rol
+
 
 
                             ?>
 
                         </div>
-                    </div>
-                </div>
+                    </div><!-- fin de row -->
+                </div><!-- fin de col md 12 -->
+            </div><!-- fin de col md 6 -->
+
+
+        </div>
+
+
+
+        <br><br>
+
+
+        <?php
+        if (isset($_SESSION['message'])) {  ?>
+
+            <!-- alerta boostrap -->
+            <div class="alert text-center col-md-4 mx-auto alert-<?php echo $_SESSION['color']   ?> alert-dismissible fade show" role="alert">
+                <?php
+                echo  $_SESSION['message']  ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        </div>
-    </div><br><br>
+
+        <?php
+            setMessage();
+        }
+        ?>
 
 
-    <?php
-    if (isset($_SESSION['message'])) {  ?>
+                        <!-- U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.fecha, U.foto, U.correo, R_U.estado -->
 
-        <!-- alerta boostrap -->
-        <div class="alert text-center col-md-4 mx-auto alert-<?php echo $_SESSION['color']   ?> alert-dismissible fade show" role="alert">
-            <?php
-            echo  $_SESSION['message']  ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
 
-    <?php
-        setMessage();
-    }
-    ?>
+                        <?php
+                        //$usuario = Usuario::ningunDato();
+                        //$datos = $usuario->selectUsuario();
 
-    <div class="col-lg-12">
-        <div class="table-responsive">
 
-            <table id="example" style="width:100%" class=" col-lg-12  table-bordered  table-striped bg-white   mx-auto">
-                <thead>
+                        if (isset($datos)) {?>
 
-                    <tr>
-                        <th>Tipo doc</th>
-                        <th>Documento</th>
-                        <th>P. Nombre</th>
-                        <th>S. Nombre</th>
-                        <th>P. Apellido</th>
-                        <th>S. Apellido</th>
-                        <th>Fecha</th>
-                        <th>Foto</th>
-                        <th>Correo</th>
-                        <th>Estado</th>
-                        <th>Accion</th>
-                    </tr>
-                    <!-- U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.fecha, U.foto, U.correo, R_U.estado -->
+                            <div class="col-lg-12">
+                            <div class="table-responsive">
+                
+                                <table id="example" style="width:100%" class=" col-lg-12  table-bordered  table-striped bg-white   mx-auto">
+                                    <thead>
+                
+                                        <tr>
+                                            <th>Tipo doc</th>
+                                            <th>Documento</th>
+                                            <th>P. Nombre</th>
+                                            <th>S. Nombre</th>
+                                            <th>P. Apellido</th>
+                                            <th>S. Apellido</th>
+                                            <th>Fecha</th>
+                                            <th>Foto</th>
+                                            <th>Correo</th>
+                                            <th>Estado</th>
+                                            <th>Accion</th>
+                                        </tr>
+
+
+
+
+
 
 
                     <?php
-                    //$usuario = Usuario::ningunDato();
-                    //$datos = $usuario->selectUsuario();
 
 
-                    if (isset($datos)) {
-                        while ($row = $datos->fetch_array()) {
-                    ?>
 
-                            </tr>
-                </thead>
-                <tbody>
-                    <!-- Los nombres que estan en [''] son los mismos de los atributos de la base de datos de lo contrario dara un error -->
-                    <td><?php echo $row['FK_tipo_doc'] ?></td>
-                    <td><?php echo $row['ID_us'] ?></td>
-                    <td><?php echo $row['nom1'] ?></td>
-                    <td><?php echo $row['nom2'] ?></td>
-                    <td><?php echo $row['ape1'] ?></td>
-                    <td><?php echo $row['ape2'] ?></td>
-                    <td><?php echo $row['fecha'] ?></td>
-                    <td><?php echo $row['foto'] ?></td>
-                    <td><?php echo $row['correo'] ?></td>
-                    <td><?php echo $row['estado'] ?></td>
-                    <td>
-                        <a href="forms/editarUsuario.php?id= <?php echo $row['ID_us'] ?> " class="btn btn-secondary btn-circle"><i class="fas fa-marker"></i></a>
-                        <a href="metodos/get.php?accion=aprobarUsuario&&id= <?php echo $row['ID_us']   ?>" class="btn btn-circle btn-success"><i class="fas fa-check-square"></i> </a>
-                        <a href="metodos/get.php?accion=desactivarUsuario&&id=  <?php echo $row['ID_us']   ?>  " class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
-                    </td>
-                </tbody>
-        <?php
 
+
+                            while ($row = $datos->fetch_array()) {
+                        ?>
+
+                                </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los nombres que estan en [''] son los mismos de los atributos de la base de datos de lo contrario dara un error -->
+                        <td><?php echo $row['FK_tipo_doc'] ?></td>
+                        <td><?php echo $row['ID_us'] ?></td>
+                        <td><?php echo $row['nom1'] ?></td>
+                        <td><?php echo $row['nom2'] ?></td>
+                        <td><?php echo $row['ape1'] ?></td>
+                        <td><?php echo $row['ape2'] ?></td>
+                        <td><?php echo $row['fecha'] ?></td>
+                        <td><?php echo $row['foto'] ?></td>
+                        <td><?php echo $row['correo'] ?></td>
+                        <td><?php echo $row['estado'] ?></td>
+                        <td>
+                            <a href="forms/editarUsuario.php?id= <?php echo $row['ID_us'] ?> " class="btn btn-secondary btn-circle"><i class="fas fa-marker"></i></a>
+                            <?php if($_SESSION['usuario']['ID_rol_n'] == 1){     ?>
+                            <a href="metodos/get.php?accion=aprobarUsuario&&id= <?php echo $row['ID_us']   ?>" class="btn btn-circle btn-success"><i class="fas fa-check-square"></i> </a>
+                            <a href="metodos/get.php?accion=desactivarUsuario&&id=  <?php echo $row['ID_us']   ?>  " class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
+                        <?php }  ?>
+                        </td>
+                    </tbody>
+            <?php
+
+                            }
                         }
-                    }
-        ?>
-            </table>
-        </div>
-    </div><!-- div de tablas -->
+            ?>
+                </table>
+            </div>
+        </div><!-- div de tablas -->
 
 
-</div>
+    </div>
 
 
-<?php
+    <?php
 
-include_once 'plantillas/cuerpo/footerN1.php'; 
-include_once 'plantillas/cuerpo/finhtml.php';
-?>
+    include_once 'plantillas/cuerpo/footerN1.php';
+    include_once 'plantillas/cuerpo/finhtml.php';
+    ?>

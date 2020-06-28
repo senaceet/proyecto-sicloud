@@ -18,9 +18,9 @@ cardtitulo("Registro producto");
 ?>
 
 
-<div class="card card-body text-center  col-md-10 mx-auto">
+<div class="card card-body text-center  col-md-10 mx-auto ">
     <div class=" container-fluid ">
-        <div class="card card-body "> <br>
+        <div class="card card-body shadow p-3 mb-4 bg-white"> <br>
             <div class="row">
 
                 <div class="col-md-4">
@@ -51,7 +51,10 @@ cardtitulo("Registro producto");
                     <div class="form-group"><label for="">Stock Inicial</label><input type="number" class="form-control" placeholder="Stock inicial" name="stok_prod" required autofocus></div>
                     <div class="form-group"><label for="">ID factura Proveedor</label><input type="text" class="form-control" placeholder="Factura proveedor" name="num_fac_ing" autofocus></div>
                     <div class="form-group"><label for="">Fecha de resepcion</label><input type="date" class="form-control" placeholder="Proveedor" value="2020-05-22" min="0000-00-00" max="9999-99-99" name="fecha"></div>
+                    <?php if($_SESSION['usuario']['ID_rol_n'] ==  1 || $_SESSION['usuario']['ID_rol_n'] ==  2 ){ ?>
                     <a class="btn btn-block btn-primary by-2" href="CU003-ingresoproducto.php">Ingresar productos</a>
+
+                    <?php } ?>
 
 
                 </div><!-- fin de segunda divicion-->

@@ -49,17 +49,17 @@ include_once '../../plantillas/nav/navN3.php';
 include_once '../../plantillas/plantilla.php';
 
 cardtitulo("Modulo Comercial");
+
+cardAviso();
 ?>
+
 
 
 
 
 <div class="col-md-10 my-4 mx-auto">
     <div class="row">
-        <div class="col-md-12 text-center text-white">
-            <h5 class = " text-dark">Los mejores productos en IMCOABHER</h5>
-            <hr class="border" />
-        </div>
+
         <div class="col-xs-12 col-sm-12 col-md-10 mx-auto">
             <div id="carousel-1" class="carousel slide  " data-ride="carousel" >
             <ol class="carousel-indicators">

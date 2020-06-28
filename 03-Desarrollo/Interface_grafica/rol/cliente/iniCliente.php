@@ -33,17 +33,30 @@ if (isset($_SESSION['message'])) {
 
  <h5 class = "mx-auto tex-cennter text-succes "><?php  if(isset($_SESSION['usuario'])){ echo "Hola: ".$_SESSION['usuario']['nom1']; } ?></h5>
 
-<?php $_SESSION['message'] == false; } ?>
+<?php $_SESSION['message'] == false; }
 
 
 
-<div class="col-md-12 mt-5">
-    <div class="row">
-        <div class="col-md-12 text-center text-white">
-            <h5 class = " text-dark">Los mejores productos en IMCOABHER</h5>
+
+
+
+
+
+cardAviso();
+
+
+
+
+?>
+
+
+          
+          
+
+      
             <hr class="border" />
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-10 mx-auto">
+        <div class="col-xs-11 col-sm-11 col-md-11 mx-auto">
             <div id="carousel-1" class="carousel slide  " data-ride="carousel" >
             <ol class="carousel-indicators">
                 <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
@@ -74,7 +87,7 @@ if (isset($_SESSION['message'])) {
 
     <div class="col-md-12 mt-5">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12" >
+            <div class="col-xs-11 col-sm-11 col-md-11 mx-auto" >
                 <div class="card text-white" > <img class="card-img" src="https://cr00.epimg.net/radio/imagenes/2020/06/10/barranquilla/1591812515_278093_1591812702_noticia_normal_recorte1.jpg" alt="Card image" width="600px"  height="600px" ><style> .card-img-overlay:hover{ background: black; opacity: 0.75;} .card-img{opacity: 0.90;}</style>
                     <div class="card-img-overlay">
                         <h5 class="card-title"> <em> <b> NOTICIAS </b></em></h5>
@@ -94,7 +107,7 @@ if (isset($_SESSION['message'])) {
 
     <div class="col-md-12 mt-5">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 mb-5" >
+            <div class="col-xs-11 col-sm-11 col-md-11 mx-auto" >
                 <div class="card text-white" > <img class="card-img" src="https://fierros.com.co/wp-content/uploads/2015/07/montar-una-ferreteria-1500x800.jpg" alt="Card image" width="600px"  height="600px" ><style> .card-img-overlay:hover{ background: black; opacity: 0.75;} </style>
                     <div class="card-img-overlay">
                         <h5 class="card-title"> <em> <b> NOVEDADES </b></em></h5>
@@ -111,7 +124,7 @@ if (isset($_SESSION['message'])) {
 
 
     <div class="container">
-        <div class="map-responsive">
+        <div class="map-responsive my-4">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.92411032952!2d-74.20988058573687!3d4.607607443741915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9e22e1a69dad%3A0x37ca3bcc91bfba65!2sCl.%2078%20Sur%20%2378-71%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1590105646415!5m2!1ses!2sco" width="900" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
         </div>
     </div>

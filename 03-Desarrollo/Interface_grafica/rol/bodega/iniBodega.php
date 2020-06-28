@@ -31,8 +31,8 @@ if (isset($_SESSION['usuario'])) {
 
 
     
-      <div class="card card-body">
-        <div class="card card-body">
+      <div class="card card-body border">
+        <div class="card card-body border my-3 shadow p-3 mb-5 bg-white ">
 
           <h5 class="mx-auto tex-cennter text-succes ">
             <?php if (isset($_SESSION['usuario'])) {
@@ -61,9 +61,9 @@ if (isset($_SESSION['usuario'])) {
 
            <!-- Tasks Card Example -->
   <div class="col-xl-6 col-md-8 mb-4 mx-auto">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
+              <div class="card border-left-info shadow h-100 py-2 shadow p-3 mb-5 bg-white">
+                <div class="card-body ">
+                  <div class="row no-gutters align-items-center ">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Bodega</div>
                       <div class="row no-gutters align-items-center">
@@ -86,7 +86,7 @@ if (isset($_SESSION['usuario'])) {
             </div>
 
 
-          <div class="card card-body   my-2">
+          <div class="card card-body shadow p-3 mb-5 bg-white  my-2">
             <h4 class="mx-auto">Informes</h4><!-- incio de card consultas -->
             <div class="col-md-12 my-2">
               <!-- sesion de prodcutos -->
@@ -108,7 +108,7 @@ if (isset($_SESSION['usuario'])) {
 
           <!-- inicio de sesion productos ------------------------------------------------------  -->
 
-          <div class="card card-body my-2">
+          <div class="card card-body my-2 shadow p-3 mb-5 bg-white">
             <h4 class="mx-auto">Procesos</h4><!-- inicio de card productos -->
             <div class="col-md-12 my-2">
               <!-- sesion de prodcutos -->

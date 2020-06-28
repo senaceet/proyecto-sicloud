@@ -315,16 +315,35 @@ if (isset($_POST['submit'])) {
         $id = $_GET['id'];
         $categoria = new Categoria($categoria);
         $categoria->actualizarDatosCategoria($id);
+        print_r($_POST);
     } // fin de insert update categoria
     ///------------------------------------------------------
 
 
 
-    //../metodos/post.php?accion=insertPago
-    if($_POST['accion'] = 'insertPago'){
-        echo print_r ($_POST);
-        echo "esto en insert pago";
-    }
+  
+
+
+    //------------------------------------------------------
+    //FILTRO DE FORM ALERTAS
+
+
+    //Ver producto
+
+
+        if($_POST['accion'] == 'alertaVerProducto'){
+          //  echo "estoy en ver producto de alertas";
+        $id = $_POST['producto'];
+        
+        print_r($_POST);
+        $prod = Producto::verProductosId($id);
+        header("location: ../CU0014-alertas.php");
+        }
+        
+        
+        
+        
+
 
 
 

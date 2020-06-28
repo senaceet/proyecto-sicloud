@@ -108,7 +108,9 @@ order by P.nom_prod asc;
     {
         include_once 'class.conexion.php';
         $db = new Conexion;
-        $sql = "SELECT * FROM SICLOUD.producto  WHERE ID_prod = '$id' ";
+        $sql = "SELECT P.ID_prod , P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod , C.nom_categoria, T_M.nom_medida
+        from producto P join categoria C on P.CF_categoria = C.ID_categoria 
+        join tipo_medida T_M on P.CF_tipo_medida = T_M.ID_medida WHERE ID_prod = '$id' ";
         //            SELECT * FROM SICLOUD.producto  WHERE ID_prod = '9808953743';
         $result = $db->query($sql);
         return $result;

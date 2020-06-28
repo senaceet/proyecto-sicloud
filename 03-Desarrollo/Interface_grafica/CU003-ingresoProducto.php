@@ -35,7 +35,7 @@ if (isset($_SESSION['message'])) {
 
 
 <div class="card col-md-4 mx-auto">
-    <div class="card-body">
+    <div class="card-body shadow p-3 mb-5 bg-white">
         <h5 class="card-title text-center ">Seleccione producto</h5>
         <!-- INI--FORM PRODUCTO--------------------------------------------------------------------------------- -->
         <form action="CU003-ingresoProducto.php" method="GET">
@@ -53,6 +53,7 @@ if (isset($_SESSION['message'])) {
 
         </form>
         <a class="btn btn-primary btn-block" href="CU004-crearproductos.php">Crear producto</a>
+        <a class="btn btn-primary btn-block" href="CU0014-alertas.php">Sistema de alertas</a>
         <!-- fin producto-------------------------------------------------------------------------------- -->
 
     </div><!-- fin de card-body-->
@@ -67,7 +68,7 @@ if (isset($_GET['consulta'])) {
 
     <div class="card card-body text-center  col-md-10 mx-auto my-4 ">
         <div class=" container-fluid ">
-            <div class="card card-body "> <br>
+            <div class="card card-body shadow mb-2"> <br>
                 <div class="row">
 
                     <?php

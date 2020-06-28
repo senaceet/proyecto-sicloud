@@ -49,7 +49,9 @@ if (isset($_SESSION['message'])) {
             <br> <input class="btn btn-primary btn-block my-2" type="submit" name="consulta" value="consulta">
 
         </form>
+        <?php if($_SESSION['usuario']['ID_rol_n'] == 1  ||  $_SESSION['usuario']['ID_rol_n'] == 2  ) { ?>
         <a class="btn btn-primary btn-block" href="../../forms/formCategoria.php">Crear Categoria</a>
+        <?php   } ?>
     </div> <!-- fin de div card -->
 </div>
 <!-- fin producto-------------------------------------------------------------------------------- -->

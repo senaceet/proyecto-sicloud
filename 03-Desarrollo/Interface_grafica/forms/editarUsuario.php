@@ -43,7 +43,9 @@ cardtitulo("Actualizar datos de Usuarios");
 
                                 </div><!-- fin de columna de 6 -->
                                 <div class="col-md-6">
-                                    <h5>Seleccione rol "pendinete aprobar"</h5>
+
+                                <?php  if($_SESSION['usuario']['ID_rol_n'] == 1){ ?>
+                                    <h5>Seleccione rol "Asignar rol"</h5>
                                     <div class="form-group">
                                         <select name="FK_rol" class="form-control">
                                             <?php
@@ -54,7 +56,13 @@ cardtitulo("Actualizar datos de Usuarios");
                                             <?php  } ?>
                                         </select>
                                     </div><!-- fin de form-group select de  -->
+                                    
+                                            <?php } ?>
                                 </div><!-- fin de columna de 6 -->
+
+
+
+
                             </div><!-- row fin de fila -->
                         </div><!-- fin contenedor  de selectores -->
 
@@ -110,7 +118,7 @@ cardtitulo("Actualizar datos de Usuarios");
 
             <input type="hidden" name="accion" value="insetUpdateUsuario">
             <input class="btn btn-primary form-control" type="submit" name="submit" value="Actualizar datos"><br><br><br>
-            <a class="btn btn-primary form-control btn-block" href="CU009-controlUsuarios.php">Lista usuario</a>
+            <a class="btn btn-primary form-control btn-block" href="../CU009-controlUsuarios.php">Lista usuario</a>
             </form>
         </div>
     </div>

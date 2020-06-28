@@ -192,7 +192,6 @@ class Usuario
     $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.fecha, U.pass, U.foto, U.correo, R_U.estado FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us WHERE R_U.estado = '$est' ";
     $result = $db_usuario->query($sql);
     return $result;
-    print_r($result);
   } //Busqueda por estado pendiente
 
 
@@ -271,7 +270,9 @@ class Usuario
   }
 
 
-  static function  selectUsuarioRol($r){
+  // filtro por rol
+  static function  selectUsuarioRol($r)
+  {
     include_once 'class.conexion.php';
     $c = new Conexion;
     $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.fecha, U.pass, U.foto, U.correo, R_U.estado
@@ -279,14 +280,26 @@ class Usuario
    JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n
    WHERE R.ID_rol_n = '$r'
    order by u.nom1 asc";
-  $consulta = $c->query($sql);
-  return $consulta;
-  }
+    $resultConsulta = $c->query($sql);
+    // consulta para mensaje de rol 
+    if ($resultConsulta) {
+      include_once 'class.conexion.php';
+      $c = new Conexion;
+      $sql2 = "SELECT nom_rol from rol where ID_rol_n = $r limit 1";
+      $datos  = $c->query($sql2);
+      $row = $datos->fetch_assoc();
+      $rol = $row['nom_rol'];
+      $_SESSION['message'] = "Filtro por rol:  " . $rol;
+      $_SESSION['color'] = "info";
+      return $resultConsulta;
+    }
+  } // fin de metodo select usaurio
 
 
 
   // ver puntos usuario
-  static function verPuntosUs(){
+  static function verPuntosUs()
+  {
     include_once 'class.conexion.php';
 
     $c = new Conexion;
@@ -297,7 +310,8 @@ class Usuario
     return $con;
   }
 
-  static function verPuntosYusuario($id){
+  static function verPuntosYusuario($id)
+  {
     include_once 'class.conexion.php';
     $c = new Conexion;
     $sql = " SELECT U.ID_us  , U.nom1 , U.nom2 , U.ape1 , U.ape2 , U.fecha , U.pass , U.foto , U.correo , TD.nom_doc , RU.estado , R.ID_rol_n , R.nom_rol , P.puntos
@@ -305,13 +319,8 @@ class Usuario
     JOIN rol_usuario RU ON U.ID_us = RU.FK_us 
     JOIN rol R ON FK_rol = R.ID_rol_n JOIN puntos P ON U.ID_us = P.FK_us
     WHERE U.ID_us = '$id'";
+
     $con = $c->query($sql);
     return $con;
   }
-
-  
-
-
-
-
 }// fin de clase usaurio

@@ -14,7 +14,7 @@ cardtitulo("Editar producto");
 
 <div class="card card-body text-center  col-md-10 mx-auto p-2 ">
     <div class=" container-fluid ">
-        <div class="card card-body "> <br>
+        <div class="card card-body shadow mb-5"> <br>
             <div class="row">
 
                 <?php
@@ -49,13 +49,17 @@ cardtitulo("Editar producto");
                         <div class="form-group"><label for="">Stock Inicial</label><input type="number" class="form-control" value="<?php echo $row['stok_prod'] ?>" name="stok_prod" required autofocus></div>
                         <div class="form-group"><label for="">ID factura Proveedor</label><input type="text" class="form-control" value="<?php echo "22" ?>" name="num_fac_ing" autofocus></div>
                         <div class="form-group"><label for="">Fecha de resepcion</label><input type="date" class="form-control" placeholder="Proveedor" value="2020-05-22" min="0000-00-00" max="9999-99-99" name="fecha"></div>
-                    <?php  }  ?>
+                   
 
                     </div><!-- fin de segunda divicion-->
 
                     <div class="col-md-4">
 
-                        <div class="form-group"><label for="">Categoria de producto</label>
+                        <div class="form-group"><label for="">Categoria de producto</label><br>
+   
+
+
+                        <?php  }  ?>
                             <select class="form-control" name="CF_categoria">
                                 <?php
                                 $categoria = Categoria::ningunDatoC();

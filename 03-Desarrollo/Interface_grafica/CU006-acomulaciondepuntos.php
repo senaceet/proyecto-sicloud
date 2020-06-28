@@ -17,7 +17,7 @@ include_once 'plantillas/plantilla.php';
 
 
 if (isset($_SESSION['usuario'])) {
-  print_r($_SESSION['usuario']);
+
 }
 ?>
 
@@ -38,7 +38,7 @@ cardtitulo("Acumulación de puntos de compra");
 <div class="card card-body text-center col-md-8 mx-auto">
     <!--<div class="container">-->
     <div class=" container-fluid ">
-        <div class="card card-body ">
+        <div class="card card-body mb-2 shadow ">
 
 
 
