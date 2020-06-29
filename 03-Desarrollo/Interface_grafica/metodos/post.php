@@ -21,6 +21,7 @@ if (isset($_POST['submit'])) {
     //Update 
     if ($_POST['accion'] == 'insetUpdateUsuario') {
         include_once '../session/sessiones.php';
+        $f =  Usuario::fechaActual();
         $idg = $_GET['id'];
         $ID_us = $_POST['ID_us'];
         $nom1 = $_POST['nom1'];
@@ -37,7 +38,11 @@ if (isset($_POST['submit'])) {
         $FK_rol = $_POST['FK_rol'];
         // $FK_us
         // $FK_tipo_doc
-        $fecha_as = $_POST['fecha_a'];
+        
+    
+        
+    
+        $fecha_as = $f;
         $estado = "0";
 
         ///METODO INSERSION DE USUARIO UPDATE
@@ -65,13 +70,14 @@ if (isset($_POST['submit'])) {
     // USUARIO
     // insert
     if ($_POST['accion'] == 'insetUsuario') {
+        $f =  Usuario::fechaActual();
         include_once '../session/sessiones.php';
         $ID_us = $_POST['ID_us'];
         $nom1 = $_POST['nom1'];
         $nom2 = $_POST['nom2'];
         $ape1 = $_POST['ape1'];
         $ape2 = $_POST['ape2'];
-        $fecha = $_POST['fecha'];
+        $fecha = $f;
         $pass = $_POST['pass'];
        // $foto = $_POST['foto'];
         $correo = $_POST['correo'];
@@ -197,8 +203,10 @@ if (isset($_POST['submit'])) {
     //PRODUCTO-------------------------------------------------------------
     //Sunmar producto
 
-    if ($_POST['accion'] == 'inserCatidadProducto') {
+    if ($_POST['accion'] == 'inserCantidadProducto') {
+        include_once '../clases/class.conexion.php';
         include_once '../session/sessiones.php';
+        $fecha = Usuario::fechaActual();
         $id = $_GET['id'];
         $stock = $_POST['stok'];
         $cantidad = $_POST['cantidad'];

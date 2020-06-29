@@ -40,7 +40,7 @@ cardtitulo("Registro producto");
                     <!-- inicio de 2 divicion -->
                     <!-- Izquierda -->
 
-
+                    <label for="">Estado</label>
                     <div class="form-group">
                         <select name="estado_prod" class="form-control">
                             <option value="Activo">Activo</option>
@@ -50,7 +50,7 @@ cardtitulo("Registro producto");
 
                     <div class="form-group"><label for="">Stock Inicial</label><input type="number" class="form-control" placeholder="Stock inicial" name="stok_prod" required autofocus></div>
                     <div class="form-group"><label for="">ID factura Proveedor</label><input type="text" class="form-control" placeholder="Factura proveedor" name="num_fac_ing" autofocus></div>
-                    <div class="form-group"><label for="">Fecha de resepcion</label><input type="date" class="form-control" placeholder="Proveedor" value="2020-05-22" min="0000-00-00" max="9999-99-99" name="fecha"></div>
+                
                     <?php if($_SESSION['usuario']['ID_rol_n'] ==  1 || $_SESSION['usuario']['ID_rol_n'] ==  2 ){ ?>
                     <a class="btn btn-block btn-primary by-2" href="CU003-ingresoproducto.php">Ingresar productos</a>
 

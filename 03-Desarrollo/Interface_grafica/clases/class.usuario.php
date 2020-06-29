@@ -93,6 +93,25 @@ class Usuario
     return new self('', '', '', '', '', '', '', '', '', '');
   }
   //---------------------------------------------------------------
+
+//fecha actual
+static function fechaActual(){
+  include_once 'class.conexion.php';
+  $c = new Conexion;
+  $sql ="SELECT CURDATE() as fecha";
+  $dat =  $c->query($sql);
+  $datos = $dat->fetch_assoc();
+  $fecha =  $datos['fecha'];
+
+ return $fecha;
+}
+
+
+
+
+
+
+
   public function insertUpdateUsuario($idg)
   {
 

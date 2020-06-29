@@ -97,7 +97,7 @@ if (isset($_GET['consulta'])) {
                             <div class="form-group"><label for="">Estado</label><input type=»text» disabled=»disabled» class="form-control" value="<?php echo $row['estado_prod'] ?>" name="estado_prod" required autofocus></div>
                             <div class="form-group"><label for="">Stock Inicial</label><input type=»number» readonly=»readonly» class="form-control" value="<?php echo $row['stok_prod'] ?>" name="stok" required autofocus></div>
                             <div class="form-group"><label for="">ID factura Proveedor</label><input type="text" class="form-control" value="<?php echo "" ?>" name="num_fac_ing" autofocus></div>
-                            <div class="form-group"><label for="">Fecha de resepcion</label><input type="date" class="form-control" placeholder="Proveedor" name="fecha"></div>
+                            
                             <div class="form-group"><label for="">Cantidad</label><input type="number" class="form-control" placeholder="Cantidad" name="cantidad"></div>
 
                         </div><!-- fin de segunda divicion-->
@@ -110,7 +110,7 @@ if (isset($_GET['consulta'])) {
                             <div class="form-group"><label for="">Medida</label><input class="form-control" type="»text»" disabled=»disabled» value="<?php echo $row['nom_medida'] ?>"></div><!--  fin de form-group Medida -->
                             <div class=" form-group"><label for="">Empresa proveedor</label><input class="form-control" type=»text» disabled=»disabled» value="<?php echo $row['nom_empresa'] ?> ">
                             </div><!--  fin de form-group Provedor-->
-                            <input type="hidden" name="accion" value="inserCatidadProducto">
+                            <input type="hidden" name="accion" value="inserCantidadProducto">
                             <!-- BOTON A ENLACE TABLA -->
                             </form>
                             <!-- fin de form cantidad----------------------------------------------------------------------------------------------------------  -->

@@ -13,7 +13,7 @@ include_once '../../plantillas/nav/navN3.php';
 
 
 
-cardtitulo("Vista de Informes de ventas");
+cardtitulo(" Informes de ventas");
 
 
 
@@ -31,11 +31,158 @@ if (isset($_SESSION['message'])) {
 <?php
     setMessage();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+    include_once '../../clases/class.conexion.php';
+    $c = new Conexion;
+    $sql = "SELECT cantidad, sum(f.total) as total, day(f.fecha) as dia
+from sicloud.det_factura detf
+join sicloud.factura f on f.ID_factura = detf.FK_det_factura
+group by dia";
+    $dat = $c->query($sql);
+    $col = $dat->num_rows;
+    // numero de columnas de dia
+
+$r = 0;
+   
+  $d = $dat->fetch_assoc();
+  $con = $d['total'] + $d['total'];
+  echo $con;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
+
+     
+
+
+<div class="container-fluid my-4 ">
+
+<!-- Content Row -->
+<div class="row">
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4 mx-auto">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Promedio (Diario)</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+          </div>
+          <div class="col-auto">
+          <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4 mx-auto">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Promedio (Semanal)</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4 mx-auto">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Promedio (Mensual)</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <div class="card col-md-4 mx-auto">
     <div class="card-body">
+    <i class="fas fa-calendar fa-2x text-gray-300"></i>
         <h5 class="card-title text-center ">Seleccione Informe</h5>
         <!-- INI--FORM PRODUCTO--------------------------------------------------------------------------------- -->
         <form action="verRango.php" method="POST">
@@ -52,6 +199,9 @@ if (isset($_SESSION['message'])) {
     </div>
 </div>
 </form>
+
+
+
 
 <div class="col-md-4 p-2 mx-auto my-4 ">
     <table class="table table-bordered  table-striped bg-white table-sm mx-auto   text-center">
@@ -194,13 +344,72 @@ if (isset($_SESSION['message'])) {
 
             </table>
 
+
+
+
+   
+            </div>
+
         <?php } // fin de consulta por 
 
         ?>
 
-        </div><!-- fin de tabla responce -->
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<!-- Content Row -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
 
@@ -209,3 +418,5 @@ if (isset($_SESSION['message'])) {
 
         include_once '../../plantillas/cuerpo/finhtml.php';
     ?>
+
+

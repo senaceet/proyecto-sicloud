@@ -8,6 +8,7 @@ include_once 'clases/class.rol.php';
 include_once 'clases/class.login.php';
 include_once 'session/sessiones.php';
 include_once 'session/valsession.php';
+include_once 'clases/class.usuario.php';
 
 cardtitulo("Registro de Usuarios");
 ?>
@@ -75,12 +76,11 @@ cardtitulo("Registro de Usuarios");
                             </div><!-- row fin de fila -->
                         </div><!-- fin contenedor  de selectores -->
                         <h5>Numero de identificacion: </h5>
-                        <input class="form-control" type="number" name="ID_us" required autofocus maxlength="11">
+                        
+                        <input class="form-control" type="number"  name="ID_us" required autofocus maxlength="11">
                     </div>
                 </div><br>
 
-                <h5>Fecha asignacion</h5>
-                <div class="form-group"><input class="form-control" type="date" name="fecha_a"></div>
 
                 <div class="row">
                     <div class="col-md-6">

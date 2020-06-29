@@ -1,8 +1,13 @@
 <?php
 
 
-include_once 'session/sessiones.php';
+
+
+
 //nclude_once '../session/sessionIni.php'
+include_once 'clases/class.notificaciones.php';
+include_once 'session/sessiones.php';
+include_once 'notificaciones.php';
 
 
 
@@ -52,16 +57,17 @@ include_once 'session/sessiones.php';
 <!-- icono de notificacion mensaje -->
 
           <a class="nav-link mx-3" href="#" id="messagesDropdown" role="button" aria-expanded="false">
-              <i class="fas fa-envelope fa-fw"></i>
+      
                 <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
+  
               </a>
               <!-- icono de notificacion campana -->
       
-              <a class="nav-link mx-3" href="#" id="messagesDropdown" role="button" aria-expanded="false">
+              <a class="nav-link mx-3" href="#" id="messagesDropdown"    data-toggle="modal"  data-target="#exampleModal" role="button" aria-expanded="false">
               <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">3</span>
+                <?php  if(isset($_SESSION['usuario'])){$c = Notificaciones::conteoNotificaciones($_SESSION['usuario']['ID_rol_n'])       ?>
+                <span class="badge badge-danger badge-counter"><?php echo $c;  } ?></span>
               </a>
 
 

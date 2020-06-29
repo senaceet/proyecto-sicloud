@@ -59,6 +59,10 @@ VALUES ( '0', null , '1', '1'),
       
       
       
+SELECT N.ID_not , N.estado , N.descript , N.FK_rol , N.FK_not ,  t.nom_tipo
+    FROM notificacion N join tipo_not T ON N.FK_not = T.ID_tipo_not
+    join rol R ON N.FK_rol = ID_rol_n
+    WHERE R.ID_rol_n = '1' and  N.estado = '0';
 
 
 
