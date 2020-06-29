@@ -15,10 +15,6 @@ primary key(ID_SC)
 
 
 
-
-
-
-
 create table sicloud.log_error(
 ID_error int auto_increment not null,
 descrip_error varchar(255),
@@ -28,13 +24,12 @@ primary key	(ID_error)
 );
 
 
-create table notificacion(
-ID_not  int not null  primary key auto_increment,
-estado varchar(10),
-tipo varchar(30),
-descript varchar(200) );
 
 
+create table tipo_not(
+ID_tipo_not int not null primary key auto_increment,
+nom_tipo varchar (40) not null
+);
 
 create table sicloud.rol(
 ID_rol_n int(3) not null,
@@ -42,8 +37,21 @@ nom_rol varchar(25) not null,
 FK_not int,
 primary key(ID_rol_n)
 );
-alter table sicloud.rol add constraint notificacion foreign key(FK_not) references sicloud.notificacion(ID_not) on update cascade on delete cascade;
 alter table sicloud.rol modify ID_rol_n int auto_increment;
+
+
+
+
+create table notificacion(
+ID_not  int not null  primary key auto_increment,
+estado varchar(10) not null,
+descript varchar(200),
+FK_rol int(3) not null,
+FK_not int not null
+ );
+alter table sicloud.notificacion add constraint FK_rol_notificacion foreign key( FK_rol) references sicloud.rol(ID_rol_n) on update cascade;
+alter table sicloud.notificacion add constraint FK_tipo_notificacion foreign key(FK_not) references sicloud.tipo_not(ID_tipo_not) on update cascade;
+
 
 
 
@@ -118,6 +126,30 @@ alter table sicloud.usuario add primary key (ID_us, FK_tipo_doc);
 alter table sicloud.usuario modify correo varchar(50);
 
 
+
+create table tipo_modific(
+ID_t_modific int auto_increment not null	 primary key,
+nom_modific varchar(30) not null
+);
+
+
+
+create table modific(
+ID_modifc int auto_increment not null primary key,
+descrip varchar(200),
+fecha date not null,
+hora time not null,
+FK_us varchar(25) not null,
+FK_doc varchar(5) not null,
+FK_modific int not null
+);
+alter table sicloud.modific add constraint FK_tipo_doc_modific foreign key (FK_us, FK_doc) references sicloud.usuario(ID_us, FK_tipo_doc) on update cascade on delete cascade;
+alter table sicloud.modific add constraint FK_modific foreign key (FK_modific) references sicloud.tipo_modific(ID_t_modific) on update cascade on delete cascade;
+ 
+
+
+
+
 create table sicloud.puntos(
 Id_puntos int not null,
 puntos int(5),
@@ -163,6 +195,7 @@ alter table sicloud.rol_usuario add primary key(FK_rol, FK_us, FK_tipo_doc);
  create table sicloud.orden_entrada (
  ID_ord integer not null,
  fecha_ingreso date not null,
+ fact_prov varchar(40),
  CF_rol int(3) not null ,
  CF_rol_us varchar(25) not null, 
  CF_tipo_doc varchar(5) not null);
