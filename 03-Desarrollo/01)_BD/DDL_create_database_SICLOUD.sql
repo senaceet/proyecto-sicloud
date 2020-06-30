@@ -49,8 +49,8 @@ descript varchar(200),
 FK_rol int(3) not null,
 FK_not int not null
  );
-alter table sicloud.notificacion add constraint FK_rol_notificacion foreign key( FK_rol) references sicloud.rol(ID_rol_n) on update cascade;
-alter table sicloud.notificacion add constraint FK_tipo_notificacion foreign key(FK_not) references sicloud.tipo_not(ID_tipo_not) on update cascade;
+alter table sicloud.notificacion add constraint FK_rol_notificacion foreign key( FK_rol) references sicloud.rol(ID_rol_n) on update cascade on delete cascade;
+alter table sicloud.notificacion add constraint FK_tipo_notificacion foreign key(FK_not) references sicloud.tipo_not(ID_tipo_not) on update cascade on delete cascade;
 
 
 

@@ -26,8 +26,8 @@ $this->estado = $_estado;
         include_once 'class.conexion.php';
     $sql =   "INSERT INTO sicloud.rol_usuario(FK_rol,FK_us,FK_tipo_doc,fecha_asignacion,estado)VALUES('$this->FK_rol' , '$this->FK_us','$this->FK_tipo_doc','$this->fecha_asignacion','$this->estado')";
      $con = new Conexion;
-     $res = $con->query($sql);
-     if($res){ echo "<script>alert('Actualizasion Actualizacion rol usuario')</script>"; echo "<script>window.location.replace('../CU002-registrodeUsuario.php')</script>"; }else{ echo "<script>alert('Error en actualizacion de categoria')</script>"; echo "<script>window.location.replace('../CU002-registrodeUsuario.php')</script>";   }  
+     $con->query($sql);
+     //if($res){ echo "<script>alert('Actualizasion Actualizacion rol usuario')</script>"; echo "<script>window.location.replace('../CU002-registrodeUsuario.php')</script>"; }else{ echo "<script>alert('Error en actualizacion de categoria')</script>"; echo "<script>window.location.replace('../CU002-registrodeUsuario.php')</script>";   }  
 
      //if($res ) {  $_SESSION['message'] = "Se creo rol"; $_SESSION['color'] = "success";      } else {  $_SESSION['message'] = "Erro al crear rol"; $_SESSION['color'] = "danger";} header("location: ../CU002-registrodeUsuario.php ");
     }

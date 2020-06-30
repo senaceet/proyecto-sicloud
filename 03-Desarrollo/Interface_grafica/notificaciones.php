@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 
 
@@ -21,45 +21,27 @@ include_once 'clases/class.notificaciones.php';
         </button>
       </div>
       <div class="modal-body">
-
-
-
-      <table class="table table-striped bg-bordered bg-white table-sm col-md-10 col-sm-4 col-xs-12 mx-auto">
-        <tbody>
-          <tr>
-
-          <?php  
-          if(isset($_SESSION['usuario'])){
-        $datos=Notificaciones::verNotificacion($_SESSION['usuario']['ID_rol_n']);
-        while($row = $datos->fetch_array()){
-
-          
-
-    
-
-
-        ?><tr>
-          <td>
-                <a class= "btn btn-success btn-circle" href=""><i class="fas fa-bell fa-fw"></i><a href=""><?php echo "  ". $row['nom_tipo'] ?></a></a>
-        </td>
-      </tr>
-            <?php  } }else echo "Error No ha inciado sesion"; ?>
-          
-        </tbody>
-
-
-
-      </table>
-
+        <table class="table table-striped bg-bordered bg-white table-sm col-md-10 col-sm-4 col-xs-12 mx-auto">
+          <tbody>
+            <tr>
+              <?php
+              if (isset($_SESSION['usuario'])) {
+                $datos = Notificaciones::verNotificacion($_SESSION['usuario']['ID_rol_n']);
+                while ($row = $datos->fetch_array()) {
+              ?>
+            <tr>
+              <td>
+                <a class="btn btn-success btn-circle" href=""><i class="fas fa-bell fa-fw"></i><a href=""><?php echo "  " .$row['nom_tipo'] ?></a></a>
+              </td>
+            </tr>
+        <?php  }
+              } else echo "Error No ha inciado sesion"; ?>
+          </tbody>
+        </table>
       </div>
-
     </div>
   </div>
 </div>
-
-
-
-
 <?php
 
 include_once 'plantillas/cuerpo/finhtml.php';

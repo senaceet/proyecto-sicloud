@@ -94,17 +94,18 @@ class Usuario
   }
   //---------------------------------------------------------------
 
-//fecha actual
-static function fechaActual(){
-  include_once 'class.conexion.php';
-  $c = new Conexion;
-  $sql ="SELECT CURDATE() as fecha";
-  $dat =  $c->query($sql);
-  $datos = $dat->fetch_assoc();
-  $fecha =  $datos['fecha'];
+  //fecha actual
+  static function fechaActual()
+  {
+    include_once 'class.conexion.php';
+    $c = new Conexion;
+    $sql = "SELECT CURDATE() as fecha";
+    $dat =  $c->query($sql);
+    $datos = $dat->fetch_assoc();
+    $fecha =  $datos['fecha'];
 
- return $fecha;
-}
+    return $fecha;
+  }
 
 
 
@@ -114,8 +115,6 @@ static function fechaActual(){
 
   public function insertUpdateUsuario($idg)
   {
-
-
     include_once 'class.conexion.php';
     $con = new Conexion;
     $sql1 = "SET FOREIGN_KEY_CHECKS = 0 ";
@@ -141,10 +140,9 @@ static function fechaActual(){
   } // fin de update usuario
 
 
-
+  // insersion a usuario
   public function insertUsuario()
   {
-
     //Llama la conexion a la base de datos
     include_once 'class.conexion.php';
     $db_usuario = new Conexion();
@@ -274,18 +272,15 @@ static function fechaActual(){
   } // fin de comparar contraseña de clase usuario
 
 
-  static function inserTfoto($destino)
+  // insertar foto
+  static function inserTfoto($destino, $id)
   {
     include_once 'class.conexion.php';
     $c = new Conexion;
-    $sql = "INSERT INTO usuario(foto) VALUES ('$destino')
-    where ID_us = 2";
-    $resultado = $c->query($sql);
-    if ($resultado == true) {
-      echo "<script>alert('Registro exitoso')</script>";
-    } else {
-      echo "<script>alert('Error al registrar')</script>";
-    }
+    $sql = "UPDATE  usuario SET foto = ('$destino')
+    where ID_us = '$id'";
+    $e = $c->query($sql);
+    if($e){   header("location: ../CU002-registrodeUsuario.php "); }
   }
 
 
@@ -326,6 +321,7 @@ static function fechaActual(){
     from puntos P join usuario U ON  P.FK_us =  U.ID_us
     order by U.nom1 asc";
     $con = $c->query($sql);
+    
     return $con;
   }
 

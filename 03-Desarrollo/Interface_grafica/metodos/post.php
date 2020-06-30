@@ -8,6 +8,7 @@ include_once '../clases/class.rol.php';
 include_once '../clases/class.usuario.php';
 include_once '../clases/class.rol_usuario.php';
 include_once '../clases/class.login.php';
+include_once '../clases/class.notificaciones.php';
 
 
 
@@ -77,29 +78,24 @@ if (isset($_POST['submit'])) {
         $nom2 = $_POST['nom2'];
         $ape1 = $_POST['ape1'];
         $ape2 = $_POST['ape2'];
-        $fecha = $f;
+        $fecha = $_POST['fecha'];
         $pass = $_POST['pass'];
        // $foto = $_POST['foto'];
         $correo = $_POST['correo'];
         $FK_tipo_doc = $_POST['FK_tipo_doc'];
 
-
-        
+        // Insercion de foto
         $foto=$_FILES["foto"]["name"];
-        $ruta=$_FILES["foto"]["tmp_name"];
-        $destino="plantillas/" .$foto;
-        copy($ruta, $destino);
-        Usuario::inserTfoto($destino);
-
-
-
-
+         $ruta=$_FILES["foto"]["tmp_name"];
+         $destino='C:\xampp\htdocs\ ' .$foto;
+         copy($ruta, $destino);
+         Usuario::inserTfoto($destino, $ID_us);
 
         // captura de rol_usuario
         $FK_rol = $_POST['FK_rol'];
         // $FK_us
         // $FK_tipo_doc
-        $fecha_as = $_POST['fecha_a'];
+        $fecha_as = $f;
         $estado = "0";
 
         // Insersion a usuario
@@ -111,17 +107,27 @@ if (isset($_POST['submit'])) {
             $FK = new Rol_us($FK_rol, $ID_us, $FK_tipo_doc, $fecha_as, $estado);
             $i = $FK->insertrRolUs();
 
-            if ($i = true) {
-                $_SESSION['message'] = "Se creo usuario y rol";
+            $est = 0;
+            $descrip = $ID_us;
+            $FK_rol = 1;
+            $FK_not = 1;
+
+
+            // Crear notificacion a rol administrador
+            $not = new Notificaciones($est, $descrip , $FK_rol , $FK_not);
+            $int = $not->notInsertUsuarioAdmin();
+                 }// fin de if $r
+
+            if ($int = true) {
+               $_SESSION['message'] = "Se creo usuario y rol";
                 $_SESSION['color'] = "success";
-            } else {
+               } else {
                 $_SESSION['message'] = "Error al crear usuario";
                 $_SESSION['color'] = "danger";
-            }
-            header("location: ../CU002-registrodeUsuario.php ");
-        }
-    } // fin de insert usuario 
-
+               echo print_r($not);
+               header("location: ../CU002-registrodeUsuario.php ");
+        }// fin de mesage 
+    }// metodo insert
 
 
 
