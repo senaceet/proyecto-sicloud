@@ -108,11 +108,38 @@ class Usuario
   }
 
 
+  // Actualzacion de datos por rol usuario---------------------------------------------------------
+  public function insertUpdateUsuarioCliente($idg)
+  {
+include_once 'class.conexion.php';
+include_once 'session/sessiones.php';
+    $con = new Conexion;
+    $sql1 = "SET FOREIGN_KEY_CHECKS = 0 ";
+    $res =   $con->query($sql1);
+
+    if ($res) {
+      $sql2 = "UPDATE sicloud.usuario SET  nom1 = '$this->nom1' ,  nom2 = '$this->nom2' ,ape1 = '$this->ape1' , ape2 = '$this->ape2' , fecha = '$this->fecha'   , correo = '$this->correo'  WHERE  ID_us = '$idg' ";
+      $res1 = $con->query($sql2);
+    }
+
+    if ($res1) {
+      $sql3 = "SET FOREIGN_KEY_CHECKS = 1";
+      $res2 = $con->query($sql3);
+    }
+    if ($res2) {
+      $_SESSION['message'] = $_SESSION['usuario']['nom1'].' Actualizo datos';
+      $_SESSION['color'] = 'success';
+    } else {
+      $_SESSION['message'] = 'Error al actualizar datos';
+      $_SESSION['color'] = 'danger';
+    }
+    
+
+  }//-------------------------------------------------------------------------------------------------------
 
 
 
-
-
+// actualizar datos de usario por administrador------------------------------------------------------------
   public function insertUpdateUsuario($idg)
   {
     include_once 'class.conexion.php';
@@ -136,11 +163,11 @@ class Usuario
       $_SESSION['message'] = 'Error no se cuenta de usuario';
       $_SESSION['color'] = 'danger';
     }
-    header("location: ../CU009-controlUsuarios.php");
-  } // fin de update usuario
+
+  } // fin de update usuario----------------------------------------------------------------------------------
 
 
-  // insersion a usuario
+  // insersion a usuario------------------------------------------------------------------------------
   public function insertUsuario()
   {
     //Llama la conexion a la base de datos
@@ -152,7 +179,7 @@ class Usuario
     //if($db_usuario){ echo "<script>alert('Se a creado usuario');</script>" ;    echo "<script>window.location.remplace('../CU002-registrodeUsuario.php');</script>";} else { echo "<script>alert('Se a creado usuario');</script>";   echo "<script>window.location.remplace('../CU002-registrodeUsuario.php');</script>";  }
     // if($db_usuario ) {  $_SESSION['message'] = "Se creo usuario"; $_SESSION['color'] = "success";      } else {  $_SESSION['message'] = "Erro al crear usuario"; $_SESSION['color'] = "danger";} header("location: ../CU002-registrodeUsuario.php ");
 
-  } //fin de la funcion insert
+  } //fin de la funcion insert------------------------------------------------------------------------
 
 
   // Muestra los datos en la tabla usuario
@@ -249,7 +276,7 @@ class Usuario
   } // fin de desactibar cuenta
 
 
-  //Compara contraseña tabla usuario
+  //Compara contraseña tabla usuario--------------------------------------------------------------------------
   static function DocPass($ID_us, $pass, $doc)
   {
     include_once 'class.conexion.php';
@@ -257,7 +284,39 @@ class Usuario
     $sql = "SELECT U.ID_us  , U.nom1 , U.nom2 , U.ape1 , U.ape2 , U.fecha , U.pass , U.foto , U.correo , TD.nom_doc , RU.estado , R.ID_rol_n , R.nom_rol FROM tipo_doc TD JOIN usuario U ON TD.ID_acronimo = U.FK_tipo_doc JOIN rol_usuario RU ON U.ID_us = RU.FK_us JOIN rol R ON FK_rol = R.ID_rol_n WHERE U.ID_us =  '$ID_us' and U.pass = '$pass' and TD.ID_acronimo = '$doc' ";
     $result = $c->query($sql);
     return $result;
-  } // fin de comprobar contraseña
+  } // fin de comprobar contraseña----------------------------------------------------------------------------------
+
+
+  //---------------------------------------------------------------------------------------------------------------
+  //Cambio de contraseña
+  static function cambioPass($id,  $contraseñaNueva ){
+    include_once 'class.conexion.php';
+    $c = new Conexion;
+    $sql = "UPDATE usuario SET pass = '$contraseñaNueva' where ID_us = '$id'";
+    echo $sql;
+    $r = $c->query($sql);
+    if ($r) {
+      $_SESSION['message'] = "Cambio contraseña";
+      $_SESSION['color'] = "success";
+    } else {
+      $_SESSION['message'] = "Error al cambiar contraseña";
+      $_SESSION['color'] = "danger";
+    }
+//-------------------------------------------------------------------------
+  }
+
+
+
+
+
+  static function validarPass($id, $pass ){
+    include_once 'class.conexion.php';
+    $c = new Conexion;
+    $sql = "SELECT * from usuario where ID_us = '$id' and pass = '$pass'";
+   $i =$c->query($sql);
+   return $i;
+    }
+    
 
 
   // Comparar contraseña solo de tabla usuario
@@ -338,4 +397,19 @@ class Usuario
     $con = $c->query($sql);
     return $con;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }// fin de clase usaurio

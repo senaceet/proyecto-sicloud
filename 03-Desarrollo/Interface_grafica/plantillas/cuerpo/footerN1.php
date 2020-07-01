@@ -3,7 +3,7 @@
             <footer class="row">
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <h5>Categorías</h5><br>
-                        <a href="#" class="subpaginas">Herramientas Manuales</a><br><br>
+                        <a href="#" class="subpaginas e">Herramientas Manuales</a><br><br>
 				        <a href="#" class="subpaginas">Herramientas Electricas</a><br><br>
 				        <a href="#" class="subpaginas">Trajes y Equipos</a><br><br>
                 </div>

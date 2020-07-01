@@ -75,7 +75,7 @@ include_once 'session/valsession.php';
                             <div class="card card-body col-md-12 col-12 text-center">Filtros <!-- card de filtros -->
 
                                 <!-- form por id -->
-                                <form action="CU009-controlUsuarios.php" method="POST">
+                                <form action="CU009-controlUsuarios.php" method="GET">
                                     <div class="form-group"><input type="text" class="form-control " placeholder="ID usuario " name="documento"></div>
                                     <input type="hidden" value="bId" name="accion">
                                     <div class="form-group "><input class="btn btn-primary form-control " type="submit" value="Buscar id"></div>
@@ -123,9 +123,9 @@ include_once 'session/valsession.php';
                             //--- EVENTOS DE FORMULARIO----------------------------------------------------------------------
 
                             // Filtro por id
-                            if ((isset($_POST['accion'])) &&  ($_POST['accion'] == 'bId')) {
-                                if ($_POST['documento'] > 0) {
-                                    $id = $_POST['documento'];
+                            if ((isset($_GET['accion'])) &&  ($_GET['accion'] == 'bId')) {
+                                if ($_GET['documento'] > 0) {
+                                    $id = $_GET['documento'];
                                     $usuario = Usuario::ningunDato();
                                     $datos = $usuario->selectIdUsuario($id);
                                     $_SESSION['message'] = "Filtro por id";
@@ -161,8 +161,6 @@ include_once 'session/valsession.php';
                                 $id = $_POST['rol'];
                                 $datos = Usuario::selectUsuarioRol($id);
                             } // fin de isset consulta rol
-
-
 
                             ?>
 
@@ -226,12 +224,6 @@ include_once 'session/valsession.php';
                                             <th>Estado</th>
                                             <th>Accion</th>
                                         </tr>
-
-
-
-
-
-
 
                     <?php
 

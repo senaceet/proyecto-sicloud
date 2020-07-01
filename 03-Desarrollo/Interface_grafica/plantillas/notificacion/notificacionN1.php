@@ -32,7 +32,7 @@ include_once 'clases/class.notificaciones.php';
             <tr>
               <td>
               <?php if(   $row['FK_not'] == 1 && $row['descript'] !=0    ){ $m = " Id usuario: ";}else{ $m ="" ;}  ?>
-                <a class="btn btn-success btn-circle" href=""><i class="fas fa-bell fa-fw"></i><a href="../../CU009-controlUsuarios.php?documento=<?php echo $row['descript'] ?>&accion=bId"><?php echo "  " .$row['nom_tipo'].$m.$row['descript'] ?></a></a>
+                <a class="btn btn-success btn-circle" href=""><i class="fas fa-bell fa-fw"></i><a href="CU009-controlUsuarios.php?documento=<?php echo $row['descript'] ?>&accion=bId"><?php echo "  " .$row['nom_tipo'].$m.$row['descript'] ?></a></a>
               </td>
             </tr>
         <?php  }

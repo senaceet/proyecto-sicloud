@@ -94,7 +94,7 @@ function inihtml()
 
         <div class="container-pt-4 my-4">
             <div class="card card-body col-md-4 text-center mx-auto bk-rgb shadow p-3 mb-5 bg-white ">
-                <h4><?php echo $titulo ?></h4>
+                <h4 class ="ee"><?php echo $titulo ?></h4>
             </div>
         </div><br><br>
     <?php

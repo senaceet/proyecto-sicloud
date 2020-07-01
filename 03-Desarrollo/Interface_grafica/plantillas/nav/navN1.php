@@ -7,7 +7,7 @@
 //nclude_once '../session/sessionIni.php'
 include_once 'clases/class.notificaciones.php';
 include_once 'session/sessiones.php';
-include_once 'notificaciones.php';
+include_once 'plantillas/notificacion/notificacionN1.php';
 
 
 

@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
 
     //------------------------------------------------------------
     // USUARIO
-    //Update 
+    //Update desde admin
     if ($_POST['accion'] == 'insetUpdateUsuario') {
         include_once '../session/sessiones.php';
         $f =  Usuario::fechaActual();
@@ -39,10 +39,10 @@ if (isset($_POST['submit'])) {
         $FK_rol = $_POST['FK_rol'];
         // $FK_us
         // $FK_tipo_doc
-        
-    
-        
-    
+
+
+
+
         $fecha_as = $f;
         $estado = "0";
 
@@ -67,6 +67,64 @@ if (isset($_POST['submit'])) {
     } // fin del insert update usuario
 
 
+
+
+    //---------------------------------------------------------------------------------------
+    //update desde rol suaurio "mismdatos"
+
+    if ($_POST['accion'] == 'insetUpdateUsuarioUsuario') {
+        include_once '../session/sessiones.php';
+        echo "estoy dentro de insersion usuario";
+        $id = $_SESSION['usuario']['ID_us'];
+        $pass = "";
+        $i = "";
+        $foto = "";
+        $FK_tipo_doc  = "1";
+        $nom1 =  $_POST['nom1'];
+        $nom2 = $_POST['nom2'];
+        $ape1 = $_POST['ape1'];
+        $ape2 = $_POST['ape2'];
+        $fecha = $_POST['fecha'];
+        $correo = $_POST['correo'];
+        $us = new Usuario($i, $nom1, $nom2, $ape1, $ape2, $fecha, $pass, $foto,   $correo, $FK_tipo_doc);
+        $us->insertUpdateUsuarioCliente($id);
+        echo print_r($us);
+        header("location: ../forms/misDatos.php");
+    } // fin de update usuario ----------------------------------------------------------------------------------
+
+    //------------------------------------------------------------------------------------------------------------
+    // Cambio de cotraseña
+    if ($_POST['accion'] == 'cambioContrasena') {
+        include_once '../session/sessiones.php';
+        $passA = $_POST['passA'];
+        $us = Usuario::validarPass($_SESSION['usuario']['ID_us'], $passA);
+        // validacion de contraseña en base de datos
+        if ($us->num_rows == 1) {
+            $passN = $_POST['passN'];
+            $passN2 = $_POST['passN2'];
+            // validacion de digitacion correcta de nueva contrasñea
+            if ($passN == $passN2 && $us->num_rows == 1) {
+                $us = Usuario::cambioPass($_SESSION['usuario']['ID_us'], $passN2);
+            } else {
+                $_SESSION['message'] = "Campos de contraseña nueva no son iguales";
+                $_SESSION['color'] = "danger";
+            }// fin de if validacion de digitacion correcta
+        } else {
+            $_SESSION['message'] = "Contraseña incorrecta";
+            $_SESSION['color'] = "danger";
+        }// fin de if validacion de contraseña en base de datos
+
+        header("location: ../forms/cambioContraseña.php");
+    }// fin de evento validar contraseña------------------------------------------------
+
+
+
+
+
+
+
+
+
     //------------------------------------------------------------------------------------
     // USUARIO
     // insert
@@ -80,16 +138,16 @@ if (isset($_POST['submit'])) {
         $ape2 = $_POST['ape2'];
         $fecha = $_POST['fecha'];
         $pass = $_POST['pass'];
-       // $foto = $_POST['foto'];
+        // $foto = $_POST['foto'];
         $correo = $_POST['correo'];
         $FK_tipo_doc = $_POST['FK_tipo_doc'];
 
         // Insercion de foto
-        $foto=$_FILES["foto"]["name"];
-         $ruta=$_FILES["foto"]["tmp_name"];
-         $destino='C:\xampp\htdocs\ ' .$foto;
-         copy($ruta, $destino);
-         Usuario::inserTfoto($destino, $ID_us);
+        $foto = $_FILES["foto"]["name"];
+        $ruta = $_FILES["foto"]["tmp_name"];
+        $destino = 'C:\xampp\htdocs\ ' . $foto;
+        copy($ruta, $destino);
+        Usuario::inserTfoto($destino, $ID_us);
 
         // captura de rol_usuario
         $FK_rol = $_POST['FK_rol'];
@@ -114,20 +172,20 @@ if (isset($_POST['submit'])) {
 
 
             // Crear notificacion a rol administrador
-            $not = new Notificaciones($est, $descrip , $FK_rol , $FK_not);
+            $not = new Notificaciones($est, $descrip, $FK_rol, $FK_not);
             $int = $not->notInsertUsuarioAdmin();
-                 }// fin de if $r
+        } // fin de if $r
 
-            if ($int = true) {
-               $_SESSION['message'] = "Se creo usuario y rol";
-                $_SESSION['color'] = "success";
-               } else {
-                $_SESSION['message'] = "Error al crear usuario";
-                $_SESSION['color'] = "danger";
-               echo print_r($not);
-               header("location: ../CU002-registrodeUsuario.php ");
-        }// fin de mesage 
-    }// metodo insert
+        if ($int = true) {
+            $_SESSION['message'] = "Se creo usuario y rol";
+            $_SESSION['color'] = "success";
+        } else {
+            $_SESSION['message'] = "Error al crear usuario";
+            $_SESSION['color'] = "danger";
+            echo print_r($not);
+            header("location: ../CU002-registrodeUsuario.php ");
+        } // fin de mesage 
+    } // metodo insert
 
 
 
@@ -162,21 +220,21 @@ if (isset($_POST['submit'])) {
         $CF_categoria = $_POST['CF_categoria'];
         $CF_tipo_medida = $_POST['CF_tipo_medida'];
 
-//--------------------------------------------------------------------------------------------
-//Insertar foto
-
-
-
-
- 
-       
+        //--------------------------------------------------------------------------------------------
+        //Insertar foto
 
 
 
 
 
 
-//---------------------------------------------------------------------------------------------
+
+
+
+
+
+
+        //---------------------------------------------------------------------------------------------
 
 
 
@@ -335,7 +393,7 @@ if (isset($_POST['submit'])) {
 
 
 
-  
+
 
 
     //------------------------------------------------------
@@ -345,25 +403,17 @@ if (isset($_POST['submit'])) {
     //Ver producto
 
 
-        if($_POST['accion'] == 'alertaVerProducto'){
-          //  echo "estoy en ver producto de alertas";
+    if ($_POST['accion'] == 'alertaVerProducto') {
+        //  echo "estoy en ver producto de alertas";
         $id = $_POST['producto'];
-        
+
         print_r($_POST);
         $prod = Producto::verProductosId($id);
         header("location: ../CU0014-alertas.php");
-        }
-        
-        
-        
-        
-
-
-
-
+    }
 } else {
 
 
 
-  echo "<script>alert('Estas ingresando por url, ingresa de manera incorrecta att Javier');</script>";
+    echo "<script>alert('Estas ingresando por url, ingresa de manera incorrecta att Javier');</script>";
 }// fin de else fi no existe submit por post
