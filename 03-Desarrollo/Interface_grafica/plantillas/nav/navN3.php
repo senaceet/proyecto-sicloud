@@ -1,7 +1,7 @@
 <?php
 include_once '../../session/sessiones.php';
-include_once '../../notificaciones.php';
-//include_once '../../clases.class.notificaciones.php';
+include_once '../../notificacion/notificacionN3.php';
+include_once '../../clases/class.notificacion.php';
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top navbar-expand-lg  fixed-top sticky-top">
@@ -57,7 +57,7 @@ include_once '../../notificaciones.php';
           <i class="fas fa-bell fa-fw"></i>
           <!-- Counter - Messages -->
           <?php if (isset($_SESSION['usuario'])) {
-            $c = Notificaciones::conteoNotificaciones($_SESSION['usuario']['ID_rol_n'])       ?>
+            $c = Notificacion::conteoNotificaciones($_SESSION['usuario']['ID_rol_n'])       ?>
             <span class="badge badge-danger badge-counter"><?php echo $c;
                                                           } ?></span>
         </a>

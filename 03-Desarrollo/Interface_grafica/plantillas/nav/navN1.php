@@ -5,9 +5,9 @@
 
 
 //nclude_once '../session/sessionIni.php'
-include_once 'clases/class.notificaciones.php';
+include_once 'clases/class.notificacion.php';
 include_once 'session/sessiones.php';
-include_once 'plantillas/notificacion/notificacionN1.php';
+include_once 'notificacion/notificacionN1.php';
 
 
 
@@ -66,7 +66,7 @@ include_once 'plantillas/notificacion/notificacionN1.php';
               <a class="nav-link mx-3" href="#" id="messagesDropdown"    data-toggle="modal"  data-target="#exampleModal" role="button" aria-expanded="false">
               <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Messages -->
-                <?php  if(isset($_SESSION['usuario'])){$c = Notificaciones::conteoNotificaciones($_SESSION['usuario']['ID_rol_n'])       ?>
+                <?php  if(isset($_SESSION['usuario'])){$c = Notificacion::conteoNotificaciones($_SESSION['usuario']['ID_rol_n'])       ?>
                 <span class="badge badge-danger badge-counter"><?php echo $c;  } ?></span>
               </a>
 

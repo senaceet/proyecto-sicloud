@@ -22,7 +22,7 @@ cardtitulo('Mis datos');
             <form class="form-group" action="../metodos/post.php" method="POST">
                 <?php
 
-                $id = $_SESSION['usuario']['ID_us'];
+               if(isset($_SESSION['usuario'])){  $id = $_SESSION['usuario']['ID_us'];
                 $c = new Conexion();
 
                 $datos = Usuario::selectUsuarios($id);
@@ -113,5 +113,6 @@ br
 
 
 <?php
+}
 include_once  '../plantillas/cuerpo/finhtml.php';
 ?>
