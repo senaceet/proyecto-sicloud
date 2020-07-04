@@ -127,6 +127,9 @@ alter table sicloud.usuario modify correo varchar(50);
 
 
 
+
+
+
 create table tipo_modific(
 ID_t_modific int auto_increment not null	 primary key,
 nom_modific varchar(30) not null
@@ -289,4 +292,5 @@ alter table sicloud.direccion add constraint CF_rut_1 foreign key (CF_rut) refer
 alter table sicloud.direccion add constraint FK_barrio_FK_Localidad_FK_Ciudad foreign key (FK_barrio, FK_Localidad, FK_Ciudad) references sicloud.barrio(ID_barrio, FK_localidad, FK_ciudad)on update cascade on delete cascade;
 alter table sicloud.direccion add primary key (ID_dir, FK_barrio, FK_Localidad, FK_Ciudad);
 alter table sicloud.direccion modify ID_dir int auto_increment;
+
 
