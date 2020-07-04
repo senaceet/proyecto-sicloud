@@ -277,14 +277,12 @@ alter table sicloud.barrio modify ID_barrio int auto_increment;
 
 create table sicloud.direccion(
 ID_dir integer not null,
-via_principal varchar(15) not null,
-via_generadora varchar(15) not null,
 CF_us varchar(25),
 CF_tipo_doc varchar(5) ,
 CF_rut varchar(20) ,
-FK_barrio integer not null,
-FK_Localidad integer not null,
-FK_Ciudad integer not null);
+FK_barrio integer ,
+FK_Localidad integer ,
+FK_Ciudad integer);
 
 
 alter table sicloud.direccion add constraint CF_us_CF_tipo_doc_2 foreign key  (CF_us, CF_tipo_doc) references sicloud.usuario(ID_us, FK_tipo_doc) on update cascade on delete cascade;
