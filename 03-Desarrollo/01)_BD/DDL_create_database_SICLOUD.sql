@@ -247,20 +247,10 @@ alter table sicloud.telefono add primary key(ID_tel);
 alter table sicloud.telefono modify column ID_tel integer auto_increment;
 
 
-create table sicloud.ciudad(
-ID_ciudad integer auto_increment not null,
-nom_ciudad varchar(25) not null,
-primary key(ID_ciudad)
-);
-
-
-
 create table sicloud.localidad(
 ID_localidad int  not null,
-nom_localidad varchar(25) not null,
-FK_ciudad int not null);
-alter table sicloud.localidad add constraint FK_ciudad foreign key(FK_ciudad) references sicloud.ciudad(ID_ciudad) on update cascade on delete cascade;
-alter table sicloud.localidad add primary key(ID_Localidad, FK_ciudad);
+nom_localidad varchar(25) not null);
+alter table sicloud.localidad add primary key(ID_Localidad);
 alter table sicloud.localidad modify ID_localidad int auto_increment;
 
 
@@ -268,27 +258,27 @@ alter table sicloud.localidad modify ID_localidad int auto_increment;
 create table sicloud.barrio(
 ID_barrio int not null,
 nom_barrio varchar(25) not null,
-FK_localidad int not null,
-FK_ciudad int not null);
-alter table sicloud.barrio add constraint FK_Localidad_FK_ciudad foreign key(FK_Localidad, FK_ciudad ) references sicloud.localidad(ID_localidad, FK_ciudad)on update cascade on delete cascade;
-alter table sicloud.barrio add primary key (ID_barrio, FK_Localidad, FK_ciudad);
+FK_localidad int not null);
+alter table sicloud.barrio add constraint FK_Localidad foreign key(FK_Localidad ) references sicloud.localidad(ID_localidad)on update cascade on delete cascade;
+alter table sicloud.barrio add primary key (ID_barrio, FK_Localidad);
 alter table sicloud.barrio modify ID_barrio int auto_increment;
 
 
 create table sicloud.direccion(
 ID_dir integer not null,
+dir varchar(25) not null,
 CF_us varchar(25),
 CF_tipo_doc varchar(5) ,
 CF_rut varchar(20) ,
 FK_barrio integer ,
-FK_Localidad integer ,
-FK_Ciudad integer);
+FK_Localidad integer );
+
 
 
 alter table sicloud.direccion add constraint CF_us_CF_tipo_doc_2 foreign key  (CF_us, CF_tipo_doc) references sicloud.usuario(ID_us, FK_tipo_doc) on update cascade on delete cascade;
 alter table sicloud.direccion add constraint CF_rut_1 foreign key (CF_rut) references sicloud.empresa_provedor(ID_rut) on update cascade;
-alter table sicloud.direccion add constraint FK_barrio_FK_Localidad_FK_Ciudad foreign key (FK_barrio, FK_Localidad, FK_Ciudad) references sicloud.barrio(ID_barrio, FK_localidad, FK_ciudad)on update cascade on delete cascade;
-alter table sicloud.direccion add primary key (ID_dir, FK_barrio, FK_Localidad, FK_Ciudad);
+alter table sicloud.direccion add constraint FK_barrio_FK_Localidad foreign key (FK_barrio, FK_Localidad) references sicloud.barrio(ID_barrio, FK_localidad)on update cascade on delete cascade;
+alter table sicloud.direccion add primary key (ID_dir, FK_barrio, FK_Localidad);
 alter table sicloud.direccion modify ID_dir int auto_increment;
 
 
