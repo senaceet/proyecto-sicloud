@@ -8,7 +8,7 @@ include_once '../clases/class.rol.php';
 include_once '../clases/class.usuario.php';
 include_once '../clases/class.rol_usuario.php';
 include_once '../clases/class.login.php';
-include_once '../clases/class.notificaciones.php';
+include_once '../clases/class.notificacion.php';
 
 
 
@@ -162,6 +162,8 @@ if (isset($_POST['submit'])) {
         if ($r = true) {
 
             // despues de insertar usuario realiza insersion a rol
+            echo "estoy despues de condisiona R";
+            
             $FK = new Rol_us($FK_rol, $ID_us, $FK_tipo_doc, $fecha_as, $estado);
             $i = $FK->insertrRolUs();
 
@@ -170,9 +172,11 @@ if (isset($_POST['submit'])) {
             $FK_rol = 1;
             $FK_not = 1;
 
-
+            if($i = true){
+                echo "estoy en condicional i";
             // Crear notificacion a rol administrador
-            $not = new Notificaciones($est, $descrip, $FK_rol, $FK_not);
+    
+            $not = new Notificacion($est, $descrip, $FK_rol, $FK_not);
             $int = $not->notInsertUsuarioAdmin();
         } // fin de if $r
 
@@ -185,6 +189,8 @@ if (isset($_POST['submit'])) {
             echo print_r($not);
             header("location: ../CU002-registrodeUsuario.php ");
         } // fin de mesage 
+
+    }
     } // metodo insert
 
 

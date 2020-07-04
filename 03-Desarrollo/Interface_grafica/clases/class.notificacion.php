@@ -31,6 +31,7 @@ class Notificacion
         $sql = "INSERT into sicloud.notificacion( estado, descript, FK_rol , FK_not ) 
 VALUES ('$this->estado', $this->descript , '$this->FK_rol', '$this->FK_not')";
         $insert = $c->query($sql);
+        echo $sql;
         if ($insert) {
             $_SESSION['message'] =  'Se a notificacion';
             $_SESSION['color'] = 'success';

@@ -189,14 +189,6 @@ if (isset($_SESSION['message'])) {
 
 
 
-
-
-
-
-
-
-
-
 <?php
 if(  (isset($_POST['accion']))   && ($_POST['accion'] == 'selectCategoria' || $_POST['accion'] == 'productoPorId' )){
 $id =  $_POST['categoria'];
