@@ -39,8 +39,95 @@ public function insertTelefonoUsuario(){
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //header("location: ../forms/formTelefono.php ");
 }// fin de insert telefono usuario
+
+// muestra los datos por id------------------------------------------------------------
+static function verTelefonosUsuarioPorID($id){
+include_once '../clases/class.conexion.php';
+$c = new Conexion;
+$sql = "SELECT U.ID_us , U.nom1 , U.ape1 , R.nom_rol , T.tel
+from rol R join rol_usuario R_U on R.ID_rol_n = R_U.FK_rol
+join usuario U on R_U.FK_us = U.ID_us
+join telefono T on  U.ID_us = T.CF_us
+where CF_us = $id";
+//echo $sql;
+$result= $c->query($sql);
+return $result;
+}
+// Fin de mostrar datos por id
+//------------------------------------------------------------------------------------------
+
+
+
+// muestra los datos por id------------------------------------------------------------
+static function verTelefonosUsuario(){
+    include_once '../clases/class.conexion.php';
+    $c = new Conexion;
+    $sql = "SELECT U.ID_us , U.nom1 , U.ape1 , R.nom_rol , T.tel
+    from rol R join rol_usuario R_U on R.ID_rol_n = R_U.FK_rol
+    join usuario U on R_U.FK_us = U.ID_us
+    join telefono T on  U.ID_us = T.CF_us";
+    //echo $sql;
+    $result= $c->query($sql);
+    return $result;
+    }
+    // Fin de mostrar datos por id
+    //------------------------------------------------------------------------------------------
+
+
+// muestra los datos por rol------------------------------------------------------------
+static function verTelefonosUsuarioRol($rol){
+    include_once '../clases/class.conexion.php';
+    $c = new Conexion;
+    $sql = "SELECT U.ID_us , U.nom1 , U.ape1 , R.nom_rol , T.tel
+    from rol R join rol_usuario R_U on R.ID_rol_n = R_U.FK_rol
+    join usuario U on R_U.FK_us = U.ID_us
+    join telefono T on  U.ID_us = T.CF_us
+    where R_U.FK_rol = $rol";
+    //echo $sql;
+    $result= $c->query($sql);
+    return $result;
+    }
+    // Fin de mostrar telefono rol
+    //------------------------------------------------------------------------------------------
+
+
+
+    
+// muestra telefonos de empresa------------------------------------------------------------
+static function verTelefonosEmpresa(){
+    include_once '../clases/class.conexion.php';
+    $c = new Conexion;
+    $sql = "SELECT E_P.ID_rut , E_P.nom_empresa , T.tel
+    from empresa_provedor  E_P join telefono T on E_P.ID_rut = T.CF_rut;";
+    //echo $sql;
+    $result= $c->query($sql);
+    return $result;
+    }
+    // Fin de ver telefonos empresas
+    //------------------------------------------------------------------------------------------
+
+
+
+    
+
+
+
 
 
 

@@ -35,7 +35,7 @@ if ($in == false) {
     include_once 'plantillas/nav/navN1.php';
 
 
-
+$tabla = false;
 
 ?>
     <?php cardtituloS("Administrador de solicitiudes") ?>
@@ -124,6 +124,7 @@ if ($in == false) {
 
     // Filtro por id
     if ((isset($_GET['accion'])) &&  ($_GET['accion'] == 'bId')) {
+        $tabla = true;
         if ($_GET['documento'] > 0) {
             $id = $_GET['documento'];
             $usuario = Usuario::ningunDato();
@@ -140,6 +141,7 @@ if ($in == false) {
 
     // Filtro por estado de cuenta
     if ((isset($_POST['accion'])) &&  ($_POST['accion'] == 'estado')) {
+        $tabla = true;
         if ((isset($_POST['estado']))) {
             if ($_POST['estado'] == "a") {
                 $estado = 1;
@@ -158,6 +160,7 @@ if ($in == false) {
 
     // Filtro por rol de usuario
     if (isset($_POST['consultaRol'])) {
+        $tabla = true;
         $id = $_POST['rol'];
         $datos = Usuario::selectUsuarioRol($id);
     } // fin de isset consulta rol
@@ -181,12 +184,12 @@ if ($in == false) {
 
 
 
-
+$
 
     <?php
 
 
-    if (isset($datos)) { ?>
+    if ((isset($datos))  && ($tabla == true)      ) { ?>
 
         <div class="col-lg-12">
             <div class="table-responsive">
@@ -252,25 +255,24 @@ if ($in == false) {
 
 
 
-        <div class="card card-body col-md-3 mx-auto my-4 text-center">
+        <div class="card card-body col-md-12 mx-auto my-4 text-center">
             <div class="row">
 
                 <!-- -------------------------------------------------------------- -->
 
-                <div class=" col-md-6  mx-auto">
+                <div class=" col-md-3  mx-auto">
                     <a class="btn-block btn btn-dark" href="">Imprimir</a>
                 </div>
-
-
-                <!-- -------------------------------------------------------------- -->
-                <!-- -------------------------------------------------------------- -->
-
-                <!-- -->
-                <div class=" col-md-6  mx-auto">
+                <div class=" col-md-3  mx-auto">
                     <a class="btn-block btn btn-dark" href="">Exportar</a>
                 </div>
-
-
+                <div class=" col-md-3  mx-auto">
+                    <a class="btn-block btn btn-dark" href="forms/formTelefono.php">Directorio telefonico</a>
+                </div>
+                <div class=" col-md-3  mx-auto">
+                    <a class="btn-block btn btn-dark" href="">Directorio direcciones</a>
+                </div>
+                
                 <!-- -------------------------------------------------------------- -->
             </div>
         </div>
