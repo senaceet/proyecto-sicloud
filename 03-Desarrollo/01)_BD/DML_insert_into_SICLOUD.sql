@@ -39,16 +39,16 @@ values 		(default,'administrador'),
  
 
 insert into sicloud.notificacion( estado, descript, FK_rol , FK_not ) 
-VALUES ( '0', null , '1', '1'),
-	  ( '0', null , '1', '8'),
-      ( '0', null , '1', '9'),
-      ( '0', null , '2', '3'),
-      ( '0', null , '2', '3'),
-      ( '0', null , '6', '10'),
-      ( '0', null , '3', '4'),
-      ( '0', null , '3', '5'),
-      ( '0', null , '4', '5'),
-       ( '0', null , '4', '2'),
+VALUES  ( '0', null , '1', '1'),
+	    ( '0', null , '1', '8'),
+        ( '0', null , '1', '9'),
+        ( '0', null , '2', '3'),
+        ( '0', null , '2', '3'),
+        ( '0', null , '6', '10'),
+		( '0', null , '3', '4'),
+		( '0', null , '3', '5'),
+         ( '0', null , '4', '5'),
+         ( '0', null , '4', '2'),
          ( '0', null , '4', '2'),
          ( '0', null , '5', '11');
       
@@ -159,9 +159,8 @@ values		('1636012383599','Irma','Rosalyn','Mullen','Cote','1990-08-15','IKC07VII
 			('1698091149999','Cedric',null,'Webster',null,'1991-06-10','WSF42WGJ0OS','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC');
             
             
-            insert into sicloud.usuario (ID_us,nom1,nom2,ape1,ape2,fecha,pass,foto,correo,FK_tipo_doc)
-values
-            ('1','Javier',null,'Reyes',null,'1991-06-10','1','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
+insert into sicloud.usuario (ID_us,nom1,nom2,ape1,ape2,fecha,pass,foto,correo,FK_tipo_doc)
+values      ('1','Javier',null,'Reyes',null,'1991-06-10','1','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
             ('2','Fabian',null,'Lopez',null,'1991-06-10','2','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
              ('3','Alejandro',null,'Lopez',null,'1991-06-10','3','C:\img\us.png','Curae.Phasellus@sr.com', 'CC'),
              ('4','Fabian','pepito','perez',null,'1991-06-10','4','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
@@ -194,9 +193,7 @@ values (  default, 50,  "1990-08-15", "1636012383599", "CE" ),
                    (  default, 200,  "1990-08-15", "6", "CC" );
                    
                    
-   
-            
-                 
+                   
 insert into sicloud.det_factura (FK_det_factura, FK_det_prod, cantidad, CF_us, CF_tipo_doc)
 values 		(1, '353740283X', 2, '1636012383599', 'CE'),
 			(2, '176974732X', 6, '1695062224499', 'CE'),
@@ -217,7 +214,6 @@ values 		(1, '353740283X', 2, '1636012383599', 'CE'),
             (17, '9808953743', 2, '1651011048199', 'CC'),
             (18, '3483863125', 2, '1680091992499', 'CC'),
             (19, '5073303091', 2, '1691012831199', 'CC');
-            
             
 
 
@@ -242,8 +238,8 @@ values		(1,1636012383599,'CE',"2019-02-17","1"),
 			(4,1680091992499,'CC',"2019-02-18","1"),
 			(1,1691012831199,'CC',"2019-08-16","1"),
 			(1,1698091149999,'CC',"2019-01-24","1");
-            insert into sicloud.rol_usuario(FK_rol,FK_us,FK_tipo_doc,fecha_asignacion,estado)
-values     (1,1,'CC',"2019-01-24","1"),
+insert into sicloud.rol_usuario(FK_rol,FK_us,FK_tipo_doc,fecha_asignacion,estado)
+values      (1,1,'CC',"2019-01-24","1"),
 			(2,2,'CC',"2019-01-24","0"),
             (3,3,'CC',"2019-01-24","0"),
             (4,4,'CC',"2019-01-24","0"),
@@ -264,6 +260,7 @@ values		(default, '2019-12-14', 'f113' , 1 ,'1636012383599', 'CE'),
 			(default, '2020-08-08',  'f119' , 4, '1694050100899', 'CC'),
 			(default, '2020-01-28',  'f120' , 4, '1628012272099', 'CC'),
 			(default, '2020-03-22',  'f121' , 4, '1670072699699', 'CC');
+            
             
 
 insert into sicloud.det_orden (FK_ord, FK_prod, cantidad_prod)
@@ -302,11 +299,8 @@ values		('17468875','Tuberias S.A.S'),
 
 
 
-
-
-
 insert into sicloud.det_producto (FK_prod, FK_rut, fecha, num_fac_ing)
-values		  ('353740283X', '17468875', '20191214', '353744583X'),
+values		 ('353740283X', '17468875', '20191214', '353744583X'),
 	        ('176974732X', '719875909', '2019-10-14', '176515932X'),
 			('430911542X', '759451251', '2019-08-14', '430947842X'),
 			('9774391012', '684382518', '2019-07-14', '9798741012'),
@@ -375,44 +369,44 @@ values  	(default,'Bogotá'),
         
 insert into sicloud.localidad(ID_localidad,nom_localidad,FK_ciudad)
 values (default,'Usaquén',1),
-(default,'Chapinero',1),
-(default,'Santa Fe',1),
-(default,'San Cristóbal',1),
-(default,'Kennedy',1),
-(default,'Tunjuelito',1),
-(default,'Bosa',1),
-(default,'Fontibón',1),
-(default,'Engativá',1),
-(default,'Suba',1),
-(default,'Barrios Unidos',1),
-(default,'Teusaquillo',1),
-(default,'Los Mártires',1),
-(default,'Antonio Nariño',1),
-(default,'Puente Aranda',1),
-(default,'La Candelaria',1),
-(default,'Rafael Uribe Uribe',1),
-(default,'Ciudad Bolívar',1),
-(default,'Usme',1),
-(default,'Sumapaz',1),
-(default,'No hay registros',2),
-(default,'No hay registros',3),
-(default,'No hay registros',4),
-(default,'No hay registros',5),
-(default,'No hay registros',6),
-(default,'No hay registros',7),
-(default,'No hay registros',8),
-(default,'No hay registros',9),
-(default,'No hay registros',10),
-(default,'No hay registros',11),
-(default,'No hay registros',12),
-(default,'No hay registros',13),
-(default,'No hay registros',14),
-(default,'No hay registros',15),
-(default,'No hay registros',16),
-(default,'No hay registros',17),
-(default,'No hay registros',18),
-(default,'No hay registros',19),
-(default,'No hay registros',20);
+		(default,'Chapinero',1),
+		(default,'Santa Fe',1),
+		(default,'San Cristóbal',1),
+		(default,'Kennedy',1),
+		(default,'Tunjuelito',1),
+		(default,'Bosa',1),
+		(default,'Fontibón',1),
+		(default,'Engativá',1),
+		(default,'Suba',1),
+		(default,'Barrios Unidos',1),
+		(default,'Teusaquillo',1),
+		(default,'Los Mártires',1),
+		(default,'Antonio Nariño',1),
+		(default,'Puente Aranda',1),
+		(default,'La Candelaria',1),
+		(default,'Rafael Uribe Uribe',1),
+		(default,'Ciudad Bolívar',1),
+		(default,'Usme',1),
+		(default,'Sumapaz',1),
+		(default,'No hay registros',2),
+		(default,'No hay registros',3),
+		(default,'No hay registros',4),
+		(default,'No hay registros',5),
+		(default,'No hay registros',6),
+		(default,'No hay registros',7),
+		(default,'No hay registros',8),
+		(default,'No hay registros',9),
+		(default,'No hay registros',10),
+		(default,'No hay registros',11),
+		(default,'No hay registros',12),
+		(default,'No hay registros',13),
+		(default,'No hay registros',14),
+		(default,'No hay registros',15),
+		(default,'No hay registros',16),
+		(default,'No hay registros',17),
+		(default,'No hay registros',18),
+		(default,'No hay registros',19),
+		(default,'No hay registros',20);
 
 
 
@@ -621,16 +615,11 @@ values 		(default,'Bella suiza',1,1),
 			(default,'La Union',20,1);
 
 
-		
-            
-            
-            
-	
+
             
             
    insert into sicloud.direccion(ID_dir ,dir, CF_us,CF_tipo_doc,CF_rut,FK_barrio,FK_Localidad,FK_ciudad)
-values 		
-		     (default,'Calle 55 sur 24-56','1636012383599','CE','464978345',68,7,1),    
+values 		(default,'Calle 55 sur 24-56','1636012383599','CE','464978345',68,7,1),    
 			(default,'Calle 66 norte 33-12','1695062224499','CE','390737614',64,7,1),
 			(default,'Krr 44  24 - 10 oeste','1662041247199','CC','719875909',40,4,1),
 			(default,'tras 49 sur 56-12','1660062872399','CC','759451251',47,5,1),
@@ -650,13 +639,10 @@ values
 			(default ,'Calle 23 sur 80 -13' ,'1691012831199','CC','632873939',22,3,1),
 			(default ,'Calle 26 sur 55-13' ,'1698091149999','CC','784044923',15,2,1);
             
-
- 
-
-        
+            
             
             insert into sicloud.modific(descrip , fecha , hora ,FK_us , FK_doc , FK_modific)
-value ( null , '2019-07-14' , '20:30:05' , '2' , 'CC' , '1'  ),
+value   ( null , '2019-07-14' , '20:30:05' , '2' , 'CC' , '1'  ),
 		( null , '2019-07-14' , '20:30:05' , '1' , 'CC' , '2'  ),
         ( null , '2019-07-14' , '20:30:05' , '3' , 'CC' , '1'  ),
         ( null , '2019-07-14' , '20:30:05' , '4' , 'CC' , '2'  ),
