@@ -14,8 +14,8 @@ include_once '../session/valsession.php';
         <div class = "col-md-3"></div>
         <div class = "col-md-6">
             <div class = " radix  card card-body text-center bk-rgb borde-1-card ">
-                <h3 class = "card-title">Cuenta desctivada</h3><br><br>
-                <h5 class = "card-text">Usted ha registrado exitosamente sus datos, sin embargo requiere activacion por parte del administrador </h5><br><br>
+                <h3 class = "card-title">Cuenta desactivada</h3><br><br>
+                <h5 class = "card-text">Usted ha registrado exitosamente sus datos, sin embargo requiere activación por parte del administrador</h5><br><br>
             </div>
         </div>
         <div class = "col-md-3"></div>

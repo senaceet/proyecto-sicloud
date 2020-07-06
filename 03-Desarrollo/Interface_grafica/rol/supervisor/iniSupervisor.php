@@ -54,13 +54,13 @@ if ($in == false) {
 
 
 
-  <br><br><br><br><br><br><br><br><br><br>
+
 
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-10 mx-auto">
         <div class="card card-body">
-          <div class="card card-body">
+          <div class="card card-body shadow">
 
             <h5 class="mx-auto tex-cennter text-succes ">
               <?php if (isset($_SESSION['usuario'])) {
@@ -85,31 +85,33 @@ if ($in == false) {
             setMessage() ?>
 
 
-            <div class="card card-body  my-2">
-              <h3 class="mx-auto">Consultas</h3><!-- incio de card consultas -->
-              <div class="col-md-12 my-2">
+            <div class="card card-body shadow ">
+              <h3 class="mx-auto">Consultas de ventas</h3><!-- incio de card consultas -->
+              <div class="col-md-12 my-4">
                 <!-- sesion de prodcutos -->
                 <div class="row">
-                  <div class="col-md-4 ">
-                    <a class="btn btn-primary mx-auto btn-block" href="verFecha.php">Busqueda por fecha</a>
+                  <div class="col-md-4 mx-auto ">
+                    <a class="btn btn-primary mx-auto btn-block" href="verFecha.php">Informe de ventas</a>
                   </div><!-- fin de col de 4 1 -->
-                  <div class="col-md-4 ">
-                    <a class="btn btn-primary mx-auto btn-block" href="verRango.php">Busqueda por rando fechas</a>
+                  <div class="col-md-4 mx-auto ">
+                    <a class="btn btn-primary mx-auto btn-block" href="verRango.php">Informe por rango de fechas</a>
 
                   </div><!-- fin de col de 4 2 -->
-                  <div class="col-md-4 ">
-                    <a class="btn btn-primary mx-auto btn-block" href="../../CU0014-alertas.php">Stok por categorias</a>
-
-                  </div><!-- fin de col de 4 3 -->
+                
                 </div><!-- fin de row -->
               </div><!-- fin de col-md-12 -->
             </div><!-- fin de card consulatas -->
 
+
+            <div class="card card-body my-4 shadow">
             <!-- inicio de sesion productos ------------------------------------------------------  -->
+            <h3 class="mx-auto">Consulta de productos</h3>
+            <div class="col-md-4 mx-auto my-4">
+                    <a class="btn btn-primary mx-auto  btn-block" href="../../CU0014-alertas.php">informe por stock</a>
 
+                  </div><!-- fin de col de 4 3 -->
 
-
-
+                  </div>
 
           <?php
         }

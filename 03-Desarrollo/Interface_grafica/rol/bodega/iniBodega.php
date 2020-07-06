@@ -116,7 +116,7 @@ if ($in == false) {
                     <a class="btn btn-primary mx-auto btn-block" href="tablaCategoria.php"> <i class="fas fa-fw fa-folder"></i>Productos por categoria</a>
                   </div><!-- fin de col de 4 1 -->
                   <div class="col-md-4 ">
-                    <a class="btn btn-primary mx-auto btn-block" href="tablaRegistro.php"> <i class="fas fa-fw fa-chart-area"></i>Cantidad de procuntos</a>
+                    <a class="btn btn-primary mx-auto btn-block" href="tablaRegistro.php"> <i class="fas fa-fw fa-chart-area"></i>Cantidad de productos</a>
 
                   </div><!-- fin de col de 4 2 -->
                   <div class="col-md-4 ">
