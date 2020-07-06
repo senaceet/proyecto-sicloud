@@ -73,13 +73,6 @@ cardtitulo('Mis datos');
 
 
 
-<p>
-  Spice up your type with CSS
-  <span>
-    Animated text fill
-  </span>
-  &mdash; no JavaScript required &mdash;
-</p>
 
 
 
@@ -93,14 +86,15 @@ cardtitulo('Mis datos');
         </div><!-- div de row -->
     </div> <!--  div de cntainer -->
 </div>
-br
+
 <div class="container">
     <div class="row">
         <div class="col-md-10 card card-body mx-auto">
             <input type="hidden" name="accion" value="insetUpdateUsuarioUsuario">
-            <input class="btn btn-primary form-control" type="submit" name="submit" value="Actualizar datos">
+            <input class="btn btn-primary btn-block my-1 " type="submit" name="submit" value="Actualizar datos">
             </form>
-            <a class="btn btn-primary btn-block my-4" href="cambioContraseña.php">Cambio de cotraseña</a>
+            <a class="btn btn-primary btn-block my-1 " href="cambioContraseña.php">Cambio de cotraseña</a>
+            <a class="btn btn-primary btn-block my-1 " href="formDatosPersonalesAjax.php">Registrar datos personales</a>
         </div>
     </div>
 </div>

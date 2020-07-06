@@ -124,7 +124,7 @@ cardtitulo("Registro de Usuarios");
                 <h5> Correo </h5>
                 <input class="form-control" type="email" name="correo" required autofocus maxlength="25"><br>
                 <input type="hidden" name="accion" value="insetUsuario">
-                <input class="btn btn-success form-control" type="submit" name="submit" value="Registrar"><br><br><br>
+                <input class="btn btn-success form-control my-2" type="submit" name="submit" value="Registrar">
                 <a class="btn btn-success form-control btn-block" href="CU009-controlusuarios.php">Lista usuario</a>
             </form>
         </div>

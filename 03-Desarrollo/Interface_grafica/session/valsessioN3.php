@@ -12,7 +12,7 @@ if(!isset($_SESSION['usuario'])){
 
 
 if( $_SESSION['usuario']['estado'] ==0){
-               echo "<script>alert('Su cuenta esta desctivada, no tiene permiso para ingresar a este modulo');</script>"; echo "<script>window.location.replace('index.php');</script>" ;
+               echo "<script>alert('Su cuenta esta desctivada, no tiene permiso para ingresar a este modulo');</script>"; echo "<script>window.location.replace('../../index.php');</script>" ;
     }
 
 

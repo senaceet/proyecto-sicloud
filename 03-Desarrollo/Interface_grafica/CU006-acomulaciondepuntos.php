@@ -1,35 +1,32 @@
-
-
-
-
-
-
 <?php
-
-
-include_once 'plantillas/cuerpo/inihtmlN1.php';
-include_once 'plantillas/nav/navN1.php';
-include_once 'plantillas/plantilla.php';
-
-//include_once 'metodos/sessiones.php';
-//session_start();
-
-
-
-if (isset($_SESSION['usuario'])) {
-
-}
-?>
-
-
-
-<?php
-
-include_once 'plantillas/plantilla.php';
-include_once 'plantillas/cuerpo/inihtmlN1.php';
-include_once 'plantillas/nav/navN1.php';
 include_once 'session/sessiones.php';
 include_once 'session/valsession.php';
+
+
+//comprobacion de rol
+$in = false;
+if ($_SESSION['usuario']['ID_rol_n']   == 1) {
+    $in = true;
+} elseif ($_SESSION['usuario']['ID_rol_n']   == 3) {
+    $in = true;
+} elseif ($_SESSION['usuario']['ID_rol_n']   == 4) {
+    $in = true;
+} elseif ($_SESSION['usuario']['ID_rol_n']   == 6) {
+    $in = true;
+}
+
+if ($_SESSION['usuario']['estado'] == 0) {
+    $in = false;
+}
+
+
+
+
+include_once 'plantillas/cuerpo/inihtmlN1.php';
+include_once 'plantillas/nav/navN1.php';
+include_once 'plantillas/plantilla.php';
+include_once 'plantillas/cuerpo/inihtmlN1.php';
+include_once 'plantillas/nav/navN1.php';
 include_once 'clases/class.usuario.php';
 
 cardtitulo("Acumulación de puntos de compra");
@@ -112,12 +109,8 @@ cardtitulo("Acumulación de puntos de compra");
 </div>
 
 
-
-
-
-
 <?php
 
-include_once 'plantillas/cuerpo/footerN1.php'; 
+include_once 'plantillas/cuerpo/footerN1.php';
 include_once 'plantillas/cuerpo/finhtml.php';
 ?>

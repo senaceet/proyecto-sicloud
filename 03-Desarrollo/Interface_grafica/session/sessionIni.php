@@ -26,7 +26,9 @@ if(!isset($_SESSION['usuario'])){
        //ROL
        //Administrador
        
-    if($_SESSION['usuario']['ID_rol_n'] == 1  ){
+if($_SESSION['usuario']['estado'] == 1){
+
+    if($_SESSION['usuario']['ID_rol_n'] == 1   ){
         //$_SESSION['usuario']['nom1'];
         header("location: rol/admin/iniAdmin.php");
   
@@ -68,27 +70,22 @@ if(!isset($_SESSION['usuario'])){
   
 
          //----------------------------------------------------------------
-         //ROL
-         //Supervisor
-      }elseif($_SESSION['usuario']['ID_rol_n'] == 6){
-         header("location: rol/supervisor/iniSupervisor.php");
-         $_SESSION['message'] = " Bienvenido: Proveedor ";
 
-
-         //------------------------------------------------------------
          //ROL
          //cliente
-      }elseif($_SESSION['usuario']['ID_rol_n'] == 7){
+      }elseif($_SESSION['usuario']['ID_rol_n'] == 6){
          include_once 'clases/class.usuario.php';
          $res = Usuario::verPuntosYusuario( $_SESSION['usuario']['ID_us']);
          $datos =$res->fetch_assoc();
          $_SESSION['usuario'] = $datos;
-         $_SESSION['message'] = " Bienvenido: Proveedor ";
+         $_SESSION['message'] = " Bienvenido: Cliente";
          header("location: rol/cliente/iniCliente.php");
       }
 
 
-    
+   }else{
+      header("location: forms/cuentaIncativa.php");
+   }
 
 
     

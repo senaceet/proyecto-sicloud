@@ -9,6 +9,8 @@ include_once '../clases/class.usuario.php';
 include_once '../clases/class.rol_usuario.php';
 include_once '../clases/class.login.php';
 include_once '../clases/class.notificacion.php';
+include_once '../clases/class.modificacion.php';
+
 
 
 
@@ -22,6 +24,7 @@ if (isset($_POST['submit'])) {
     //Update desde admin
     if ($_POST['accion'] == 'insetUpdateUsuario') {
         include_once '../session/sessiones.php';
+        
         $f =  Usuario::fechaActual();
         $idg = $_GET['id'];
         $ID_us = $_POST['ID_us'];
@@ -34,6 +37,7 @@ if (isset($_POST['submit'])) {
         $foto = $_POST['foto'];
         $correo = $_POST['correo'];
         $FK_tipo_doc = $_POST['FK_tipo_doc'];
+        $ID_us_session = $_SESSION['usuario']['ID_us'];
 
         // captura de rol_usuario
         $FK_rol = $_POST['FK_rol'];
@@ -49,13 +53,25 @@ if (isset($_POST['submit'])) {
         ///METODO INSERSION DE USUARIO UPDATE
         $usuario = new Usuario($ID_us,  $nom1, $nom2, $ape1, $ape2, $fecha, $pass, $foto, $correo, $FK_tipo_doc);
         $r = $usuario->insertUpdateUsuario($idg);
-        if ($r1 = true) {
-            //METODO DE INSERSION ROL_USUARIO UOPDATE
-            $FK = new Rol_us($FK_rol, $ID_us, $FK_tipo_doc, $fecha_as, $estado);
-            $insert = $FK->insertUpdateRol($idg);
+        if ($r = true) {
+            //METODO DE INSERSION ROL_USUARIO UPDATE
+           $FK = new Rol_us($FK_rol, $ID_us, $FK_tipo_doc, $fecha_as, $estado);
+           $insert = $FK->insertUpdateRol($idg);
         } // fin de if $r1
 
-        if ($insert = true) {
+        $descrip = "Usario cambiado ID ". $ID_us;
+        $FK_modific = "4";
+        if($inser = true){
+            $hora = Modificacion::horaActual();
+            $m = new Modificacion( $descrip, $f, $hora, $ID_us_session  , $FK_tipo_doc, $FK_modific);
+            $insert2 = $m->insertModificacion();
+        }// fin de insertar modificacion
+
+
+
+
+
+        if ($insert2 = true) {
             $_SESSION['message'] = "Actualizo Datos de usuario y rol";
             $_SESSION['color'] = "primary";
         } // fin de true if $insert 
@@ -70,7 +86,7 @@ if (isset($_POST['submit'])) {
 
 
     //---------------------------------------------------------------------------------------
-    //update desde rol suaurio "mismdatos"
+    //update desde rol usuaurio "mismdatos"
 
     if ($_POST['accion'] == 'insetUpdateUsuarioUsuario') {
         include_once '../session/sessiones.php';
@@ -108,14 +124,14 @@ if (isset($_POST['submit'])) {
             } else {
                 $_SESSION['message'] = "Campos de contraseña nueva no son iguales";
                 $_SESSION['color'] = "danger";
-            }// fin de if validacion de digitacion correcta
+            } // fin de if validacion de digitacion correcta
         } else {
             $_SESSION['message'] = "Contraseña incorrecta";
             $_SESSION['color'] = "danger";
-        }// fin de if validacion de contraseña en base de datos
+        } // fin de if validacion de contraseña en base de datos
 
         header("location: ../forms/cambioContraseña.php");
-    }// fin de evento validar contraseña------------------------------------------------
+    } // fin de evento validar contraseña------------------------------------------------
 
 
 
@@ -163,7 +179,7 @@ if (isset($_POST['submit'])) {
 
             // despues de insertar usuario realiza insersion a rol
             echo "estoy despues de condisiona R";
-            
+
             $FK = new Rol_us($FK_rol, $ID_us, $FK_tipo_doc, $fecha_as, $estado);
             $i = $FK->insertrRolUs();
 
@@ -172,26 +188,74 @@ if (isset($_POST['submit'])) {
             $FK_rol = 1;
             $FK_not = 1;
 
-            if($i = true){
+            if ($i = true) {
                 echo "estoy en condicional i";
-            // Crear notificacion a rol administrador
-    
-            $not = new Notificacion($est, $descrip, $FK_rol, $FK_not);
-            $int = $not->notInsertUsuarioAdmin();
-        } // fin de if $r
+                // Crear notificacion a rol administrador
 
-        if ($int = true) {
-            $_SESSION['message'] = "Se creo usuario y rol";
-            $_SESSION['color'] = "success";
-        } else {
-            $_SESSION['message'] = "Error al crear usuario";
-            $_SESSION['color'] = "danger";
-            echo print_r($not);
-            header("location: ../CU002-registrodeUsuario.php ");
-        } // fin de mesage 
+                $not = new Notificacion($est, $descrip, $FK_rol, $FK_not);
+                $int = $not->notInsertUsuarioAdmin();
+            } // fin de if $r
+
+            if ($int = true) {
+                $_SESSION['message'] = "Se creo usuario y rol";
+                $_SESSION['color'] = "success";
+            } else {
+                $_SESSION['message'] = "Error al crear usuario";
+                $_SESSION['color'] = "danger";
+                echo print_r($not);
+                header("location: ../CU002-registrodeUsuario.php ");
+            } // fin de mesage 
+
+        }
+    } // metodo insert
+
+
+    //-------------------------------------------------------------------------------------------------------------
+    //USUARIO
+    // insert direccion
+    if ($_POST['accion'] == 'insertDireccion') {
+        include_once '../clases/class.direccion.php';
+        include_once '../session/sessiones.php';    
+        $us =  ($_SESSION['usuario']['ID_us']) ;
+        $doc = ($_SESSION['usuario']['ID_acronimo'])  ;
+        $cbx_ciudad = $_POST['cbx_ciudad'];
+        $cbx_localidad = $_POST['cbx_localidad'];
+        $cbx_barrio = $_POST['cbx_barrio'];
+        $direccion = $_POST['direccion'];
+        $rut ="";
+        $d = new Direccion($direccion,  $us,  $doc,  $cbx_barrio, $cbx_localidad, $cbx_ciudad, $rut);
+        $i = $d->InsertDireccionUsuario();
+
+        
+
+        header("location: ../forms/formDatosPersonalesAjax.php");
+    } // fin de insetar direccion
+  //-------------------------------------------------------------------------------------------------------------
+    //USUARIO
+    //insertar telefono
+    if($_POST['accion'] == "insertTelefono"){
+        include_once '../clases/class.telefono.php';
+        include_once '../session/sessiones.php';    
+
+        $us =  ($_SESSION['usuario']['ID_us']);
+        $doc = ($_SESSION['usuario']['ID_acronimo']);
+        $tel = $_POST['telefono'];
+        $rut = "";
+        $tel = new Telefono($tel, $us , $doc , $rut);
+        echo print_r($_POST);
+        $tel->insertTelefonoUsuario();
+        header("location: ../forms/formDatosPersonalesAjax.php");
+
+
+
 
     }
-    } // metodo insert
+
+
+
+
+
+
 
 
 

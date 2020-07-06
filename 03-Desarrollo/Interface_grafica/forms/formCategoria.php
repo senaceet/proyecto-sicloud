@@ -8,7 +8,7 @@ include_once '../metodos/get.php';
 include_once '../session/sessiones.php';
 ?>
 
-<div class="container-fluid col-md col-xl-5">
+<div class="container-fluid col-md col-xl-7">
     <div class="row">
         <!-- formulario de registro -->
         <div class="p-2 col-8 col-sm-6 col-md-4 col-lg-3 col-xl-4  mx-auto">

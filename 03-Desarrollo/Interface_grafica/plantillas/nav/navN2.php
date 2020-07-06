@@ -30,7 +30,7 @@ include_once '../notificacion/notificacionN2.php';
           <a class="dropdown-item" href="../CU000-misionyvision.php">MISION Y VISION</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link lead px-4 my-3" href="../CU008-catalogodeproductos.php">CATALOGO DE PRODUCTOS<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead px-4 my-3" href="../CU008-catalogodeproductos.php">CATALOGO<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link lead px-4 my-3" href="../Promociones.php">PROMOCIONES<span class="sr-only">(current)</span></a>
@@ -109,3 +109,4 @@ include_once '../notificacion/notificacionN2.php';
     </ul>
   </div>
 </nav>
+

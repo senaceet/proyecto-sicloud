@@ -30,7 +30,9 @@ cardtitulo("Actualizar datos de Usuarios");
                                 <!-- contenedor -->
                                 <!-- inicion fila selector de documento y rol -->
                                 <div class="col-md-6">
+                                
 
+                                    
                                     <h5>Seleccione el tipo de documento: </h5>
                                     <select class="form-control" name="FK_tipo_doc">
                                         <?php

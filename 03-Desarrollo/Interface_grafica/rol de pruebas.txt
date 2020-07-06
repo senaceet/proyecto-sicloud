@@ -47,13 +47,6 @@ documento
 Contraseña
 6
 Rol
-Proveedor
-
-
-login
-documento
-7
-Contraseña
-7
-Rol
 Cliente
+
+

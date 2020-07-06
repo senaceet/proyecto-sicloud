@@ -2,14 +2,41 @@
 <?php 
 //  rol/admin/iniAdmin.php
 
+//comprobacion de rol
+
+include_once '../../session/sessiones.php';
+include_once '../../session/valsession.php';
+
+$in = false;
+if ($_SESSION['usuario']['ID_rol_n']  == 1) {
+    $in = true;
+} 
+
+
+
+
+if ($_SESSION['usuario']['estado'] == 0) {
+    $in = false;
+}
+
+
+if ($in == false) {
+    echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
+    echo "<script>window.location.replace('../../index.php');</script>";
+} else {
+
+    //--------------------------------------------------------------------------
+
+
+
+
 include_once '../../plantillas/plantilla.php';
 include_once '../../plantillas/cuerpo/inihtmlN3.php';
 include_once '../../plantillas/nav/navN3.php';
 include_once '../../clases/class.empresa.php';
 include_once '../../clases/class.conexion.php';
 include_once '../../clases/class.usuario.php';
-//include_once '../../session/sessionIni.php';
-//include_once 'metodos/sessiones.php';
+
 
 
 if(isset($_SESSION['usuario'])){
@@ -20,8 +47,7 @@ if(isset($_SESSION['usuario'])){
     echo  "Hola: ".$_SESSION['usuario']['ape1'];
     
     
-    echo "modulo administracion";
-
+    setMessage();
 }
 
 
@@ -72,6 +98,7 @@ if (isset($_SESSION['message'])) {
                             <svg class="bi bi-arrow-right-square-fill mr-1" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm5.646 10.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z"/>
                             </svg>
+
                                 <a class="text-dark" href="../../CU009-controlusuarios.php">Administrar solicitudes de usuario</a>
                             </li>
                             <li class="list-group-item">
@@ -94,6 +121,8 @@ if (isset($_SESSION['message'])) {
                             </li>
                         </ul>
                 </div>
+
+                
 
                 <!-- Productos Card -->
                 <div class="card shadow p-3 mb-5 bg-white rounded">
@@ -127,15 +156,22 @@ if (isset($_SESSION['message'])) {
                         </ul>
                 </div>
 
-                <a href="../../index.php" class="mx-auto">
+                
+
+                <a href="control.php" class="mx-auto">
                     <button type="button" class="btn btn-primary">
                     <svg class="bi bi-house-door-fill mr-1" width="1.1em" height="1.1em" viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                       <path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
                       <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-                    </svg>Regresar al portal
+                    </svg>Control de sistema
                     </button>
                 </a>
             </div>
+
+
+
+
+            
 
             
             
@@ -143,6 +179,6 @@ if (isset($_SESSION['message'])) {
     </div>
 </div>
 <?php
-
+}// lin de validar permisos
 include_once '../../plantillas/cuerpo/finhtml.php';
 ?>

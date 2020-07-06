@@ -281,7 +281,10 @@ include_once 'session/sessiones.php';
   {
     include_once 'class.conexion.php';
     $c = new Conexion;
-    $sql = "SELECT U.ID_us  , U.nom1 , U.nom2 , U.ape1 , U.ape2 , U.fecha , U.pass , U.foto , U.correo , TD.nom_doc , RU.estado , R.ID_rol_n , R.nom_rol FROM tipo_doc TD JOIN usuario U ON TD.ID_acronimo = U.FK_tipo_doc JOIN rol_usuario RU ON U.ID_us = RU.FK_us JOIN rol R ON FK_rol = R.ID_rol_n WHERE U.ID_us =  '$ID_us' and U.pass = '$pass' and TD.ID_acronimo = '$doc' ";
+    $sql = " SELECT U.ID_us  , U.nom1 , U.nom2 , U.ape1 , U.ape2 , U.fecha , U.pass , U.foto , U.correo , TD.ID_acronimo  , RU.estado , R.ID_rol_n , R.nom_rol 
+    FROM tipo_doc TD JOIN usuario U ON TD.ID_acronimo = U.FK_tipo_doc 
+    JOIN rol_usuario RU ON U.ID_us = RU.FK_us 
+    JOIN rol R ON FK_rol = R.ID_rol_n  WHERE U.ID_us =  '$ID_us' and U.pass = '$pass' and TD.ID_acronimo = '$doc' ";
     $result = $c->query($sql);
     return $result;
   } // fin de comprobar contraseña----------------------------------------------------------------------------------
@@ -293,7 +296,7 @@ include_once 'session/sessiones.php';
     include_once 'class.conexion.php';
     $c = new Conexion;
     $sql = "UPDATE usuario SET pass = '$contraseñaNueva' where ID_us = '$id'";
-    echo $sql;
+   // echo $sql;
     $r = $c->query($sql);
     if ($r) {
       $_SESSION['message'] = "Cambio contraseña";

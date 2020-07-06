@@ -49,8 +49,8 @@ descript varchar(200),
 FK_rol int(3) not null,
 FK_not int not null
  );
-alter table sicloud.notificacion add constraint FK_rol_notificacion foreign key( FK_rol) references sicloud.rol(ID_rol_n) on update cascade;
-alter table sicloud.notificacion add constraint FK_tipo_notificacion foreign key(FK_not) references sicloud.tipo_not(ID_tipo_not) on update cascade;
+alter table sicloud.notificacion add constraint FK_rol_notificacion foreign key( FK_rol) references sicloud.rol(ID_rol_n) on update cascade on delete cascade;
+alter table sicloud.notificacion add constraint FK_tipo_notificacion foreign key(FK_not) references sicloud.tipo_not(ID_tipo_not) on update cascade on delete cascade;
 
 
 
@@ -124,6 +124,9 @@ FK_tipo_doc varchar(5) not null);
 alter table sicloud.usuario add constraint FK_tipo_doc foreign key (FK_tipo_doc) references sicloud.tipo_doc(ID_acronimo) on update cascade on delete cascade;
 alter table sicloud.usuario add primary key (ID_us, FK_tipo_doc);
 alter table sicloud.usuario modify correo varchar(50);
+
+
+
 
 
 
@@ -289,4 +292,5 @@ alter table sicloud.direccion add constraint CF_rut_1 foreign key (CF_rut) refer
 alter table sicloud.direccion add constraint FK_barrio_FK_Localidad_FK_Ciudad foreign key (FK_barrio, FK_Localidad, FK_Ciudad) references sicloud.barrio(ID_barrio, FK_localidad, FK_ciudad)on update cascade on delete cascade;
 alter table sicloud.direccion add primary key (ID_dir, FK_barrio, FK_Localidad, FK_Ciudad);
 alter table sicloud.direccion modify ID_dir int auto_increment;
+
 
