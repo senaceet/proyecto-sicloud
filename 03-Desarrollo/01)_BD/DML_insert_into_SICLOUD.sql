@@ -28,8 +28,6 @@ VALUES ( 'Activacion cuenta' ),
         ( 'Pedido' );
       
 
-
-
 insert into sicloud.rol (ID_rol_n, nom_rol)
 values 		(default,'administrador'),
 			(default,'Bodega'),
@@ -37,8 +35,6 @@ values 		(default,'administrador'),
 			(default,'Ventas'),
             (default,'Proveedor'),
            (default,'Cliente');
-
-
 
  
 
@@ -57,11 +53,6 @@ VALUES ( '0', null , '1', '1'),
          ( '0', null , '5', '11');
       
       
-      
-
-
-
-
 
 insert into sicloud.servidor_correo(ID_SC,tipo_correo)
 values		(default,'Gmail'),
@@ -124,9 +115,9 @@ values 		(default, 'Electricos'),
             
             
 insert into sicloud.producto (ID_prod, nom_prod, val_prod, stok_prod, estado_prod, CF_categoria, CF_tipo_medida)
-values		('353740283X', 'DESTORNILLADOR', '89900', 1, 'Disponible', 1, 4),
-			('176974732X', 'TRONZADORA', '716000', 5, 'Disponible', 2, 4),
-			('430911542X', 'PULIDORA', '659000', 6, 'Disponible', 3, 4),
+values		('353740283X', 'Destornillador', '89900', 1, 'Disponible', 1, 4),
+			('176974732X', 'Trenzadora', '716000', 5, 'Disponible', 2, 4),
+			('430911542X', 'Pulidora', '659000', 6, 'Disponible', 3, 4),
 			('9774391012', 'Toolrich', '124950', 8, 'Disponible', 4, 4),
 			('8585851732', 'Alicates', '59950', 1, 'Disponible', 5, 4),
 			('0529063441', 'Destornilladores', '35950', 3, 'Disponible', 6, 4),
@@ -136,7 +127,7 @@ values		('353740283X', 'DESTORNILLADOR', '89900', 1, 'Disponible', 1, 4),
 			('4884032810', 'Linterna', '49950', 7, 'Disponible', 4, 4),
 			('7880000739', 'Sierra', '559900', 3, 'Disponible', 5, 4),
 			('1557972591', 'Llave', '22900', 5, 'Disponible', 6, 4),
-			('6691851129', '5 llaves', '13900', 1, 'Disponible', 1, 4),
+			('6691851129', 'Puntilla', '13900', 1, 'Disponible', 1, 4),
 			('509004757X', 'Pintura', '114900', 6, 'Disponible', 2, 4),
 			('5789389872', 'VinilBlanco', '134900', 4, 'Disponible', 3, 4),
 			('6254386003', 'Laca', '259900', 1, 'Disponible', 4, 4),
@@ -166,6 +157,8 @@ values		('1636012383599','Irma','Rosalyn','Mullen','Cote','1990-08-15','IKC07VII
 			('1680091992499','Gloria',null,'Kirkland','Cote','1981-03-10','CFJ88XPJ2RM','C:\img\us.png','est.vitae@fermentum.edu', 'CC'),
 			('1691012831199','Blake','Angela','Schroeder','Knight','1993-03-02','BMH07NRZ2UY','C:\img\us.png','natoque.penatibus.et@quistristiqueac.ca', 'CC'),
 			('1698091149999','Cedric',null,'Webster',null,'1991-06-10','WSF42WGJ0OS','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC');
+            
+            
             insert into sicloud.usuario (ID_us,nom1,nom2,ape1,ape2,fecha,pass,foto,correo,FK_tipo_doc)
 values
             ('1','Javier',null,'Reyes',null,'1991-06-10','1','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
@@ -197,16 +190,11 @@ values (  default, 50,  "1990-08-15", "1636012383599", "CE" ),
                  ( default, 5, "2020-01-09", '1651011048199', "CC"  ),
                  ( default, 15, "2021-01-09", '1680091992499 ', "CC"  ),
                   ( default, 22, "2021-01-10", '1691012831199 ', "CC"  ),
-                   ( default, 2, "2021-01-4", '1698091149999 ', "CC"  );
+                   ( default, 2, "2021-01-4", '1698091149999 ', "CC"  ),
+                   (  default, 200,  "1990-08-15", "6", "CC" );
                    
                    
-                   insert into sicloud.puntos ( Id_puntos, puntos, fecha, FK_us ,FK_tipo_doc  )
-values (  default, 200,  "1990-08-15", "6", "CC" );
-        
-
-
-    
-
+   
             
                  
 insert into sicloud.det_factura (FK_det_factura, FK_det_prod, cantidad, CF_us, CF_tipo_doc)
@@ -229,11 +217,8 @@ values 		(1, '353740283X', 2, '1636012383599', 'CE'),
             (17, '9808953743', 2, '1651011048199', 'CC'),
             (18, '3483863125', 2, '1680091992499', 'CC'),
             (19, '5073303091', 2, '1691012831199', 'CC');
-            ;
             
             
-            
-		
 
 
 insert into sicloud.rol_usuario(FK_rol,FK_us,FK_tipo_doc,fecha_asignacion,estado)
@@ -653,7 +638,6 @@ values
 			(default,'karrea 55 sur 52-a2','1662101568299','CC','130382612',192,20,1),
 			(default,'Calle 22 sur 24-76','1694050100899','CC','353721273',78,8,1),
             (default,'Calle 22 sur 55-13','1628012272099','CC','178890276',87,9,1),
-            
 			(default ,'Calle 22 sur 55-13' ,'1608051762299','CC','481796032',4,1,1),
 			(default ,'Karrera 11 s 55-43' ,'1676090228999','CC','769976670',66,7,1),
 			(default ,'tras 33 sur 11-22' ,'1623083099799','CC','550507862',74,8,1),
