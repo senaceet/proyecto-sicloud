@@ -11,7 +11,9 @@ cardtitulo('Promociones');
 <div class="col-md-12 mt-5 my-5">
     <div class="row">
         <div class="col-md-12 text-center text-white">
-            <h5>Los mejores ofertas en IMCOABHER</h5>
+            
+    
+
             <hr class="border" />
         </div>
         <div class="col-xs-12 col-sm-12 col-md-10 mx-auto">
@@ -48,7 +50,7 @@ cardtitulo('Promociones');
         </div>
     </div>
 </div>
-<hr class="border" />
+<hr class="border"/>
 
 <?php
 include_once 'plantillas/cuerpo/finhtml.php';

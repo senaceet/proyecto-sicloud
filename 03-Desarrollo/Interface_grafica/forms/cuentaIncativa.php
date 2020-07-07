@@ -23,9 +23,7 @@ include_once '../session/valsession.php';
 </div>
 
 
-
 <?php
-
-include_once '../plantillas/cuerpo/footerN1.php'; 
+include_once '../plantillas/cuerpo/footerN2.php'; 
 include_once '../plantillas/cuerpo/finhtml.php';
 ?>
