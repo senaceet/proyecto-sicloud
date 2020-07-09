@@ -93,7 +93,7 @@ class Producto
     {
         include_once 'class.conexion.php';
         $db = new Conexion;
-        $sql = "SELECT P.ID_prod , P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod , C.nom_categoria , M.nom_medida
+        $sql = "SELECT P.ID_prod , P.img , P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod , C.nom_categoria , M.nom_medida
 from sicloud.producto P join sicloud.categoria C on C.ID_categoria = P.CF_categoria
 join sicloud.tipo_medida M on P.CF_tipo_medida = M.ID_medida
 order by P.nom_prod asc;
@@ -237,11 +237,45 @@ JOIN empresa_provedor ON FK_rut = ID_rut WHERE P.ID_prod = '$id' LIMIT 1";
     {
         include_once 'class.conexion.php';
         $c = new Conexion;
-        $sql = "SELECT  P.ID_prod ,  P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod  , P.CF_tipo_medida , C.ID_categoria , C.nom_categoria
+        $sql = "SELECT  P.ID_prod ,  P.nom_prod ,P.img , P.val_prod , P.stok_prod , P.estado_prod  , P.CF_tipo_medida , C.ID_categoria , C.nom_categoria
         FROM producto P JOIN categoria C ON  P.CF_categoria = C.ID_categoria
         where C.ID_categoria = $id 
         order by P.nom_prod asc";
         $consulta = $c->query($sql);
         return $consulta;
     }
-}
+
+// METODO
+//-----------------------------------------------------------------
+//Imagenes en pantalla
+static function listaProductosImg(){
+ //   include_once '../../plantillas/inihtmlN3';
+    include_once   '../session/sessiones.php';
+    include_once   'clases/class.conexion.php';
+    $cnx=new Conexion;
+    $sql = "SELECT * from producto";
+    $result= $cnx->query($sql);
+
+    //foreach ($result as $row) {
+       // $lista[]=$row;
+  //  while($row = $result->fetch_assoc()){
+     $datos =   $result->fetch_all();
+        return $datos; 
+    }// Fin de metodo ver imagenes de cataligo
+
+    
+ //-----------------------------------------------------------------
+
+
+ //-----------------------------------------------------------------
+ //busquda de producto por primera letra
+ static function primeraLetra($letra){
+    include_once   'clases/class.conexion.php';
+    $cnx = new Conexion;
+    $sql = "SELECT * from producto where nom_prod LIKE '$letra%'";
+    $array = $cnx->query($sql);
+    return $array;
+ }
+ 
+
+}// FIN DE CLASES PRODUCTO

@@ -54,7 +54,7 @@ function inihtml()
                     <div class="row">
                         <div class="col-md-12  mx-auto text-center text-white ">
                             <div class="card text-white bg-dark shadow">
-                                <img class="card-img-top" src="holder.js/100px180/" alt="">
+                               
                                 <div class="card-body">
                                     <h4 class="card-title text-warning">IMCO<spaim class=" whi">ABHER <style>.whi{ color: white !important; }</style>  </spaim >  </h4>
                                     <p class="card-text">Los mejores productos, con calidad y economia</p>
@@ -116,6 +116,28 @@ function inihtml()
     <?php
         return $titulo;
     } ?>
+
+
+
+
+
+
+
+<?php 
+function truncateFloat($number, $digitos)
+{
+$multiplicador = 100000;
+$resultado = ((int)($number * $multiplicador)) / $multiplicador;
+return number_format($resultado, $digitos);
+
+}
+
+
+
+?>
+
+
+
 
 
 

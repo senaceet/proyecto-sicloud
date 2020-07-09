@@ -126,6 +126,26 @@ if (isset($_GET['cerrarSesion'])) {
 
 
 
+// Lista de productos en pantalla
+//-----------------------------------------------------------
+include_once '../session/sessiones.php';
+//include_once './metodosDAO.php';
+ echo print_r ($_SESSION['usuario']);
+
+$op = $_REQUEST['ops'];
+switch ($op){
+    case 1:
+        unset($_SESSION['lista']);
+        $lista=    $objMetodo =Producto::listaProductosImg();
+       
+        $_SESSION['lista']=$lista;
+        header("Location: ../Catalogo.php");
+        break;
+    case 2;
+        break; 
+}
+//-------------------------------------------------------------
+
 
 
 

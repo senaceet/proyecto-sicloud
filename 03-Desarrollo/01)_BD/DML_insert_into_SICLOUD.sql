@@ -14,6 +14,9 @@ values		(default,'Error correo electronico no valido','2018-12-04','14:14:00'),
             
 
 
+        
+      
+
 insert into sicloud.tipo_not(nom_tipo)
 VALUES ( 'Activacion cuenta' ),
       ( 'Solicitud producto' ),
@@ -114,26 +117,33 @@ values 		(default, 'Electricos'),
 			(default, 'Cerrajeria');
             
             
-insert into sicloud.producto (ID_prod, nom_prod, val_prod, stok_prod, estado_prod, CF_categoria, CF_tipo_medida)
-values		('353740283X', 'Destornillador', '89900', 1, 'Disponible', 1, 4),
-			('176974732X', 'Trenzadora', '716000', 5, 'Disponible', 2, 4),
-			('430911542X', 'Pulidora', '659000', 6, 'Disponible', 3, 4),
-			('9774391012', 'Toolrich', '124950', 8, 'Disponible', 4, 4),
-			('8585851732', 'Alicates', '59950', 1, 'Disponible', 5, 4),
-			('0529063441', 'Destornilladores', '35950', 3, 'Disponible', 6, 4),
-			('5574468565', 'Taladro', '99950', 2, 'Disponible', 1, 4),
-			('6638029436', 'Pegadit', '9950', 7, 'Disponible', 2, 4),
-			('2041172460', 'Compresor', '79950', 10, 'Disponible', 3, 4),
-			('4884032810', 'Linterna', '49950', 7, 'Disponible', 4, 4),
-			('7880000739', 'Sierra', '559900', 3, 'Disponible', 5, 4),
-			('1557972591', 'Llave', '22900', 5, 'Disponible', 6, 4),
-			('6691851129', 'Puntilla', '13900', 1, 'Disponible', 1, 4),
-			('509004757X', 'Pintura', '114900', 6, 'Disponible', 2, 4),
-			('5789389872', 'VinilBlanco', '134900', 4, 'Disponible', 3, 4),
-			('6254386003', 'Laca', '259900', 1, 'Disponible', 4, 4),
-			('9808953743', 'Cerrojo', '29900', 8, 'Disponible', 5, 4),
-			('3483863125', 'Cerradura', '56900', 1, 'Disponible', 6, 4),
-			('5073303091', 'Grapadora', '154900', 5, 'Disponible', 1, 4);
+insert into sicloud.producto (ID_prod, nom_prod, val_prod, stok_prod, estado_prod, descript, img, CF_categoria, CF_tipo_medida)
+values		('353740283X', 'Destornillador', '89900', 1, 'estandar', 'producto AAA', 'destornillador.png' , 2, 4),
+			('176974732X', 'Trenzadora', '716000', 5, 'estandar', 'producto AAA', 'trenzadora.png' , 1, 4),
+			('430911542X', 'Pulidora', '659000', 6, 'estandar', 'producto AAA', 'pulidora.png' , 3, 4),
+			('9774391012', 'Pinzas', '124950', 8, 'estandar', 'producto AAA', 'pinzas.png' , 2, 4),
+			('8585851732', 'Alicates', '59950', 1, 'estandar', 'producto AAA', 'alicates.png' , 2, 4),
+			('0529063441', 'Martillo', '35950', 3, 'estandar', 'producto AAA', 'martillo.jpg' , 2, 4),
+			('5574468565', 'Taladro', '99950', 2, 'estandar', 'producto AAA', 'taladro.png' , 1, 4),
+			('6638029436', 'Pegadit', '9950', 7, 'estandar', 'producto AAA', 'pegadit.png' , 5, 4),
+			('2041172460', 'Compresor', '79950', 10, 'estandar', 'producto AAA', 'compresor.png' , 1, 4),
+			('4884032810', 'Linterna', '49950', 7, 'promocion', 'producto AAA', 'linterna.png' , 1, 4),
+			('7880000739', 'Sierra', '559900', 3, 'promocion', 'producto AAA', 'sierra.png' , 1, 4),
+			('1557972591', 'Llave', '22900', 5, 'promocion', 'producto AAA', 'llave.jpg' , 2, 4),
+			('6691851129', 'Puntilla', '13900', 1, 'promocion', 'producto AAA', 'puntilla.jpg' , 3, 4),
+			('509004757X', 'Remachadora', '114900', 6, 'promocion', 'producto AAA', 'remachadora.jpg' , 2, 4),
+			('5789389872', 'VinilBlanco', '134900', 4, 'promocion', 'producto AAA', 'vinilBlanco.png' , 5, 4),
+			('6254386003', 'Laca', '259900', 1, 'promocion', 'producto AAA', 'laca.jpg' , 5, 4),
+			('9808953743', 'Cerrojo', '29900', 8, 'promocion', 'producto AAA', 'cerrojo.jpg' , 6, 4),
+            		('9808922111', 'Ladrillos', '29900', 8, 'promocion', 'producto AAA', 'ladrillo.jpg' , 4, 4),
+           		 ('98022222111', 'Cemento', '29900', 8, 'promocion', 'producto AAA', 'cemento.jpg' , 4, 4),
+			('3483863125', 'Cerradura', '56900', 1, 'promocion', 'producto AAA', 'cerradura.jpg' , 6, 4);
+            
+            
+            
+            
+
+			
 
 
 insert into sicloud.usuario (ID_us,nom1,nom2,ape1,ape2,fecha,pass,foto,correo,FK_tipo_doc)
@@ -212,8 +222,8 @@ values 		(1, '353740283X', 2, '1636012383599', 'CE'),
             (15, '5789389872', 2, '1692090422599', 'CC'),
             (16, '6254386003', 2, '1624060419399', 'CC'),
             (17, '9808953743', 2, '1651011048199', 'CC'),
-            (18, '3483863125', 2, '1680091992499', 'CC'),
-            (19, '5073303091', 2, '1691012831199', 'CC');
+            (18, '3483863125', 2, '1680091992499', 'CC');
+
             
 
 
@@ -317,8 +327,9 @@ values		 ('353740283X', '17468875', '20191214', '353744583X'),
 			('5789389872', '763011374', '2019-04-14', '5789879872'),
 			('6254386003', '296342653', '2019-07-14', '6159686003'),
 			('9808953743', '467487188', '2019-03-14', '9807777743'),
-			('3483863125', '632873939', '2019-04-14', '3469325125'),
-			('5073303091', '784044923', '2019-05-14', '5077633091');
+			('3483863125', '632873939', '2019-04-14', '3469325125');
+            
+
 
 
 insert into sicloud.telefono (ID_tel,tel,CF_us,CF_tipo_doc,CF_rut)

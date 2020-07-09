@@ -12,5 +12,11 @@
 
     <!--  -->
     <title>Sicloud</title>
+   <script>
+
+     //function ingresar(){
+       /// location.href="metodos/get.php?ops=1";
+    //}
+    </script>
 </head>
-<body>
+<body onload="ingresar()">

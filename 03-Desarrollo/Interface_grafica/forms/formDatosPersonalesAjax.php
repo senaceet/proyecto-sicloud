@@ -245,7 +245,6 @@
                     </div><!-- fin de card telefono -->
                 </form>
                 <br><br><br><br><br>
-                <a href="../index.php" class="btn btn-primary col-md-8 mx-auto">Inicio</a><br>
             </div><!-- fin cr card body telefono -->
         </div><!-- fin de col telefono -->
 

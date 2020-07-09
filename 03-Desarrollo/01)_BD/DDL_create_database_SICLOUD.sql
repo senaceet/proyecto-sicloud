@@ -13,8 +13,6 @@ primary key(ID_SC)
 ); 
 
 
-
-
 create table sicloud.log_error(
 ID_error int auto_increment not null,
 descrip_error varchar(255),
@@ -98,11 +96,13 @@ primary key (ID_medida)
  
   
 create table sicloud.producto( 
-ID_prod varchar(40) not null,
-nom_prod varchar(30) not null,
-val_prod int not null,
-stok_prod int not null,
-estado_prod varchar(20) not null,
+ID_prod varchar(40) not null,  
+nom_prod varchar(30) not null,  
+val_prod int not null,  
+stok_prod int not null, 
+estado_prod varchar(20) not null, 
+descript varchar(200), 
+img varchar(40), 
 CF_categoria int not null,
 CF_tipo_medida int not null);
 alter table sicloud.producto add  constraint CF_categoria foreign key(CF_categoria) references sicloud.categoria(ID_categoria) on update cascade on delete cascade;
