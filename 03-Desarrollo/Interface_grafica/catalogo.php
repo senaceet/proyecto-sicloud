@@ -15,7 +15,12 @@ include_once 'session/sessiones.php';
 //echo "numero de productos: ". sizeof($lista);
 ?>
 
-<?php cardAviso();  ?>
+<div class="col-md-12 mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center text-white">
+           <?php cardAviso();  ?>
+      
+        </div>
 
 <div class="col-md-12 mt-5">
     <div class="row">

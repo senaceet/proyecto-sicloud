@@ -23,7 +23,7 @@
           <a class="dropdown-item" href="CU000-misionyvision.php">MISION Y VISION</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link lead px-4 " href="CU008-catalogodeproductos.php">CATALOGO DE PRODUCTOS<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead px-4 " href="metodos/get.php?ops=1">CATALOGO DE PRODUCTOS<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link lead px-4 " href="Promociones.php">PROMOCIONES<span class="sr-only">(current)</span></a>
