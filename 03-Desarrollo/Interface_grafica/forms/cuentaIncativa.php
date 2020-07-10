@@ -8,7 +8,7 @@ include_once '../session/valsession.php';
 
 
 <!-- col 12 -->
-<br><br>
+<br><br><br><br><br>
 <div class = "col-md-12 ">
     <div class="row">
         <div class = "col-md-3"></div>
@@ -20,7 +20,7 @@ include_once '../session/valsession.php';
         </div>
         <div class = "col-md-3"></div>
     </div>
-</div>
+</div><br><br><br><br>
 
 
 <?php

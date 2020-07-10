@@ -132,6 +132,8 @@ include_once '../session/sessiones.php';
 //include_once './metodosDAO.php';
  echo print_r ($_SESSION['usuario']);
 
+
+ if(isset($_GET['ops'])){
 $op = $_REQUEST['ops'];
 switch ($op){
     case 1:
@@ -143,6 +145,8 @@ switch ($op){
         break;
     case 2;
         break; 
+
+    }
 }
 //-------------------------------------------------------------
 
