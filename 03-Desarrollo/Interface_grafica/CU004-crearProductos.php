@@ -51,7 +51,7 @@ cardtitulo("Registro producto");
 
                 <div class="col-md-4">
                     <!-- inicio de divicion 1 -->
-                    <form action="metodos/post.php" method="POST">
+                    <form action="metodos/post.php" method="POST" enctype="multipart/form-data">
                         <!-- derecha -->
 
                         <div class="form-group"><label for="">ID Producto</label><input class="form-control" type="text" placeholder="ID producto" name="ID_prod"></div>
@@ -76,6 +76,11 @@ cardtitulo("Registro producto");
 
                     <div class="form-group"><label for="">Stock Inicial</label><input type="number" class="form-control" placeholder="Stock inicial" name="stok_prod" required autofocus></div>
                     <div class="form-group"><label for="">ID factura Proveedor</label><input type="text" class="form-control" placeholder="Factura proveedor" name="num_fac_ing" autofocus></div>
+                    Imagen: 
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile" name="foto">
+                    <label class="custom-file-label" for="customFile">Seleccione una imagen desde su equipo</label>
+                </div><br><br>
                 
                     <?php if($_SESSION['usuario']['ID_rol_n'] ==  1 || $_SESSION['usuario']['ID_rol_n'] ==  2 ){ ?>
                     <a class="btn btn-block btn-primary by-2" href="CU003-ingresoproducto.php">Ingresar productos</a>

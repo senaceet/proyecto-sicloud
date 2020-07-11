@@ -153,14 +153,31 @@ group by dia";
 
     // valida factura en un periodo de fechas
 
-    static function verIntervaloFecha($fechaIni, $fechaFin){
-     include_once 'class.conexion.php';
-     $c = new Conexion;
-     $sql = "SELECT * FROM factura
+    static function verIntervaloFecha($fechaIni, $fechaFin)
+    {
+        include_once 'class.conexion.php';
+        $c = new Conexion;
+        $sql = "SELECT * FROM factura
      where fecha <= '$fechaFin' and  fecha >= '$fechaIni' 
      order by fecha asc";
-     $arr = $c->query($sql);
-     return $arr;
-      
-            }
+        $arr = $c->query($sql);
+        return $arr;
+    }
+
+
+
+
+    // Ver datos  usuario en factura
+    static function verUsuarioFactura($id)
+    {
+        include_once 'class.conexion.php';
+        $cnx = new Conexion;
+        $sql = "SELECT U.nom1, U.nom2, U.ape1, U.ape2 , T.tel , D.dir
+from  usuario U join telefono T on T.CF_us = U.ID_us
+join direccion D on D.CF_us = U.ID_us
+where U.ID_us = '$id'
+limit 1";
+        $result = $cnx->query($sql);
+        return $result;
+    }
 }

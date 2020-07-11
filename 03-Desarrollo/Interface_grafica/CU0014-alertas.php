@@ -180,7 +180,7 @@ if (isset($_SESSION['message'])) {
 
 <div class="row ">
     <!-- Content Column -->
-    <div class="col-lg-6 mb-4 mx-auto">
+    <div class="col-lg-8 mb-4 mx-auto">
         <!-- Project Card -->
         <div class="card shadow mb-4">
             <div class="card-header py-3 shadow p-3 mb-5 bg-white">
@@ -252,9 +252,9 @@ if (isset($_SESSION['message'])) {
 if(isset($_GET['stockGeneral'])){
 ?>
         <div class="container">
-            <div class="card card-body bg-while col-md-11 mx-auto">
+            <div class="card card-body bg-while col-lg-12 shadow  mx-auto">
                 <div class="row">
-                    <table class="table table-striped table-hover bg-bordered bg-light table-sm col-md-10 col-sm-4 col-xs-12 mx-auto shadow p-3 mb-5 bg-white">
+                    <table class="table table-striped table-hover bg-bordered bg-light table-sm col-lg-12 col-sm-4 col-xs-12 mx-auto text-center shadow p-3 mb-5 bg-white">
                         <thead>
                             <tr>
                                 <th>Nombre Producto</th>
@@ -262,6 +262,7 @@ if(isset($_GET['stockGeneral'])){
                                 <th>Stock </th>
                                 <th>Estado del producto</th>
                                 <th>categoria</th>
+                                <th>Imagen</th>
                                 <th>Medida</th>
                                 <?php if($_SESSION['usuario']['ID_rol_n'] == 1 || $_SESSION['usuario']['ID_rol_n'] == 1 ){   ?>
                                     <th>Accion</th><?php }  ?>
@@ -291,7 +292,9 @@ if(isset($_GET['stockGeneral'])){
                                     <td class=" <?php echo  $c  ?>"><?php echo $row['stok_prod'] ?></td>
                                     <td><?php echo $row['estado_prod'] ?></td>
                                     <td><?php echo $row['nom_categoria'] ?></td>
+                                    <td><img class="card card-body  mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="130px" width="150px"></td>
                                     <td><?php echo $row['nom_medida'] ?></td>
+                                
                                     <?php if($_SESSION['usuario']['ID_rol_n'] == 1 || $_SESSION['usuario']['ID_rol_n'] == 1 ){   ?>
                                     <td>
                                         <a class = "btn  btn-success" href="CU003-ingresoProducto.php?consulta=Validar+exitencia&&p=<?php echo $row['ID_prod']?>">ingreso</a>

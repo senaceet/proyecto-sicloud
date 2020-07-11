@@ -13,7 +13,7 @@ values		(default,'Error correo electronico no valido','2018-12-04','14:14:00'),
 			(default,'su solicitud requiere elevacion','2019-02-03','15:24:55'); 
             
 
-
+select * from producto;
         
       
 
@@ -333,7 +333,21 @@ values		 ('353740283X', '17468875', '20191214', '353744583X'),
 
 
 insert into sicloud.telefono (ID_tel,tel,CF_us,CF_tipo_doc,CF_rut)
-values		(default,'+86(473)137-9500',1636012383599,'CE','464978345'),
+values		
+(default,'305 733 17 44',1,'CC',null),
+(default,'306 533 17 43',2,'CC',null),
+(default,'301 733 22 66',3,'CC',null),
+(default,'355 733 27 11',4,'CC',null),
+(default,'320 566 12 44',5,'CC',null),
+(default,'312 733 11 44',6,'CC',null),
+(default,'322 566 44 11',1,'CC',null),
+	
+
+
+
+
+
+			(default,'+86(473)137-9500',1636012383599,'CE','464978345'),
 			(default,'386(519)326-3151',1695062224499,'CE','390737614'),
 			(default,'256 (505) 724-8984',1662041247199,'CC','719875909'),
 			(default,'36 (728) 143-1515',1660062872399,'CC','759451251'),
@@ -648,7 +662,20 @@ values 		(default,'Calle 55 sur 24-56','1636012383599','CE','464978345',68,7,1),
 			(default ,'K 88 sur 11-13' ,'1651011048199','CC','296342653',61,7,1),
 			(default ,'Tras 11 sur 55a-1' ,'1680091992499','CC','467487188',55,6,1),
 			(default ,'Calle 23 sur 80 -13' ,'1691012831199','CC','632873939',22,3,1),
+            (default ,'Calle 23 sur 80 -13' ,'1691012831199','CC','632873939',22,3,1),
 			(default ,'Calle 26 sur 55-13' ,'1698091149999','CC','784044923',15,2,1);
+            
+            
+insert into sicloud.direccion(ID_dir ,dir, CF_us,CF_tipo_doc,CF_rut,FK_barrio,FK_Localidad,FK_ciudad)
+values 	     (default ,'Calle 23 sur 80 -13' ,'1','CC',null,22,3,1),
+            (default ,'Carrera 26 sur 33 -10' ,'2','CC',null,22,3,1),
+            (default ,'Calle 22 sur 80 -13' ,'3','CC',null,22,3,1),
+            (default ,'Trass 55 No 22 - 12' ,'4','CC',null,22,3,1),
+            (default ,'Calle 23 sur 80 -11' ,'5','CC',null,22,3,1),
+            (default ,'Calle 23 sur 80 -22' ,'6','CC',null,22,3,1);
+            
+            
+
             
             
             

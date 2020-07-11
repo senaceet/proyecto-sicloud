@@ -276,6 +276,40 @@ static function listaProductosImg(){
     $array = $cnx->query($sql);
     return $array;
  }
+
+
+
+
+
+ //----------------------------------------------------------------
+ //imput bscador
+static function buscarPorNombreProducto($buscar){
+    include_once   'clases/class.conexion.php';
+    $cnx = new Conexion;
+    $sql = "SELECT  P.ID_prod ,  P.nom_prod ,P.img , P.val_prod , P.stok_prod , P.estado_prod  , P.CF_tipo_medida , C.ID_categoria , C.nom_categoria
+    FROM producto P JOIN categoria C ON  P.CF_categoria = C.ID_categoria
+WHERE
+(ID_prod LIKE '%$buscar%' or
+nom_prod  LIKE '%$buscar%' 
+) order by nom_prod";
+    $array = $cnx->query($sql);
+    return $array;
+}
+
+
+
+
+static function inserTfoto($destino, $id)
+{
+  include_once 'class.conexion.php';
+  $c = new Conexion;
+  $sql = "UPDATE  producto SET img = ('$destino')
+  where ID_prod = '$id'";
+  $e = $c->query($sql);
+  if($e){   header("location: ../CU004-crearproductos.php"); }
+}
+
+
  
 
 }// FIN DE CLASES PRODUCTO

@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
     //Update desde admin
     if ($_POST['accion'] == 'insetUpdateUsuario') {
         include_once '../session/sessiones.php';
-        
+
         $f =  Usuario::fechaActual();
         $idg = $_GET['id'];
         $ID_us = $_POST['ID_us'];
@@ -55,17 +55,17 @@ if (isset($_POST['submit'])) {
         $r = $usuario->insertUpdateUsuario($idg);
         if ($r = true) {
             //METODO DE INSERSION ROL_USUARIO UPDATE
-           $FK = new Rol_us($FK_rol, $ID_us, $FK_tipo_doc, $fecha_as, $estado);
-           $insert = $FK->insertUpdateRol($idg);
+            $FK = new Rol_us($FK_rol, $ID_us, $FK_tipo_doc, $fecha_as, $estado);
+            $insert = $FK->insertUpdateRol($idg);
         } // fin de if $r1
 
-        $descrip = "Usario cambiado ID ". $ID_us;
+        $descrip = "Usario cambiado ID " . $ID_us;
         $FK_modific = "4";
-        if($inser = true){
+        if ($inser = true) {
             $hora = Modificacion::horaActual();
-            $m = new Modificacion( $descrip, $f, $hora, $ID_us_session  , $FK_tipo_doc, $FK_modific);
+            $m = new Modificacion($descrip, $f, $hora, $ID_us_session, $FK_tipo_doc, $FK_modific);
             $insert2 = $m->insertModificacion();
-        }// fin de insertar modificacion
+        } // fin de insertar modificacion
 
 
 
@@ -159,11 +159,16 @@ if (isset($_POST['submit'])) {
         $FK_tipo_doc = $_POST['FK_tipo_doc'];
 
         // Insercion de foto
-        $foto = $_FILES["foto"]["name"];
-        $ruta = $_FILES["foto"]["tmp_name"];
-        $destino = 'C:\xampp\htdocs\ ' . $foto;
-        copy($ruta, $destino);
+        $foto = $_FILES['foto']['name'];
+        $ruta = $_FILES['foto']['tmp_name'];
+        $destino = '../fonts/us/'.$foto;
+        copy($ruta, $foto);
         Usuario::inserTfoto($destino, $ID_us);
+
+
+
+
+
 
         // captura de rol_usuario
         $FK_rol = $_POST['FK_rol'];
@@ -215,40 +220,36 @@ if (isset($_POST['submit'])) {
     // insert direccion
     if ($_POST['accion'] == 'insertDireccion') {
         include_once '../clases/class.direccion.php';
-        include_once '../session/sessiones.php';    
-        $us =  ($_SESSION['usuario']['ID_us']) ;
-        $doc = ($_SESSION['usuario']['ID_acronimo'])  ;
+        include_once '../session/sessiones.php';
+        $us =  ($_SESSION['usuario']['ID_us']);
+        $doc = ($_SESSION['usuario']['ID_acronimo']);
         $cbx_ciudad = $_POST['cbx_ciudad'];
         $cbx_localidad = $_POST['cbx_localidad'];
         $cbx_barrio = $_POST['cbx_barrio'];
         $direccion = $_POST['direccion'];
-        $rut ="";
+        $rut = "";
         $d = new Direccion($direccion,  $us,  $doc,  $cbx_barrio, $cbx_localidad, $cbx_ciudad, $rut);
         $i = $d->InsertDireccionUsuario();
 
-        
+
 
         header("location: ../forms/formDatosPersonalesAjax.php");
     } // fin de insetar direccion
-  //-------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------
     //USUARIO
     //insertar telefono
-    if($_POST['accion'] == "insertTelefono"){
+    if ($_POST['accion'] == "insertTelefono") {
         include_once '../clases/class.telefono.php';
-        include_once '../session/sessiones.php';    
+        include_once '../session/sessiones.php';
 
         $us =  ($_SESSION['usuario']['ID_us']);
         $doc = ($_SESSION['usuario']['ID_acronimo']);
         $tel = $_POST['telefono'];
         $rut = "";
-        $tel = new Telefono($tel, $us , $doc , $rut);
+        $tel = new Telefono($tel, $us, $doc, $rut);
         echo print_r($_POST);
         $tel->insertTelefonoUsuario();
         header("location: ../forms/formDatosPersonalesAjax.php");
-
-
-
-
     }
 
 
@@ -290,6 +291,9 @@ if (isset($_POST['submit'])) {
         $CF_categoria = $_POST['CF_categoria'];
         $CF_tipo_medida = $_POST['CF_tipo_medida'];
 
+
+
+
         //--------------------------------------------------------------------------------------------
         //Insertar foto
 
@@ -328,10 +332,20 @@ if (isset($_POST['submit'])) {
         $CF_tipo_medida = $_POST['CF_tipo_medida'];
 
 
+
+
         // paso de valores al constructor
         $producto = new Producto($ID_prod, $nom_prod,  $val_prod, $stok_prod, $estado_prod, $CF_categoria, $CF_tipo_medida);
         $_SESSION['producto'] = $producto;
         $producto->insertarProducto();
+
+
+        // Insercion de foto
+        $foto = $_FILES['foto']['name'];
+        $ruta = $_FILES['foto']['tmp_name'];
+        $destino = '../fonts/img/'.$foto;
+        copy($ruta, $destino);
+        Producto::inserTfoto($foto, $ID_prod);
     } // fin de insersion producto
 
     //PRODUCTO-------------------------------------------------------------
