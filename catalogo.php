@@ -102,9 +102,15 @@ include_once 'session/sessiones.php';
                  
                             <div class="  card-body my-2">
                                 <h5 class="card-title"><?php echo $row['nom_prod']; ?></h5>
-                                <p class="card-text lead"><strong><?php echo "$" . $row['val_prod']; ?></strong></p>
+                                <p class="card-text lead"><strong><?php echo "$".number_format(($row['val_prod']),0, ',','.' )   ; ?></strong></p>
                                 <p class="card-text text-success"><?php $c = $row['val_prod'];
-                                                                    echo "36 cuotas " .  truncateFloat(($c / 36), 1) . " Sin interes"; ?></p>
+                                                                    echo "36 cuotas " . "$".number_format(($c / 36),1, ',','.') . " Sin interes";
+                                                                   if( $row['estado_prod'] == "promocion"){
+                                                                    echo "<br>".  $row['estado_prod']."<br>" ;
+                                                                   } ?>
+                                                                    
+                                                                    
+                                                                    </p>
                                 <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Comprar</a>
                             </div>
                         </div>
