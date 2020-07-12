@@ -162,7 +162,7 @@ if (isset($_POST['submit'])) {
         $foto = $_FILES['foto']['name'];
         $ruta = $_FILES['foto']['tmp_name'];
         $destino = '../fonts/us/'.$foto;
-        copy($ruta, $foto);
+        copy($ruta, $destino);
         Usuario::inserTfoto($destino, $ID_us);
 
 

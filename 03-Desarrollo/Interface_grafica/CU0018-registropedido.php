@@ -78,7 +78,7 @@ include_once 'plantillas/nav/navN1.php';
 
                                 <!-- Botones -->
                                 <div class="">
-                                    <div class="form-group "><a class="btn btn-primary form-control" href="">Iprimir</a></div>
+                                    <div class="form-group "><a class="btn btn-primary form-control" href="">Imprimir</a></div>
                                     <div class="form-group"><a class="btn btn-primary form-control" href="">Exprotar</a></div>
                                 </div>
 

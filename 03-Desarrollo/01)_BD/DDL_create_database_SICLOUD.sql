@@ -118,7 +118,7 @@ ape1 varchar(20)not null,
 ape2 varchar(20),
 fecha date not null,
 pass varchar(25) not null,
-foto blob,
+foto varchar(50),
 correo varchar(25) not null,
 FK_tipo_doc varchar(5) not null);
 alter table sicloud.usuario add constraint FK_tipo_doc foreign key (FK_tipo_doc) references sicloud.tipo_doc(ID_acronimo) on update cascade on delete cascade;

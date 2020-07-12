@@ -25,14 +25,14 @@ include_once 'session/sessiones.php';
 
 
 
-    <div class="col-lg-8 card card-body mx-auto">
+    <div class="col-lg-10   card card-body mx-auto">
 
         <div class="card card-body shadow">
             <div class="row">
                 <div class="col-lg-6">
                     <!-- linea 1 -->
                     <form class="form-inline">
-                        <em class="ml-5"> <a class="text-secondary" href="catalogo.php">Digite producto</a></em>
+                        <em class="ml-5"><a class="text-secondary" href="catalogo.php">Digite producto</a></em>
                         <input class="form-control" type="search" placeholder="Busqueda" aria-label="Search" name="busqueda">
                         <button class="btn btn-outline-success " type="submit">Buscar</button>
                     </form>
