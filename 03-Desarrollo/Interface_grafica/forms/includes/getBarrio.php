@@ -10,7 +10,8 @@ $html = "<option value='0'>Seleccionar Barrio</option>";
 
 while($rowB = $datosBarrio->fetch_assoc()){
 $html.= "<option value='".$rowB['ID_barrio']."'>".$rowB['nom_barrio']."</option>";
-echo $html;
+
 }
+echo $html;
 
 ?>
