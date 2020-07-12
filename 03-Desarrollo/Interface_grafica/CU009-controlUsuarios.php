@@ -198,14 +198,15 @@ $
                     <thead>
 
                         <tr>
+                            <th>Foto</th>
                             <th>Tipo doc</th>
                             <th>Documento</th>
                             <th>P. Nombre</th>
                             <th>S. Nombre</th>
                             <th>P. Apellido</th>
                             <th>S. Apellido</th>
-                            <th>Fecha</th>
-                            <th>Foto</th>
+                            <th>Rol</th>
+                            
                             <th>Correo</th>
                             <th>Estado</th>
                             <th>Accion</th>
@@ -220,16 +221,17 @@ $
                     </thead>
                     <tbody>
                         <!-- Los nombres que estan en [''] son los mismos de los atributos de la base de datos de lo contrario dara un error -->
+                        <td><img class="img-profile ml-3 rounded-circle mx-auto" src="fonts/us/<?php echo $row['foto']; ?>" alt="Card image cap" width="70"></td>
                         <td><?php echo $row['FK_tipo_doc'] ?></td>
                         <td><?php echo $row['ID_us'] ?></td>
                         <td><?php echo $row['nom1'] ?></td>
                         <td><?php echo $row['nom2'] ?></td>
                         <td><?php echo $row['ape1'] ?></td>
                         <td><?php echo $row['ape2'] ?></td>
-                        <td><?php echo $row['fecha'] ?></td>
-                        <td><?php echo $row['foto'] ?></td>
+                        <td><?php echo $row['nom_rol'] ?></td>
+                      
                         <td><?php echo $row['correo'] ?></td>
-                        <td><?php echo $row['estado'] ?></td>
+                        <td><?php  if( $row['estado'] == 1){ echo "activo";}else{echo "incativo";}  ?></td>
                         <td>
                             <a href="forms/editarUsuario.php?id= <?php echo $row['ID_us'] ?> " class="btn btn-secondary btn-circle"><i class="fas fa-marker"></i></a>
                             <?php if ($_SESSION['usuario']['ID_rol_n'] == 1) {     ?>

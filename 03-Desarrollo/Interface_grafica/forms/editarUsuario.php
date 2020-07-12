@@ -30,9 +30,9 @@ cardtitulo("Actualizar datos de Usuarios");
                                 <!-- contenedor -->
                                 <!-- inicion fila selector de documento y rol -->
                                 <div class="col-md-6">
-                                
 
-                                    
+
+
                                     <h5>Seleccione el tipo de documento: </h5>
                                     <select class="form-control" name="FK_tipo_doc">
                                         <?php
@@ -46,20 +46,20 @@ cardtitulo("Actualizar datos de Usuarios");
                                 </div><!-- fin de columna de 6 -->
                                 <div class="col-md-6">
 
-                                <?php  if($_SESSION['usuario']['ID_rol_n'] == 1){ ?>
-                                    <h5>Seleccione rol "Asignar rol"</h5>
-                                    <div class="form-group">
-                                        <select name="FK_rol" class="form-control">
-                                            <?php
-                                            $datos = Rol::verRol();
-                                            while ($row = $datos->fetch_array()) {
-                                            ?>
-                                                <option value="<?php echo $row['ID_rol_n']   ?>"><?php echo $row['nom_rol']   ?></option>
-                                            <?php  } ?>
-                                        </select>
-                                    </div><!-- fin de form-group select de  -->
-                                    
-                                            <?php } ?>
+                                    <?php if ($_SESSION['usuario']['ID_rol_n'] == 1) { ?>
+                                        <h5>Seleccione rol "Asignar rol"</h5>
+                                        <div class="form-group">
+                                            <select name="FK_rol" class="form-control">
+                                                <?php
+                                                $datos = Rol::verRol();
+                                                while ($row = $datos->fetch_array()) {
+                                                ?>
+                                                    <option value="<?php echo $row['ID_rol_n']   ?>"><?php echo $row['nom_rol']   ?></option>
+                                                <?php  } ?>
+                                            </select>
+                                        </div><!-- fin de form-group select de  -->
+
+                                    <?php } ?>
                                 </div><!-- fin de columna de 6 -->
 
 
@@ -70,18 +70,26 @@ cardtitulo("Actualizar datos de Usuarios");
 
                         <?php
                         $id = $_GET['id'];
-                        echo $id;
+                        
                         //include_once '../clases/class.conexion.php';
                         $c = new Conexion();
 
                         $datos = Usuario::selectUsuarios($id);
                         while ($row = $datos->fetch_array()) {
                         ?>
-                            <h5>Numero de identificacion: </h5>
-                            <input class="form-control" type="number" name="ID_us" value="<?php echo $row['ID_us'] ?>" required autofocus maxlength="11">
-                    </div>
-                </div><br>
 
+                            <div class="mx-auto text-center my-4">
+                                <h5>Foto de perfil</h5>
+                                <img class="img-profile ml-3 rounded-circle " src="../fonts/us/<?php echo $row['foto'];   ?>" width="120" height="140">
+                                </div>
+                               
+                                <h5>Numero de identificacion: </h5>
+                                <?php echo "Id anterior".$id;  ?>
+                                <input class="form-control" type="number" name="ID_us" value="<?php echo $row['ID_us'] ?>" required autofocus maxlength="11">
+                            
+                    </div><br>
+                </div>
+                
                 <h5>Fecha asignacion</h5>
                 <div class="form-group"><input class="form-control" type="date" name="fecha_a"></div>
 

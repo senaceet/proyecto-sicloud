@@ -73,8 +73,9 @@ include_once '../notificacion/notificacionN2.php';
 
           <strong><?php if (isset($_SESSION['usuario'])) {
                     echo  $_SESSION['usuario']['nom1'];
-                  }    ?></strong>
-          <img class="img-profile ml-3 rounded-circle" src="https://image.flaticon.com/icons/png/512/219/219986.png" width="60">
+                    ?></strong>
+<img class="img-profile ml-3 rounded-circle" src="../fonts/us/<?php echo $_SESSION['usuario']['foto'] ;   ?>" width="60">
+                    <?php    } ?>
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

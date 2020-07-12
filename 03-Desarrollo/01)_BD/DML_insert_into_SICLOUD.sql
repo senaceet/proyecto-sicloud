@@ -147,35 +147,35 @@ values		('353740283X', 'Destornillador', '89900', 1, 'estandar', 'producto AAA',
 
 
 insert into sicloud.usuario (ID_us,nom1,nom2,ape1,ape2,fecha,pass,foto,correo,FK_tipo_doc)
-values		('1636012383599','Irma','Rosalyn','Mullen','Cote','1990-08-15','IKC07VII1NL','C:\img\usm.png','pulvinar.arcu.et@Nullatinciduntneque.org', 'CE'),
-			('1695062224499','Charlotte',null,'Mccormick','Strong','1985-04-10','CIQ67PVL5EX','C:\img\usf.png',"pulvinar.arcu.et@Nullatinciduntneque.org",'CE'),
-			('1662041247199','Elton','Hakeem','Morris','Howell','1988-09-19','JPC81QFH3JG','C:\img\usm.png','Donec.est@temporeratneque.net', 'CC'),
-			('1660062872399','Ali','Reagan','Daniels','Owen','1992-02-11','FMU73YOW0MM','C:\img\usf.png','habitant.morbi.tristique@Nullamsuscipit.com', 'CC'),
-			('1668040515399','Salvador','Desirae','Stevens',null,'1995-07-21','PWL76KXQ4FG','C:\img\us.png','libero.lacus.varius@Quisque.co.uk', 'CC'),
-			('1662101568299','Quin','Paki','Ford','Hahn','1992-07-28','GMU34EQF1NR','C:\img\us.png','semper.tellus.id@Proinvelnisl.ca', 'CC'),
-			('1694050100899','Jeremy',null,'Hahn','Trujillo','1990-04-11','SGU29VRZ0IS','C:\img\usm.png','nec@adipiscinglobortisrisus.net', 'CC'),
-			('1628012272099','Dacey','Chanda','Gates','Foreman','1995-09-02','MWX02YMX4GM','C:\img\us.png','cursus.vestibulum@Vivamusnon.edu', 'CC'),
-			('1608051762299','Ayanna','Thor','Mayer',null,'1989-04-18','PPV93BGM9CX','C:\img\us.png','eu.tellus@augue.com', 'CC'),
-			('1670072699699','Keefe',null,'Fox','Shepard','1986-10-22','DQU71WDL2OY','C:\img\us.png','Aliquam.gravida.mauris@egestas.net', 'CC'),
-			('1676090228999','James','Oprah','Dickerson','Turner','1988-11-25','TUB17VSF8MZ','C:\img\us.png','ut.molestie@morbitristiquesenectus.co.uk', 'CC'),
-			('1623083099799','Aurelia',null,'Gordon','Merrill','1991-10-30','GZB91BTY9WN','C:\img\us.png','Integer.id@sedpede.ca', 'CC'),
-			('1687060309399','Kylynn','Aubrey','Daniel',null,'1990-01-11','YDS91KRH4PL','C:\img\us.png','mattis@eu.com', 'CC'),
-			('1654011145999','Mollie','Jacqueline','Murphy','Henderson','1997-12-14','KDF36PDZ2DU','C:\img\us.png','nisi.magna@Nuncmauris.edu', 'CC'),
-			('1692090422599','Dara',null,'Cook','Herrera','1984-05-17','PGW34XEV7KM','C:\img\us.png','scelerisque@nonante.edu', 'CC'),
-			('1624060419399','Xenos','Libby','Flynn','Morris','1982-07-19','PVJ34CMM2DX','C:\img\us.png','Curabitur@velitAliquamnisl.edu', 'CC'),
-			('1651011048199','Rajah','Gage','Barry',null,'1987-12-19','BSZ77PRI6GH','C:\img\us.png','lobortis.Class@egestasurna.ca', 'CC'),
-			('1680091992499','Gloria',null,'Kirkland','Cote','1981-03-10','CFJ88XPJ2RM','C:\img\us.png','est.vitae@fermentum.edu', 'CC'),
-			('1691012831199','Blake','Angela','Schroeder','Knight','1993-03-02','BMH07NRZ2UY','C:\img\us.png','natoque.penatibus.et@quistristiqueac.ca', 'CC'),
-			('1698091149999','Cedric',null,'Webster',null,'1991-06-10','WSF42WGJ0OS','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC');
+values		('1636012383599','Irma','Rosalyn','Mullen','Cote','1990-08-15','IKC07VII1NL','usm.png','pulvinar.arcu.et@Nullatinciduntneque.org', 'CE'),
+			('1695062224499','Charlotte',null,'Mccormick','Strong','1985-04-10','CIQ67PVL5EX','usf.png',"pulvinar.arcu.et@Nullatinciduntneque.org",'CE'),
+			('1662041247199','Elton','Hakeem','Morris','Howell','1988-09-19','JPC81QFH3JG','usm.png','Donec.est@temporeratneque.net', 'CC'),
+			('1660062872399','Ali','Reagan','Daniels','Owen','1992-02-11','FMU73YOW0MM','usf.png','habitant.morbi.tristique@Nullamsuscipit.com', 'CC'),
+			('1668040515399','Salvador','Desirae','Stevens',null,'1995-07-21','PWL76KXQ4FG','us.png','libero.lacus.varius@Quisque.co.uk', 'CC'),
+			('1662101568299','Quin','Paki','Ford','Hahn','1992-07-28','GMU34EQF1NR','us.png','semper.tellus.id@Proinvelnisl.ca', 'CC'),
+			('1694050100899','Jeremy',null,'Hahn','Trujillo','1990-04-11','SGU29VRZ0IS','usm.png','nec@adipiscinglobortisrisus.net', 'CC'),
+			('1628012272099','Dacey','Chanda','Gates','Foreman','1995-09-02','MWX02YMX4GM','us.png','cursus.vestibulum@Vivamusnon.edu', 'CC'),
+			('1608051762299','Ayanna','Thor','Mayer',null,'1989-04-18','PPV93BGM9CX','us.png','eu.tellus@augue.com', 'CC'),
+			('1670072699699','Keefe',null,'Fox','Shepard','1986-10-22','DQU71WDL2OY','us.png','Aliquam.gravida.mauris@egestas.net', 'CC'),
+			('1676090228999','James','Oprah','Dickerson','Turner','1988-11-25','TUB17VSF8MZ','us.png','ut.molestie@morbitristiquesenectus.co.uk', 'CC'),
+			('1623083099799','Aurelia',null,'Gordon','Merrill','1991-10-30','GZB91BTY9WN','us.png','Integer.id@sedpede.ca', 'CC'),
+			('1687060309399','Kylynn','Aubrey','Daniel',null,'1990-01-11','YDS91KRH4PL','us.png','mattis@eu.com', 'CC'),
+			('1654011145999','Mollie','Jacqueline','Murphy','Henderson','1997-12-14','KDF36PDZ2DU','us.png','nisi.magna@Nuncmauris.edu', 'CC'),
+			('1692090422599','Dara',null,'Cook','Herrera','1984-05-17','PGW34XEV7KM','us.png','scelerisque@nonante.edu', 'CC'),
+			('1624060419399','Xenos','Libby','Flynn','Morris','1982-07-19','PVJ34CMM2DX','us.png','Curabitur@velitAliquamnisl.edu', 'CC'),
+			('1651011048199','Rajah','Gage','Barry',null,'1987-12-19','BSZ77PRI6GH','us.png','lobortis.Class@egestasurna.ca', 'CC'),
+			('1680091992499','Gloria',null,'Kirkland','Cote','1981-03-10','CFJ88XPJ2RM','us.png','est.vitae@fermentum.edu', 'CC'),
+			('1691012831199','Blake','Angela','Schroeder','Knight','1993-03-02','BMH07NRZ2UY','us.png','natoque.penatibus.et@quistristiqueac.ca', 'CC'),
+			('1698091149999','Cedric',null,'Webster',null,'1991-06-10','WSF42WGJ0OS','us.png','Curae.Phasellus@elitCurabitur.com', 'CC');
             
             
 insert into sicloud.usuario (ID_us,nom1,nom2,ape1,ape2,fecha,pass,foto,correo,FK_tipo_doc)
-values      ('1','Javier',null,'Reyes',null,'1991-06-10','1','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
-            ('2','Fabian',null,'Lopez',null,'1991-06-10','2','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
-             ('3','Alejandro',null,'Lopez',null,'1991-06-10','3','C:\img\us.png','Curae.Phasellus@sr.com', 'CC'),
-             ('4','Fabian','pepito','perez',null,'1991-06-10','4','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
-			('5','Andres',null,'Daza',null,'1991-06-10','5','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
-            ('6','Milena',null,'Karen',null,'1991-06-10','6','C:\img\us.png','Curae.Phasellus@elitCurabitur.com', 'CC');
+values      ('1','Javier',null,'Reyes',null,'1991-06-10','1','jav.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
+            ('2','Fabian',null,'Lopez',null,'1991-06-10','2','us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
+             ('3','Alejandro',null,'Lopez',null,'1991-06-10','3','al.png','Curae.Phasellus@sr.com', 'CC'),
+             ('4','Fabian','pepito','perez',null,'1991-06-10','4','us.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
+			('5','Andres',null,'Daza',null,'1991-06-10','5','usf.png','Curae.Phasellus@elitCurabitur.com', 'CC'),
+            ('6','Milena',null,'Karen',null,'1991-06-10','6','usm.png','Curae.Phasellus@elitCurabitur.com', 'CC');
              
             
             

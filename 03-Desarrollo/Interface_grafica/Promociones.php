@@ -55,3 +55,144 @@ cardtitulo('Promociones');
 <?php
 include_once 'plantillas/cuerpo/finhtml.php';
 ?>
+
+
+
+<?php
+//include_once '../../plantillas/nav/navN1.php';
+//include_once 'session/sessiones.php';
+//echo print_r($_SESSION['usuario']);
+//echo print_r($_SESSION['lista']);
+include_once 'plantillas/plantilla.php';
+include_once 'clases/class.producto.php';
+include_once 'clases/class.categoria.php';
+
+
+
+
+//$lista = $_SESSION['lista'];
+//echo "numero de productos: ". sizeof($lista);
+?>
+
+<div class="col-md-12 mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center text-white">
+
+
+        </div>
+    </div>
+
+
+
+    <div class="col-lg-10   card card-body mx-auto">
+
+        <div class="card card-body shadow">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- linea 1 -->
+                    <form class="form-inline">
+                        <em class="ml-5"><a class="text-secondary" href="catalogo.php">Digite producto</a></em>
+                        <input class="form-control" type="search" placeholder="Busqueda" aria-label="Search" name="busqueda">
+                        <button class="btn btn-outline-success " type="submit">Buscar</button>
+                    </form>
+                </div><!-- fin de primera divicion -->
+                <div class="col-lg-6">
+                    <!-- linea 2 -->
+                    <form class="form-inline">
+                        <em class="ml-5"> <a class="text-secondary" href="catalogo.php">Seleccione categoria</a></em>
+                        <select name="cat" id="" class="form-control ">
+                            <?php
+                            $c = Categoria::verCategoria();
+                            while ($row = $c->fetch_array()) {
+                            ?>
+                                <option value="<?php echo $row['ID_categoria']  ?>"><?php echo $row['nom_categoria']    ?></option>
+                            <?php } ?>
+                        </select>
+                        <button class="btn btn-outline-success " type="submit">Buscar</button>
+                    </form>
+                </div><!-- fin de Segunda divicion -->
+            </div><!-- fin de row -->
+        </div><!-- fin de card de busqda -->
+
+
+
+
+        <div class="row">
+            <table class="mx-auto table-sm col-md-8">
+                <?php
+                $num = 0;
+                $datos = Producto::verPromociones();
+
+
+                // foreach ($lista as $row) {
+                //   if ($num == 3) {
+                //     echo "<tr>
+                //      ";
+                //   $num = 1;
+                // } else {
+                //     $num++;
+                // }
+
+                while ($row = $datos->fetch_assoc()) {
+
+                    if ($num == 3) {
+                        echo "<tr>
+                                ";
+                        $num = 1;
+                    } else {
+                        $num++;
+                    }
+
+                ?>
+                    <th>
+                        <div class="card card-body shadow col-md-11 mx-1 mx-auto my-4 shadow">
+                            <img class="card-body  mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="260px" width="300px">
+                 
+                            <div class="  card-body my-2">
+                                <h5 class="card-title"><?php echo $row['nom_prod']; ?></h5>
+                                <p class="card-text lead"><strong><?php echo "$".number_format(($row['val_prod']),0, ',','.' )   ; ?></strong></p>
+                                <p class="card-text text-success"><?php $c = $row['val_prod'];
+                                                                    echo "36 cuotas " . "$".number_format(($c / 36),1, ',','.') . " Sin interes";
+                                                                   if( $row['estado_prod'] == "promocion"){
+                                                                    echo "<br>".  $row['estado_prod']."<br>" ;
+                                                                   } ?>
+                                                                    
+                                <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary my-2">Comprar</a>
+                            </div>
+                        </div>
+        </div>
+        </th>
+    <?php } ?>
+    </table>
+
+
+    <div class="col-md-12 ">
+        <div class="row mt-5 mx-auto">
+            <div class="col-md-12">
+                <nav aria-label="Page navigation example mx-auto ">
+                    <ul class="pagination mx-auto">
+                        <li class="page-item"><a class="page-link" href="CU008-catalogodeproductos.php">Anterior</a></li>
+                        <li class="page-item"><a class="page-link" href="CU008-catalogodeproductos.php">1</a></li>
+                        <li class="page-item"><a class="page-link" href="CU008-catalogodeproductospage2.php">2</a></li>
+                        <li class="page-item"><a class="page-link" href="CU008-catalogodeproductospage2.php">Siguiente</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+    </div><!-- fin de row -->
+</div><!-- fin de col md-12 -->
+</div>
+
+
+
+
+
+<hr class="border my-4" />
+</div>
+
+<?php
+include_once 'plantillas/cuerpo/footerN1.php';
+include_once 'plantillas/cuerpo/finhtml.php';
+?>

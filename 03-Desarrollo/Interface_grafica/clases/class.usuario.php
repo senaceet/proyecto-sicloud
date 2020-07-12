@@ -111,8 +111,8 @@ class Usuario
   // Actualzacion de datos por rol usuario---------------------------------------------------------
   public function insertUpdateUsuarioCliente($idg)
   {
-include_once 'class.conexion.php';
-include_once 'session/sessiones.php';
+    include_once 'class.conexion.php';
+    include_once 'session/sessiones.php';
     $con = new Conexion;
     $sql1 = "SET FOREIGN_KEY_CHECKS = 0 ";
     $res =   $con->query($sql1);
@@ -127,19 +127,17 @@ include_once 'session/sessiones.php';
       $res2 = $con->query($sql3);
     }
     if ($res2) {
-      $_SESSION['message'] = $_SESSION['usuario']['nom1'].' Actualizo datos';
+      $_SESSION['message'] = $_SESSION['usuario']['nom1'] . ' Actualizo datos';
       $_SESSION['color'] = 'success';
     } else {
       $_SESSION['message'] = 'Error al actualizar datos';
       $_SESSION['color'] = 'danger';
     }
-    
-
-  }//-------------------------------------------------------------------------------------------------------
+  } //-------------------------------------------------------------------------------------------------------
 
 
 
-// actualizar datos de usario por administrador------------------------------------------------------------
+  // actualizar datos de usario por administrador------------------------------------------------------------
   public function insertUpdateUsuario($idg)
   {
     include_once 'class.conexion.php';
@@ -163,7 +161,6 @@ include_once 'session/sessiones.php';
       $_SESSION['message'] = 'Error no se cuenta de usuario';
       $_SESSION['color'] = 'danger';
     }
-
   } // fin de update usuario----------------------------------------------------------------------------------
 
 
@@ -200,7 +197,9 @@ include_once 'session/sessiones.php';
   {
     include_once 'class.conexion.php';
     $c = new Conexion();
-    $sql = "SELECT * FROM usuario WHERE ID_us = $id ";
+    $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, R.nom_rol, U.pass, U.foto, U.correo, R_U.estado
+    FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
+   JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n WHERE ID_us = $id ";
     $result = $c->query($sql);
     return $result;
   } // Fin de select usuario
@@ -210,7 +209,9 @@ include_once 'session/sessiones.php';
   {
     include_once 'class.conexion.php';
     $db_usuario = new Conexion();
-    $sql = "SELECT * FROM sicloud.usuario WHERE ID_us = '$idg' ";
+    $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, R.nom_rol, U.pass, U.foto, U.correo, R_U.estado
+    FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
+   JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n WHERE ID_us = '$idg' ";
     $result = $db_usuario->query($sql);
     return $result;
   } // fin de busqueda por ID
@@ -222,7 +223,9 @@ include_once 'session/sessiones.php';
   {
     include_once 'class.conexion.php';
     $db_usuario = new Conexion();
-    $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.fecha, U.pass, U.foto, U.correo, R_U.estado FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = ID_us WHERE ID_us = '$id' ";
+    $sql = "SELECT distinct U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, R.nom_rol, U.pass, U.foto, U.correo, R_U.estado , R.nom_rol
+    FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
+   JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n WHERE ID_us = '$id' ";
     $result = $db_usuario->query($sql);
     return $result;
   } // fin de busqueda por ID
@@ -233,7 +236,9 @@ include_once 'session/sessiones.php';
   {
     include_once 'class.conexion.php';
     $db_usuario = new Conexion();
-    $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.fecha, U.pass, U.foto, U.correo, R_U.estado FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us WHERE R_U.estado = '$est' ";
+    $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, R.nom_rol, U.pass, U.foto, U.correo, R_U.estado
+    FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
+   JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n WHERE R_U.estado = '$est' ";
     $result = $db_usuario->query($sql);
     return $result;
   } //Busqueda por estado pendiente
@@ -292,11 +297,12 @@ include_once 'session/sessiones.php';
 
   //---------------------------------------------------------------------------------------------------------------
   //Cambio de contraseña
-  static function cambioPass($id,  $contraseñaNueva ){
+  static function cambioPass($id,  $contraseñaNueva)
+  {
     include_once 'class.conexion.php';
     $c = new Conexion;
     $sql = "UPDATE usuario SET pass = '$contraseñaNueva' where ID_us = '$id'";
-   // echo $sql;
+    // echo $sql;
     $r = $c->query($sql);
     if ($r) {
       $_SESSION['message'] = "Cambio contraseña";
@@ -305,21 +311,22 @@ include_once 'session/sessiones.php';
       $_SESSION['message'] = "Error al cambiar contraseña";
       $_SESSION['color'] = "danger";
     }
-//-------------------------------------------------------------------------
+    //-------------------------------------------------------------------------
   }
 
 
 
 
 
-  static function validarPass($id, $pass ){
+  static function validarPass($id, $pass)
+  {
     include_once 'class.conexion.php';
     $c = new Conexion;
     $sql = "SELECT * from usuario where ID_us = '$id' and pass = '$pass'";
-   $i =$c->query($sql);
-   return $i;
-    }
-    
+    $i = $c->query($sql);
+    return $i;
+  }
+
 
 
   // Comparar contraseña solo de tabla usuario
@@ -342,7 +349,9 @@ include_once 'session/sessiones.php';
     $sql = "UPDATE  usuario SET foto = ('$destino')
     where ID_us = '$id'";
     $e = $c->query($sql);
-    if($e){   header("location: ../CU002-registrodeUsuario.php "); }
+    if ($e) {
+      header("location: ../CU002-registrodeUsuario.php ");
+    }
   }
 
 
@@ -351,10 +360,10 @@ include_once 'session/sessiones.php';
   {
     include_once 'class.conexion.php';
     $c = new Conexion;
-    $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.fecha, U.pass, U.foto, U.correo, R_U.estado
+    $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, R.nom_rol, U.pass, U.foto, U.correo, R_U.estado
     FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
    JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n
-   WHERE R.ID_rol_n = '$r'
+   WHERE R.ID_rol_n  = '$r'
    order by u.nom1 asc";
     $resultConsulta = $c->query($sql);
     // consulta para mensaje de rol 
@@ -383,7 +392,7 @@ include_once 'session/sessiones.php';
     from puntos P join usuario U ON  P.FK_us =  U.ID_us
     order by U.nom1 asc";
     $con = $c->query($sql);
-    
+
     return $con;
   }
 
@@ -400,19 +409,4 @@ include_once 'session/sessiones.php';
     $con = $c->query($sql);
     return $con;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }// fin de clase usaurio
