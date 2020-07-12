@@ -1,0 +1,156 @@
+<mockup version="1.0" skin="wireframe" fontFace="Arial" measuredW="1029" measuredH="837" mockupW="992" mockupH="826">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="43" y="11" w="986" h="826" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//sicloud/home.html</text>
+      </controlProperties>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::Image" x="429" y="99" w="214" h="54" measuredW="2855" measuredH="734" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/INCOHABER%25202.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::HRule" x="43" y="89" w="986" h="-1" measuredW="100" measuredH="10" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0.5</backgroundAlpha>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Label" x="873" y="113" w="-1" h="-1" measuredW="100" measuredH="25" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <href>CU002-Registro%20de%20usuario%26bm%3BCU002-Registro%20de%20usuario.bmml%26bm%3BCU002-Registro%20de%20usuario.bmml%26bm%3BCU002-Registro%20de%20usuario.bmml</href>
+        <size>18</size>
+        <text>Registrarse</text>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Label" x="81" y="113" w="-1" h="-1" measuredW="111" measuredH="25" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <href>CU002-Registro%20de%20usuario%26bm%3BCU002-Registro%20de%20usuario.bmml%26bm%3BCU002-Registro%20de%20usuario.bmml%26bm%3BCU002-Registro%20de%20usuario.bmml</href>
+        <size>18</size>
+        <text>Inicie%20Sesi%F2n</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Canvas" x="43" y="155" w="986" h="57" measuredW="100" measuredH="70" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0.5</backgroundAlpha>
+        <borderStyle>none</borderStyle>
+        <color>6710886</color>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Button" x="144" y="165" w="103" h="37" measuredW="58" measuredH="24" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>0</color>
+        <text>INICIO</text>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Button" x="414" y="165" w="154" h="37" measuredW="90" measuredH="24" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>0</color>
+        <href>CU008%20-%20Catalogo%26bm%3BCU008%20-%20Catalogo.bmml%26bm%3BCU008%20-%20Catalogo.bmml%26bm%3BCU008%20-%20Catalogo.bmml</href>
+        <text>CATALOGO</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Button" x="568" y="165" w="205" h="37" measuredW="119" measuredH="24" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>0</color>
+        <text>PROMOCIONES</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Button" x="773" y="165" w="166" h="37" measuredW="98" measuredH="24" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>0</color>
+        <text>CONTACTOS</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::Button" x="247" y="165" w="173" h="37" measuredW="102" measuredH="24" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>0</color>
+        <text>FERRETERIA</text>
+      </controlProperties>
+    </control>
+    <control controlID="69" controlTypeID="com.balsamiq.mockups::Icon" x="177" y="493" w="-1" h="-1" measuredW="48" measuredH="48" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>angle-left%7Clarge</icon>
+      </controlProperties>
+    </control>
+    <control controlID="70" controlTypeID="com.balsamiq.mockups::Icon" x="467" y="371" w="-1" h="-1" measuredW="48" measuredH="48" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>angle-right%7Clarge</icon>
+      </controlProperties>
+    </control>
+    <control controlID="72" controlTypeID="com.balsamiq.mockups::Image" x="43" y="80" w="986" h="757" measuredW="1312" measuredH="950" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <crop>0%2C0%2C746%2C798</crop>
+        <src>./assets/1552518589.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="73" controlTypeID="com.balsamiq.mockups::Image" x="225" y="544" w="621" h="246" measuredW="769" measuredH="292" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/Home.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="74" controlTypeID="com.balsamiq.mockups::Canvas" x="225" y="482" w="621" h="-1" measuredW="100" measuredH="70" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <borderColor>7829367</borderColor>
+        <color>7829367</color>
+      </controlProperties>
+    </control>
+    <control controlID="75" controlTypeID="com.balsamiq.mockups::Image" x="225" y="267" w="621" h="223" measuredW="769" measuredH="292" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/dfhsheth.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="78" controlTypeID="com.balsamiq.mockups::Paragraph" x="620" y="608" w="219" h="132" measuredW="275" measuredH="80" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <color>16777215</color>
+        <size>12</size>
+        <text>Taladros%20sin%20cable%2C%20Taladros%20con%20cable%2C%20%20Sierras%2C%20%20Herramientas%20el%E9ctricas%2C%20Destornilladores%20el%E9ctricos%20Martillos%20perforadores%20Amoladoras%20el%E9ctrica%2C%20Lijadoras%20el%E9ctricas%2C%20Sierras%20circulares%20Cepillos%20el%E9ctricos%2C%20Fresadoras%20el%E9ctricas%2C%20Pistolas%20para%20pintar.</text>
+      </controlProperties>
+    </control>
+    <control controlID="79" controlTypeID="com.balsamiq.mockups::Label" x="636" y="576" w="-1" h="-1" measuredW="174" measuredH="24" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16776960</color>
+        <size>17</size>
+        <text>Herramientas%20Electricas</text>
+      </controlProperties>
+    </control>
+    <control controlID="80" controlTypeID="com.balsamiq.mockups::Paragraph" x="247" y="343" w="219" h="200" measuredW="275" measuredH="80" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <color>16777215</color>
+        <size>12</size>
+        <text>Alicates%20Universales%2C%20Alicates%20de%20Corte%2C%20Alicates%20de%20Puntas%2C%20Atornilladores%2C%20Picotas%20Chuzos%2C%20Escaleras%20y%20Carretillas%2C%20Esp%E1tulas%2C%20Esp%E1tulas%2C%20Formones%2C%20Juegos%20de%20Llaves%2C%20Llaves%20Ajustables%2C%20Llaves%20Francesas%2C%20Llaves%20Punta%20Corona%2C%20Martillos%2C%20Mazos%2C%20Combos%20Martillos%2C%20Mazos%2C%20Organizadores%20y%20cajas%20de%20Herramientas%2C%20Palas%20y%20Hachas%2C%20Prensas%20Prensas%2C%20Cuchillos%20Cartoneros%2C%20Otros%20Accesorios</text>
+      </controlProperties>
+    </control>
+    <control controlID="81" controlTypeID="com.balsamiq.mockups::Label" x="247" y="311" w="-1" h="-1" measuredW="171" measuredH="24" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16776960</color>
+        <size>17</size>
+        <text>Herramientas%20Manuales</text>
+      </controlProperties>
+    </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::Icon" x="846" y="493" w="-1" h="-1" measuredW="48" measuredH="48" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>angle-right%7Clarge</icon>
+      </controlProperties>
+    </control>
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::Icon" x="45" y="569" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>google%7Cmedium</icon>
+      </controlProperties>
+    </control>
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::Icon" x="37" y="393" w="-1" h="-1" measuredW="48" measuredH="48" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>facebook%7Clarge</icon>
+      </controlProperties>
+    </control>
+    <control controlID="85" controlTypeID="com.balsamiq.mockups::Icon" x="45" y="472" w="-1" h="-1" measuredW="48" measuredH="48" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>whatsapp%7Clarge</icon>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
