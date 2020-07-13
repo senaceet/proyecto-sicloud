@@ -221,7 +221,7 @@ $
                     </thead>
                     <tbody>
                         <!-- Los nombres que estan en [''] son los mismos de los atributos de la base de datos de lo contrario dara un error -->
-                        <td><img class="img-profile ml-3 rounded-circle mx-auto" src="fonts/us/<?php echo $row['foto']; ?>" alt="Card image cap" width="70"></td>
+                        <td><img class="img-profile ml-3 rounded-circle mx-auto" src="fonts/us/<?php echo $row['foto']; ?>" alt="Card image cap" height="65" width="70"></td>
                         <td><?php echo $row['FK_tipo_doc'] ?></td>
                         <td><?php echo $row['ID_us'] ?></td>
                         <td><?php echo $row['nom1'] ?></td>
