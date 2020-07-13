@@ -147,6 +147,7 @@ if (isset($_POST['submit'])) {
     if ($_POST['accion'] == 'insetUsuario') {
         $f =  Usuario::fechaActual();
         include_once '../session/sessiones.php';
+        include_once '../clases/class.puntos.php';
         $ID_us = $_POST['ID_us'];
         $nom1 = $_POST['nom1'];
         $nom2 = $_POST['nom2'];
@@ -163,11 +164,10 @@ if (isset($_POST['submit'])) {
         $ruta = $_FILES['foto']['tmp_name'];
         $destino = '../fonts/us/'.$foto;
         copy($ruta, $destino);
-        Usuario::inserTfoto($destino, $ID_us);
+       $i = Usuario::inserTfoto($destino, $ID_us);
 
-
-
-
+    
+     
 
 
         // captura de rol_usuario
@@ -177,9 +177,27 @@ if (isset($_POST['submit'])) {
         $fecha_as = $f;
         $estado = "0";
 
+
+   // }
         // Insersion a usuario
         $usuario = new Usuario($ID_us,  $nom1, $nom2, $ape1, $ape2, $fecha, $pass, $foto, $correo, $FK_tipo_doc);
-        $r = $usuario->insertUsuario();
+        $r1 = $usuario->insertUsuario();
+
+
+
+        if($r1 = true){
+            $puntos = 2;
+            $fecha = Usuario::fechaActual(); 
+            echo "estoy en if de puntos";
+                $punto = new Puntos($puntos , $fecha);
+                $r   = $punto->insertPuntos($ID_us, $FK_tipo_doc);
+            }
+     
+
+
+
+
+
         if ($r = true) {
 
             // despues de insertar usuario realiza insersion a rol
@@ -210,9 +228,9 @@ if (isset($_POST['submit'])) {
                 echo print_r($not);
                 header("location: ../CU002-registrodeUsuario.php ");
             } // fin de mesage 
-
+header("location:../index.php ");
         }
-    } // metodo insert
+    }// metodo insert
 
 
     //-------------------------------------------------------------------------------------------------------------
