@@ -1,0 +1,11 @@
+Modificaciones pendientes
+
+
+Crear dos tablas mas para solisitud de pedidos "para que cree notificacion a vendedor y muestre el campo a modificar"
+Inserta en el modulo de admin, redireccion a todos los crud
+Crear metodo de insersion de telefono y direccion al registro del usuario
+Crear alerta de productos bajos para bodega
+Crear metodo que inserte notificacion a comercial cada vez que haya una compra
+Crear metodo que registre cada cambio con usuario y fecha
+Colocar mas if en el login ej "camo basio", 
+Pruebas funcionales
