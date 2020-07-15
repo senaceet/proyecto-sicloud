@@ -111,7 +111,7 @@ include_once 'session/sessiones.php';
                                                                     
                                                                     
                                                                     </p>
-                                <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Comprar</a>
+                                <a href="carrito.php?id=<?php echo  $row['ID_prod'] ?>" class="btn btn-primary">Comprar</a>
                             </div>
                         </div>
         </div>

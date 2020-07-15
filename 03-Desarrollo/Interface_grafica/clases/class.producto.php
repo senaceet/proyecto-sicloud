@@ -155,6 +155,19 @@ JOIN empresa_provedor ON FK_rut = ID_rut WHERE P.ID_prod = '$id' LIMIT 1";
     }
 
 
+    static function verProductosIdCarrito($id)
+    {
+        include_once 'class.conexion.php';
+        $db = new Conexion;
+        $sql = "SELECT P.img , P.ID_prod , P.nom_prod , P.stok_prod , P.descript , P.val_prod , P.estado_prod , C.nom_categoria, T_M.nom_medida
+        from producto P join categoria C on P.CF_categoria = C.ID_categoria 
+        join tipo_medida T_M on P.CF_tipo_medida = T_M.ID_medida WHERE P.ID_prod = '$id' ";
+        //            SELECT * FROM SICLOUD.producto  WHERE ID_prod = '9808953743';
+        $result = $db->query($sql);
+        return $result;
+
+    }
+
 
     //EDITAR PRODUCTO                                             U
     public function editarProducto($id)

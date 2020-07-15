@@ -288,7 +288,7 @@ if(isset($_GET['stockGeneral'])){
                             <tbody>
                                 <tr>
                                     <td><?php echo $row['nom_prod'] ?></td>
-                                    <td><?php echo "$".number_format(($row['val_prod']),0, ',','.' )   ; ?></td>
+                                    <td><?php echo $row['val_prod'] ?></td>
                                     <td class=" <?php echo  $c  ?>"><?php echo $row['stok_prod'] ?></td>
                                     <td><?php echo $row['estado_prod'] ?></td>
                                     <td><?php echo $row['nom_categoria'] ?></td>

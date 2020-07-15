@@ -73,7 +73,7 @@ include_once '../../clases/class.notificacion.php';
           <strong><?php if (isset($_SESSION['usuario'])) {
                     echo  $_SESSION['usuario']['nom1'];
                     ?></strong>
-<img class="img-profile ml-3 rounded-circle" src="../../fonts/us/<?php echo $_SESSION['usuario']['foto'] ;   ?>" height="65" width="70">
+<img class="img-profile ml-3 rounded-circle" src="../../fonts/us/<?php echo $_SESSION['usuario']['foto'] ;   ?>" width="60">
                     <?php   } ?>
         </a>
         <!-- Dropdown - User Information -->
