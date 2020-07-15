@@ -27,18 +27,18 @@ if(isset($_GET['id'])){
     
     <div class="col-md-12 mt-5">
         <div class="row">
-            <div class="card card-body col-md-12 mx-auto">
+            <div class="card card-body col-md-10 mx-auto">
             <div class="row">
         
-            <div class="card col-md-6 mx-1 mx-auto mb-lg-8">
+            <div class=" col-md-6 mx-1 mx-auto mb-lg-8">
                        <img class="card-body  mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="260px" width="300px">
                 </div>
-                <div class="card col-md-6 mx-1 mx-auto "> 
+                <div class="card col-md-6 mx-1 mx-auto shadow "> 
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $row['nom_prod']  ?></h5>
             
                         <p class="card-text lead"><?php $c = $row['val_prod'];
-                                                                    echo "36 cuotas " . "$".number_format(($c / 36),1, ',','.') . " Sin interes";
+                                                                    echo "$".number_format(($c),0, ',','.') ;
                                                                    if( $row['estado_prod'] == "promocion"){
                                                                     echo "<br>".  $row['estado_prod']."<br>" ;
                                                                    } ?></strong></p>
