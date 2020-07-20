@@ -82,7 +82,7 @@ include_once 'notificacion/notificacionN1.php';
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" >
                 
                   <strong><?php  if(isset($_SESSION['usuario'])){ echo  $_SESSION['usuario']['nom1'];   ?></strong>
-                <img class="img-profile ml-3 rounded-circle" src="./fonts/us/<?php echo $_SESSION['usuario']['foto'] ;   ?>" width="60">
+                <img class="img-profile ml-3 rounded-circle" src="./fonts/us/<?php echo $_SESSION['usuario']['foto'] ;   ?>" width="70" height="65">
                     <?php  } ?>
    
               </a>
