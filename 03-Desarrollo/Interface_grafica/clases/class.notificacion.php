@@ -29,7 +29,7 @@ class Notificacion
         include_once 'class.conexion.php';
         $c = new Conexion;
         $sql = "INSERT into sicloud.notificacion( estado, descript, FK_rol , FK_not ) 
-VALUES ('$this->estado', $this->descript , '$this->FK_rol', '$this->FK_not')";
+VALUES ('$this->estado', '$this->descript' , '$this->FK_rol', '$this->FK_not')";
         $insert = $c->query($sql);
         echo $sql;
         if ($insert) {
