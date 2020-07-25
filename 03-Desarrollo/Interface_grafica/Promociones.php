@@ -83,34 +83,12 @@ include_once 'clases/class.categoria.php';
     </div>
 
 
-
+    <h5 class = "mx-auto text-center my-4 e">Promocion por tiempo limitado !!</h5>
     <div class="col-lg-10   card card-body mx-auto">
 
         <div class="card card-body shadow">
             <div class="row">
-                <div class="col-lg-6">
-                    <!-- linea 1 -->
-                    <form class="form-inline">
-                        <em class="ml-5"><a class="text-secondary" href="catalogo.php">Digite producto</a></em>
-                        <input class="form-control" type="search" placeholder="Busqueda" aria-label="Search" name="busqueda">
-                        <button class="btn btn-outline-success " type="submit">Buscar</button>
-                    </form>
-                </div><!-- fin de primera divicion -->
-                <div class="col-lg-6">
-                    <!-- linea 2 -->
-                    <form class="form-inline">
-                        <em class="ml-5"> <a class="text-secondary" href="catalogo.php">Seleccione categoria</a></em>
-                        <select name="cat" id="" class="form-control ">
-                            <?php
-                            $c = Categoria::verCategoria();
-                            while ($row = $c->fetch_array()) {
-                            ?>
-                                <option value="<?php echo $row['ID_categoria']  ?>"><?php echo $row['nom_categoria']    ?></option>
-                            <?php } ?>
-                        </select>
-                        <button class="btn btn-outline-success " type="submit">Buscar</button>
-                    </form>
-                </div><!-- fin de Segunda divicion -->
+              
             </div><!-- fin de row -->
         </div><!-- fin de card de busqda -->
 
@@ -153,9 +131,9 @@ include_once 'clases/class.categoria.php';
                                 <p class="card-text lead"><strong><?php echo "$".number_format(($row['val_prod']),0, ',','.' )   ; ?></strong></p>
                                 <p class="card-text text-success"><?php $c = $row['val_prod'];
                                                                     echo "36 cuotas " . "$".number_format(($c / 36),1, ',','.') . " Sin interes";
-                                                                   if( $row['estado_prod'] == "promocion"){
+                                                                   if( $row['estado_prod'] == 'Promoción'){
                                                                     echo "<br>".  $row['estado_prod']."<br>" ;
-                                                                   } ?>
+                                                                   }else{echo "<br><br>";} ?>
                                                                     
                                 <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary my-2">Comprar</a>
                             </div>
@@ -166,21 +144,6 @@ include_once 'clases/class.categoria.php';
     </table>
 
 
-    <div class="col-md-12 ">
-        <div class="row mt-5 mx-auto">
-            <div class="col-md-12">
-                <nav aria-label="Page navigation example mx-auto ">
-                    <ul class="pagination mx-auto">
-                        <li class="page-item"><a class="page-link" href="CU008-catalogodeproductos.php">Anterior</a></li>
-                        <li class="page-item"><a class="page-link" href="CU008-catalogodeproductos.php">1</a></li>
-                        <li class="page-item"><a class="page-link" href="CU008-catalogodeproductospage2.php">2</a></li>
-                        <li class="page-item"><a class="page-link" href="CU008-catalogodeproductospage2.php">Siguiente</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
-    </div>
     </div><!-- fin de row -->
 </div><!-- fin de col md-12 -->
 </div>

@@ -197,7 +197,7 @@ class Usuario
   {
     include_once 'class.conexion.php';
     $c = new Conexion();
-    $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, R.nom_rol, U.pass, U.foto, U.correo, R_U.estado
+    $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, R.nom_rol, U.pass, U.foto, U.correo, R_U.estado , U.fecha
     FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
    JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n WHERE ID_us = $id ";
     $result = $c->query($sql);

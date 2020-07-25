@@ -1,6 +1,6 @@
 <?php
 
-//include_once 'class.conexion.php';
+include_once 'class.conexion.php';
 
 class Factura
 {
@@ -170,7 +170,7 @@ group by dia";
     // Ver datos  usuario en factura
     static function verUsuarioFactura($id)
     {
-        include_once 'class.conexion.php';
+      
         $cnx = new Conexion;
         $sql = "SELECT U.nom1, U.nom2, U.ape1, U.ape2 , T.tel , D.dir
 from  usuario U join telefono T on T.CF_us = U.ID_us
@@ -180,4 +180,40 @@ limit 1";
         $result = $cnx->query($sql);
         return $result;
     }
+
+
+
+    static function verFactura($id){
+        $c = new Conexion;
+        $sql = "SELECT   U.nom2 , U.ape1 , U.ape2 , U.correo , U.nom1 , F.ID_factura, F.fecha   , D.dir , TP.nom_tipo_pago , DF.cantidad , Pr.val_prod , TD.nom_doc , U.ID_us
+        from factura F join tipo_pago TP on F.FK_c_tipo_pago = TP.ID_tipo_pago
+        join det_factura DF on F.ID_factura = DF.FK_det_factura
+        join producto Pr on Pr.ID_prod = DF.FK_det_prod
+        join usuario U  on U.ID_us =  DF.CF_us
+        join direccion D on D.CF_us = U.ID_us
+        join tipo_doc TD on U.FK_tipo_doc = TD.ID_acronimo
+        where ID_factura = '$id'
+        limit 1";
+        $result = $c->query($sql);
+        return $result;
+    }
+
+
+
+    
+    static function verFactural($id){
+        $c = new Conexion;
+        $sql = "SELECT  U.nom2 , U.ape1 , U.ape2 , U.correo , U.nom1 , F.ID_factura, F.fecha   , D.dir , TP.nom_tipo_pago , DF.cantidad , Pr.val_prod , Pr.nom_prod
+        from factura F join tipo_pago TP on F.FK_c_tipo_pago = TP.ID_tipo_pago
+        join det_factura DF on F.ID_factura = DF.FK_det_factura
+        join producto Pr on Pr.ID_prod = DF.FK_det_prod
+        join usuario U  on U.ID_us =  DF.CF_us
+        join direccion D on D.CF_us = U.ID_us
+        where ID_factura = '$id'";
+        $result = $c->query($sql);
+        return $result;
+    }
 }
+
+
+

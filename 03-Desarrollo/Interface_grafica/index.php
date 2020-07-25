@@ -38,6 +38,10 @@ include_once 'session/sessionIni.php';
             </a>
             </div>
         </div>
+
+
+
+        
         <div class="p-2 col-sm-12 col-md-4 col-lg-3 col-xl-4">
             <div class="card card-body text-center bg-dark text-white">
                 <h3>Inicia Sesion</h3><br>
@@ -63,6 +67,9 @@ include_once 'session/sessionIni.php';
                 
             </div><!-- Fin de card form -->
 
+
+
+            
             <?php
             if (isset($_SESSION['message'])) {
             ?>
@@ -83,6 +90,8 @@ include_once 'session/sessionIni.php';
     </div>
 
 
+    
+
     <div class="col-md-12 mt-5">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12" >
@@ -101,6 +110,17 @@ include_once 'session/sessionIni.php';
             </div>
         </div>
     </div>
+
+    <div class="col-lg-10  col-auto my-4  mx-auto card card-body bg-dark">
+
+    <video class="mx-auto my-1 shadow col-auto bostonVideo " width="600" controls>
+        <source src="boston.mp4" type="video/mp4">
+    </video>
+    <script src="js/app.js"></script>
+
+    </div>
+
+
 
 
     <div class="col-md-12 mt-5">

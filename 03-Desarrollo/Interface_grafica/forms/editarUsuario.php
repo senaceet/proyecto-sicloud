@@ -117,7 +117,7 @@ cardtitulo("Actualizar datos de Usuarios");
                     </div>
                 </div><br>
                 <h5>Fecha de nacimiento: </h5>
-                <input class="form-control" type="date" name="fecha" value="<?php echo $row['fecha'] ?>"><br>
+                <input class="form-control" type="date" name="text" value="<?php echo $row['fecha'] ?>"><br>
                 <h5>Digite su contraseña: </h5>
                 <input class="form-control" type="password" name="pass" value="<?php echo $row['pass'] ?>" required autofocus maxlength="25"><br>
                 <h5> Foto </h5>

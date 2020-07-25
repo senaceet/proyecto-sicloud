@@ -114,7 +114,7 @@ order by P.nom_prod asc;
         $db = new Conexion;
         $sql = "SELECT P.ID_prod , P.img , P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod , C.nom_categoria , M.nom_medida
          from sicloud.producto P join sicloud.categoria C on C.ID_categoria = P.CF_categoria
-         join sicloud.tipo_medida M on P.CF_tipo_medida = M.ID_medida where estado_prod = 'promocion'
+         join sicloud.tipo_medida M on P.CF_tipo_medida = M.ID_medida where estado_prod = 'Promoción'
         order by P.nom_prod asc ";
         $result = $db->query($sql);
         return $result;
@@ -154,19 +154,6 @@ JOIN empresa_provedor ON FK_rut = ID_rut WHERE P.ID_prod = '$id' LIMIT 1";
         return $a;
     }
 
-
-    static function verProductosIdCarrito($id)
-    {
-        include_once 'class.conexion.php';
-        $db = new Conexion;
-        $sql = "SELECT P.img , P.ID_prod , P.nom_prod , P.stok_prod , P.descript , P.val_prod , P.estado_prod , C.nom_categoria, T_M.nom_medida
-        from producto P join categoria C on P.CF_categoria = C.ID_categoria 
-        join tipo_medida T_M on P.CF_tipo_medida = T_M.ID_medida WHERE P.ID_prod = '$id' ";
-        //            SELECT * FROM SICLOUD.producto  WHERE ID_prod = '9808953743';
-        $result = $db->query($sql);
-        return $result;
-
-    }
 
 
     //EDITAR PRODUCTO                                             U
@@ -349,5 +336,19 @@ nom_prod  LIKE '%$buscar%'
         if ($e) {
             header("location: ../CU004-crearproductos.php");
         }
+    }
+
+
+    static function verProductosIdCarrito($id)
+    {
+        include_once 'class.conexion.php';
+        $db = new Conexion;
+        $sql = "SELECT P.img , P.ID_prod , P.nom_prod , P.stok_prod , P.descript , P.val_prod , P.estado_prod , C.nom_categoria, T_M.nom_medida
+        from producto P join categoria C on P.CF_categoria = C.ID_categoria 
+        join tipo_medida T_M on P.CF_tipo_medida = T_M.ID_medida WHERE P.ID_prod = '$id' ";
+        //            SELECT * FROM SICLOUD.producto  WHERE ID_prod = '9808953743';
+        $result = $db->query($sql);
+        return $result;
+
     }
 }// FIN DE CLASES PRODUCTO

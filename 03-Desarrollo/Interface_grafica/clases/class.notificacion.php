@@ -29,7 +29,7 @@ class Notificacion
         include_once 'class.conexion.php';
         $c = new Conexion;
         $sql = "INSERT into sicloud.notificacion( estado, descript, FK_rol , FK_not ) 
-VALUES ('$this->estado', '$this->descript' , '$this->FK_rol', '$this->FK_not')";
+VALUES ('$this->estado', $this->descript , '$this->FK_rol', '$this->FK_not')";
         $insert = $c->query($sql);
         echo $sql;
         if ($insert) {
@@ -106,16 +106,6 @@ VALUES ('$this->estado', '$this->descript' , '$this->FK_rol', '$this->FK_not')";
 
 
 
-    static function verNotificacion1(){
-        include_once 'class.conexion.php';
-        $c = new Conexion;
-        $sql = "SELECT * FROM notificacion ";
-        $result =$c->query($sql);
-        return $result;
-
-    }
-
-
     // eliminar notificaciones de usuario --------------------------------------------------
     public function deleteNotificacionAdmin($ID_not)
     {
@@ -145,18 +135,6 @@ VALUES ('$this->estado', '$this->descript' , '$this->FK_rol', '$this->FK_not')";
         } // fin de if $res2
 
     } // fin de metodo eliminar notificaciones-----------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }// FIN DE CLASE USUARIO

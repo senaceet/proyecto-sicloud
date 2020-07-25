@@ -37,7 +37,7 @@ if(isset($_GET['id'])){
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $row['nom_prod']  ?></h5>
             
-                        <p class="card-text lead"><?php $c = $row['val_prod'];
+                        <p class="card-text lead"><strong><?php $c = $row['val_prod'];
                                                                     echo "$".number_format(($c),0, ',','.') ;
                                                                    if( $row['estado_prod'] == "promocion"){
                                                                     echo "<br>".  $row['estado_prod']."<br>" ;
