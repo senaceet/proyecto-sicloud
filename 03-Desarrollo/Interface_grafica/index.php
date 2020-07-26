@@ -56,8 +56,8 @@ include_once 'session/sessionIni.php';
                             <?php    }   ?>
                         </select>
                     </div>
-                    <div class="form-group"><input class="form-control" placeholder="Numero de documento" type="text" name="nDoc"></div>
-                    <div class="form-group"><input class="form-control" placeholder="Contraseña" type="password" name="pass"></div>
+                    <div class="form-group"><input class="form-control" placeholder="Numero de documento" type="text" pattern="[A-Za-z0-9_-]{1}{15}" required name="nDoc" ></div>
+                    <div class="form-group"><input class="form-control" placeholder="Contraseña" type="password"  pattern="[A-Za-z0-9_-]{1}{15}" required name="pass" ></div>
                     <a href="CU0010-recuperarContrasena.php">¿ Olvido Contraseña ?</a><br><br>
                     <input type="hidden" name="accion" value="login">
                     <input type="submit" name="btnLogin" value="Ingresar" class="form-control btn btn-primary"><br><br>

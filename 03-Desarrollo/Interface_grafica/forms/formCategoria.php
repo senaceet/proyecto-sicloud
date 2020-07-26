@@ -8,6 +8,20 @@ include_once '../metodos/get.php';
 include_once '../session/sessiones.php';
 ?>
 
+
+<script>
+    function eliminarCategria(id_to_delete){
+        var confirmacion = 
+confirm('Esta seguro que desea elminar categoria con id: ' + id_to_delete + ' ?');
+if(confirmacion){
+window.location = "../metodos/get.php?accion=eliminarCategoria&&id="+ id_to_delete;
+}
+
+   }
+</script>
+
+
+
 <div class="container-fluid col-md col-xl-7">
     <div class="row">
         <!-- formulario de registro -->
@@ -59,7 +73,7 @@ include_once '../session/sessiones.php';
                     <td>
                         <a href="   ../forms/formEdicionCategoria.php?id=<?php echo $row['ID_categoria'] ?> " class="btn btn-circle btn-secondary">
                             <i class="fas fa-marker"></i>
-                            <a href="../metodos/get.php?accion=eliminarCategoria&&id=<?php echo $row['ID_categoria'] ?>" class="btn btn-circle btn-danger">
+                            <a onclick="eliminarCategria(<?php echo $row['ID_categoria'] ?>)" href="#"  class="btn btn-circle btn-danger">
                                 <i class="far fa-trash-alt"></i>
                             </a>
                     </td>

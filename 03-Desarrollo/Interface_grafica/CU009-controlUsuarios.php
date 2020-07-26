@@ -42,9 +42,17 @@ if ($in == false) {
 
 
 
+    <script>
+        function desactivarCuenta(id_to_delete) {
+            var confirmation = confirm('Esta seguro que decea descativar la cuenta con id: ' + id_to_delete + ' ?');
+            if (confirmation) {
+                window.location = "metodos/get.php?accion=desactivarUsuario&&id=" + id_to_delete;
+            }
+        }
+    </script>
+
     <div class="card card-body col-md-8 mx-auto my-2 text-center">
         <div class="card-title">Filtros</div>
-
         <div class="row">
 
 
@@ -55,7 +63,9 @@ if ($in == false) {
                 <div class="card card-body mx-auto col-10 my-2 shadow border">
                     <!-- form por id -->
                     <form action="CU009-controlUsuarios.php" method="GET">
-                        <div class="form-group"><input type="text" class="form-control " placeholder="ID usuario " name="documento"></div>
+                        <div class="form-group"><input type="text" class="form-control " placeholder="ID usuario " name="documento" value="<?php if (isset($_GET['documento'])) {
+                                                                                                                                                echo   $_GET['documento'];
+                                                                                                                                            } ?>"></div>
                         <input type="hidden" value="bId" name="accion">
                         <div class="form-group "><input class="btn btn-primary form-control " type="submit" value="Buscar id"></div>
                     </form>
@@ -112,14 +122,11 @@ if ($in == false) {
             </div><!-- fin de tercera divicion -->
 
             <!-- -------------------------------------------------------------- -->
-
         </div><!-- fin de row -->
     </div>
 
 
-
     <?php
-
     //--- EVENTOS DE FORMULARIO----------------------------------------------------------------------
 
     // Filtro por id
@@ -136,7 +143,6 @@ if ($in == false) {
             $_SESSION['color'] = "danger";
         } // fin de consulta por id
     } // fin de isset accion
-
 
 
     // Filtro por estado de cuenta
@@ -184,19 +190,15 @@ if ($in == false) {
 
 
 
-    $
+
 
     <?php
-
-
     if ((isset($datos))  && ($tabla == true)) { ?>
 
         <div class="col-lg-12">
             <div class="table-responsive">
-
                 <table id="example" style="width:100%" class=" col-lg-12  table-bordered  table-striped bg-white   mx-auto">
                     <thead>
-
                         <tr>
                             <th>Foto</th>
                             <th>Tipo doc</th>
@@ -206,17 +208,14 @@ if ($in == false) {
                             <th>P. Apellido</th>
                             <th>S. Apellido</th>
                             <th>Rol</th>
-
                             <th>Correo</th>
                             <th>Estado</th>
                             <th>Accion</th>
                         </tr>
 
                         <?php
-
                         while ($row = $datos->fetch_array()) {
                         ?>
-
                             </tr>
                     </thead>
                     <tbody>
@@ -229,18 +228,17 @@ if ($in == false) {
                         <td><?php echo $row['ape1'] ?></td>
                         <td><?php echo $row['ape2'] ?></td>
                         <td><?php echo $row['nom_rol'] ?></td>
-
                         <td><?php echo $row['correo'] ?></td>
                         <td><?php if ($row['estado'] == 1) {
-                                echo "activo";
+                                echo "Activo";
                             } else {
-                                echo "incativo";
+                                echo "Inactivo";
                             }  ?></td>
                         <td>
                             <a href="forms/editarUsuario.php?id= <?php echo $row['ID_us'] ?> " class="btn btn-secondary btn-circle"><i class="fas fa-marker"></i></a>
                             <?php if ($_SESSION['usuario']['ID_rol_n'] == 1) {     ?>
                                 <a href="metodos/get.php?accion=aprobarUsuario&&id= <?php echo $row['ID_us']   ?>" class="btn btn-circle btn-success"><i class="fas fa-check-square"></i> </a>
-                                <a href="metodos/get.php?accion=desactivarUsuario&&id=  <?php echo $row['ID_us']   ?>  " class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
+                                <a onclick="desactivarCuenta( <?php echo $row['ID_us']   ?> )" href="#" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
                             <?php }  ?>
                         </td>
                     </tbody>
@@ -260,55 +258,48 @@ if ($in == false) {
         </div><!-- fin de primera divicion -->
 
 
-  
-                <?php
-                 $activos = Usuario::conteoUsuariosActivos();
-                $inctivos = Usuario::conteoUsuariosInactivos();
-                $totaUs = Usuario::conteoUsuariosTotal();
-                
-                
-                
-                ?>
-               
 
-
-   
+        <?php
+        $activos = Usuario::conteoUsuariosActivos();
+        $inctivos = Usuario::conteoUsuariosInactivos();
+        $totaUs = Usuario::conteoUsuariosTotal();
 
 
 
+        ?>
 
 
-        <div class="card card-body col-md-11 mx-auto my-4 text-center ">
-        <h5 class= "my-2">Usuarios</h5>
+        <div class="card card-body col-lg-11 mx-auto my-4 text-center ">
+            <h5 class="my-2">Usuarios</h5>
             <div class="row col-lg-10 mx-auto">
 
 
-            
+
 
                 <!-- -------------------------------------------------------------- -->
 
                 <div class=" col-md-4  mx-auto card card-body shadow">
-                <div class="form-group  col-lg-10 row">
-                    <label class = "col-sm-10" for="">Activos</label>
-                    <input class="form-control col-lg-2" type="text" value="<?php echo $activos ?>" disabled>
+                    <div class="form-group  col-lg-10 row">
+                        <label class="col-sm-9" for="">Activos</label>
+                        <input class="form-control col-sm-3" type="text" value="<?php echo $activos ?>" disabled>
                     </div>
                 </div>
 
                 <div class=" col-md-4  mx-auto card card-body shadow">
-                <div class="form-group  col-lg-10 row">
-                    <label class = "col-sm-10" for="">Inactivos</label>
-                    <input class="form-control col-lg-2" type="text" value="<?php echo $inctivos ?>" disabled>
+                    <div class="form-group  col-lg-10 row">
+                        <label class="col-sm-9" for="">Inactivos</label>
+                        <input class="form-control col-sm-3" type="text" value="<?php echo $inctivos ?>" disabled>
                     </div>
                 </div>
 
                 <div class=" col-md-4  mx-auto card card-body shadow">
-                <div class="form-group  col-lg-10 row">
-                    <label class = "col-sm-10" for="">Registrados</label>
-                    <input class="form-control col-lg-2" type="text" value="<?php echo $totaUs ?>" disabled>
+                    <div class="form-group  col-lg-10 row">
+                        <label class="col-sm-9" for="">Registrados</label>
+                        <input class="form-control col-sm-3" type="text" value="<?php echo $totaUs ?>" disabled>
                     </div>
                 </div>
-                
-               
+
+
 
 
                 <!-- -------------------------------------------------------------- -->
@@ -316,38 +307,39 @@ if ($in == false) {
 
 
 
-            
-        <div class="card card-body col-md-12 mx-auto my-4 text-center shadow">
-            <div class="row">
 
-                <!-- -------------------------------------------------------------- -->
+            <div class="card card-body col-md-12 mx-auto my-4 text-center shadow">
+                <div class="row">
 
-                <div class=" col-md-3  mx-auto">
-                    <a class="btn-block btn btn-dark" href="">Imprimir</a>
+                    <!-- -------------------------------------------------------------- -->
+
+                    <div class=" col-md-3 my-2 mx-auto">
+                        <a class="btn-block btn btn-dark" href="">Imprimir</a>
+                    </div>
+                    <div class=" col-md-3 my-2 mx-auto">
+                        <a class="btn-block btn btn-dark" href="">Exportar</a>
+                    </div>
+                    <div class=" col-md-3 my-2 mx-auto">
+                        <a class="btn-block btn btn-dark" href="forms/formTelefono.php">Directorio telefonico</a>
+                    </div>
+                    <div class=" col-md-3 my-2 mx-auto">
+                        <a class="btn-block btn btn-dark" href="">Directorio direcciones</a>
+                    </div>
+
+
+                    <!-- -------------------------------------------------------------- -->
                 </div>
-                <div class=" col-md-3  mx-auto">
-                    <a class="btn-block btn btn-dark" href="">Exportar</a>
-                </div>
-                <div class=" col-md-3  mx-auto">
-                    <a class="btn-block btn btn-dark" href="forms/formTelefono.php">Directorio telefonico</a>
-                </div>
-                <div class=" col-md-3  mx-auto">
-                    <a class="btn-block btn btn-dark" href="">Directorio direcciones</a>
-                </div>
-
-
-                <!-- -------------------------------------------------------------- -->
-            </div></div>
-
-  
-
- 
-        </div>  
+            </div>
 
 
 
 
-        
+        </div>
+
+
+
+
+
 
     <?php
 

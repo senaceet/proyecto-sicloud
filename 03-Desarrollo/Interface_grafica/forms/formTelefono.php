@@ -19,6 +19,17 @@ include_once '../session/valsession.php';
 
 
 ?>
+
+
+
+<script>
+function eliminarT(id_tel){
+    var conf = 
+confirm('Esta seguro de eliminar el telefono con el id=' + id_tel + ' ?');
+
+}
+
+</script>
     <?php cardtituloS("Directorio telefonico") ?>
 
 
@@ -210,8 +221,8 @@ include_once '../session/valsession.php';
                         <td>
                             <a href="forms/editarUsuario.php?id= <?php echo $row['ID_us'] ?> " class="btn btn-secondary btn-circle"><i class="fas fa-marker"></i></a>
                             <?php if ($_SESSION['usuario']['ID_rol_n'] == 1) {     ?>
-                                <a href="metodos/get.php?accion=aprobarUsuario&&id= <?php echo $row['ID_us']   ?>" class="btn btn-circle btn-success"><i class="fas fa-check-square"></i> </a>
-                                <a href="metodos/get.php?accion=desactivarUsuario&&id=  <?php echo $row['ID_us']   ?>  " class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
+                                <a  href="metodos/get.php?accion=aprobarUsuario&&id= <?php echo $row['ID_us']   ?>" class="btn btn-circle btn-success"><i class="fas fa-check-square"></i> </a>
+                                <a onclick="eliminarT(<td><?php echo $row['id_tel'] ?></td>)" href="#" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
                             <?php }  ?>
                         </td>
                     </tbody>
@@ -221,13 +232,8 @@ include_once '../session/valsession.php';
                     }// fin de comprobasion de $us = true
 
 
-
-
-
-                  
                         if($em ==  true){
-                         ?>
-                 
+                         ?>                 
                          <div class="col-lg-12">
                              <div class="table-responsive">
                  

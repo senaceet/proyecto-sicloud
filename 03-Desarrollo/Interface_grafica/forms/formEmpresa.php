@@ -11,6 +11,15 @@ include_once '../session/sessiones.php';
 cardtitulo("Empresa");
 ?>
 
+<script>
+    function eliminarEm(id_em){
+        var confirmacion = confirm('Esta seguro de eliminar empresa con id: ' + id_em +' ?' );
+        if(confirmacion){
+            window.location ="../metodos/get.php?accion=eliminarEmpresa&&id=" + id_em ;
+        }
+    }
+</script>
+
 <div class="container-fluid col-md col-xl-7">
     <div class="row">
         <!-- formulario de registro -->
@@ -27,8 +36,6 @@ cardtitulo("Empresa");
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
-
 
             <?php setMessage();
             } ?>
@@ -55,8 +62,6 @@ cardtitulo("Empresa");
                         <th>Nombre</th>
                         <th>Accion</th>
                         <?php
-
-
                         //$medida = Medida::ningunDatoM();
                         $datos  = Empresa::verEmpresa();
                         if (isset($datos)) {
@@ -72,8 +77,8 @@ cardtitulo("Empresa");
 
                     <!-- formEdicion.php?accion=editarMedia&&id=<?php// echo $row['ID_medida'] ?> -->
                     <td>
-                        <a href="   ../forms/formEdicionEmpresa.php?id=<?php echo $row['ID_rut'] ?> " class="btn btn-circle btn-secondary"><i class="fas fa-marker"></i></a>
-                        <a href="../metodos/get.php?accion=eliminarEmpresa&&id=<?php echo $row['ID_rut'] ?>" class="  btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
+                        <a  href="../forms/formEdicionEmpresa.php?id=<?php echo $row['ID_rut'] ?> " class="btn btn-circle btn-secondary"><i class="fas fa-marker"></i></a>
+                        <a onclick="eliminarEm(<?php echo $row['ID_rut'] ?>)"  href="#" class="  btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
 
                         <!--  get.php?accion=editarMedia?id= -->
                         <!-- edit.php?id=<?//php  echo  $row['id_sitio']  ?> -->

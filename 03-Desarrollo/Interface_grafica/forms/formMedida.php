@@ -11,6 +11,17 @@ include_once '../session/valsession.php';
 cardtitulo("Medida");
 ?>
 
+
+<script>
+
+function eliminarMed(id_med){
+    var conf = confirm('Esta seguro de eliminar medida con id' + id_med + " ?");
+    if(conf){
+        window.location ="../metodos/get.php?accion=eliminarMedida&&id=" + id_med ;
+    }
+}
+</script>
+
 <div class="container-fluid col-md col-xl-6  ">
     <div class="row">
 
@@ -72,7 +83,7 @@ cardtitulo("Medida");
                     <td><?php echo $row['acron_medida'] ?></td>
                     <td>
                         <a href=" formEdicionMedida.php?accion=editarMedia&&id=<?php echo $row['ID_medida'] ?>; " class="btn btn-circle btn-secondary"><i class="fas fa-marker"></i></a>
-                        <a href="../metodos/get.php?accion=eliminarMedida&&id=<?php echo $row['ID_medida'] ?>" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
+                        <a onclick="eliminarMed(<?php echo $row['ID_medida'] ?>)" href="#" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tbody>
         <?php

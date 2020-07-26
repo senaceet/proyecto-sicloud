@@ -1,13 +1,6 @@
 <?php
-
-
-
 include_once 'session/sessiones.php';
 include_once 'session/valsession.php';
-
-
-
-
 //comprobacion de rol
 $in = false;
 if ($_SESSION['usuario']['ID_rol_n']   == 1) {
@@ -28,49 +21,48 @@ if ($in == false) {
     //------------------------------------------------------------------------------------
 
     include_once 'plantillas/plantilla.php';
-    include_once 'plantillas/cuerpo/inihtmlN1.php';
-    include_once 'plantillas/nav/navN1.php';
     include_once 'clases/class.usuario.php';
     include_once 'clases/class.factura.php';
     include_once 'clases/class.producto.php';
-
-
-
 
 ?>
     <!-- col 12 -->
 
 
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <?php //include_once 'js/scripts.php';  
+        include_once 'plantillas/cuerpo/inihtmlN1.php';
+        ?>
 
-    <div class="container-fluid col-md-8 my-4">
-        <div class="row">
-
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script type="text/javascript" src = "js/funcions.js"></script>
+    </head>
+    <body>
+        
+<div class="container-fluid col-md-8 my-4">
+   <div class="row">
             <!-- Formulario datos cliente---------------------------------------------------------------------------------------------- -->
             <div class="col-md-12">
                 <h2 class="my-4 e">Nueva venta</h2>
                 <p class="e">Datos de cliente</p>
                 <div class="card card-body">
-                    <form action="CU005-facturacion2.php">
+                    <form action="CU005-facturacion.php">
                         <button type="submit" class="btn btn-outline-success col-md-1 my-1 btn-sm">Buscar</button>
                         <div class="card card-body shadow">
-
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="form-group"><label for="">Cedula Cliente</label><input type="text" value= "<?php echo $_GET['ID']?>" class="form-control" name="ID" /></div>
-
+                                    <div class="form-group"><label for="">Cedula Cliente</label><input type="text" value= "" class="form-control" name="ID" id="nit_cliente" /></div>
                                 </div><!-- fin de primera divicion de 3 -->
 
-                
-
                     <?php
-                
                     if (isset($_GET['ID'])){
                         $id_us=$_GET['ID'];
                         $us = Factura::verUsuarioFactura($_GET['ID']);
                     while ($row = $us->fetch_assoc()) {
-
-
                     ?>
 
                         <div class="col-md-4">
@@ -82,9 +74,7 @@ if ($in == false) {
                         <div class="form-group col-md-12"><label for="">Direccion</label><input type=»text» readonly=»readonly» class="form-control" value="<?php echo $row['dir'] ?>" /></div>
                     <?php } } ?>
                 </div><!-- fin de div row -->
-
             </div><!-- fin de card -->
-
         </div><!-- fin de card -->
     </div>
     <!-- Formulario datos cliente---------------------------------------------------------------------------------------------- -->
@@ -100,17 +90,11 @@ if ($in == false) {
                 <div class="row">
                     <p>
                         <label for="">Vendedor</label><br>
-
                         <?php echo $_SESSION['usuario']['nom1'] . " " . $_SESSION['usuario']['ape1'] ?>
                     </p>
 
                     <div class="ml-auto"><label for="">Accion</label><br><a href="#" class="btn btn-danger  ">Anular</a></div>
-
-
-
-
                 </div><!-- fin de row -->
-
             </div><!-- fin de row -->
         </div><!-- fin de card -->
     </div><br><br>
@@ -126,68 +110,61 @@ if ($in == false) {
         <table class="table table-striped bg-bordered bg-white table-sm col-md-12 col-sm-4 col-xs-12 my-4 text-center mx-auto">
             <thead class="bg-dark text-white text-center">
                 <tr>
-                    <th>Codigo</th>
-                    <th>Accion</th>
+                    <th>Codigo</th>    
                     <th>Producto</th>
+                    <th>Existencia</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
-                   
+                    <th>Precio Total</th>
+                    <th>Accion</th>         
                 </tr>
             </thead>
 
             <tbody>
                 <tr>
-                   
-                    <td><input type="text" name = "id_p" class = "form-control mx-auto col-md-4"></td>
-                   
-                    <td>
-                        <input type="submit"  class = "btn btn-outline-success  my-1 btn-sm" value ="Buscar">
-                        </form>
-                        <input type="submit"  class = "btn btn-outline-success  my-1 btn-sm" value ="Agregar">
-                </td>
+                    <td><input type="text" name="txt_cod_producto" id="txt_cod_producto"></td>
+                    <td id= "txt_description">-</td>
+                    <td id= "txt_existencia">-</td>
+                    <td><input type="text" name="txt_cant_producto" id="txt_cant_producto" value="0" min="1"
+                    disabled></td>
+                    <td id="txt_precion" class="text-right">0.00</td>
+                    <td id="txt_precion" class="text-right">0.00</td>
+                    <td><a href="#" id="add_product_venta" class="btn btn-circle btn-success"><i class ="fass fa-plus"></i>
+                </a></td>
+                </tr>
 
                     <?php
-                    if (isset($_GET['id_p'])) {
-                        $datos = Producto::verProductosId($_GET['id_p']);
-                        while ($row = $datos->fetch_array()) {
+                   // if (isset($_GET['id_p'])) {
+                   //     $datos = Producto::verProductosId($_GET['id_p']);
+                   //     while ($row = $datos->fetch_array()) {
                     ?>
-                            <td><?php echo $row['nom_prod']    ?> </td>
-                            <td><input type="text" name = "cantidad" class = "col-md-4 mx-auto form-control"> </td>
-                            <td><?php echo $row['val_prod']    ?> </td>
-               
+
+                <thead class="bg-dark text-white text-center">
+                <tr>
+                    <th>Codigo</th>
+                    <th colspan="2">Descripcion</th>
+                    <th>Cavtidad</th>
+                    <th class="text-right">Precio</th>
+                    <th class="text-right">Precio Total</th>
+                    <th>Accion</th>
                 </tr>
+                </thead>
             </tbody>
-
-    <?php  }
-                    }  ?>
+    <?php  } ?>
         </table>
-    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-
-
-
-
-
-
-
+        <div class="col-lg-2 mx-auto">
+            <div class="card card-body ">
+                <a class = "btn btn-blok btn-dark" type="text" href="ajax/showFactura.php">Factura</a>
+            </div>
+        </div>
+  </div>
+</div>
 
 
 
 <?php
     include_once 'plantillas/cuerpo/footerN1.php';
     include_once 'plantillas/cuerpo/finhtml.php';
-} // fin de validacion permisos de ingreso
+//} // fin de validacion permisos de ingreso
 ?>
