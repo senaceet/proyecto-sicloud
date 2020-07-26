@@ -35,7 +35,7 @@ if ($in == false) {
     include_once 'plantillas/nav/navN1.php';
 
 
-$tabla = false;
+    $tabla = false;
 
 ?>
     <?php cardtituloS("Administrador de solicitiudes") ?>
@@ -184,12 +184,12 @@ $tabla = false;
 
 
 
-$
+    $
 
     <?php
 
 
-    if ((isset($datos))  && ($tabla == true)      ) { ?>
+    if ((isset($datos))  && ($tabla == true)) { ?>
 
         <div class="col-lg-12">
             <div class="table-responsive">
@@ -206,7 +206,7 @@ $
                             <th>P. Apellido</th>
                             <th>S. Apellido</th>
                             <th>Rol</th>
-                            
+
                             <th>Correo</th>
                             <th>Estado</th>
                             <th>Accion</th>
@@ -229,9 +229,13 @@ $
                         <td><?php echo $row['ape1'] ?></td>
                         <td><?php echo $row['ape2'] ?></td>
                         <td><?php echo $row['nom_rol'] ?></td>
-                      
+
                         <td><?php echo $row['correo'] ?></td>
-                        <td><?php  if( $row['estado'] == 1){ echo "activo";}else{echo "incativo";}  ?></td>
+                        <td><?php if ($row['estado'] == 1) {
+                                echo "activo";
+                            } else {
+                                echo "incativo";
+                            }  ?></td>
                         <td>
                             <a href="forms/editarUsuario.php?id= <?php echo $row['ID_us'] ?> " class="btn btn-secondary btn-circle"><i class="fas fa-marker"></i></a>
                             <?php if ($_SESSION['usuario']['ID_rol_n'] == 1) {     ?>
@@ -256,8 +260,64 @@ $
         </div><!-- fin de primera divicion -->
 
 
+  
+                <?php
+                 $activos = Usuario::conteoUsuariosActivos();
+                $inctivos = Usuario::conteoUsuariosInactivos();
+                $totaUs = Usuario::conteoUsuariosTotal();
+                
+                
+                
+                ?>
+               
 
-        <div class="card card-body col-md-12 mx-auto my-4 text-center">
+
+   
+
+
+
+
+
+        <div class="card card-body col-md-11 mx-auto my-4 text-center ">
+        <h5 class= "my-2">Usuarios</h5>
+            <div class="row col-lg-10 mx-auto">
+
+
+            
+
+                <!-- -------------------------------------------------------------- -->
+
+                <div class=" col-md-4  mx-auto card card-body shadow">
+                <div class="form-group  col-lg-10 row">
+                    <label class = "col-sm-10" for="">Activos</label>
+                    <input class="form-control col-lg-2" type="text" value="<?php echo $activos ?>" disabled>
+                    </div>
+                </div>
+
+                <div class=" col-md-4  mx-auto card card-body shadow">
+                <div class="form-group  col-lg-10 row">
+                    <label class = "col-sm-10" for="">Inactivos</label>
+                    <input class="form-control col-lg-2" type="text" value="<?php echo $inctivos ?>" disabled>
+                    </div>
+                </div>
+
+                <div class=" col-md-4  mx-auto card card-body shadow">
+                <div class="form-group  col-lg-10 row">
+                    <label class = "col-sm-10" for="">Registrados</label>
+                    <input class="form-control col-lg-2" type="text" value="<?php echo $totaUs ?>" disabled>
+                    </div>
+                </div>
+                
+               
+
+
+                <!-- -------------------------------------------------------------- -->
+            </div>
+
+
+
+            
+        <div class="card card-body col-md-12 mx-auto my-4 text-center shadow">
             <div class="row">
 
                 <!-- -------------------------------------------------------------- -->
@@ -274,11 +334,20 @@ $
                 <div class=" col-md-3  mx-auto">
                     <a class="btn-block btn btn-dark" href="">Directorio direcciones</a>
                 </div>
-                
-                <!-- -------------------------------------------------------------- -->
-            </div>
-        </div>
 
+
+                <!-- -------------------------------------------------------------- -->
+            </div></div>
+
+  
+
+ 
+        </div>  
+
+
+
+
+        
 
     <?php
 

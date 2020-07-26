@@ -286,7 +286,7 @@ class Usuario
   {
     include_once 'class.conexion.php';
     $c = new Conexion;
-    $sql = " SELECT U.ID_us  , U.nom1 , U.nom2 , U.ape1 , U.ape2 , U.fecha , U.pass , U.foto , U.correo , TD.ID_acronimo  , RU.estado , R.ID_rol_n , R.nom_rol 
+    $sql = " SELECT U.* , TD.ID_acronimo  , RU.estado , R.ID_rol_n , R.nom_rol 
     FROM tipo_doc TD JOIN usuario U ON TD.ID_acronimo = U.FK_tipo_doc 
     JOIN rol_usuario RU ON U.ID_us = RU.FK_us 
     JOIN rol R ON FK_rol = R.ID_rol_n  WHERE U.ID_us =  '$ID_us' and U.pass = '$pass' and TD.ID_acronimo = '$doc' ";
@@ -408,5 +408,42 @@ class Usuario
 
     $con = $c->query($sql);
     return $con;
+  }
+
+
+
+  static function conteoUsuariosActivos()
+  {
+    $c = new Conexion;
+    $sql = "SELECT count(*) as usuariosActivos 
+    from usuario  U join rol_usuario RU on RU.FK_us = U.ID_us
+    where RU.estado = 1";
+    $datos = $c->query($sql);
+     while( $row = $datos->fetch_assoc() ){ $con = $row['usuariosActivos'];    }
+    return $con ;
+  }
+
+
+  static function conteoUsuariosInactivos()
+  {
+    $c = new Conexion;
+    $sql = "SELECT count(*) as usuariosActivos 
+    from usuario  U join rol_usuario RU on RU.FK_us = U.ID_us
+    where RU.estado = 0";
+    $datos = $c->query($sql);
+     while( $row = $datos->fetch_assoc() ){ $con = $row['usuariosActivos'];    }
+    return $con ;
+  }
+
+
+  static function conteoUsuariosTotal()
+  {
+    $c = new Conexion;
+    $sql = "SELECT count(*) as usuariosActivos 
+    from usuario  U join rol_usuario RU on RU.FK_us = U.ID_us
+    ";
+    $datos = $c->query($sql);
+     while( $row = $datos->fetch_assoc() ){ $con = $row['usuariosActivos'];    }
+    return $con ;
   }
 }// fin de clase usaurio
