@@ -18,24 +18,20 @@ if (isset($_GET['u']) && ($_GET['u'] > 0)) {
 ?>
           
             <!-- col 2 -->
-            </div>
+            
 
             <div class=" card mx-auto container-fluid my-4 col-lg-10">
                 <div class="row">
-                    <div class="col-lg-7 ">
-                        <div class="col-lg-5 card my-2 bg-dark mx-auto rounded-pill">
-                            <div class="my-4 mx-auto text-center"><img src="../fonts/logoportal.png" width="350" height="65" alt=""></div>
-                        </div>
+                    <div class="col-lg-6">
+                            <img src="../fonts/capsulelogo.PNG" alt="" style="width: 430px; height: 165px;">
                     </div>
-                    <div class="col-lg-2 card ">Factura <br><?php echo $row['ID_factura'] ?></div>
+                    <div class="col-lg-6 mt-4">
+                        <div class="card p-2">Factura <br><?php echo $row['ID_factura'] ?></div>
+                        <div class="card p-3">Fecha: <?php echo $row['fecha'] ?></div>
+                    </div>
+                </div>    
 
-                    <div class="col-lg-3">
-                        <div class="row">
-                            <div class="col-lg-12 card card-body">Fecha: <?php echo $row['fecha'] ?></div>
-                            <div class="col-lg-12 card card-body"></div>
-                        </div>
-                    </div>
-                </div>
+                    
 
 
                 <div class="row">
