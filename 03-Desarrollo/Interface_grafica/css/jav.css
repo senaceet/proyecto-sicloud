@@ -57,29 +57,57 @@ body {
 
  
 
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  .btn-morado:not(:disabled):not(.disabled):active:focus, .btn-warning:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-warning.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);
+  }
   
 
 
-
-
-
+.cards:hover{
+  background-color: #f8f9fc;
+  border-color: #9c4630;
   
-
-.e{
-  color: white; text-shadow: black 0.1em 0.1em 0.2em
 }
+
+
+.cardst:hover{
+  background-color: #f8f9fc;
+  border-color: #9c4630;
+}
+
+
+  .btn-naranja {
+    color: #e8f1fa;
+    background-color: #9c4630;
+    border-color: #e2df0d;
+    
+  }
+  
+  .btn-naranja:hover {
+    color: rgb(3, 3, 3);
+    background-color: #ddb492;
+    
+ 
+  }
+  
+ 
+
+  .e{
+    color: white; text-shadow: black 0.1em 0.1em 0.2em
+  }
+  
+  
+  
+  
+  .btn-morado:not(:disabled):not(.disabled):active:focus, .btn-warning:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-warning.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);
+  }
+  
+
+  
 
 
 

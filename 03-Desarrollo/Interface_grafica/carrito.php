@@ -27,14 +27,14 @@ if(isset($_GET['id'])){
     
     <div class="col-md-12 mt-5">
         <div class="row">
-            <div class="card card-body col-md-10 mx-auto">
+            <div class="card card-body col-md-10 mx-auto ">
             <div class="row">
         
-            <div class=" col-md-6 mx-1 mx-auto mb-lg-8">
-                       <img class="card-body  mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="260px" width="300px">
+            <div class=" col-md-6 mx-1 mx-auto mb-lg-8 ">
+                       <img class="card-body   mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="260px" width="300px">
                 </div>
                 <div class="card col-md-6 mx-1 mx-auto shadow "> 
-                    <div class="card-body">
+                    <div class="card-body cardst">
                         <h5 class="card-title"><?php echo $row['nom_prod']  ?></h5>
             
                         <p class="card-text lead"><strong><?php $c = $row['val_prod'];
@@ -48,8 +48,8 @@ if(isset($_GET['id'])){
                         
                         <p class="card-text text-success"><?php  echo "36 cuotas " . "$".number_format(($c / 36),1, ',','.') . " Sin interes"; ?></p>
                         <P><?php  echo $row['descript'] ?> <br></P>
-                        <a href="catalogo.php" class="btn btn-primary">Agregar al carrito</a>
-                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary">Ver carrito</a>
+                        <a href="catalogo.php" class="btn  btn-naranja">Agregar al carrito</a>
+                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn  btn-naranja">Ver carrito</a>
                     </div>
             </div>
            

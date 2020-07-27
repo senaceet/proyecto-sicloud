@@ -97,10 +97,10 @@ include_once 'session/sessiones.php';
 
                 ?>
                     <th>
-                        <div class="card card-body shadow col-md-11 mx-1 mx-auto my-4 shadow">
+                        <div class="card card-body cards shadow col-md-11 mx-1 mx-auto my-4 shadow">
                             <img class="card-body  mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="260px" width="300px">
                  
-                            <div class="  card-body my-2">
+                            <div class="  card-body  my-2">
                                 <h5 class="card-title"><?php echo $row['nom_prod']; ?></h5>
                                 <p class="card-text lead"><strong><?php echo "$".number_format(($row['val_prod']),0, ',','.' )   ; ?></strong></p>
                                 <p class="card-text text-success"><?php $c = $row['val_prod'];
@@ -111,7 +111,7 @@ include_once 'session/sessiones.php';
                                                                     
                                                                     
                                                                     </p>
-                                <a href="carrito.php?id=<?php echo  $row['ID_prod'] ?>" class="btn btn-primary">Comprar</a>
+                                <a href="carrito.php?id=<?php echo  $row['ID_prod'] ?>" class=" btn btn-naranja">Comprar</a>
                             </div>
                         </div>
         </div>

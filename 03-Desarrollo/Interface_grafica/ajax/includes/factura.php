@@ -72,7 +72,7 @@ if (isset($_GET['u']) && ($_GET['u'] > 0)) {
                                 <td><?php echo $row['cantidad']   ?></td>
                                 <td><?php echo  "$" . number_format(($row['val_prod']), 0, ',', '.')    ?></td>
                                 <td><?php echo "$" . number_format(((0.19 * ($row['val_prod'] * $row['cantidad']))), 0, ',', '.')   ?></td>
-                                <td> <?php echo "$" . number_format((($row['cantidad'] * $row['val_prod'])), 0, ',', '.')
+                                <td> <?php echo "$" . number_format(((  $t = $row['cantidad'] * $row['val_prod'])), 0, ',', '.')
                                         ?></td>
                             <?php   } // verfactural
                             ?>
@@ -84,6 +84,22 @@ if (isset($_GET['u']) && ($_GET['u'] > 0)) {
                 </div>
                 <div class="col-lg-12 card">
                     <h5>VALOR EN LETRAS</h5>
+
+
+
+                    <?php
+
+require_once "CifrasEnLetras.php";
+$v=new CifrasEnLetras(); 
+//Convertimos el total en letras
+$totalpagar=$t;
+$letra=($v->convertirEurosEnLetras($totalpagar));
+ ?>
+<div>
+<span ><?php echo $letra; ?></span>
+</div>
+
+
                 </div>
                 <div class="col-lg-10 card card-body"></div>
                 <div class="col-lg-2 card card-body"></div>
