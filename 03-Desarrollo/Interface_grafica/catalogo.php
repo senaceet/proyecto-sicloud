@@ -97,7 +97,7 @@ include_once 'session/sessiones.php';
 
                 ?>
                     <th>
-                        <div class="card card-body cards shadow col-md-11 mx-1 mx-auto my-4 shadow">
+                        <div class="card card-body shadow col-md-11 mx-1 mx-auto my-4 shadow cards">
                             <img class="card-body  mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="260px" width="300px">
                  
                             <div class="  card-body  my-2">
