@@ -1,6 +1,7 @@
 <?php
 
 
+
 class Conexion extends mysqli{
     private $DB_HOST = 'localhost';
     private $DB_USER = 'root';

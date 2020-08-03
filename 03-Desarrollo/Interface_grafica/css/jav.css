@@ -116,7 +116,6 @@ body {
 
 
 
- 
 
 
 
@@ -151,11 +150,23 @@ border-radius: 1em;
 
 nav div ul li  > a:hover
 {
+    color: rgb(215, 236, 157) !important; 
+}
 
-    color: rgb(215, 236, 157) !important;
-    
+
+
+
+.banner1{
+  clip-path: polygon(0 0, 100% 1%, 100% 79%, 0% 100%);
+  
+ 
+  background: linear-gradient(to right, hsla(192, 28%, 27%, 0.904), hsla(240, 100%, 14%, 0.897)); 
+
 
 }
+
+.baner1:hover  { background: black; opacity: 0.75;}
+
 
 
 
@@ -292,3 +303,7 @@ border: 1px black solid;
     margin-bottom: 2%;
     font-size: 20px;
 }
+
+
+
+ 

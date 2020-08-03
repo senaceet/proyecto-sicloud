@@ -1,60 +1,81 @@
 <?php
-
-include_once 'plantillas/plantilla.php';
-include_once 'plantillas/cuerpo/inihtmlN1.php';
-include_once 'clases/class.producto.php';
-include_once 'clases/class.categoria.php';
-include_once 'plantillas/nav/navN1.php';
+include_once 'session/config.php';
 include_once 'session/sessiones.php';
-include_once 'clases/class.producto.php';
+
+$mensaje = "";
 
 
 
-if(isset($_GET['id'])){
+// captura los datos que vienen por pos, desemcrita y almacena en varibles
+if (isset($_POST['btnCatalogo'])) {
+    switch ($_POST['btnCatalogo']) {
+        case 'Agregar':
+            if (is_numeric(openssl_decrypt($_POST['id'], COD, KEY))) {
+                $ID = openssl_decrypt($_POST['id'], COD, KEY);
+                $mensajeId = "OK ID" . $ID;
+            } else {
+                $mensaje = "Upss.. Id incorrecto";
+            }
 
-    
-    $datos = Producto::verProductosIdCarrito($_GET['id']);
-    while(  $row = $datos->fetch_assoc()){
-?>
 
-<div class="col-md-12 mt-5">
-    <div class="row">
-        <div class="col-md-12 text-center text-white">
-            <?php cardAviso();  ?>
-
-        </div>
-    </div>
-    
-    <div class="col-md-12 mt-5">
-        <div class="row">
-            <div class="card card-body col-md-10 mx-auto ">
-            <div class="row">
-        
-            <div class=" col-md-6 mx-1 mx-auto mb-lg-8 ">
-                       <img class="card-body   mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="260px" width="300px">
-                </div>
-                <div class="card col-md-6 mx-1 mx-auto shadow "> 
-                    <div class="card-body cardst">
-                        <h5 class="card-title"><?php echo $row['nom_prod']  ?></h5>
-            
-                        <p class="card-text lead"><strong><?php $c = $row['val_prod'];
-                                                                    echo "$".number_format(($c),0, ',','.') ;
-                                                                   if( $row['estado_prod'] == "promocion"){
-                                                                    echo "<br>".  $row['estado_prod']."<br>" ;
-                                                                   } ?></strong></p>
+            if (is_string(openssl_decrypt($_POST['nombre'], COD, KEY))) {
+                $NOMBRE = openssl_decrypt($_POST['nombre'], COD, KEY);
+                $mensajeNombre = "OK ID" . $NOMBRE;
+            } else {
+                $mensaje = "Upss.. Id incorrecto";
+            }
 
 
 
-                        
-                        <p class="card-text text-success"><?php  echo "36 cuotas " . "$".number_format(($c / 36),1, ',','.') . " Sin interes"; ?></p>
-                        <P><?php  echo $row['descript'] ?> <br></P>
-                        <a href="catalogo.php" class="btn  btn-naranja">Agregar al carrito</a>
-                        <a href="CU0015_16(usuario)-solicitudf.php" class="btn  btn-naranja">Ver carrito</a>
-                    </div>
-            </div>
-           
+            if (is_numeric(openssl_decrypt($_POST['cantidad'], COD, KEY))) {
+                $CANTIDAD = openssl_decrypt($_POST['cantidad'], COD, KEY);
+                $mensajeCantidad = "OK ID" . $CANTIDAD;
+            } else {
+                $mensaje = "Upss.. Id incorrecto";
+            }
 
-<?php  }  } ?>
-        </div>
-    </div>
-</div>
+
+            if (is_numeric(openssl_decrypt($_POST['precio'], COD, KEY))) {
+                $PRECIO = openssl_decrypt($_POST['precio'], COD, KEY);
+                $mensajePrecio = "OK ID" . $PRECIO;
+            } else {
+                $mensajePrecio = "Upss.. Id incorrecto";
+            }
+
+            if (is_string(openssl_decrypt($_POST['img'], COD, KEY))) {
+                $IMG = openssl_decrypt($_POST['img'], COD, KEY);
+                $mensajeImg = "OK ID" . $IMG;
+            } else {
+                $mensajePrecio = "Upss.. Id incorrecto";
+            }
+
+
+
+
+            if (!isset($_SESSION['CARRITO'])) {
+                // ALMACENAR EL VALOR DE LA VARIBLE EN EL ARREGLO $porductos
+                $producto = array(
+                    'ID' => $ID,
+                    'NOMBRE' => $NOMBRE,
+                    'CANTIDAD' => $CANTIDAD,
+                    'PRECIO' => $PRECIO,
+                    'IMG' => $IMG
+
+                );
+                // Almacena los datos en session
+                $_SESSION['CARRITO'][0] = $producto; // almacena en la pocion 0 "en el primer lemento del carrito"
+            } // fin de isset carrito "primer producto"
+            else {
+                $numeroProductos = count($_SESSION['CARRITO']);
+                $producto = array(
+                    'ID' => $ID,
+                    'NOMBRE' => $NOMBRE,
+                    'CANTIDAD' => $CANTIDAD,
+                    'PRECIO' => $PRECIO,
+                    'IMG' => $IMG
+                );
+                $_SESSION['CARRITO'][$numeroProductos] = $producto;
+            }
+            $mensaje = print_r($_SESSION, true);
+    } // Fin de switch
+}

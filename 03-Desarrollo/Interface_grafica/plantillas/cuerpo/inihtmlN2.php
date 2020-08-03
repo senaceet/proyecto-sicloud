@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/jav.css">
+    <link rel="stylesheet"href="../css/animate.css">
 
 
     <!-- data tables -->

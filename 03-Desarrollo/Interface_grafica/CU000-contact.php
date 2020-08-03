@@ -9,7 +9,7 @@ include_once 'session/sessiones.php';
 
 <div class="col-md-12 mt-5">
     <div class="row">
-        <div class="col-md-12 text-center text-white">
+        <div class="col-md-12 text-center text-white ">
            <?php cardAviso();   ?>
             <hr class="border" />
         </div>

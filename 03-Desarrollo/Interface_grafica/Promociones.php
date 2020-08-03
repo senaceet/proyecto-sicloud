@@ -16,7 +16,7 @@ cardtitulo('Promociones');
 
             <hr class="border" />
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-10 mx-auto">
+        <div class="col-xs-12 col-sm-12 col-md-11 mx-auto">
             <div id="carousel-1" class="carousel slide  " data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
@@ -52,9 +52,6 @@ cardtitulo('Promociones');
 </div>
 <hr class="border"/>
 
-<?php
-include_once 'plantillas/cuerpo/finhtml.php';
-?>
 
 
 
@@ -83,7 +80,7 @@ include_once 'clases/class.categoria.php';
     </div>
 
 
-    <h5 class = "mx-auto text-center my-4 e">Promocion por tiempo limitado !!</h5>
+    <h5 class = "mx-auto text-center my-4 e  animate__animated animate__bounce animate__tada">Promocion por tiempo limitado !!</h5>
     <div class="col-lg-10   card card-body mx-auto">
 
         <div class="card card-body shadow">
@@ -95,58 +92,52 @@ include_once 'clases/class.categoria.php';
 
 
 
-        <div class="row">
-            <table class="mx-auto table-sm col-md-8">
+    
                 <?php
                 $num = 0;
                 $datos = Producto::verPromociones();
-
-
-                // foreach ($lista as $row) {
-                //   if ($num == 3) {
-                //     echo "<tr>
-                //      ";
-                //   $num = 1;
-                // } else {
-                //     $num++;
-                // }
-
-                while ($row = $datos->fetch_assoc()) {
-
-                    if ($num == 3) {
-                        echo "<tr>
-                                ";
-                        $num = 1;
-                    } else {
-                        $num++;
-                    }
-
                 ?>
-                    <th>
-                        <div class="card card-body shadow col-md-11 mx-1 mx-auto my-4 shadow">
-                            <img class="card-body  mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="260px" width="300px">
-                 
-                            <div class="  card-body my-2">
+
+                <div class="container">
+                <div class="row">
+                    <?php
+                    while ($row = $datos->fetch_assoc()) {
+                    ?>
+    
+    
+                        <div class="mx-2 col-lg-4 col-md-2  card card-body shadow mx-auto  my-4 shadow cards animate__animated  animate__pulse animate__delay-1s">
+                            <img class="mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="250px" width="240px">
+    
+                            <div class="">
                                 <h5 class="card-title"><?php echo $row['nom_prod']; ?></h5>
-                                <p class="card-text lead"><strong><?php echo "$".number_format(($row['val_prod']),0, ',','.' )   ; ?></strong></p>
+                                <p class="card-text lead"><strong><?php echo "$" . number_format(($row['val_prod']), 0, ',', '.'); ?></strong></p>
                                 <p class="card-text text-success"><?php $c = $row['val_prod'];
-                                                                    echo "36 cuotas " . "$".number_format(($c / 36),1, ',','.') . " Sin interes";
-                                                                   if( $row['estado_prod'] == 'Promoción'){
-                                                                    echo "<br>".  $row['estado_prod']."<br>" ;
-                                                                   }else{echo "<br><br>";} ?>
-                                                                    
-                                <a href="CU0015_16(usuario)-solicitudf.php" class="btn btn-primary my-2">Comprar</a>
+                                                                    echo "36 cuotas " . "$" . number_format(($c / 36), 1, ',', '.') . " Sin interes";
+                                                                    if ($row['estado_prod'] == "Promoción") {
+                                                                        echo "<br>" .  $row['estado_prod'];
+                                                                    } ?>
+    
+    
+                                </p>
+                                <!-- Formulario de envio e incriptacion ------------------------------------>
+                               
+                            
+    
+    
+    
+                                <!-- -------------------------------------------------- -->
+    
                             </div>
+    
+    
                         </div>
-        </div>
-        </th>
-    <?php } ?>
-    </table>
-
-
-    </div><!-- fin de row -->
-</div><!-- fin de col md-12 -->
-</div>
+    
+    
+    
+    
+                    <?php } ?>
+                </div>
+            </div>
 
 
 
