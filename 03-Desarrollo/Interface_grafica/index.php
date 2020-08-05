@@ -45,7 +45,7 @@ include_once 'session/sessionIni.php';
 
 
             <div class="p-2 col-sm-12 col-md-4 col-lg-3 col-xl-4">
-                <div class="card card-body text-center bg-dark text-white animate__animated  animate__lightSpeedInRight animate__delay-1s">
+                <div id="login"  class="card card-body text-center bg-dark  text-white animate__animated  animate__rubberBand animate__delay-1s">
                     <h3>Inicia Sesion</h3><br>
                     <form action="session/login.php" method="POST">
                         <div class="form-group">
@@ -62,12 +62,16 @@ include_once 'session/sessionIni.php';
                         <div class="form-group"><input class="form-control" placeholder="Contraseña" type="password" pattern="[A-Za-z0-9_-]{1}{15}" required name="pass"></div>
                         <a href="CU0010-recuperarContrasena.php">¿ Olvido Contraseña ?</a><br><br>
                         <input type="hidden" name="accion" value="login">
-                        <input type="submit" name="btnLogin" value="Ingresar" class="form-control btn btn-primary"><br><br>
+                        <input  type="submit" name="btnLogin" value="Ingresar" class="form-control btn btn-primary"><br><br>
                         <h5>¿No tienes cuenta?</h5>
                         <a href="CU002-registrodeUsuario.php" class="form-control btn btn-primary">Registrarse</a><br><br>
                     </form>
 
+                   
+
                 </div><!-- Fin de card form -->
+
+
 
 
 
@@ -92,6 +96,17 @@ include_once 'session/sessionIni.php';
     </div>
 
 
+<div class=" my-2 e">Noticias</div>
+
+    <div class=" mx-auto">
+    <button class="btn btn-sm btn-warning" id="ocultar">Ocultar Noticias</button>
+    
+    
+  
+  
+  
+  </div>
+  
   
 
     <div class="col-md-12 mt-5">
@@ -108,7 +123,7 @@ include_once 'session/sessionIni.php';
                             opacity: 0.90;
                         }
                     </style>
-                    <div class="card-img-overlay banner1  ">
+                    <div class="card-img-overlay banner1 noticia">
                         <h5 class="card-title"> <em> <b> NOTICIAS </b></em></h5>
                         <p class="card-text">El sector de las cementeras no ha sido exento al impacto económico que ha generado el COVID-19 ya que los despachos cayeron en abril en un 75% y
                             la producción también ha tenido un golpe del 79% Los propietarios de las ferreterías, quienes al final son la base de
@@ -124,6 +139,7 @@ include_once 'session/sessionIni.php';
         </div>
     </div>
 
+   
 
 
     <div class="col-md-12 mt-5">
@@ -139,7 +155,7 @@ include_once 'session/sessionIni.php';
                             background: linear-gradient(to right, hsla(192, 28%, 27%, 0.904), hsla(62, 89%, 7%, 0.897));
                         }
                     </style>
-                    <div class="card-img-overlay">
+                    <div class="card-img-overlay noticia">
                         <h5 class="card-title"> <em> <b> NOVEDADES </b></em></h5>
                         <p class="card-text">Aulas móviles han capacitado a más de 70 mil colombianos en construcción e infraestructura</p>
                         <p class="card-text">Más de 70 mil personas han recibido capacitación gracias a los programas de formación que Gerfor ha implementado en los últimos 23 años.
@@ -152,7 +168,7 @@ include_once 'session/sessionIni.php';
         </div>
     </div>
 
-
+    <button class="btn btn-sm btn-warning" id="mostrar">Mostrar Noticias</button>
 
     <div class="col-lg-10  col-auto my-4  mx-auto card card-body bg-dark">
 
@@ -196,8 +212,16 @@ include_once 'plantillas/cuerpo/footerN1.php';
         </div>
     </div>
 </footer>
+
+
+
+
 <?php
 
 
+
+
 include_once 'plantillas/cuerpo/finhtml.php';
+
 ?>
+<script src="js/login.js"> </script>

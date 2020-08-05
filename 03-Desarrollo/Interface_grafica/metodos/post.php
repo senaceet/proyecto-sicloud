@@ -10,8 +10,7 @@ include_once '../clases/class.rol_usuario.php';
 include_once '../clases/class.login.php';
 include_once '../clases/class.notificacion.php';
 include_once '../clases/class.modificacion.php';
-
-
+$us=Usuario::ningunDato();
 
 
 if (isset($_POST['submit'])) {
@@ -23,9 +22,10 @@ if (isset($_POST['submit'])) {
     // USUARIO
     //Update desde admin
     if ($_POST['accion'] == 'insetUpdateUsuario') {
-        include_once '../session/sessiones.php';
 
-        $f =  Usuario::fechaActual();
+
+
+        $f =  $us->fechaActual();
         $idg = $_GET['id'];
         $ID_us = $_POST['ID_us'];
         $nom1 = $_POST['nom1'];
@@ -111,16 +111,17 @@ if (isset($_POST['submit'])) {
     //------------------------------------------------------------------------------------------------------------
     // Cambio de cotraseña
     if ($_POST['accion'] == 'cambioContrasena') {
+       // $us= Usuario::ningunDato();
         include_once '../session/sessiones.php';
         $passA = $_POST['passA'];
-        $us = Usuario::validarPass($_SESSION['usuario']['ID_us'], $passA);
+        $contraseñaAnterio = $us->validarPass($_SESSION['usuario']['ID_us'], $passA);
         // validacion de contraseña en base de datos
-        if ($us->num_rows == 1) {
+        if ($contraseñaAnterio->num_rows == 1) {
             $passN = $_POST['passN'];
             $passN2 = $_POST['passN2'];
             // validacion de digitacion correcta de nueva contrasñea
-            if ($passN == $passN2 && $us->num_rows == 1) {
-                $us = Usuario::cambioPass($_SESSION['usuario']['ID_us'], $passN2);
+            if ($passN == $passN2 && $contraseñaAnterio->num_rows == 1) {
+                $us->cambioPass($_SESSION['usuario']['ID_us'], $passN2);
             } else {
                 $_SESSION['message'] = "Campos de contraseña nueva no son iguales";
                 $_SESSION['color'] = "danger";
@@ -145,7 +146,7 @@ if (isset($_POST['submit'])) {
     // USUARIO
     // insert
     if ($_POST['accion'] == 'insetUsuario') {
-        $f =  Usuario::fechaActual();
+        $f =  $us->fechaActual();
         include_once '../session/sessiones.php';
         include_once '../clases/class.puntos.php';
         $ID_us = $_POST['ID_us'];
@@ -164,7 +165,8 @@ if (isset($_POST['submit'])) {
         $ruta = $_FILES['foto']['tmp_name'];
         $destino = '../fonts/us/'.$foto;
         copy($ruta, $destino);
-       $i = Usuario::inserTfoto($destino, $ID_us);
+        $us = Usuario::ningunDato();
+       $i = $us->inserTfoto($destino, $ID_us);
 
     
      
@@ -182,12 +184,13 @@ if (isset($_POST['submit'])) {
         // Insersion a usuario
         $usuario = new Usuario($ID_us,  $nom1, $nom2, $ape1, $ape2, $fecha, $pass, $foto, $correo, $FK_tipo_doc);
         $r1 = $usuario->insertUsuario();
+     //   $us = Usuario::ningunDato();
 
 
 
         if($r1 = true){
             $puntos = 2;
-            $fecha = Usuario::fechaActual(); 
+            $fecha = $us->fechaActual(); 
             echo "estoy en if de puntos";
                 $punto = new Puntos($puntos , $fecha);
                 $r   = $punto->insertPuntos($ID_us, $FK_tipo_doc);

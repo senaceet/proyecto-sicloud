@@ -51,14 +51,22 @@ if ($in == false) {
         }
     </script>
 
-    <div class="card card-body col-md-8 mx-auto my-2 text-center">
-        <div class="card-title">Filtros</div>
+
+<div class="card card-body my-4 col-lg-2 mx-auto">
+<button class="btn btn-primary" id="toggle">Buscar Usuario</button>
+</div>
+
+
+
+
+    <div class="card card-body col-md-8 mx-auto my-2 text-center quitar">
+        <div class="card-title ">Filtros</div>
         <div class="row">
 
 
 
             <!-- Primera fila  4 de 12 col-->
-            <div class="card card-body col-md-4 shadow">
+            <div class="card card-body col-md-4 shadow ">
                 <h6>Busqueda por ID</h6>
                 <div class="card card-body mx-auto col-10 my-2 shadow border">
                     <!-- form por id -->
@@ -168,7 +176,8 @@ if ($in == false) {
     if (isset($_POST['consultaRol'])) {
         $tabla = true;
         $id = $_POST['rol'];
-        $datos = Usuario::selectUsuarioRol($id);
+        $us = Usuario::ningunDato();
+        $datos = $us->selectUsuarioRol($id);
     } // fin de isset consulta rol
 
 
@@ -260,9 +269,10 @@ if ($in == false) {
 
 
         <?php
-        $activos = Usuario::conteoUsuariosActivos();
-        $inctivos = Usuario::conteoUsuariosInactivos();
-        $totaUs = Usuario::conteoUsuariosTotal();
+        $us = Usuario::ningunDato();
+        $activos =  $us->conteoUsuariosActivos();
+        $inactivos = $us->conteoUsuariosInactivos();
+        $totaUs = $us->conteoUsuariosTotal();
 
 
 
@@ -278,7 +288,7 @@ if ($in == false) {
 
                 <!-- -------------------------------------------------------------- -->
 
-                <div class=" col-md-4  mx-auto card card-body shadow">
+                <div class=" col-md-4  mx-auto card card-body shadow " >
                     <div class="form-group  col-lg-10 row">
                         <label class="col-sm-9" for="">Activos</label>
                         <input class="form-control col-sm-3" type="text" value="<?php echo $activos ?>" disabled>
@@ -288,7 +298,7 @@ if ($in == false) {
                 <div class=" col-md-4  mx-auto card card-body shadow">
                     <div class="form-group  col-lg-10 row">
                         <label class="col-sm-9" for="">Inactivos</label>
-                        <input class="form-control col-sm-3" type="text" value="<?php echo $inctivos ?>" disabled>
+                        <input class="form-control col-sm-3" type="text" value="<?php echo $inactivos ?>" disabled>
                     </div>
                 </div>
 
@@ -347,3 +357,5 @@ if ($in == false) {
     include_once 'plantillas/cuerpo/finhtml.php';
 } // fin de validadcion y ejecucion de permisos por rol
     ?>
+
+    <script src="js/cUsuariosJquery.js"></script>

@@ -8,6 +8,8 @@ include_once '../clases/class.usuario.php';
 include_once '../clases/class.rol.php';
 include_once '../clases/class.medida.php';
 include_once '../clases/class.error.php';
+$us = Usuario::ningunDato();
+
 //---------------------------------------------------------------
 
 if ((isset($_GET['id'])) && (isset($_GET['accion']))) {
@@ -60,7 +62,7 @@ if ((isset($_GET['id'])) && (isset($_GET['accion']))) {
     if ($_GET['accion'] == 'aprobarUsuario') {
         include_once '../session/sessiones.php';
         $id = $_GET['id'];
-        Usuario::activarCuenta($id);
+        $us->activarCuenta($id);
     }
 
     //-------------------------------------------------------------
@@ -69,7 +71,9 @@ if ((isset($_GET['id'])) && (isset($_GET['accion']))) {
     if ($_GET['accion'] == 'desactivarUsuario') {
         include_once '../session/sessiones.php';
         $id = $_GET['id'];
-        Usuario::desactivarCuenta($id);
+
+     //   $us= Usuario::ningunDato();
+        $us->desactivarCuenta($id);
     }
 
 
@@ -89,6 +93,39 @@ if ((isset($_GET['id'])) && (isset($_GET['accion']))) {
         $id = $_GET['id'];
         ErrorLog::eliminarErrorLog($id);
     }
+
+
+
+
+
+
+
+//-------------------------------------------------------------
+// Ver factura = vista = ComprasUsuarios.php
+//../metodos/get.php?accion=verFactura
+
+if( $_REQUEST['accion'] == 'verFactura'){
+    echo "Estoy en ver factura";
+     $id =  $_REQUEST['id'];
+    // header("Location: ../ajax/includes/factura.php?u=$id");
+    header("Location: ../ajax/showFactura.php?u=$id");
+              
+                
+
+
+
+}
+
+//-------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 } // fin de isset accion y id
 
 
@@ -148,6 +185,15 @@ switch ($op){
 
     }
 }
+
+
+
+
+
+
+
+
+
 //-------------------------------------------------------------
 
 

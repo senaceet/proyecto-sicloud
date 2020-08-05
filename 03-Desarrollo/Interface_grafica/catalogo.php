@@ -38,14 +38,17 @@ include_once 'carrito.php';
                     <!-- linea 2 -->
                     <form class="form-inline">
                         <em class="ml-5"> <a class="text-secondary" href="catalogo.php">Seleccione categoria</a></em>
-                        <select name="cat" id="" class="form-control ">
+
+                        <div class="form-group">
+                        <select name="cat" id="" class="form-control">
                             <?php
                             $c = Categoria::verCategoria();
                             while ($row = $c->fetch_array()) {
                             ?>
-                                <option value="<?php echo $row['ID_categoria']  ?>"><?php echo $row['nom_categoria']    ?></option>
+                                <option  value="<?php echo $row['ID_categoria']  ?>"><?php echo $row['nom_categoria']    ?></option>
                             <?php } ?>
                         </select>
+                        </div>
                         <button class="btn btn-outline-success " type="submit">Buscar</button>
                     </form>
                 </div><!-- fin de Segunda divicion -->

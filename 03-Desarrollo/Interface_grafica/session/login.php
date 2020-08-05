@@ -17,8 +17,8 @@ if (isset($_POST['btnLogin'])) {
     $pass = ($_POST['pass']);
     $doc = $_POST['tDoc'];
 
-
-    $res = Usuario::DocPass($ID_us, $pass, $doc);
+    $us=Usuario::ningunDato();
+    $res = $us->DocPass($ID_us, $pass, $doc);
 
     if ($res->num_rows == 0) {
         $_SESSION['message'] = "Usuario o contraseña incorrecta";

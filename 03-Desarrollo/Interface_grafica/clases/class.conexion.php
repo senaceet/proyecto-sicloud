@@ -15,5 +15,10 @@ class Conexion extends mysqli{
      $m = 'conectado ;D';
       //   echo $m;
     }
+
+    static function conectar(){
+        $c = new Conexion;
+        return $c;
+    }
 }
 ?>

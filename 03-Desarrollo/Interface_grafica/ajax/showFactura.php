@@ -23,6 +23,7 @@
     }
 </script>
 
+
 <?php
 include_once '../plantillas/nav/navN2.php';
 include_once '../plantillas/cuerpo/inihtmlN1.php';
@@ -36,12 +37,13 @@ error_reporting(E_ALL & ~E_NOTICE);
 <!-- col 2 -->
 <div class="row">
     <div class="col-lg-2 mx-auto">
-        <div class="card card-body animate__animated  animate__bounce animate__delay-1s">
-            <div class="form-group "><label for="">Digite factura</label> <input type="text" id="txt1" class="form-control" name="ID" onkeyup="sugerencias(this.value)" /></div>
+        <div class="card card-body">
+        <?php if(isset($_REQUEST['u'])){  $id = $_REQUEST['u'];   }else{ $id = ""; }   ?>
+            <div class="form-group"><label for="">Digite factura</label> <input type="text" id="txt1" value="<?php echo $id ?>" class="form-control" name="ID" onkeyup="sugerencias(this.value)" /></div>
         </div>
     </div>
   </div>
-
+  <div id="txtHint"></div>
 
 <?php
 include_once '../plantillas/cuerpo/finhtml.php';

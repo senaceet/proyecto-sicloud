@@ -80,7 +80,7 @@ include_once 'clases/class.categoria.php';
     </div>
 
 
-    <h5 class = "mx-auto text-center my-4 e  animate__animated animate__bounce animate__tada">Promocion por tiempo limitado !!</h5>
+    <h5 class = "mx-auto text-center my-4 e  animate__animated animate__bounce animate__tada animate__delay-3s">Promocion por tiempo limitado !!</h5>
     <div class="col-lg-10   card card-body mx-auto">
 
         <div class="card card-body shadow">

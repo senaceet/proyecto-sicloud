@@ -2,8 +2,8 @@
 
 
 
-//include 'class.conexion.php';
-class Usuario
+include_once 'class.conexion.php';
+class Usuario extends Conexion
 {
   // definicio de accesibilidad de  las varibles 
   protected $ID_us;
@@ -16,11 +16,13 @@ class Usuario
   protected $foto;
   protected $correo;
   protected $FK_tipo_doc;
+  protected $db;
 
   // definicion de constructor //$_id =''
   public function __construct($_ID_us, $_nom1,  $_nom2, $_ape1, $_ape2, $_fecha, $_pass, $_foto, $_correo, $_FK_tipo_doc)
   {
     //creaccion de metodo this para utilizar las varibles desde otras clases
+    $this->db=self::conectar(); 
     $this->ID_us = $_ID_us;
     $this->nom1 = $_nom1;
     $this->nom2 = $_nom2;
@@ -95,14 +97,14 @@ class Usuario
   //---------------------------------------------------------------
 
   //fecha actual
-  static function fechaActual()
+  public function fechaActual()
   {
-    include_once 'class.conexion.php';
-    $c = new Conexion;
     $sql = "SELECT CURDATE() as fecha";
-    $dat =  $c->query($sql);
-    $datos = $dat->fetch_assoc();
-    $fecha =  $datos['fecha'];
+    $dat =  $this->db->query($sql);
+
+     while ($row = $dat->fetch_assoc()){
+      $fecha = $row['fecha'];
+     }
 
     return $fecha;
   }
@@ -111,20 +113,19 @@ class Usuario
   // Actualzacion de datos por rol usuario---------------------------------------------------------
   public function insertUpdateUsuarioCliente($idg)
   {
-    include_once 'class.conexion.php';
+
     include_once 'session/sessiones.php';
-    $con = new Conexion;
     $sql1 = "SET FOREIGN_KEY_CHECKS = 0 ";
-    $res =   $con->query($sql1);
+    $res =   $this->db->query($sql1);
 
     if ($res) {
       $sql2 = "UPDATE sicloud.usuario SET  nom1 = '$this->nom1' ,  nom2 = '$this->nom2' ,ape1 = '$this->ape1' , ape2 = '$this->ape2' , fecha = '$this->fecha'   , correo = '$this->correo'  WHERE  ID_us = '$idg' ";
-      $res1 = $con->query($sql2);
+      $res1 = $this->db->query($sql2);
     }
 
     if ($res1) {
       $sql3 = "SET FOREIGN_KEY_CHECKS = 1";
-      $res2 = $con->query($sql3);
+      $res2 = $this->db->query($sql3);
     }
     if ($res2) {
       $_SESSION['message'] = $_SESSION['usuario']['nom1'] . ' Actualizo datos';
@@ -140,19 +141,18 @@ class Usuario
   // actualizar datos de usario por administrador------------------------------------------------------------
   public function insertUpdateUsuario($idg)
   {
-    include_once 'class.conexion.php';
-    $con = new Conexion;
+ 
     $sql1 = "SET FOREIGN_KEY_CHECKS = 0 ";
-    $res =   $con->query($sql1);
+    $res =   $this->db->query($sql1);
 
     if ($res) {
       $sql2 = "UPDATE sicloud.usuario SET ID_us = '$this->ID_us',nom1 = '$this->nom1' ,  nom2 = '$this->nom2' ,ape1 = '$this->ape1' , ape2 = '$this->ape2' , fecha = '$this->fecha' , pass = '$this->pass' , foto = '$this->foto' , correo = '$this->correo' , FK_tipo_doc = '$this->FK_tipo_doc' WHERE  ID_us = $idg   ";
-      $res1 = $con->query($sql2);
+      $res1 = $this->db->query($sql2);
     }
 
     if ($res1) {
       $sql3 = "SET FOREIGN_KEY_CHECKS = 1";
-      $res2 = $con->query($sql3);
+      $res2 = $this->db->query($sql3);
     }
     if ($res2) {
       $_SESSION['message'] = 'Se actualizo cuenta de usuario';
@@ -168,11 +168,10 @@ class Usuario
   public function insertUsuario()
   {
     //Llama la conexion a la base de datos
-    include_once 'class.conexion.php';
-    $db_usuario = new Conexion();
+
     //Crea la consulta y la almasena en la varible $sql
     $sql = "INSERT INTO sicloud.usuario (ID_us,nom1,nom2,ape1,ape2,fecha,pass,foto,correo,FK_tipo_doc)VALUES('$this->ID_us ','$this->nom1','$this->nom2','$this->ape1','$this->ape2',' $this->fecha ','$this->pass','$this->foto','$this->correo','$this->FK_tipo_doc')";
-    $db_usuario->query($sql);
+    $this->db->query($sql);
     //if($db_usuario){ echo "<script>alert('Se a creado usuario');</script>" ;    echo "<script>window.location.remplace('../CU002-registrodeUsuario.php');</script>";} else { echo "<script>alert('Se a creado usuario');</script>";   echo "<script>window.location.remplace('../CU002-registrodeUsuario.php');</script>";  }
     // if($db_usuario ) {  $_SESSION['message'] = "Se creo usuario"; $_SESSION['color'] = "success";      } else {  $_SESSION['message'] = "Erro al crear usuario"; $_SESSION['color'] = "danger";} header("location: ../CU002-registrodeUsuario.php ");
 
@@ -182,11 +181,10 @@ class Usuario
   // Muestra los datos en la tabla usuario
   public function selectUsuario()
   {
-    include_once 'class.conexion.php';
-    $db_usuario = new Conexion();
+
     // $sql = " SELECT * FROM usuario ";
     $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.fecha, U.pass, U.foto, U.correo, R_U.estado FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = ID_us ORDER BY R_U.estado desc ";
-    $result = $db_usuario->query($sql);
+    $result = $this->db->query($sql);
     return $result;
   } // fin de muestra los datos de la tabla usuario
 
@@ -221,12 +219,11 @@ class Usuario
   //busqueda por ID
   public function selectIdUsuario($id)
   {
-    include_once 'class.conexion.php';
-    $db_usuario = new Conexion();
+   
     $sql = "SELECT distinct U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, R.nom_rol, U.pass, U.foto, U.correo, R_U.estado , R.nom_rol
     FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
    JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n WHERE ID_us = '$id' ";
-    $result = $db_usuario->query($sql);
+    $result = $this->db->query($sql);
     return $result;
   } // fin de busqueda por ID
 
@@ -234,23 +231,20 @@ class Usuario
   //Busqueda por estado pendiente
   public function selectUsuariosPendientes($est)
   {
-    include_once 'class.conexion.php';
-    $db_usuario = new Conexion();
     $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, R.nom_rol, U.pass, U.foto, U.correo, R_U.estado
     FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
    JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n WHERE R_U.estado = '$est' ";
-    $result = $db_usuario->query($sql);
+    $result = $this->db->query($sql);
     return $result;
   } //Busqueda por estado pendiente
 
 
   //aprobar solicitud
-  static function activarCuenta($id)
+  public function activarCuenta($id)
   {
-    include_once 'class.conexion.php';
-    $conexion = new Conexion();
+
     $sql = " UPDATE sicloud.rol_usuario SET rol_usuario.estado = 1 WHERE rol_usuario.FK_us = $id ";
-    $insert = $conexion->query($sql);
+    $insert = $this->db->query($sql);
     // if($insert){ echo "<script>alert('Se desactivo cuenta');</script>";   echo "<script>window.location.replace('../CU009-controlUsuarios.php');</script>"; }else{ echo "<script>alert(no se ha activado');</script>"; echo "<script>window.location.remplace('../CU009-controlUsuarios.php');</script>"; } 
     if ($insert) {
       $_SESSION['message'] = "Activo cuenta de usuario";
@@ -263,12 +257,10 @@ class Usuario
   } // fin de aprbar solicitud
 
   //desactivar cuenta
-  static function desactivarCuenta($id)
+  public function desactivarCuenta($id)
   {
-    include_once 'class.conexion.php';
-    $conexion = new Conexion();
     $sql = " UPDATE sicloud.rol_usuario SET rol_usuario.estado = 0 WHERE rol_usuario.FK_us = $id ";
-    $conexion->query($sql);
+     $conexion = $this->db->query($sql);
     // if($insert){ echo "<script>alert('Se desactivo cuenta');</script>";   echo "<script>window.location.replace('../CU009-controlUsuarios.php');</script>"; }else{ echo "<script>alert(no se ha activado');</script>"; echo "<script>window.location.remplace('../CU009-controlUsuarios.php');</script>"; } 
     if ($conexion) {
       $_SESSION['message'] = "Desactivo cuenta de usuario";
@@ -282,28 +274,25 @@ class Usuario
 
 
   //Compara contraseña tabla usuario--------------------------------------------------------------------------
-  static function DocPass($ID_us, $pass, $doc)
+  public function DocPass($ID_us, $pass, $doc)
   {
-    include_once 'class.conexion.php';
-    $c = new Conexion;
     $sql = " SELECT U.* , TD.ID_acronimo  , RU.estado , R.ID_rol_n , R.nom_rol 
     FROM tipo_doc TD JOIN usuario U ON TD.ID_acronimo = U.FK_tipo_doc 
     JOIN rol_usuario RU ON U.ID_us = RU.FK_us 
     JOIN rol R ON FK_rol = R.ID_rol_n  WHERE U.ID_us =  '$ID_us' and U.pass = '$pass' and TD.ID_acronimo = '$doc' ";
-    $result = $c->query($sql);
+    $result = $this->db->query($sql);
     return $result;
   } // fin de comprobar contraseña----------------------------------------------------------------------------------
 
 
   //---------------------------------------------------------------------------------------------------------------
   //Cambio de contraseña
-  static function cambioPass($id,  $contraseñaNueva)
+  public function cambioPass($id,  $contraseñaNueva)
   {
-    include_once 'class.conexion.php';
-    $c = new Conexion;
+
     $sql = "UPDATE usuario SET pass = '$contraseñaNueva' where ID_us = '$id'";
     // echo $sql;
-    $r = $c->query($sql);
+    $r = $this->db->query($sql);
     if ($r) {
       $_SESSION['message'] = "Cambio contraseña";
       $_SESSION['color'] = "success";
@@ -318,37 +307,24 @@ class Usuario
 
 
 
-  static function validarPass($id, $pass)
+  public function validarPass($id, $pass)
   {
-    include_once 'class.conexion.php';
-    $c = new Conexion;
     $sql = "SELECT * from usuario where ID_us = '$id' and pass = '$pass'";
-    $i = $c->query($sql);
+    $i = $this->db->query($sql);
     return $i;
   }
 
 
 
-  // Comparar contraseña solo de tabla usuario
-  static function DocPassU($ID_us, $pass)
-  {
-    include_once 'class.conexion.php';
-    $c = new Conexion;
-    //SELECT * FROM sicloud.usuario WHERE ID_us =  1030607384 and pass = 1030;
-    $sql = "SELECT * FROM sicloud.usuario WHERE ID_us =  '$ID_us' and pass = '$pass' ";
-    $result = $c->query($sql);
-    return $result;
-  } // fin de comparar contraseña de clase usuario
+
 
 
   // insertar foto
-  static function inserTfoto($destino, $id)
+  public function inserTfoto($destino, $id)
   {
-    include_once 'class.conexion.php';
-    $c = new Conexion;
     $sql = "UPDATE  usuario SET foto = ('$destino')
     where ID_us = '$id'";
-    $e = $c->query($sql);
+    $e = $this->db->query($sql);
     if ($e) {
       header("location: ../CU002-registrodeUsuario.php ");
     }
@@ -356,22 +332,19 @@ class Usuario
 
 
   // filtro por rol
-  static function  selectUsuarioRol($r)
+  public function  selectUsuarioRol($r)
   {
-    include_once 'class.conexion.php';
-    $c = new Conexion;
     $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, R.nom_rol, U.pass, U.foto, U.correo, R_U.estado
     FROM sicloud.usuario U JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
    JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n
    WHERE R.ID_rol_n  = '$r'
    order by u.nom1 asc";
-    $resultConsulta = $c->query($sql);
+    $resultConsulta = $this->db->query($sql);
     // consulta para mensaje de rol 
     if ($resultConsulta) {
-      include_once 'class.conexion.php';
-      $c = new Conexion;
+
       $sql2 = "SELECT nom_rol from rol where ID_rol_n = $r limit 1";
-      $datos  = $c->query($sql2);
+      $datos  = $this->db->query($sql2);
       $row = $datos->fetch_assoc();
       $rol = $row['nom_rol'];
       $_SESSION['message'] = "Filtro por rol:  " . $rol;
@@ -412,37 +385,35 @@ class Usuario
 
 
 
-  static function conteoUsuariosActivos()
+  public function conteoUsuariosActivos()
   {
-    $c = new Conexion;
     $sql = "SELECT count(*) as usuariosActivos 
     from usuario  U join rol_usuario RU on RU.FK_us = U.ID_us
     where RU.estado = 1";
-    $datos = $c->query($sql);
+    $datos = $this->db->query($sql);
      while( $row = $datos->fetch_assoc() ){ $con = $row['usuariosActivos'];    }
     return $con ;
   }
 
 
-  static function conteoUsuariosInactivos()
+  public function conteoUsuariosInactivos()
   {
-    $c = new Conexion;
     $sql = "SELECT count(*) as usuariosActivos 
     from usuario  U join rol_usuario RU on RU.FK_us = U.ID_us
     where RU.estado = 0";
-    $datos = $c->query($sql);
+    $datos = $this->db->query($sql);
      while( $row = $datos->fetch_assoc() ){ $con = $row['usuariosActivos'];    }
     return $con ;
   }
 
 
-  static function conteoUsuariosTotal()
+  public function conteoUsuariosTotal()
   {
     $c = new Conexion;
     $sql = "SELECT count(*) as usuariosActivos 
     from usuario  U join rol_usuario RU on RU.FK_us = U.ID_us
     ";
-    $datos = $c->query($sql);
+    $datos = $this->db->query($sql);
      while( $row = $datos->fetch_assoc() ){ $con = $row['usuariosActivos'];    }
     return $con ;
   }

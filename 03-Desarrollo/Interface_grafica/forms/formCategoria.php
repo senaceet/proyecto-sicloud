@@ -72,7 +72,7 @@ window.location = "../metodos/get.php?accion=eliminarCategoria&&id="+ id_to_dele
                     <td><?php echo $row['nom_categoria'] ?></td>
                     <td>
                         <a href="   ../forms/formEdicionCategoria.php?id=<?php echo $row['ID_categoria'] ?> " class="btn btn-circle btn-secondary">
-                            <i class="fas fa-marker"></i>
+                        <i class="fas fa-search fa-sm"></i>
                             <a onclick="eliminarCategria(<?php echo $row['ID_categoria'] ?>)" href="#"  class="btn btn-circle btn-danger">
                                 <i class="far fa-trash-alt"></i>
                             </a>
