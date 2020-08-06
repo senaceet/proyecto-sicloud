@@ -4,16 +4,20 @@ include_once 'plantillas/nav/navgeneral.php';
 include_once 'clases/class.documento.php';
 include_once 'clases/class.login.php';
 include_once 'plantillas/cuerpo/inihtmlN1.php';
-include_once 'session/sessionIni.php';
 
 ?>
 
 
 
+    <video loop autoplay muted poster="banner01.jpg" width="100%" class="video">
+    <source src="boston.mp4" type="video/mp4">
+    
+    </video>
+
     <div class="col-md-12 mx-auto mt-5">
         <div class="row">
             <div class="col-xs-12 col-sm-11 col-md-8 ">
-                <div id="carousel-1" class="carousel slide  " data-ride="carousel">
+                <div id="carousel-1" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
                         <li data-target="#carousel-1" data-slide-to="1"></li>

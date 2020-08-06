@@ -2,9 +2,17 @@
 
 body {
 
-    background: #bdc3c7;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #757F9A;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right,  #757F9A, #D7DDE8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right,  #757F9A, #D7DDE8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  
+  
+  
+  
+  
+
+
 }
 
 
@@ -115,15 +123,9 @@ body {
 
 
 
-
-
-
-
 nav {
-
-   display: block;
-border-bottom: 2px #FADB0C solid;
-border-top: 2px #FADB0C  solid;
+display: block;
+border-bottom: 1px #ffffff solid;
 text-transform: capitalize;
 
 
@@ -137,6 +139,12 @@ nav li a span strong{
     margin-top: 0 !important;
 }
 
+
+nav:hover
+{
+background-color: #3a3a3b;
+
+}
 
 
 
