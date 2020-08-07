@@ -12,7 +12,7 @@ if(isset($_SESSION['message'])){
 // accion al no iniciar sesion
 if(!isset($_SESSION['usuario'])){
 
-   echo "No ha inciado session";
+  // echo "No ha inciado session";
     //header('location: ../index.php');
 }else{
     print_r($_SESSION['usuario']);
@@ -97,7 +97,7 @@ if($_SESSION['usuario']['estado'] == 1){
 
     
 }// fin de inicio de sesion
-echo " Hola soy panel de modulo: ";
+//echo " Hola soy panel de modulo: ";
 
 
 
