@@ -10,12 +10,20 @@ include_once 'session/sessionIni.php';
 
 
 
+<article>
+    <div class="container-jav">
+        <video loop autoplay muted poster="banner01.jpg" width="100%" class="bk-rgb-video">
+            <source src="boston.mp4" type="video/mp4">
+        </video>
+        <div class="textSobreVideo">
+            <h1 class="texto-video animate__animated">Importadora de herramientas</h1>
+        </div>
+    </div>
+</article>
 
 
+<hr class="border my-4" />
 
-<video loop autoplay muted poster="banner01.jpg" width="100%" class="bk-rgb-video">
-    <source src="boston.mp4" type="video/mp4">
-</video>
 
 <?php
 
@@ -59,7 +67,8 @@ include_once 'session/sessionIni.php';
 
 
         <div class="p-2 col-sm-12 col-md-4 col-lg-3 col-xl-4">
-            <div  class="card card-body text-center bg-dark  text-white   "> <!--  animate__delay-5s -->
+            <div class="card card-body text-center bg-dark  text-white   ">
+                <!--  animate__delay-5s -->
                 <h3 id="text" class="animate__animated">Inicia Sesion</h3><br>
                 <form action="session/login.php" method="POST">
                     <div id="login" class="form-group">
@@ -72,8 +81,8 @@ include_once 'session/sessionIni.php';
                             <?php    }   ?>
                         </select>
                     </div>
-                    <div class="form-group"><input  class="form-control animate__animated in " placeholder="Numero de documento" type="text" pattern="[A-Za-z0-9_-]{1}{15}" required name="nDoc"></div>
-                    <div class="form-group"><input  class="form-control animate__animated in " placeholder="Contraseña" type="password" pattern="[A-Za-z0-9_-]{1}{15}" required name="pass"></div>
+                    <div class="form-group"><input class="form-control animate__animated in " placeholder="Numero de documento" type="text" pattern="[A-Za-z0-9_-]{1}{15}" required name="nDoc"></div>
+                    <div class="form-group"><input class="form-control animate__animated in " placeholder="Contraseña" type="password" pattern="[A-Za-z0-9_-]{1}{15}" required name="pass"></div>
                     <a href="CU0010-recuperarContrasena.php">¿ Olvido Contraseña ?</a><br><br>
                     <input type="hidden" name="accion" value="login">
                     <input type="submit" name="btnLogin" value="Ingresar" class="form-control btn btn-primary"><br><br>
@@ -155,7 +164,7 @@ include_once 'session/sessionIni.php';
 
 
 
-<button class="btn btn-sm btn-warning toggle" >Mostrar Noticias</button>
+<button class="btn btn-sm btn-warning toggle">Mostrar Noticias</button>
 <div class="col-md-12 mt-5">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 mb-5 mx-auto">
@@ -188,7 +197,7 @@ include_once 'session/sessionIni.php';
 
 
 
-    <script src="js/app.js"></script>
+<script src="js/app.js"></script>
 
 
 
@@ -240,11 +249,3 @@ include_once 'plantillas/cuerpo/finhtml.php';
 
 <!--    IMPORTANTE VERIFICAR CONDIGO JQUERY -->
 <script src="js/login.js"> </script>
-
-
-
-
-
-
-
-
