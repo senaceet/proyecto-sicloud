@@ -34,20 +34,21 @@ include_once 'carrito.php';
                         <button class="btn btn-outline-success " type="submit">Buscar</button>
                     </form>
                 </div><!-- fin de primera divicion -->
+               
                 <div class="col-lg-6">
                     <!-- linea 2 -->
                     <form class="form-inline">
                         <em class="ml-5"> <a class="text-secondary" href="catalogo.php">Seleccione categoria</a></em>
 
                         <div class="form-group">
-                        <select name="cat" id="" class="form-control">
-                            <?php
-                            $c = Categoria::verCategoria();
-                            while ($row = $c->fetch_array()) {
-                            ?>
-                                <option  value="<?php echo $row['ID_categoria']  ?>"><?php echo $row['nom_categoria']    ?></option>
-                            <?php } ?>
-                        </select>
+                            <select name="cat" id="" class="form-control">
+                                <?php
+                                $c = Categoria::verCategoria();
+                                while ($row = $c->fetch_array()) {
+                                ?>
+                                    <option value="<?php echo $row['ID_categoria']  ?>"><?php echo $row['nom_categoria']    ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <button class="btn btn-outline-success " type="submit">Buscar</button>
                     </form>
@@ -56,22 +57,36 @@ include_once 'carrito.php';
         </div><!-- fin de card de busqda -->
 
 
+        <?php
+                    if (isset($_SESSION['message'])) {
+                    ?>
+                        <!-- alerta boostrap -->
+                        <div class="text-center  alert alert-<?php echo $_SESSION['color']   ?> alert-dismissible fade show" role="alert">
+                            <?php echo  $_SESSION['message']  ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                    <?php  // session_unset();
+                        setMessage();
+                    } ?>
 
 
 
         <?php
         $num = 0;
-        $datos = Producto::verProductos();
+        $datos = Producto::verProductos();  // Todos los
 
 
-        if (isset($_REQUEST['busqueda'])) {
+        if (isset($_REQUEST['busqueda'])):
             $datos = Producto::buscarPorNombreProducto($_REQUEST['busqueda']);
-        }
+        endif;
 
 
-        if (isset($_GET['cat'])) {
+        if (isset($_GET['cat'])):
             $datos = Producto::verPorCategoria($_GET['cat']);
-        }
+        endif;
 
 
 
@@ -95,7 +110,6 @@ include_once 'carrito.php';
                 while ($row = $datos->fetch_assoc()) {
                 ?>
 
-
                     <div class="mx-2 col-lg-4 col-md-2  card card-body shadow mx-auto  my-4 shadow cards animate__animated  animate__pulse animate__delay-1s">
                         <img class="mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="250px" width="240px">
 
@@ -118,37 +132,37 @@ include_once 'carrito.php';
                                 <input type="hidden" name="precio" id="precio" value=" <?php echo openssl_encrypt($row['val_prod'], COD, KEY);  ?>">
                                 <input type="hidden" name="cantidad" id="cantidad" value=" <?php echo openssl_encrypt(1, COD, KEY);  ?>">
                                 <div class="row">
-                                    
-                                
-                                <input type="submit" class=" btn btn-naranja" value="Agregar" name="btnCatalogo">
+
+
+                                    <input type="submit" class=" btn btn-naranja" value="Agregar" name="btnCatalogo">
                             </form>
 
                             <form action="detalleProducto.php" method="POST">
                                 <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($row['ID_prod'], COD, KEY);  ?>">
                                 <input type="submit" class="btn-block btn btn-naranja" value="Detalle">
                             </form>
-                            </div>
-
-
-
-                            <!-- -------------------------------------------------- -->
-
                         </div>
 
+
+
+                        <!-- -------------------------------------------------- -->
 
                     </div>
 
 
-
-
-                <?php } ?>
             </div>
+
+
+
+
+        <?php } ?>
         </div>
     </div>
-    </div>
+</div>
+</div>
 
 
-    <?php
-    include_once 'plantillas/cuerpo/footerN1.php';
-    include_once 'plantillas/cuerpo/finhtml.php';
-    ?>
+<?php
+include_once 'plantillas/cuerpo/footerN1.php';
+include_once 'plantillas/cuerpo/finhtml.php';
+?>
