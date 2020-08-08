@@ -188,7 +188,7 @@ include_once 'session/sessionIni.php';
 
 <section class="banner-2 text-center">
     
-<div class="container-text-img" > <h1 class="text-img animate__animated">Herramientas</h1><h3 class="mt-5" >La mejor calidad</h3> <h5 class = "mt-3" >Ventas al por ayorista y detal</h5></div>
+<div class="container-text-img" > <h1 class="text-img animate__animated">Herramientas</h1><h3 class="mt-5" >La mejor calidad</h3> <h5 class = "mt-3" >Ventas al por mayor y al detal</h5></div>
 </section>
 
 
