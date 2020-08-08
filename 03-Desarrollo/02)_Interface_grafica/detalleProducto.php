@@ -42,7 +42,7 @@ include_once 'carrito.php';
                     <div class="card card-body col-md-10 mx-auto ">
                         <div class="row">
 
-                            <div class=" col-md-6 mx-1 mx-auto mb-lg-8 ">
+                            <div class="card col-md-6 mx-1 mx-auto mb-lg-8 ">
                                 <img class="card-body   mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="260px" width="300px">
                             </div>
                             <div class="card col-md-6 mx-1 mx-auto shadow ">
@@ -70,9 +70,11 @@ include_once 'carrito.php';
                                         <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($row['nom_prod'], COD, KEY);  ?>">
                                         <input type="hidden" name="precio" id="precio" value=" <?php echo openssl_encrypt($row['val_prod'], COD, KEY);  ?>">
                                         <input type="hidden" name="cantidad" id="cantidad" value=" <?php echo openssl_encrypt(1, COD, KEY);  ?>">
+                                        <div class="row">
                                         <input type="submit" class=" btn btn-naranja" value="Agregar" name="btnCatalogo">
                                     </form>
-      
+                                    <a href="catalogo.php" class="btn btn-naranja">Regresar al catalogo</a>
+                                    </div>
                                     <!-- -------------------------------------------------- -->
                                 
                                 </div>
