@@ -21,12 +21,12 @@ $(document).ready(function () {
   // texto imagen animacion
   $(".container-text-img").hover(function () {
     ti = $(".text-img");
-    ti.addClass("animate__flip");
+    ti.addClass("animate__pulse");
   })
 
   ti = document.querySelector('.text-img');
   ti.addEventListener('mouseout', function () {
-  ti.removeClass("animate__flip");
+  ti.removeClass("animate__pulse");
   })
 
 

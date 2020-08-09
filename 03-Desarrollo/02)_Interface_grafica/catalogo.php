@@ -34,7 +34,7 @@ include_once 'carrito.php';
                         <button class="btn btn-outline-success " type="submit">Buscar</button>
                     </form>
                 </div><!-- fin de primera divicion -->
-               
+
                 <div class="col-lg-6">
                     <!-- linea 2 -->
                     <form class="form-inline">
@@ -58,19 +58,19 @@ include_once 'carrito.php';
 
 
         <?php
-                    if (isset($_SESSION['message'])) {
-                    ?>
-                        <!-- alerta boostrap -->
-                        <div class="text-center  alert alert-<?php echo $_SESSION['color']   ?> alert-dismissible fade show" role="alert">
-                            <?php echo  $_SESSION['message']  ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+        if (isset($_SESSION['message'])) {
+        ?>
+            <!-- alerta boostrap -->
+            <div class="text-center  alert alert-<?php echo $_SESSION['color']   ?> alert-dismissible fade show" role="alert">
+                <?php echo  $_SESSION['message']  ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
-                    <?php  // session_unset();
-                        setMessage();
-                    } ?>
+        <?php  // session_unset();
+            setMessage();
+        } ?>
 
 
 
@@ -79,12 +79,12 @@ include_once 'carrito.php';
         $datos = Producto::verProductos();  // Todos los
 
 
-        if (isset($_REQUEST['busqueda'])):
+        if (isset($_REQUEST['busqueda'])) :
             $datos = Producto::buscarPorNombreProducto($_REQUEST['busqueda']);
         endif;
 
 
-        if (isset($_GET['cat'])):
+        if (isset($_GET['cat'])) :
             $datos = Producto::verPorCategoria($_GET['cat']);
         endif;
 
@@ -110,30 +110,29 @@ include_once 'carrito.php';
                 while ($row = $datos->fetch_assoc()) {
                 ?>
 
-                    <div class="mx-2 col-lg-4 col-md-2  card card-body shadow mx-auto  my-4 shadow cards animate__animated  animate__pulse animate__delay-1s">
+                    <div class="mx-2 col-lg-4 col-md-6  card card-body shadow mx-auto  my-4 shadow cards animate__animated  animate__pulse animate__delay-1s">
                         <img class="mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="250px" width="240px">
 
                         <div class="">
-                            <h5 class="card-title"><?php echo $row['nom_prod']; ?></h5>
-                            <p class="card-text lead"><strong><?php echo "$" . number_format(($row['val_prod']), 0, ',', '.'); ?></strong></p>
-                            <p class="card-text text-success"><?php $c = $row['val_prod'];
-                                                                echo "36 cuotas " . "$" . number_format(($c / 36), 0, ',', '.') . " Sin interes";
+                            <h5 class="card-title"><?php echo $row['nom_prod']; ?> </h5>
+                            <p class="card-text lead"><strong><?php echo "$" . number_format(($row['val_prod']), 0, ',', '.'); ?></strong> </p>
+                            <p class="card-text text-success"><?php echo "36 cuotas " . "$" . number_format(($row['val_prod'] / 36), 0, ',', '.') . " Sin interes";
                                                                 if ($row['estado_prod'] == "Promoción") {
                                                                     echo ",  " .  $row['estado_prod'];
                                                                 } ?>
 
 
+
                             </p>
                             <!-- Formulario de envio e incriptacion ------------------------------------>
                             <form action="" method="POST">
+                                <label class="card-text lead" for="">Cantidad</label> <input value="1" class=" form-control-sm col-3 col-lg-2 col-md-2 " name="cantidad1" type='number'>
                                 <input type="hidden" name="img" id="id" value="<?php echo openssl_encrypt($row['img'], COD, KEY);  ?>">
                                 <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($row['ID_prod'], COD, KEY);  ?>">
                                 <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($row['nom_prod'], COD, KEY);  ?>">
                                 <input type="hidden" name="precio" id="precio" value=" <?php echo openssl_encrypt($row['val_prod'], COD, KEY);  ?>">
-                                <input type="hidden" name="cantidad" id="cantidad" value=" <?php echo openssl_encrypt(1, COD, KEY);  ?>">
+
                                 <div class="row">
-
-
                                     <input type="submit" class=" btn btn-naranja" value="Agregar" name="btnCatalogo">
                             </form>
 
@@ -142,14 +141,9 @@ include_once 'carrito.php';
                                 <input type="submit" class="btn-block btn btn-naranja" value="Detalle">
                             </form>
                         </div>
-
-
-
                         <!-- -------------------------------------------------- -->
 
                     </div>
-
-
             </div>
 
 

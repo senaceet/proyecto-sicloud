@@ -11,7 +11,7 @@ include_once 'plantillas/plantilla.php';
 
 <div class="container col-lg-8 mx-auto my-4">
     <div class="card card-body">
-        <h3>Lista de carrito</h3>
+        <h3>Lista de carrito de compras</h3>
         <hr class="border">
 
 
@@ -33,10 +33,10 @@ include_once 'plantillas/plantilla.php';
 
 
                 <?php
-           //     echo '<pre>';
-            //    var_dump($_REQUEST);
-            //    var_dump($_SESSION['CARRITO']);
-             //   echo '</pre>';
+            // echo '<pre>';
+            // var_dump($_REQUEST);
+            // var_dump($_SESSION['CARRITO']);
+            // echo '</pre>';
 
 
                 ?>

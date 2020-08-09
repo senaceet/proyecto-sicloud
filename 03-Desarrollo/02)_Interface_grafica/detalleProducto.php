@@ -69,7 +69,7 @@ include_once 'carrito.php';
                                         <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($row['ID_prod'], COD, KEY);  ?>">
                                         <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($row['nom_prod'], COD, KEY);  ?>">
                                         <input type="hidden" name="precio" id="precio" value=" <?php echo openssl_encrypt($row['val_prod'], COD, KEY);  ?>">
-                                        <input type="hidden" name="cantidad" id="cantidad" value=" <?php echo openssl_encrypt(1, COD, KEY);  ?>">
+                                        <label class="card-text lead" for="">Cantidad</label> <input value="1" class=" form-control-sm col-md-2 col-lg-1 col-2" name="cantidad1" type='number'>
                                         <div class="row">
                                         <input type="submit" class=" btn btn-naranja" value="Agregar" name="btnCatalogo">
                                     </form>
