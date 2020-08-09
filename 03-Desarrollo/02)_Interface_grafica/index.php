@@ -187,8 +187,12 @@ include_once 'session/sessionIni.php';
 </div>
 
 <section class="banner-2 text-center">
-    
-<div class="container-text-img" > <h1 class="text-img animate__animated">Herramientas</h1><h3 class="mt-5" >La mejor calidad</h3> <h5 class = "mt-3" >Ventas al por mayor y al detal</h5></div>
+
+    <div class="container-text-img">
+        <h1 class="text-img animate__animated">Herramientas</h1>
+        <h3 class="mt-5">La mejor calidad</h3>
+        <h5 class="mt-3">Ventas al por mayor y al detal</h5>
+    </div>
 </section>
 
 
@@ -197,7 +201,7 @@ include_once 'session/sessionIni.php';
 
 
 
-<script src="js/app.js"></script>
+
 
 
 
@@ -214,6 +218,19 @@ include_once 'session/sessionIni.php';
 
 
 
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <?php for ($i = 0; $i < 3; $i++) : ?>
+            <div class="col-lg-4 col-md-6 mx-auto my-2">
+                <div class="   card-img card card-body my-4 border border-warning ">
+                    <img class=" sliderjav rounded mx-auto shadow" width="300" height="250">
+                </div>
+            </div>
+        <?php endfor;  ?>
+    </div>
 </div>
 
 

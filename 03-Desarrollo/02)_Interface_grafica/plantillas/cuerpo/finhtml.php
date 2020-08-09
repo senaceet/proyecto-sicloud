@@ -13,34 +13,7 @@
 
 
 
-   <!-- java script--------------------------------------------------------------------- -->
-   <script type="text/javascript">
-       $(document).ready(function() {
-
-           recargarLista();
-           $('#lista1').change(function() {
-               recargarLista();
-           });
-       }) // fin deprimera funcion 
-   </script>
-
-
-
-   <script type="text/javascript">
-       function recargarLista() {
-           $.ajax({
-               type: "POST",
-               url: "datos.php",
-               data: "localidad=" + $('#lista1').val(),
-               success: function(r) {
-                   $('#select2lista').html(r);
-               }
-
-
-           }); // fin de ajax
-       } // fin de funcion recargar lista
-   </script>
-
+   
 
    </body>
 

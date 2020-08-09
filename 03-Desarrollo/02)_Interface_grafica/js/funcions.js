@@ -38,33 +38,33 @@ debug.innerHTML = strDebug + "Posicion actual " + y + "px<br>"
 //-------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------
+// 3 slider arriba del footer
+window.addEventListener('load', function() {
+    var imagenes = [];
+    imagenes[0] = 'fonts/slider-1/img1.jpg';
+    imagenes[1] = 'fonts/slider-1/img2.jpg';
+    imagenes[2] = 'fonts/slider-1/img3.jpg';
+  
+  var indiceImagenes = 1;
+  function cambiarImagenes(){
+  nexImg =  imagenes[ indiceImagenes ];
+  $(".sliderjav").attr("src", nexImg );
+  
+  if(indiceImagenes < 2 ){
+    indiceImagenes++;
+  }else{
+    indiceImagenes = 0;
+  }
+  }
+  
+  setInterval(cambiarImagenes, 3000);      
+  })
+  //--------------------------------------------------------------------------
 
 
 
 
-
-//BUSCAR CLIENTE
-$('#nit_cliente').addEventListener("keyup", function(e){// evento al oprimir tecla dentro del input con el id
-e.preventDefault();// evita la recargar de la pagina
-var cl = $(this).val(); // extrae el valor
-var action = 'searchCliente'; // identifica la funcion
-
-    $.ajax({
-        url: 'ajax.php',
-        type: "POST",
-        async : true,
-        data: { action:action, cliente:cl }, // captura los datos de la varibles
-
-        success: function(response)
-        {
-            console.log(response);
-        },
-        error: function(error){
-
-        }
-    });// fin de petcion ajax
-
-});// fin de interaccion con el teclado
 
 
 
