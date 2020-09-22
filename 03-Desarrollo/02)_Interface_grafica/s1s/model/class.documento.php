@@ -34,9 +34,5 @@ class Documento extends Conexion{
 
 }
 
-
-
-
-
 ?>
 

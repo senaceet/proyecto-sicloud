@@ -1,11 +1,12 @@
 <?php 
+include_once 'class.conexion.php';
 
-
-class Barrio{
+class Barrio extends Conexion{
 protected  $nom_barrio;
 protected  $FK_localidad;
 protected  $FK_ciudad;
-protected $ID_barrio;
+protected  $ID_barrio;
+protected  $db;
 
 public function __construct(  $_nom_barrio , $_FK_localidad , $_FK_ciudad , $_ID_barrio = "")
 {
@@ -13,6 +14,7 @@ public function __construct(  $_nom_barrio , $_FK_localidad , $_FK_ciudad , $_ID
     $this->FK_localidad = $_FK_localidad;
     $this->FK_ciudad = $_FK_ciudad;
     $this->ID_barrio = $_ID_barrio;
+    $this->db = self::conexionPDO();
 }
 
 
@@ -38,19 +40,6 @@ static function verBarrio(){
     return $result;
 }// fin de ver barrio por id
 //---------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

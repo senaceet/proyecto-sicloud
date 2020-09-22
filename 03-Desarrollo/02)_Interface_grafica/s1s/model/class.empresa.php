@@ -35,7 +35,7 @@ class Empresa extends Conexion
             $_SESSION['message'] = "Registro Empresa";
             $_SESSION['color'] = "success";
          }else{ 
-            echo '<script>alert("Daniel es un perro")</script>';
+            echo '<script>alert("Registro Fallido")</script>';
 
             $this->ver($insert);
             $_SESSION['message'] = "No registro Empresa";

@@ -1,6 +1,6 @@
 <?php
-
-class Notificacion
+include_once 'class.conexion.php';
+class Notificacion extends Conexion
 {
 
     protected $estado;
@@ -8,6 +8,7 @@ class Notificacion
     protected $FK_rol;
     protected $FK_not;
     protected $ID_not;
+    protected $db;
 
     public function __construct($_estado, $_descript, $_FK_rol, $_FK_not)
     {
@@ -15,10 +16,8 @@ class Notificacion
         $this->descript = $_descript;
         $this->FK_rol = $_FK_rol;
         $this->FK_not = $_FK_not;
+        $this->db = self::conexionPDO();
     }
-
-
-
 
     //METODOS 
 
@@ -29,8 +28,13 @@ class Notificacion
         include_once 'class.conexion.php';
         $c = new Conexion;
         $sql = "INSERT into sicloud.notificacion( estado, descript, FK_rol , FK_not ) 
-VALUES ('$this->estado', $this->descript , '$this->FK_rol', '$this->FK_not')";
-        $insert = $c->query($sql);
+                VALUES ('$this->estado', $this->descript , '$this->FK_rol', '$this->FK_not')";
+       /* $stm = $this->db->prepare($sql);
+        $stm -> bindValue (":estado",$this->estado);
+        $stm -> bindValue (":descript",$this->descript);
+        $stm -> bindValue (":FK_rol",$this->FK_rol);
+        $stm -> bindValue (":FK_not",$this->FK_rol);
+        $insert = $stm->execute();*/
         echo $sql;
         if ($insert) {
             $_SESSION['message'] =  'Se a notificacion';
@@ -49,6 +53,7 @@ VALUES ('$this->estado', $this->descript , '$this->FK_rol', '$this->FK_not')";
         $c = new Conexion;
         $sql = "UPDATE sicloud.notificacion SET estado = '$id'
     where ID_not = '1'";
+      //  $stm = $this->db->prepare($sql);
         $leer = $c->query($sql);
         if ($leer) {
             $_SESSION['message'] =  'Leyo la notificacion';

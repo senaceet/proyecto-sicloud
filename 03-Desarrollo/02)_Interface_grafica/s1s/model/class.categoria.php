@@ -134,17 +134,10 @@ class Categoria extends Conexion{
          return $result;
      }
 
-    /*
+    
 
     // Ver categorias por id    R
-    static function verCategoriaId($id)
-  
-
-
-
-
-   
-
+    //static function verCategoriaId($id)
 
     
 
@@ -161,15 +154,19 @@ class Categoria extends Conexion{
     } // fin de metodo capturar ID
 
     // Ver categiria sin conexion
-    static function verCategorias()
+    public function verCategorias()
     {
-        include_once 'class.conexon.php';
-        $d = new Conexion;
+        //include_once 'class.conexon.php';
+        //$d = new Conexion;
         $sql = "SELECT * FROM categoria
         order by nom_categoria asc";
-        $result = $d->query($sql);
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
         return $result;
+        //$result = $d->query($sql);
+        //return $result;
     } // fin de ver categoria
-*/
+
 
 }

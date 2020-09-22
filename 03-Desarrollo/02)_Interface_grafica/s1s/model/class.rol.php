@@ -65,33 +65,35 @@ public function verRol(){
        $result = $consulta->fetchAll();
        return $result;
    }// fin de lectura rol
-   
 
 
-
-
-
-   
-
-  /* 
+  
    // metodo ver rol por id                   R
-   static function verRolId($id){
-    include_once 'class.conexion.php';
-       $con = new Conexion;
+   public function verRolId($id){
+    //include_once 'class.conexion.php';
+      // $con = new Conexion;
        $sql = "SELECT * FROM sicloud.rol WHERE ID_rol_n = $id";
-       $r = $con->query($sql);
-       return $r;
+       $consulta = $this->db->prepare($sql);
+       $consulta->execute();
+       $result = $consulta->fetchAll();
+       return $result;
+       //$r = $con->query($sql);
+       //return $r;
    }// fin de ver rol por ID
 
 
    // Actualizar datos                       U
 public function insertUpdateRol($id){ 
-    include_once 'class.conexion.php';
+    //include_once 'class.conexion.php';
 
-        $con = new Conexion;
+      //  $con = new Conexion;
         $sql = "UPDATE sicloud.rol SET nom_rol = '$this->nom_rol'  WHERE ID_rol_n = $id";
-        $ri = $con->query($sql);
-     //   if($r){ echo "<script>alert('Se actualizo Rol exitioso');</script>"; echo "<script>window.location.replace('../forms/formRol.php');</script>"; }else{  echo "<script>alert('Error al actualizar rol ');</script>"; echo "<script>window.location.replace('../forms/formRol.php');</script>"; }
+        $stm = $this->db->prepare($sql);
+        $stm->bindValue(":nom_rol",$this->nom_rol);
+        $stm->bindValue(":ID_rol_n",$this->ID_rol);
+        $ri = $stm->execute();
+        //$ri = $con->query($sql);
+        if($ri){ echo "<script>alert('Se actualizo Rol exitioso');</script>"; echo "<script>window.location.replace('../forms/formRol.php');</script>"; }else{  echo "<script>alert('Error al actualizar rol ');</script>"; echo "<script>window.location.replace('../forms/formRol.php');</script>"; }
       
      if($ri){
          $_SESSION['message'] = "Se actualizo el rol";
@@ -103,26 +105,32 @@ public function insertUpdateRol($id){
     
     
 // Borrar rol                               D
-static function eliminarRol($id){ 
-    include_once 'class.conexion.php';
+public function eliminarRol($id){ 
+    //include_once 'class.conexion.php';
   
 
-    $con = new Conexion;
+    //$con = new Conexion;
     $sql1 = "SET FOREIGN_KEY_CHECKS = 0 ";
-     $res =   $con->query($sql1);
+    $stm = $this->db->prepare($sql1);
+    $res = $stm->execute();
+    //     $res =   $con->query($sql1);
 
     if($res){
         $sql2 = " DELETE FROM sicloud.rol WHERE ID_rol_n = $id  ";
-        $res1 = $con->query($sql2); 
+        $stm = $this->db->prepare($sql2);
+        $res1 = $stm->execute();
+        //$res1 = $con->query($sql2); 
     }
 
     if($res1){
         $sql3 = "SET FOREIGN_KEY_CHECKS = 1";
-        $res2 = $con->query($sql3);
+        $stm = $this->db->prepare($sql3);
+        $res2 = $stm->execute();
+        // $res2 = $con->query($sql3);
     }
 
   
-    //if($res2){ echo "<script>alert('Se elimino Rol exitioso');</script>"; echo "<script>window.location.replace('../forms/formRol.php');</script>"; }else{  echo "<script>alert('Error al eliminar rol ');</script>"; echo "<script>window.location.replace('../forms/formRol.php');</script>"; }
+    if($res2){ echo "<script>alert('Se elimino Rol exitioso');</script>"; echo "<script>window.location.replace('../forms/formRol.php');</script>"; }else{  echo "<script>alert('Error al eliminar rol ');</script>"; echo "<script>window.location.replace('../forms/formRol.php');</script>"; }
     if($res2){
         $_SESSION['message'] = "Se elimino el rol";
         $_SESSION['color'] = "danger";
@@ -131,27 +139,6 @@ static function eliminarRol($id){
     header("location:../forms/formRol.php ");
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-*/
-
 } // fin de clase rol
-
-
-
-
-
-
-
 
 ?>

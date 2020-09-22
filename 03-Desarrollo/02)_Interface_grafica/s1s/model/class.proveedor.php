@@ -1,20 +1,20 @@
 <?php
-
-
-
+include_once 'class.conexion.php';
 
 // creacion de clase
-class Proveedor{
+class Proveedor extends Conexion{
 
 //accecsivilidad
 protected $ID_rut;
 protected $nom_empresa;
+protected $db;
 
 //Constructor
 public function __construct($_ID_rut, $_nom_empresa)
 {
   $this->ID_rut = $_ID_rut;
   $this->nom_empresa = $_nom_empresa;  
+  $this->db = self::conexionPDO();
 }
 
 
@@ -41,17 +41,6 @@ public function verProveedor(){
     return $result;
 }
 
-
-
-
-
-
-
-
 }
-
-
-
-
 
 ?>

@@ -60,42 +60,46 @@ class Factura extends Conexion{
 
 
 
-    static function verFecha($f)
+    public function verFecha($f)
     {
-        include_once 'class.conexion.php';
-        $c = new Conexion;
+        
+        //$c = new Conexion;
         $sql = "SELECT cantidad, sum(f.total) as total, day(f.fecha) as dia
-    from sicloud.det_factura detf
-    join sicloud.factura f on f.ID_factura = detf.FK_det_factura
-    where f.fecha = '$f'
-    group by dia";
-        $dat =   $c->query($sql);
-        return $dat;
+        from sicloud.det_factura detf
+        join sicloud.factura f on f.ID_factura = detf.FK_det_factura
+        where f.fecha = '$f'
+        group by dia";
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
+        return $result;
+    
+    
+        //$dat =   $c->query($sql);
+        //return $dat;
     } // fin  de ver fecha U
-
-
-
-
-
-
 
     //  METODOS
 
     // verjoinFactura
 
-    static function verjoinFactura()
+    public function verjoinFactura()
     {
-        include_once 'class.conexion.php';
+        //include_once 'class.conexion.php';
 
         $sql = "SELECT  ID_us  ,nom1, ape1 ,nom_prod, f.fecha , nom_tipo_pago , total
-    from sicloud.det_factura df
-    join sicloud.usuario u on df.CF_us = u.ID_us and df.CF_tipo_doc = u.FK_tipo_doc
-    join sicloud.producto p on df.FK_det_prod = p.ID_prod
-    join sicloud.factura f on df.FK_det_factura = f.ID_factura
-    join sicloud.tipo_pago  tp on f.FK_c_tipo_pago = tp.ID_tipo_pago  order by nom1 asc  ";
-        $con = new Conexion;
-        $dat =  $con->query($sql);
-        return $dat;
+            from sicloud.det_factura df
+            join sicloud.usuario u on df.CF_us = u.ID_us and df.CF_tipo_doc = u.FK_tipo_doc
+            join sicloud.producto p on df.FK_det_prod = p.ID_prod
+            join sicloud.factura f on df.FK_det_factura = f.ID_factura
+            join sicloud.tipo_pago  tp on f.FK_c_tipo_pago = tp.ID_tipo_pago  order by nom1 asc  ";
+            $stm = $this->db->prepare($sql);
+            $stm->execute();
+            $result = $stm->fetchAll(); 
+            return $result;
+        //$con = new Conexion;
+        //$dat =  $con->query($sql);
+        //return $dat;
     } // fin de metodo ver join factura
 
 
@@ -103,14 +107,6 @@ class Factura extends Conexion{
 static function ningunDato(){
     return new self('', '', '', '', '', '');
 }
-
-
-//----------------------------------------------------------
-
-
-
-
-
 
     //-------------------------------------------------------------
     //Consulta de que usuarios han realizado compras = Vista = comprasUsuarios.php
@@ -120,55 +116,69 @@ static function ningunDato(){
         from factura F join det_factura DF on F.ID_factura = DF.FK_det_factura
         right join  usuario U on U.ID_us = DF.CF_us
         order by (DF.FK_det_factura) desc, (F.fecha) desc ,(U.nom1) desc";
-        $consulta = $this->db->query($sql);
-        return $consulta;
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
+        return $result;
+        //$consulta = $this->db->query($sql);
+        //return $consulta;
     }
     //-------------------------------------------------------------
 
-
-
-
-    static function verDia()
+    public function verDia()
     {
-        include_once 'class.conexion.php';
-        $c = new Conexion;
+        //include_once 'class.conexion.php';
+        //$c = new Conexion;
         $sql = "SELECT cantidad, sum(f.total) as total, day(f.fecha) as dia
-        from sicloud.det_factura detf
-        join sicloud.factura f on f.ID_factura = detf.FK_det_factura
-        group by dia";
-        $dat = $c->query($sql);
-        return $dat;
+            from sicloud.det_factura detf
+            join sicloud.factura f on f.ID_factura = detf.FK_det_factura
+            group by dia";
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
+        return $result;
+        //$dat = $c->query($sql);
+        //return $dat;
     }
 
 
 
-    static function verSemana()
+    public function verSemana()
     {
-        include_once 'class.conexion.php';
-        $c = new Conexion;
+        //include_once 'class.conexion.php';
+        //$c = new Conexion;
         $sql = "SELECT count(*) as 'cantidad',sum(F.total) as Total, DATE_ADD(
-    DATE (F.fecha),
-    interval(7 - dayofweek(F.fecha)) day)
-    dia_final_semana FROM sicloud.factura F
-    group by dia_final_semana
-    order by fecha asc";
-        $i = $c->query($sql);
-        return $i;
+            DATE (F.fecha),
+            interval(7 - dayofweek(F.fecha)) day)
+            dia_final_semana FROM sicloud.factura F
+            group by dia_final_semana
+            order by fecha asc";
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
+        return $result;
+        
+        //$i = $c->query($sql);
+        //return $i;
     }
 
 
-    static function verMes()
+    public function verMes()
     {
-        include_once 'class.conexion.php';
-        $c = new Conexion;
+        //include_once 'class.conexion.php';
+        //$c = new Conexion;
         $sql = "SELECT count(*) as 'cantidad',sum(F.total) as Total, DATE_ADD(
-        DATE (F.fecha),
-        interval(30 - dayofmonth(F.fecha)) day)
-        dia_final_mes FROM sicloud.factura F
-        group by dia_final_mes
-        order by fecha asc";
-        $i = $c->query($sql);
-        return $i;
+            DATE (F.fecha),
+            interval(30 - dayofmonth(F.fecha)) day)
+            dia_final_mes FROM sicloud.factura F
+            group by dia_final_mes
+            order by fecha asc";
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
+        return $result;
+        //$i = $c->query($sql);
+        //return $i;
     }
 
 
@@ -176,66 +186,82 @@ static function ningunDato(){
 
     // valida factura en un periodo de fechas
 
-    static function verIntervaloFecha($fechaIni, $fechaFin)
+    public function verIntervaloFecha($fechaIni, $fechaFin)
     {
-        include_once 'class.conexion.php';
-        $c = new Conexion;
+        //include_once 'class.conexion.php';
+        //$c = new Conexion;
         $sql = "SELECT * FROM factura
-     where fecha <= '$fechaFin' and  fecha >= '$fechaIni' 
-     order by fecha asc";
-        $arr = $c->query($sql);
-        return $arr;
+            where fecha <= '$fechaFin' and  fecha >= '$fechaIni' 
+            order by fecha asc";
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
+        return $result;
+        //$arr = $c->query($sql);
+        //return $arr;
     }
 
 
 
 
     // Ver datos  usuario en factura
-    static function verUsuarioFactura($id)
+    public function verUsuarioFactura($id)
     {
 
-        $cnx = new Conexion;
+        //$cnx = new Conexion;
         $sql = "SELECT U.nom1, U.nom2, U.ape1, U.ape2 , T.tel , D.dir
-from  usuario U join telefono T on T.CF_us = U.ID_us
-join direccion D on D.CF_us = U.ID_us
-where U.ID_us = '$id'
-limit 1";
-        $result = $cnx->query($sql);
+            from  usuario U join telefono T on T.CF_us = U.ID_us
+            join direccion D on D.CF_us = U.ID_us
+            where U.ID_us = '$id'
+            limit 1";
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
         return $result;
+        //$result = $cnx->query($sql);
+        //return $result;
     }
 
 
 
-    static function verFactura($id)
+    public function verFactura($id)
     {
-        $c = new Conexion;
+        //$c = new Conexion;
         $sql = "SELECT   U.nom2 , U.ape1 , U.ape2 , U.correo , U.nom1 , F.ID_factura, F.fecha   , D.dir , TP.nom_tipo_pago , DF.cantidad , Pr.val_prod , TD.nom_doc , U.ID_us
-        from factura F join tipo_pago TP on F.FK_c_tipo_pago = TP.ID_tipo_pago
-        join det_factura DF on F.ID_factura = DF.FK_det_factura
-        join producto Pr on Pr.ID_prod = DF.FK_det_prod
-        join usuario U  on U.ID_us =  DF.CF_us
-        join direccion D on D.CF_us = U.ID_us
-        join tipo_doc TD on U.FK_tipo_doc = TD.ID_acronimo
-        where ID_factura = '$id'
-        limit 1";
-        $result = $c->query($sql);
+            from factura F join tipo_pago TP on F.FK_c_tipo_pago = TP.ID_tipo_pago
+            join det_factura DF on F.ID_factura = DF.FK_det_factura
+            join producto Pr on Pr.ID_prod = DF.FK_det_prod
+            join usuario U  on U.ID_us =  DF.CF_us
+            join direccion D on D.CF_us = U.ID_us
+            join tipo_doc TD on U.FK_tipo_doc = TD.ID_acronimo
+            where ID_factura = '$id'
+            limit 1";
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
         return $result;
+        //$result = $c->query($sql);
+        //return $result;
     }
 
 
 
 
-    static function verFactural($id)
+    public function verFactural($id)
     {
-        $c = new Conexion;
+        //$c = new Conexion;
         $sql = "SELECT  U.nom2 , U.ape1 , U.ape2 , U.correo , U.nom1 , F.ID_factura, F.fecha   , D.dir , TP.nom_tipo_pago , DF.cantidad , Pr.val_prod , Pr.nom_prod
-        from factura F join tipo_pago TP on F.FK_c_tipo_pago = TP.ID_tipo_pago
-        join det_factura DF on F.ID_factura = DF.FK_det_factura
-        join producto Pr on Pr.ID_prod = DF.FK_det_prod
-        join usuario U  on U.ID_us =  DF.CF_us
-        join direccion D on D.CF_us = U.ID_us
-        where ID_factura = '$id'";
-        $result = $c->query($sql);
+            from factura F join tipo_pago TP on F.FK_c_tipo_pago = TP.ID_tipo_pago
+            join det_factura DF on F.ID_factura = DF.FK_det_factura
+            join producto Pr on Pr.ID_prod = DF.FK_det_prod
+            join usuario U  on U.ID_us =  DF.CF_us
+            join direccion D on D.CF_us = U.ID_us
+            where ID_factura = '$id'";
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
         return $result;
+        //$result = $c->query($sql);
+        //return $result;
     }
 }

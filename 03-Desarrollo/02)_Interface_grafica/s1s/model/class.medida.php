@@ -38,10 +38,6 @@ class Medida extends Conexion
         return new self('', '','');
     }
 
-
-
-
-
     //METODO Insertsar medida
     public function insertMedia()
     {
@@ -68,36 +64,46 @@ class Medida extends Conexion
     //CREACION DE METODOS acceso sin ser una extancia
 
     //metodo mostrar datos
-    static function verMedida()
+    public function verMedida()
     {
-        include_once 'class.conexion.php';
-        $conexion = new Conexion;
+        //include_once 'class.conexion.php';
+        //$conexion = new Conexion;
         $sql = "SELECT * FROM  tipo_medida";
-        $result = $conexion->query($sql);
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
         return $result;
+        //$result = $conexion->query($sql);
+        //return $result;
     }
 
     //mostrar datos por ID
-    static function verDatoPorId($id)
+    public function verDatoPorId($id)
     {
-        include_once 'class.conexion.php';
-        $conexion = new Conexion;
+        //include_once 'class.conexion.php';
+        //$conexion = new Conexion;
         $sql = "SELECT * FROM  tipo_medida WHERE ID_medida = $id ";
-        $result = $conexion->query($sql);
-        return $result;
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
+        return $result;//$result = $conexion->query($sql);
+        //return $result;
     }
-
-
 
     //Actualizar datos 
     public function actualizarDatosMedida($id)
     {
-        include_once 'class.conexion.php';
-        $c = new Conexion;
+       // include_once 'class.conexion.php';
+       // $c = new Conexion;
         $sql = "UPDATE tipo_medida SET nom_medida = '$this->nom_medida'  , acron_medida = '$this->acron_medida' WHERE ID_medida = '$id' ";
+        $stm = $this->db->prepare($sql);
+        $stm->bindValue(":id",$this->id_medida);
+        $stm->bindValue(":nom_medida",$this->nom_medida);
+        $stm->bindValue(":acron_medida",$this->acron_medida);
+        $result = $stm->execute();
         //"UPDATE sitio_t SET nom_sitio = '$sitio', Fk_capital = '$FK_capital'  WHERE id_sitio = $id "
-        $ejecucion = $c->query($sql);
-        if ($ejecucion) {
+        //$ejecucion = $c->query($sql);
+        if ($result) {
             $_SESSION['message'] = "Se actualizo medida";
             $_SESSION['color'] = "primary";
         } else {
@@ -109,13 +115,16 @@ class Medida extends Conexion
 
 
     //eliminar registros
-    static function eliminarDatosMedia($id)
+    public function eliminarDatosMedia($id)
     {
-        include_once 'class.conexion.php';
-        $con = new Conexion();
+        //include_once 'class.conexion.php';
+       // $con = new Conexion();
         $sql = "DELETE FROM tipo_medida WHERE ID_medida = '$id' ";
-        $ejecucion = $con->query($sql);
-        if ($ejecucion) {
+        $stm = $this->db->prepare($sql);
+        $stm->bindValue(":id",$this->id_medida);
+        $result = $stm->execute();
+        // $ejecucion = $con->query($sql);
+        if ($result) {
             $_SESSION['message'] = "Elimino medida";
             $_SESSION['color'] = "danger";
         } else {

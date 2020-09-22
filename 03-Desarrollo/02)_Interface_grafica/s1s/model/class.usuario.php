@@ -93,7 +93,7 @@ class Usuario extends Conexion
    $consulta->bindValue( ':pass',        $d[6]  );
    $consulta->bindValue( ':foto',        $d[7]  );
    $consulta->bindValue( ':correo',      $d[8]  );
-   $consulta->bindValue( ':FK_tipo_doc', $d[9]   );
+   $consulta->bindValue( ':FK_tipo_doc', $d[9]  );
    $result=$consulta->execute();
    if( $result ){
       return $array;
@@ -103,8 +103,6 @@ class Usuario extends Conexion
 }
   // echo $d[8];
 
-
- 
   
    return $result;
 }
