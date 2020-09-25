@@ -81,9 +81,9 @@ window.location = "../controlador/get.php?accion=eliminarUsuario&&id="+ id_to_de
                     <td><?= $d[8] ?></td>
                     <td><?= $d[9] ?></td>
                     <td>
-                        <a href="   ../vista/EditarUsuario.php?id=<?= $d[0] ?> " class="btn btn-circle btn-secondary">
+                        <a href="http://localhost/proyecto/02)_Interface_grafica/mvc/vista/EditarUsuario.php?ID_us=<?= $d[0] ?> " class="btn btn-circle btn-secondary">
                         <i class="fas fa-search fa-sm"></i>
-                        <a onclick="eliminarUsuario(<?= $d[0] ?>)" href="../controlador/get.php?id=<?= $d[0] ?> "  class="btn btn-circle btn-danger">
+                        <a href="http://localhost/proyecto/02)_Interface_grafica/mvc/global/api.php?apicall=elimianarUsuario&&id=<?= $d[0] ?> "  class="btn btn-circle btn-danger">
                                 <i class="far fa-trash-alt"></i>
                             </a>
                     </td>

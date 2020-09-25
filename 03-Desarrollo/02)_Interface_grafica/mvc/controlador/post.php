@@ -57,8 +57,12 @@ if (isset($_POST['submit'])) {
          //echo print_r($_POST);
          $usuario = Usuario::ningunDato();
 
+    }
 
-         $usuario->actualizarDatosUsuario($id);
+}
+
+
+       /*  $usuario->actualizarDatosUsuario($id);
      } // fin de actualizar empresa
 
     /* if(isset($_POST['action']) && $_POST['action'] == 'login'){
@@ -69,7 +73,7 @@ if (isset($_POST['submit'])) {
     
     
 
-}
+
 
     /*
 

@@ -81,8 +81,46 @@ function isTheseParametersAvailable($params){
                $response['error'] = false;
                $response['message'] = 'Solicitud completada correctamente';
                $response['contenido'] = $db->readUsuariosController();
+
               // $db->ver($db->readUsuariosController(), 1);
             break;
+
+
+            case 'elimianarUsuario';
+                $db = new ControllerDoc();
+                $response['message'] = 'Elimino usuario';
+                $bool =   $db->eliminarUsuario($_GET['id'] );
+                if( $bool ){
+                  $response['error'] = false;
+                }else{
+                  $response['error'] = true;
+                }
+            
+            case 'actualizarUsuario';
+                $db = new ControllerDoc();
+                $response['message'] = 'Actualizo usuario';
+                $array =
+                [  
+                $_POST['ID_us'], 
+                $_POST['nom1'],
+                $_POST['nom2'],
+                $_POST['ape1'],
+                $_POST['ape2'],
+                $_POST['fecha'],    
+                $_POST['pass' ],
+                $_POST['foto' ],    
+                $_POST['correo'],
+                $_POST['FK_tipo_doc'], 
+                ];
+                $bool =   $db->actualizarDatosUsuario($_GET['id'], $array );
+
+                if( $bool ){
+                  $response['error'] = false;
+                }else{
+                  $response['error'] = true;
+                }
+
+    
 
             /* case 'loginusuario':
                isTheseParametersAvailable( ['nDoc', 'pass', 'tDoc'] );

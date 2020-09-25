@@ -33,8 +33,7 @@ function selectRol(){
 
 cardtitulo("Actualizar Usuario");
 
-if ((isset($_GET['id']))) {
-    $id = $_GET['id'];
+
 
 ?>
 
@@ -43,7 +42,7 @@ if ((isset($_GET['id']))) {
     <div class="row">
         <div class="col-md-10 card card-body mx-auto">
             <h5></h5>
-            <form class="form-group" action="../controlador/post.php?id=<?= $_GET['ID_us'] ?>" method="POST" enctype="multipart/form-data">
+            <form class="form-group" action="http://localhost/proyecto/02)_Interface_grafica/mvc/global/api.php?apicall=actualizarUsuario&&id=<?= $_GET['ID_us'] ?>" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card text-center card-title">
@@ -134,11 +133,8 @@ if ((isset($_GET['id']))) {
                     <label class="custom-file-label" for="customFile">Seleccione una imagen desde su equipo</label>
                 </div><br><br>
 
-                <h5>Digite su Telefono: </h5>
-                <input class="form-control" type="varchar" name="tel" value="<?= $d[8]; ?>" required autofocus maxlength="25"><br>
-
                 <h5> Correo </h5>
-                <input class="form-control" type="email" name="correo" value="<?= $d[9]; ?>"  required autofocus maxlength="25"><br>
+                <input class="form-control" type="email" name="correo" value="<?= $d[8]; ?>"  required autofocus maxlength="25"><br>
 
                 <?php
                  }
@@ -157,7 +153,6 @@ if ((isset($_GET['id']))) {
 
 <?php 
 
-            }
 include_once '../global/plantillas/cuerpo/footerN1.php'; 
 include_once '../global/plantillas/cuerpo/finhtml.php';
 ?>

@@ -61,7 +61,20 @@ class ControllerDoc{
             return $respuesta;
     }
 
+    public function eliminarUsuario($id_get){
+        return  $this->objModUs->eliminarUsuario($id_get);
+    }
+
+    public function actualizarDatosUsuario($id  , $array ){
+        return $this->objModUs->actualizarDatosUsuario($id , $array );
+    }
+
     
+
+
+
+
+
 
     }
 

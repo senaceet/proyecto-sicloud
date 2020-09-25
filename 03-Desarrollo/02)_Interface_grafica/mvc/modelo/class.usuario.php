@@ -147,28 +147,23 @@ class Usuario extends Conexion{
 
    //METODO UPDATE USUARIO PDO MVC-------------------------(FALTA METODO API)-------------------------------
 
-   public function actualizarDatosUsuario($u){ 
-      $sql = "UPDATE sicloud.usuario SET ID_us = :ID_us, nom1 = :nom1 ,  nom2 = :nom2 ,ape1 = :ape1 , ape2 = :ape2, fecha = :fecha, pass = :pass , foto = :foto , correo = :correo, FK_tipo_doc = :FK_tipo_doc
-       WHERE  ID_us = $u"; 
+   public function actualizarDatosUsuario($id, $a){ 
+      ///echo '<pre>'; print_r($a); echo '</pre>';  echo '<pre>'; print_r($id); echo '</pre>';    die();
+      $sql = "UPDATE sicloud.usuario SET ID_us = ?, nom1 = ?, nom2 = ?, ape1 = ?, ape2 = ?, fecha = ?, pass = ?, foto = ?, correo = ?, FK_tipo_doc = ?
+      WHERE ID_us = ?";
       $insertar = $this->db->prepare($sql);
-      foreach( $u as $i => $d   ){
-         $insertar->bindValue(1, $d[0] );
-         $insertar->bindValue(2, $d[1] );
-         $insertar->bindValue(3, $d[2] );
-         $insertar->bindValue(4, $d[3] );
-         $insertar->bindValue(5, $d[4] );
-         $insertar->bindValue(6, $d[5] );
-         $insertar->bindValue(7, $d[6] );
-         $insertar->bindValue(8, $d[7] );
-         $insertar->bindValue(9, $d[8] );
-         $insertar->bindValue(10, $d[9] );
+      $bool = $insertar->execute([$a[0],$a[1],$a[2],$a[3], $a[4], $a[5],$a[6], $a[7], $a[8], $a[9], $id]);       
+      $bool =  $insertar->execute();
+      if($bool){
+         return true;
+      }else{
+      return false;
          }
-         $bool =    $insertar->execute();
-         if($bool){
-            return true;
-         }else{
-            return $u;
-         }
+
+
+        
+          # Pasar en el mismo orden de los ?
+
 
      /* if ($result = true) {
           echo '<script>alert("inserto datos");</script>';
