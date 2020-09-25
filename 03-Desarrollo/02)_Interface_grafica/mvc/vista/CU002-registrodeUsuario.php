@@ -1,17 +1,9 @@
 <?php
-
-include_once '../controlador/get.php';
+include_once '../controlador/Controlador.php';
 include_once '../controlador/post.php';
 include_once '../global/plantillas/plantilla.php';
 include_once '../global/plantillas/cuerpo/inihtmlN1.php';
 include_once '../global/plantillas/nav/navN1.php';
-
-
-
-
-
-
-
 function selectDocumeto(){
     $objConDoc =  Documento::ningunDatoD();
     $datos     =  $objConDoc->verDocumeto();
@@ -24,18 +16,13 @@ function selectDocumeto(){
 function selectRol(){
     $objConRol =  Rol::ningunDato();
     $datosRol  =  $objConRol->verRol();
-
-
-    foreach($datosRol as $i =>  $d) {
-    ?>
-        <option value="<?= $d[0]   ?>"><?=  $d[1]   ?></option>
-    <?php  }
+    foreach($datosRol as $i =>  $d){
+?>
+    <option value="<?= $d[0]   ?>"><?=  $d[1]   ?></option>
+<?php  }
 }
-
 cardtitulo("Registro de Usuarios");
-
-
-
+//=================================================================================
 // HTML
 ?>
 
@@ -48,10 +35,7 @@ cardtitulo("Registro de Usuarios");
                     <div class="col-md-12">
                         <div class="card text-center card-title">
                             </em> </h5>
-
-
                         </div><br>
-
                         <div class="col-md-12">
                             <!-- contenedor -->
                             <div class="row">
@@ -65,10 +49,8 @@ cardtitulo("Registro de Usuarios");
 
                                 </div><!-- fin de columna de 6 -->
                                 <div class="col-md-6">
-
                                     <h5>Seleccione rol</h5>
                                     <div class="form-group">
-
                                         <select name="FK_rol" class="form-control">
                                            <?php  selectRol();  ?>
                                         </select>
@@ -76,25 +58,20 @@ cardtitulo("Registro de Usuarios");
                                 </div><!-- fin de columna de 6 -->
                             </div><!-- row fin de fila -->
                         </div><!-- fin contenedor  de selectores -->
-                        <h5>Numero de identificacion: </h5>
-                        
+                        <h5>Numero de identificacion: </h5>      
                         <input class="form-control" type="number"  name="ID_us" required autofocus maxlength="11">
                     </div>
                 </div><br>
-
-
                 <div class="row">
                     <div class="col-md-6">
                         <h5>Primer nombre: </h5>
                         <input class="form-control" type="text" name="nom1" required autofocus maxlength="20">
                     </div>
-
                     <div class="col-md-6">
                         <h5>Segundo nombre: </h5>
                         <input class="form-control" type="text" name="nom2" required autofocus maxlength="20">
                     </div>
                 </div><br>
-
                 <div class="row">
                     <div class="col-md-6">
                         <h5>Primer apellido: </h5>
@@ -106,23 +83,18 @@ cardtitulo("Registro de Usuarios");
                         <input class="form-control" type="text" name="ape2" required autofocus maxlength="20">
                     </div>
                 </div><br>
-
                 <h5>Fecha de nacimiento: </h5>
                 <input class="form-control" type="date" name="fecha"><br>
-
                 <h5>Digite su contraseña: </h5>
                 <input class="form-control" type="password" name="pass" required autofocus maxlength="25"><br>
-
                 <h5>Adjunte Foto de Perfil: </h5>
                 <div >
                     <input type="text"  name="foto">
                     <!-- class="custom-file-input" id="customFile" -->
                     <label class="custom-file-label" for="customFile">Seleccione una imagen desde su equipo</label>
                 </div><br><br>
-
                 <h5>Digite su Telefono: </h5>
                 <input class="form-control" type="varchar" name="tel" required autofocus maxlength="25"><br>
-
                 <h5> Correo </h5>
                 <input class="form-control" type="email" name="correo" required autofocus maxlength="25"><br>
                 <input type="hidden" name="accion" value="insert">
@@ -132,10 +104,6 @@ cardtitulo("Registro de Usuarios");
         </div>
     </div>
 </div>
-
-
-
-
 <?php 
 include_once '../global/plantillas/cuerpo/footerN1.php'; 
 include_once '../global/plantillas/cuerpo/finhtml.php';

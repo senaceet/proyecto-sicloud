@@ -1,15 +1,10 @@
 <?php
-
-include_once '../controlador/get.php';
+include_once '../controlador/Controlador.php';
 include_once '../controlador/post.php';
 include_once '../global/plantillas/plantilla.php';
 include_once '../global/plantillas/cuerpo/inihtmlN1.php';
 include_once '../global/plantillas/nav/navN1.php';
-
-
 ?>
-
-
 <?php
 function selectDocumeto(){
     $objConDoc =  Documento::ningunDatoD();
@@ -23,21 +18,13 @@ function selectDocumeto(){
 function selectRol(){
     $objConRol =  Rol::ningunDato();
     $datosRol  =  $objConRol->verRol();
-
-
     foreach($datosRol as $i =>  $d) {
     ?>
         <option value="<?= $d[0]   ?>"><?=  $d[1]   ?></option>
     <?php  }
 }
-
 cardtitulo("Actualizar Usuario");
-
-
-
 ?>
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-10 card card-body mx-auto">
@@ -47,19 +34,15 @@ cardtitulo("Actualizar Usuario");
                     <div class="col-md-12">
                         <div class="card text-center card-title">
                             </em> </h5>
-
-
                         </div><br>
-
                         <div class="col-md-12">
                             <!-- contenedor -->
                             <div class="row">
                                 <!-- inicion fila selector de documento y rol -->
                                 <div class="col-md-6">
-
                                     <h5>Seleccione el tipo de documento: </h5>
                                     <select class="form-control" name="FK_tipo_doc">
-                                    <?php  selectDocumeto();  ?>
+<?php  selectDocumeto();  ?>
                                     </select>
 
                                 </div><!-- fin de columna de 6 -->
@@ -75,27 +58,18 @@ cardtitulo("Actualizar Usuario");
                                 </div><!-- fin de columna de 6 -->
                             </div><!-- row fin de fila -->
                         </div><!-- fin contenedor  de selectores -->
-
-                        <?php
-
-                        $id = $_GET['ID_us'];
-
-                        $objus= Usuario::ningunDato();
-                        $datos = $objus->verDatoPorId($id);
-                        
-
-                            if(isset($datos)){
-
-                                foreach ($datos as $i => $d){
-                        ?>
-
+<?php
+$id = $_GET['ID_us'];
+$objus= Usuario::ningunDato();
+$datos = $objus->verDatoPorId($id);
+if(isset($datos)){
+    foreach ($datos as $i => $d){
+?>
                         <h5>Numero de identificacion: </h5>
                         
                         <input class="form-control" type="number"  name="ID_us" value="<?= $d[0]; ?>" required autofocus maxlength="11">
                     </div>
                 </div><br>
-
-
                 <div class="row">
                     <div class="col-md-6">
                         <h5>Primer nombre: </h5>
@@ -107,7 +81,6 @@ cardtitulo("Actualizar Usuario");
                         <input class="form-control" type="text" name="nom2" value="<?= $d[2]; ?>" required autofocus maxlength="20">
                     </div>
                 </div><br>
-
                 <div class="row">
                     <div class="col-md-6">
                         <h5>Primer apellido: </h5>
@@ -135,11 +108,10 @@ cardtitulo("Actualizar Usuario");
 
                 <h5> Correo </h5>
                 <input class="form-control" type="email" name="correo" value="<?= $d[8]; ?>"  required autofocus maxlength="25"><br>
-
-                <?php
-                 }
-                }
-                ?>
+<?php
+    }
+}
+?>
                 <input type="hidden" name="accion" value="insertUpdateUsuario">
                 <input class="btn btn-success form-control my-2" type="submit" name="submit" value="Actualizar datos">
                 <a class="btn btn-success form-control btn-block" href="TablaUsuario.php">Lista usuario</a>
@@ -147,12 +119,7 @@ cardtitulo("Actualizar Usuario");
         </div>
     </div>
 </div>
-
-
-
-
 <?php 
-
 include_once '../global/plantillas/cuerpo/footerN1.php'; 
 include_once '../global/plantillas/cuerpo/finhtml.php';
 ?>

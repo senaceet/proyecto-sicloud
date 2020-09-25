@@ -1,14 +1,8 @@
 <?php
-
 include_once '../modelo/class.conexion.php';
-
-
 class Usuario extends Conexion{
- 
    public $ID_us, $nom1, $nom2,  $ape1, $ape2, $fecha, $pass, $foto, $correo, $FK_tipo_doc, $db;
- 
-   public function __construct($ID_us, $nom1, $nom2,  $ape1, $ape2, $fecha, $pass, $foto, $correo, $FK_tipo_doc) 
-   {
+   public function __construct($ID_us, $nom1, $nom2,  $ape1, $ape2, $fecha, $pass, $foto, $correo, $FK_tipo_doc) {
       $this->ID_us = $ID_us;
       $this->nom1 = $nom1;
       $this->nom2 = $nom2;
@@ -20,26 +14,17 @@ class Usuario extends Conexion{
       $this->correo = $correo;
       $this->FK_tipo_doc = $FK_tipo_doc;
       $this->db = Conexion::conexionPDO();
-   }
-
-  
-   
+   } 
    public function LoginVista(){
       include_once '../vista/usuario/Login.php';
    }
-
    public function InsertVista(){
       include_once '../vista/CU002-registrodeUsuario.php';
    }
-
-
    static function ningunDato(){
       return new self('', '', '', '', '', '', '', '', '', '');
    }
-
-
    // METODO INSERT USUARIO PDO MVC ---------------------------------------------------------------------
-
    public function InsertUsuario($a){
       $sql = "INSERT INTO usuario (ID_us, nom1, nom2, ape1, ape2, fecha, pass, foto, correo, FK_tipo_doc)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -64,10 +49,7 @@ class Usuario extends Conexion{
       }
    }
    //-------------------------------------------------------------------------------------------------------
-
-
    //METODO SELECT USUARIO PDO MVC----------------(FALTA METODO API)-------------------------------------
-
    public function readUsuarioModel(){
       $sql = 'SELECT * FROM usuario';
       $consulta = $this->db->prepare($sql);
@@ -76,10 +58,7 @@ class Usuario extends Conexion{
       return $result;  
    }
    //-------------------------------------------------------------------------------------------------------
-
-
    //METODO LOGIN USUARIO PDO MVC--------------------------------------------------------------------------
-  
    public function loginUsuarioModel($datosModel){
    $sql ="SELECT U.* , TD.ID_acronimo , 
    RU.estado , 
@@ -107,46 +86,39 @@ class Usuario extends Conexion{
          return false;
       }
    }
-
    //-------------------------------------------------------------------------------------------------------
-
-
    //METODO DELETE USUARIO PDO MVC-------------------------(FALTA METODO API)-------------------------------
-   
-   public function eliminarUsuario($id_get)
-    {       
-        $sql1 = "SET FOREIGN_KEY_CHECKS = 0";
-        $consulta2 =$this->db->prepare($sql1);
-        $rest1 = $consulta2->execute();
-        if ($rest1) {
-            $sql2 = "DELETE FROM sicloud.usuario WHERE  ID_us = :id ";
-            $consulta3=$this->db->prepare($sql2); 
-            $consulta3->bindValue(":id", $id_get);
-            $rest2=$consulta3->execute();
-        }
-        if ($rest2) {
-            $sql3 = "SET FOREIGN_KEY_CHECKS = 1";
-            $consulta4 = $this->db->prepare($sql3);
-            $rest3=$consulta4->execute();
-
-        if ($rest3) { echo "<script>alert('Elimino el registro')</script>"; echo "<script>window.location.replace('../vista/TablaUsuario.php')</script>"; }
-        else{ echo "<script>alert('Error al eliminar el registro categoria')</script>"; echo "<script>window.location.replace('../vista/TablaUsuario.php')</script>";   } 
-          //  if ($rest3) {
-          //      $_SESSION['message'] = "Elimino categoria";
-          //      $_SESSION['color'] = "danger";
-          //  } else {
-          //      $_SESSION['message '] = "No se Elimino categoria";
-          //      $_SESSION['color'] = "danger";
-          //  }
-            header("location: ../vista/TablaUsuario.php");
-        }
-    } // fin de metodo eliminar categoria
+   public function eliminarUsuario($id_get){       
+      $sql1 = "SET FOREIGN_KEY_CHECKS = 0";
+      $consulta2 =$this->db->prepare($sql1);
+      $rest1 = $consulta2->execute();
+      if ($rest1) {
+         $sql2 = "DELETE FROM sicloud.usuario WHERE  ID_us = :id ";
+         $consulta3=$this->db->prepare($sql2); 
+         $consulta3->bindValue(":id", $id_get);
+         $rest2=$consulta3->execute();
+      }
+      if ($rest2) {
+         $sql3 = "SET FOREIGN_KEY_CHECKS = 1";
+         $consulta4 = $this->db->prepare($sql3);
+         $rest3=$consulta4->execute();
+      if ($rest3) {
+         //header("location: ../vista/TablaUsuario.php");
+         echo "<script>alert('Elimino el registro')</script>"; echo "<script>window.location.replace('../vista/TablaUsuario.php')</script>"; }
+      else{ echo "<script>alert('Error al eliminar el registro categoria')</script>"; echo "<script>window.location.replace('../vista/TablaUsuario.php')</script>";   } 
+        //  if ($rest3) {
+        //      $_SESSION['message'] = "Elimino categoria";
+        //      $_SESSION['color'] = "danger";
+        //  } else {
+        //      $_SESSION['message '] = "No se Elimino categoria";
+        //      $_SESSION['color'] = "danger";
+        //  }
+        
+      }
+   } // fin de metodo eliminar categoria
 
    //-------------------------------------------------------------------------------------------------------
-
-
    //METODO UPDATE USUARIO PDO MVC-------------------------(FALTA METODO API)-------------------------------
-
    public function actualizarDatosUsuario($id, $a){ 
       ///echo '<pre>'; print_r($a); echo '</pre>';  echo '<pre>'; print_r($id); echo '</pre>';    die();
       $sql = "UPDATE sicloud.usuario SET ID_us = ?, nom1 = ?, nom2 = ?, ape1 = ?, ape2 = ?, fecha = ?, pass = ?, foto = ?, correo = ?, FK_tipo_doc = ?
@@ -159,8 +131,16 @@ class Usuario extends Conexion{
       }else{
       return false;
          }
+      }
+      public function verDatoPorId($id){
+         $sql = "SELECT * FROM sicloud.usuario WHERE ID_us = $id ";
+         $consulta= $this->db->prepare($sql);
+         $result = $consulta->execute();
+         $result = $consulta->fetchAll();
+         return $result;
+      }
 
-
+} //Fin Clase Usuario
         
           # Pasar en el mismo orden de los ?
 
@@ -175,20 +155,13 @@ class Usuario extends Conexion{
          // $_SESSION['color'] = "danger";
       }
       header("location: ../forms/FormEmpresa.php"); */
-  }
-
-  public function verDatoPorId($id){
-   $sql = "SELECT * FROM sicloud.usuario WHERE ID_us = $id ";
-   $consulta= $this->db->prepare($sql);
-   $result = $consulta->execute();
-   $result = $consulta->fetchAll();
-   return $result;
-   }
 
 
 
 
-} //Fin Clase Usuario
+
+
+
 
 
 
