@@ -24,9 +24,9 @@ if ($in == false) {
 
 
    */ 
-    include_once 'plantillas/plantilla.php';
+    include_once '../global/plantillas/plantilla.php';
    // include_once 'clases/class.usuario.php';
-    include_once 'clases/class.factura.php';
+    include_once '../modelo/class.factura.php';
   //  include_once 'clases/class.producto.php';
 
 ?>
@@ -38,7 +38,7 @@ if ($in == false) {
     <head>
         <meta charset="UTF-8">
         <?php //include_once 'js/scripts.php';  
-        include_once 'plantillas/cuerpo/inihtmlN1.php';
+        include_once '../global/plantillas/cuerpo/inihtmlN1.php';
         ?>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -168,7 +168,7 @@ if ($in == false) {
 
 
 <?php
-    include_once 'plantillas/cuerpo/footerN1.php';
+    include_once '../global/plantillas/cuerpo/footerN1.php';
 
 //} // fin de validacion permisos de ingreso
 ?>

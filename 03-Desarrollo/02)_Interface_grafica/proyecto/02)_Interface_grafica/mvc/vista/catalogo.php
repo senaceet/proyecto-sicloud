@@ -1,12 +1,12 @@
 <?php
-include_once 'plantillas/plantilla.php';
-include_once 'plantillas/cuerpo/inihtmlN1.php';
-include_once 'clases/class.producto.php';
-include_once 'clases/class.categoria.php';
-include_once 'plantillas/nav/navN1.php';
-include_once 'session/sessiones.php';
-include_once 'session/config.php';
-include_once 'carrito.php';
+include_once '../global/plantillas/plantilla.php';
+include_once '../global/plantillas/cuerpo/inihtmlN1.php';
+include_once '../modelo/class.producto.php';
+include_once '../modelo/class.categoria.php';
+include_once '../global/plantillas/nav/navN1.php';
+//include_once 'session/sessiones.php';
+//include_once 'session/config.php';
+include_once '../vista/carrito.php';
 
 
 

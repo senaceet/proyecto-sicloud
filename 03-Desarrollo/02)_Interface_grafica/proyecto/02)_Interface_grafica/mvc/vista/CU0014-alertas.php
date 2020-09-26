@@ -3,8 +3,12 @@
 
 //comprobacion de rol
 
+
+/*
 include_once 'session/sessiones.php';
 include_once 'session/valsession.php';
+
+
 
 $in = false;
 if ($_SESSION['usuario']['ID_rol_n']  == 1) {
@@ -29,7 +33,7 @@ if ($in == false) {
     echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
     echo "<script>window.location.replace('index.php');</script>";
 } else {
-
+*/
     //--------------------------------------------------------------------------
 
 
@@ -177,36 +181,9 @@ $(function () {
 
 
 <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-
-
-
-
 <!-- ---------------------------------------------------------------------- -->
 
-
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <?php
             if (isset($_GET['select'])) {
 
@@ -432,11 +409,11 @@ if(isset($_GET['stockGeneral'])){
         
     <?php
     }// fin de tabla StockGeneral
-}// fin de permisos por rol
+// }// fin de permisos por rol
 
              
 
          
-                include_once 'plantillas/cuerpo/finhtml.php';
+                include_once '../global/plantillas/cuerpo/finhtml.php';
 
     ?>

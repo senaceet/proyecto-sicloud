@@ -79,9 +79,13 @@ class Usuario extends Conexion{
       echo'<pre>'; print_r($datosModel); echo'</pre>';
    }
    $consulta->execute();
-   $array = $consulta->fetchAll();
-      if( $consulta->rowCount() > 0 ){
-         return $array;
+  // $array = $consulta->fetchAll();
+      if( $consulta->rowCount() > 0 ){ $USER = $consulta->fetch(PDO::FETCH_ASSOC); if( !isset( $_SESSION['usuario']) ) session_start();  $_SESSION['usuario']  = $USER;  
+         echo 'hola';
+         echo '<pre>'; print_r( $_SESSION['usuario'] );  echo '</pre>';
+      //   echo '<br> hola'.$_SESSION['usuario']['nom1'];
+
+         return  $USER ;
       }else{
          return false;
       }

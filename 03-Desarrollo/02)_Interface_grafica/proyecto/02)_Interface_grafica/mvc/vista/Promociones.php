@@ -1,7 +1,7 @@
 <?php
-include_once 'plantillas/plantilla.php';
-include_once 'plantillas/nav/navgeneral.php';
-include_once 'plantillas/cuerpo/inihtmlN1.php';
+include_once '../global/plantillas/plantilla.php';
+include_once '../global/plantillas/nav/navgeneral.php';
+include_once '../global/plantillas/cuerpo/inihtmlN1.php';
 
 
 cardtitulo('Promociones');
@@ -60,9 +60,9 @@ cardtitulo('Promociones');
 //include_once 'session/sessiones.php';
 //echo print_r($_SESSION['usuario']);
 //echo print_r($_SESSION['lista']);
-include_once 'plantillas/plantilla.php';
-include_once 'clases/class.producto.php';
-include_once 'clases/class.categoria.php';
+include_once '../global/plantillas/plantilla.php';
+include_once '../modelo/class.producto.php';
+include_once '../modelo/class.categoria.php';
 
 
 
@@ -147,6 +147,6 @@ include_once 'clases/class.categoria.php';
 </div>
 
 <?php
-include_once 'plantillas/cuerpo/footerN1.php';
-include_once 'plantillas/cuerpo/finhtml.php';
+include_once '../global/plantillas/cuerpo/footerN1.php';
+include_once '../global/plantillas/cuerpo/finhtml.php';
 ?>

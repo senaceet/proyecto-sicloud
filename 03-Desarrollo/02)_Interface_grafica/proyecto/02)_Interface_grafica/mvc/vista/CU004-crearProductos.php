@@ -1,42 +1,42 @@
 <?php
 
-include_once 'session/sessiones.php';
-include_once 'session/valsession.php';
+//include_once 'session/sessiones.php';
+//include_once 'session/valsession.php';
 
 
 
 
 //comprobacion de rol
-$in = false;
-if(  $_SESSION['usuario']['ID_rol_n']   == 1    ){
-$in = true; 
-}elseif( $_SESSION['usuario']['ID_rol_n']   == 2  ){
-$in = true;    
-}
-
-if( $_SESSION['usuario']['estado'] == 0 ){
-    $in = false;   
-}
-
-
-if($in == false){
-    echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";  echo "<script>window.location.replace('index.php');</script>" ; 
-}else{
+//$in = false;
+//if(  $_SESSION['usuario']['ID_rol_n']   == 1    ){
+//$in = true; 
+//}elseif( $_SESSION['usuario']['ID_rol_n']   == 2  ){
+//$in = true;    
+//}
+//
+//if( $_SESSION['usuario']['estado'] == 0 ){
+//    $in = false;   
+//}
+//
+//
+//if($in == false){
+//    echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";  echo "<script>window.location.replace('index.php');</script>" ; 
+//}else{
 //------------------------------------------------------------------------------------
 
 
 
 
-include_once 'plantillas/plantilla.php';
-include_once 'clases/class.categoria.php';
-include_once 'clases/class.producto.php';
-include_once 'clases/class.medida.php';
-include_once 'clases/class.usuario.php';
-include_once 'clases/class.medida.php';
-include_once 'clases/class.proveedor.php';
-include_once 'clases/class.conexion.php';
-include_once 'plantillas/cuerpo/inihtmlN1.php';
-include_once 'plantillas/nav/navN1.php';
+include_once '../global/plantillas/plantilla.php';
+include_once '../modelo/class.categoria.php';
+include_once '../modelo/class.producto.php';
+include_once '../modelo/class.medida.php';
+include_once '../modelo/class.usuario.php';
+include_once '../modelo/class.medida.php';
+include_once '../modelo/class.proveedor.php';
+include_once '../modelo/class.conexion.php';
+include_once '../global/plantillas/cuerpo/inihtmlN1.php';
+include_once '../global/plantillas/nav/navN1.php';
 
 
 cardtitulo("Registro producto");
@@ -244,7 +244,7 @@ if (isset($_GET['accion'])) {
 <?php
 
     } // fin de accion ver producto
-} // fin de asset get accion
+//} // fin de asset get accion
 
 
 

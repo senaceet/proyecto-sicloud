@@ -3,8 +3,10 @@
 
 //comprobacion de rol
 
-include_once 'session/sessiones.php';
-include_once 'session/valsession.php';
+//include_once 'session/sessiones.php';
+//include_once 'session/valsession.php';
+
+/*
 
 $in = false;
 if ($_SESSION['usuario']['ID_rol_n']  == 1) {
@@ -25,13 +27,15 @@ if ($in == false) {
     echo "<script>window.location.replace('index.php');</script>";
 } else {
 
+
+  *///  
     //--------------------------------------------------------------------------
 
 
 
-    include_once 'plantillas/plantilla.php';
-    include_once 'plantillas/nav/navN1.php';
-    include_once 'plantillas/cuerpo/inihtmlN1.php';
+    include_once '../global/plantillas/plantilla.php';
+    include_once '../global/plantillas/nav/navN1.php';
+    include_once '../global/plantillas/cuerpo/inihtmlN1.php';
 
 
     cardtitulo("Informe de ventas");
@@ -78,7 +82,7 @@ if ($in == false) {
 
 <?php
 
-    include_once 'plantillas/cuerpo/footerN1.php';
-    include_once 'plantillas/cuerpo/finhtml.php';
-} // fin de validar permisos
+    include_once '../global/plantillas/cuerpo/footerN1.php';
+    include_once '../global/plantillas/cuerpo/finhtml.php';
+//} // fin de validar permisos
 ?>

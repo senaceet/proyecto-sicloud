@@ -1,5 +1,6 @@
 
 <?php
+//session_destroy();
 include_once '../modelo/class.documento.php';
 include_once '../modelo/class.usuario.php';
 include_once '../modelo/class.rol.php';
@@ -20,6 +21,8 @@ class ControllerDoc{
     }
      public function loginUsuarioController($ID_us,  $pass, $doc){
         $datosController[] = [ $ID_us, $pass, $doc ];
+        session_start();
+
         return $this->objModUs->loginUsuarioModel($datosController);
     } 
     public function createUsuariosController(

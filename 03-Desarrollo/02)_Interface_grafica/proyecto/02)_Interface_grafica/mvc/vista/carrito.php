@@ -1,6 +1,6 @@
 <?php
-include_once 'session/config.php';
-include_once 'session/sessiones.php';
+//include_once 'session/config.php';
+//include_once 'session/sessiones.php';
 
 $mensaje = "";
 

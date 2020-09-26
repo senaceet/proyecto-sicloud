@@ -1,5 +1,7 @@
 <?php
 
+
+/*
 //comprobacion de rol
 
 include_once 'session/sessiones.php';
@@ -24,6 +26,8 @@ if ($in == false) {
     echo "<script>window.location.replace('index.php');</script>";
 } else {
 
+
+    */
     //--------------------------------------------------------------------------
 
 
@@ -37,11 +41,11 @@ if ($in == false) {
 
 
 
-include_once 'plantillas/plantilla.php';
-include_once 'plantillas/cuerpo/inihtmlN1.php';
-include_once 'plantillas/nav/navN1.php';
-include_once 'clases/class.factura.php';
-include_once 'clases/class.conexion.php';
+include_once '../global/plantillas/plantilla.php';
+include_once '../global/plantillas/cuerpo/inihtmlN1.php';
+include_once '../global/plantillas/nav/navN1.php';
+include_once '../modelo/class.factura.php';
+include_once '../modelo/class.conexion.php';
 
 cardtitulo("Informe de Bodega");
 
@@ -137,8 +141,8 @@ if (isset($_POST['consulta'])) {
 <?php
 }
 
-include_once 'plantillas/cuerpo/footerN1.php'; 
-include_once 'plantillas/cuerpo/finhtml.php';
-}// fin de validacion permisos
+include_once '../global/plantillas/cuerpo/footerN1.php'; 
+include_once '../global/plantillas/cuerpo/finhtml.php';
+//}// fin de validacion permisos
 
 ?>
