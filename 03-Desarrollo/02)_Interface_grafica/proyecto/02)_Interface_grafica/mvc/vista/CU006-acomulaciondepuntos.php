@@ -1,38 +1,41 @@
 <?php
 
-/*
-include_once 'session/sessiones.php';
-include_once 'session/valsession.php';
 
-
+include_once '../controlador/ControladorSession.php';
 //comprobacion de rol
 $in = false;
-if ($_SESSION['usuario']['ID_rol_n']   == 1) {
-    $in = true;
-} elseif ($_SESSION['usuario']['ID_rol_n']   == 3) {
-    $in = true;
-} elseif ($_SESSION['usuario']['ID_rol_n']   == 4) {
-    $in = true;
-} elseif ($_SESSION['usuario']['ID_rol_n']   == 6) {
-    $in = true;
+switch ($_SESSION['usuario']['ID_rol_n']) {
+    case 1:
+        $in = true;
+    break;
+    case 3:
+        $in = true;
+    break;
+    case 4:
+        $in = true;
+    break;
+    case 6:
+        $in = true;
+    break;
+    default:
+        echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
+        echo "<script>window.location.replace('index.php');</script>";
+    break;
 }
-
-if ($_SESSION['usuario']['estado'] == 0) {
-    $in = false;
-}
-
-
-*/
+if ($in == false) {
+    echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
+    echo "<script>window.location.replace('index.php');</script>";
+} else {
 
 include_once '../global/plantillas/cuerpo/inihtmlN1.php';
 include_once '../global/plantillas/nav/navN1.php';
 include_once '../global/plantillas/plantilla.php';
 include_once '../global/plantillas/cuerpo/inihtmlN1.php';
 include_once '../global/plantillas/nav/navN1.php';
-include_once '../modelo/class.usuario.php';
+include_once '../controlador/Controlador.php';
 
 cardtitulo("Acumulación de puntos de compra");
-
+$objCon = new ControllerDoc();
 ?>
 <div class="card card-body text-center col-md-8 mx-auto">
     <!--<div class="container">-->
@@ -86,8 +89,9 @@ cardtitulo("Acumulación de puntos de compra");
         </thead>
 
         <?php
-        $datos = Usuario::verPuntosUs();
-        while ($row = $datos->fetch_array()) {
+        $datos = $objCon->verPuntosUs();
+        // $datos = Usuario::verPuntosUs();
+       foreach( $datos as $i => $row){
 
 
         ?>
@@ -115,4 +119,5 @@ cardtitulo("Acumulación de puntos de compra");
 
 include_once '../global/plantillas/cuerpo/footerN1.php';
 include_once '../global/plantillas/cuerpo/finhtml.php';
+}
 ?>

@@ -1,7 +1,7 @@
 <?php
 include_once '../global/plantillas/cuerpo/inihtmlN1.php';
 include_once '../global/plantillas/nav/navN1.php';
-//include_once 'session/sessiones.php';
+include_once '../controlador/ControladorSession.php';
 include_once '../global/plantillas/plantilla.php';
 ?>
 

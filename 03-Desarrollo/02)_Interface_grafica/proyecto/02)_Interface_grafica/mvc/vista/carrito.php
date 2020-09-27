@@ -1,9 +1,6 @@
 <?php
-//include_once 'session/config.php';
-//include_once 'session/sessiones.php';
-
+include_once '../controlador/ControladorSession.php';
 $mensaje = "";
-
 
 // captura los datos que vienen por pos, desemcrita y almacena en varibles
 if (isset($_POST['btnCatalogo'])) {

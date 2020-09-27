@@ -1,12 +1,13 @@
 <?php
-include_once '../../session/sessiones.php';
-include_once '../../notificacion/notificacionN3.php';
-include_once '../../clases/class.notificacion.php';
+//include_once '../../session/sessiones.php';
+//include_once '../../notificacion/notificacionN3.php';
+//include_once '../../clases/class.notificacion.php';
+include_once '../../../controlador/ControladorSession.php';
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top navbar-expand-lg  fixed-top sticky-top">
   <a class="navbar-brand ml-4" href="#">
-    <img src="../../fonts/logoportal.png" width="250" height="65" alt="">
+    <img src="../../../global/fonts/logoportal.png" width="250" height="65" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -77,8 +78,8 @@ include_once '../../clases/class.notificacion.php';
           <i class="fas fa-bell fa-fw" style="color :#ffff;"></i>
           <!-- Counter - Messages -->
           <?php if (isset($_SESSION['usuario'])) {
-            $c = Notificacion::conteoNotificaciones($_SESSION['usuario']['ID_rol_n'])       ?>
-            <span class="badge badge-danger badge-counter"><?php echo $c;
+         //   $c = Notificacion::conteoNotificaciones($_SESSION['usuario']['ID_rol_n'])       ?>
+            <span class="badge badge-danger badge-counter"><?php // echo $c;
                                                           } ?></span>
         </a>
 
@@ -95,7 +96,7 @@ include_once '../../clases/class.notificacion.php';
           <strong><?php if (isset($_SESSION['usuario'])) {
                     echo  $_SESSION['usuario']['nom1'];
                     ?></strong>
-<img class="img-profile ml-3 rounded-circle" src="../../fonts/us/<?php echo $_SESSION['usuario']['foto'] ;   ?>" height="80" width="80">
+<img class="img-profile ml-3 rounded-circle" src="../../../global/fonts/us/<?php echo $_SESSION['usuario']['foto'] ;   ?>" height="80" width="80">
                     <?php   } ?>
         </a>
         <!-- Dropdown - User Information -->
@@ -122,7 +123,7 @@ include_once '../../clases/class.notificacion.php';
             Compras
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="../../session/cerrar.php" data-target="#logoutModal">
+          <a class="dropdown-item"  href="../../../controlador/ControladorSession.php?cerrar=3" data-target="#logoutModal">
             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 "></i>
             Salir
           </a>

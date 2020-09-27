@@ -2,14 +2,9 @@
 include_once '../global/plantillas/plantilla.php';
 include_once '../global/plantillas/cuerpo/inihtmlN1.php';
 include_once '../global/plantillas/nav/navN1.php';
-//include_once 'session/sessiones.php';
-//include_once 'session/valsession.php';
-
+include_once '../controlador/ControladorSession.php';
 ?>
-   
-   
-     <?php cardtituloS("SOLICITUDES")?>
-
+<?php cardtituloS("SOLICITUDES")?>
 
 <!-- 2 check -->
 <div class="solicitud1">

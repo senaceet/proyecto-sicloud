@@ -1,45 +1,30 @@
 <?php
 
-
-/*
+include_once '../controlador/ControladorSession.php';
 //comprobacion de rol
-
-include_once 'session/sessiones.php';
-include_once 'session/valsession.php';
-
 $in = false;
-if ($_SESSION['usuario']['ID_rol_n']  == 1) {
-    $in = true;
-} elseif ($_SESSION['usuario']['ID_rol_n'] == 2) {
-    $in = true;
-} elseif ($_SESSION['usuario']['ID_rol_n'] == 3) {
-    $in = true;
+switch ($_SESSION['usuario']['ID_rol_n']) {
+    case 1:
+        $in = true;
+    break;
+    case 2:
+        $in = true;
+    break;
+    case 3:
+        $in = true;
+    break;
+
+    default:
+        echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
+        echo "<script>window.location.replace('index.php');</script>";
+    break;
 }
-
-if ($_SESSION['usuario']['estado'] == 0) {
-    $in = false;
-}
-
-
 if ($in == false) {
     echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
     echo "<script>window.location.replace('index.php');</script>";
 } else {
 
-
-    */
     //--------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
 
 include_once '../global/plantillas/plantilla.php';
 include_once '../global/plantillas/cuerpo/inihtmlN1.php';
@@ -144,5 +129,5 @@ if (isset($_POST['consulta'])) {
 include_once '../global/plantillas/cuerpo/footerN1.php'; 
 include_once '../global/plantillas/cuerpo/finhtml.php';
 //}// fin de validacion permisos
-
+}
 ?>

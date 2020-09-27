@@ -1,20 +1,18 @@
 <?php
 include_once '../global/plantillas/plantilla.php';
 include_once '../global/plantillas/cuerpo/inihtmlN1.php';
-include_once '../modelo/class.producto.php';
-include_once '../modelo/class.categoria.php';
 include_once '../global/plantillas/nav/navN1.php';
-//include_once 'session/sessiones.php';
-//include_once 'session/config.php';
+include_once '../controlador/ControladorSession.php';
 include_once '../vista/carrito.php';
-
-
+$objMod = new ControllerDoc();
 
 function selectCategorias(){
-    $categoria = Categoria::verCategoria();
+    $objMod = new ControllerDoc();
+    $categoria = $objMod->verCategorias();
+
     foreach ($categoria as $row ) {
 ?>
-        <option value="<?php echo $row['ID_categoria']  ?>"><?php echo $row['nom_categoria']    ?></option>
+        <option value="<?= $row['ID_categoria']  ?>"><?= $row['nom_categoria']    ?></option>
 <?php }
 }
 
@@ -22,8 +20,8 @@ function alerta(){
     if (isset($_SESSION['message'])) {
 ?>
         <!-- alerta boostrap -->
-        <div class="text-center  alert alert-<?php echo $_SESSION['color']   ?> alert-dismissible fade show" role="alert">
-            <?php echo  $_SESSION['message']  ?>
+        <div class="text-center  alert alert-<?= $_SESSION['color']   ?> alert-dismissible fade show" role="alert">
+            <?=  $_SESSION['message']  ?>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -33,22 +31,17 @@ function alerta(){
     }
 }
 
-
 //================================================================================
 // Datos
-
-
 $num = 0;
-$datos = Producto::verProductos();  // Todos los productos default
-
-
+$datos = $objMod->verProductos();
+ // Todos los productos default
 if (isset($_REQUEST['busqueda'])) :
-    $datos = Producto::buscarPorNombreProducto($_REQUEST['busqueda']);
+    $datos = $objMod->buscarPorNombreProducto($_REQUEST['busqueda']);
 endif;
-
-
 if (isset($_REQUEST['cat'])) :
-    $datos = Producto::verPorCategoria($_GET['cat']);
+    $datos = $objMod->verPorCategoria($_GET['cat']);
+   // $datos = Producto::verPorCategoria($_GET['cat']);
 endif;
 
 //---------------------------------------------------------------------
@@ -59,12 +52,12 @@ function mostrarCatalogo($datos){
     foreach ($datos as $row) {
     ?>
         <div class="mx-2 col-lg-4 col-md-6  card card-body shadow mx-auto  my-4 shadow cards animate__animated  animate__pulse animate__delay-1s">
-            <img class="mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="250px" width="240px">
+            <img class="mx-auto" src="../global/fonts/img/<?= $row['img']; ?>" alt="Card image cap" height="250px" width="240px">
 
             <div class="">
-                <h5 class="card-title"><?php echo $row['nom_prod']; ?> </h5>
-                <p class="card-text lead"><strong><?php echo "$" . number_format(($row['val_prod']), 0, ',', '.'); ?></strong> </p>
-                <p class="card-text text-success"><?php echo "36 cuotas " . "$" . number_format(($row['val_prod'] / 36), 0, ',', '.') . " Sin interes";
+                <h5 class="card-title"><?= $row['nom_prod']; ?> </h5>
+                <p class="card-text lead"><strong><?= "$" . number_format(($row['val_prod']), 0, ',', '.'); ?></strong> </p>
+                <p class="card-text text-success"><?= "36 cuotas " . "$" . number_format(($row['val_prod'] / 36), 0, ',', '.') . " Sin interes";
                                                     if ($row['estado_prod'] == "Promoción"){
                                                         echo ",  " .  $row['estado_prod'];
                                                     } ?>
@@ -72,15 +65,15 @@ function mostrarCatalogo($datos){
                 <!-- Formulario de envio e incriptacion ------------------------------------>
                 <form action="" method="POST">
                     <label class="card-text lead" for="">Cantidad</label> <input value="1" class=" form-control-sm col-3 col-lg-2 col-md-2 " name="cantidad1" type='number'>
-                    <input type="hidden" name="img" id="id" value="<?php echo openssl_encrypt($row['img'], COD, KEY);  ?>">
-                    <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($row['ID_prod'], COD, KEY);  ?>">
-                    <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($row['nom_prod'], COD, KEY);  ?>">
-                    <input type="hidden" name="precio" id="precio" value=" <?php echo openssl_encrypt($row['val_prod'], COD, KEY);  ?>">
+                    <input type="hidden" name="img" id="id" value="<?= openssl_encrypt($row['img'], COD, KEY);  ?>">
+                    <input type="hidden" name="id" id="id" value="<?= openssl_encrypt($row['ID_prod'], COD, KEY);  ?>">
+                    <input type="hidden" name="nombre" id="nombre" value="<?= openssl_encrypt($row['nom_prod'], COD, KEY);  ?>">
+                    <input type="hidden" name="precio" id="precio" value=" <?= openssl_encrypt($row['val_prod'], COD, KEY);  ?>">
                     <div class="row">
                         <input type="submit" class=" btn btn-naranja" value="Agregar" name="btnCatalogo">
                 </form>
                 <form action="detalleProducto.php" method="POST">
-                    <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($row['ID_prod'], COD, KEY);  ?>">
+                    <input type="hidden" name="id" id="id" value="<?= openssl_encrypt($row['ID_prod'], COD, KEY);  ?>">
                     <input type="submit" class="btn-block btn btn-naranja" value="Detalle">
                 </form>
             </div>
@@ -143,6 +136,6 @@ function mostrarCatalogo($datos){
 </div>
 
 <?php
-include_once 'plantillas/cuerpo/footerN1.php';
-include_once 'plantillas/cuerpo/finhtml.php';
+include_once '../global/plantillas/cuerpo/footerN1.php';
+include_once '../global/plantillas/cuerpo/finhtml.php';
 ?>

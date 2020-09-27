@@ -1,8 +1,8 @@
 <?php
-include_once '../session/sessiones.php';
-include_once '../clases/class.notificacion.php';
-include_once '../notificacion/notificacionN2.php';
-//nclude_once '../session/sessionIni.php'
+include_once '../../controlador/controladorSession.php';
+include_once '../../modelo/class.notificacion.php';
+
+
 
 
 
@@ -26,17 +26,17 @@ include_once '../notificacion/notificacionN2.php';
           FERRETERIA
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="../CU000-quienessomos.php">QUIENES SOMOS</a>
-          <a class="dropdown-item" href="../CU000-misionyvision.php">MISION Y VISION</a>
+          <a class="dropdown-item" href="../vista/CU000-quienessomos.php">QUIENES SOMOS</a>
+          <a class="dropdown-item" href="../vista/CU000-misionyvision.php">MISION Y VISION</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link lead px-4 my-3" id="../catalogo"; href="../metodos/get.php?ops=1">CATALOGO<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead px-4 my-3" id="catalogo"; href="../metodos/get.php?ops=1">CATALOGO<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link lead px-4 my-3" href="../Promociones.php">PROMOCIONES<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead px-4 my-3" href="../vista/Promociones.php">PROMOCIONES<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link lead pl-4 my-3" href="../CU000-contact.php">CONTACTO<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead pl-4 my-3" href="../vista/CU000-contact.php">CONTACTO<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown active">
 
@@ -86,8 +86,8 @@ include_once '../notificacion/notificacionN2.php';
           <i class="fas fa-bell fa-fw" style="color :#ffff;"></i>
           <!-- Counter - Messages -->
           <?php if (isset($_SESSION['usuario'])) {
-            $c = Notificacion::conteoNotificaciones($_SESSION['usuario']['ID_rol_n'])       ?>
-            <span class="badge badge-danger badge-counter"><?php echo $c;
+          //  $c = Notificacion::conteoNotificaciones($_SESSION['usuario']['ID_rol_n'])       ?>
+            <span class="badge badge-danger badge-counter"><?php // echo $c;
                                                           } ?></span>
         </a>
 
@@ -126,7 +126,7 @@ include_once '../notificacion/notificacionN2.php';
             Compras
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="../session/cerrar.php" data-target="#logoutModal">
+          <a class="dropdown-item" href="../controlador/ControladorSession.php?cerrar=2" data-target="#logoutModal">
             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 "></i>
             Salir
           </a>

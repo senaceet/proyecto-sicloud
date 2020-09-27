@@ -1,10 +1,8 @@
 <?php
-require 'plantillas/plantilla.php';
-include_once 'plantillas/cuerpo/inihtmlN1.php';
-include_once 'plantillas/nav/navN1.php';
-include_once 'session/sessiones.php';
-
-
+require '../global/plantillas/plantilla.php';
+include_once '../global/plantillas/cuerpo/inihtmlN1.php';
+include_once '../global/plantillas/nav/navN1.php';
+include_once '../controlador/ControladorSession.php';
 ?>
 
 <div class="col-md-12 mt-5">
@@ -22,10 +20,10 @@ include_once 'session/sessiones.php';
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img class="d-block w-100" src="fonts/slideprod0.jpg" alt="First slide" >
+                <img class="d-block w-100" src="../global/fonts/slideprod0.jpg" alt="First slide" >
                 </div>
                 <div class="carousel-item">
-                <img class="d-block w-100" src="fonts/slideprod1.jpg" alt="Second slide" >
+                <img class="d-block w-100" src="../global/fonts/slideprod1.jpg" alt="Second slide" >
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">
@@ -44,7 +42,7 @@ include_once 'session/sessiones.php';
 <div class="container">
     <div class="row">
         <div class="col-md-7 card card-body bg-secondary mx-auto">
-            <div class="card mx-auto"> <img src="fonts/contact.png" alt="contacto" style="width: 622px; height: 500px;"></div>
+            <div class="card mx-auto"> <img src="../global/fonts/contact.png" alt="contacto" style="width: 622px; height: 500px;"></div>
         </div>
     </div>
 </div>
@@ -52,6 +50,6 @@ include_once 'session/sessiones.php';
 
 <?php 
 
-include_once 'plantillas/cuerpo/footerN1.php'; 
-include_once 'plantillas/cuerpo/finhtml.php';
+include_once '../global/plantillas/cuerpo/footerN1.php'; 
+include_once '../global/plantillas/cuerpo/finhtml.php';
 ?>

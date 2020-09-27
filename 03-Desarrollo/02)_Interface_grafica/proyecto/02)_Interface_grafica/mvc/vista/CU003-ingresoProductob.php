@@ -1,29 +1,26 @@
 <?php
-include_once 'session/sessiones.php';
-include_once 'session/valsession.php';
-
-
+include_once '../controlador/ControladorSession.php';
 //comprobacion de rol
 $in = false;
-if (($_SESSION['usuario']['ID_rol_n']   == 1)) {
-    $in = true;
-} elseif ($_SESSION['usuario']['ID_rol_n']   == 2) {
-    $in = true;
+switch ($_SESSION['usuario']['ID_rol_n']) {
+    case 1:
+        $in = true;
+    break;
+    case 2:
+        $in = true;
+    break;
+    case 0:
+        $in = true;
+    break;
+    default:
+        echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
+        echo "<script>window.location.replace('index.php');</script>";
+    break;
 }
-
-if ($_SESSION['usuario']['estado'] == 0) {
-    $in = false;
-}
-
-
 if ($in == false) {
     echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
     echo "<script>window.location.replace('index.php');</script>";
 } else {
-
-
-
-
     include_once 'plantillas/cuerpo/inihtmlN1.php';
     include_once 'clases/class.conexion.php';
     include_once 'clases/class.categoria.php';
@@ -33,11 +30,9 @@ if ($in == false) {
     include_once 'plantillas/nav/navN1.php';
     include_once 'plantillas/plantilla.php';
 
-
-
 function selectProducto(){
- 
-    $datos = Producto::verProductos();
+    $objCon = new ControllerDoc();
+    $datos = $objCon->verProductos();
     foreach($datos as $row) {
     ?>
         <option value="<?php echo $row['ID_prod'] ?>"><?php echo $row['nom_prod'] ?></option>
@@ -68,8 +63,8 @@ function selectProducto(){
 // Captura de datos
 
 
-$id1 = 2041172460;
-$datos = Producto::verJoin($id1);
+$id1    = 2041172460;
+$objCon->tablaProducto($id1);
 echo '<pre>';
 var_dump($datos);
 print_r($datos);
@@ -194,8 +189,8 @@ foreach($datos as $row ){
 
 
 
-
+                    
                     include_once 'plantillas/cuerpo/footerN1.php';
                     include_once 'plantillas/cuerpo/finhtml.php';
-
+                    
 ?>

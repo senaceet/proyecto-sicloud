@@ -2,8 +2,8 @@
 
 
 
-
-
+include_once '../controlador/ControladorSession.php';
+include_once '../controlador/Controlador.php';
 //nclude_once '../session/sessionIni.php'
 //include_once 'clases/class.notificacion.php';
 //include_once 'session/sessiones.php';
@@ -12,12 +12,13 @@
 
 
 
+
 ?>
 
 
 <nav class="navbar-fixed-top navbar navbar-expand-lg navbar-dark bg-dark navbar navbar-expand-lg  sticky-top">
   <a class="navbar-brand ml-4" href="#">
-    <img src="fonts/logoportal.png" width="250" height="65" alt="">
+    <img src="../global/fonts/logoportal.png" width="250" height="65" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -37,7 +38,7 @@
           <a class="dropdown-item" href="CU000-misionyvision.php">MISION Y VISION</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link lead px-4 my-3" id="catalogo" ; href="metodos/get.php?ops=1">CATALOGO<span class="sr-only">(current)</span></a>
+        <a class="nav-link lead px-4 my-3" id="catalogo" ; href="catalogo.php?ops=1">CATALOGO<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link lead px-4 my-3" href="Promociones.php">PROMOCIONES<span class="sr-only">(current)</span></a>
@@ -87,9 +88,8 @@
           <i class="fas fa-bell fa-fw" style="color :#ffff;"></i>
           <!-- Counter - Messages -->
           <?php if (isset($_SESSION['usuario'])) {
-            $c = Notificacion::conteoNotificaciones($_SESSION['usuario']['ID_rol_n'])       ?>
-            <span class="badge badge-danger badge-counter"><?php echo $c;
-                                                          } ?></span>
+           // $c = Notificacion::conteoNotificaciones($_SESSION['usuario']['ID_rol_n'])       ?>
+            <span class="badge badge-danger badge-counter"><?php  } ?></span>
         </a>
 
 
@@ -102,8 +102,12 @@
 
           <strong><?php if (isset($_SESSION['usuario'])) {
                     echo  $_SESSION['usuario']['nom1'];   ?></strong>
-          <img class="img-profile ml-3 rounded-circle" src="./fonts/us/<?php echo $_SESSION['usuario']['foto'];   ?>" height="65" width="70">
-        <?php  } ?>
+          <img class="img-profile ml-3 rounded-circle" src="../global/fonts/us/<?= $_SESSION['usuario']['foto'];   ?>" height="65" width="70">
+        <?php  }
+       
+        
+        ?>
+       
 
         </a>
         <!-- Dropdown - User Information -->
@@ -130,9 +134,11 @@
             Compras
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="session/cerrar.php" data-target="#logoutModal">
+          <a class="dropdown-item"   data-target="#logoutModal">
+          <a class="dropdown-item" href="../controlador/ControladorSession.php?cerrar=1" data-target="#logoutModal">
             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
             Salir
+
           </a>
         </div>
       </li>

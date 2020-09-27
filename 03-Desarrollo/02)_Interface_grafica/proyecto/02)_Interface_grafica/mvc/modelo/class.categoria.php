@@ -53,25 +53,18 @@ class Categoria extends Conexion{
         header("location:../forms/formCategoria.php ");
     }
 
-
-
-        // Ver categorias           R
-        public function verCategoria()
-        {
-
-            $sql = "SELECT * FROM categoria";
-            $consulta = $this->db->prepare($sql);
-            $consulta->execute();
-            $result = $consulta->fetchAll(); 
-            return $result;
-        }
-
-    
+    // Ver categorias           R
+    public function verCategoria(){
+        $sql = "SELECT * FROM categoria";
+        $consulta = $this->db->prepare($sql);
+        $consulta->execute();
+        $result = $consulta->fetchAll(); 
+        return $result;
+    }
 
 
         // Eliminar categoria           D
-    public function eliminarCategoria($id_get)
-    {       
+    public function eliminarCategoria($id_get){       
         $sql1 = "SET FOREIGN_KEY_CHECKS = 0";
         $consulta2 =$this->db->prepare($sql1);
         $rest1 = $consulta2->execute();
@@ -102,8 +95,7 @@ class Categoria extends Conexion{
 
 
      // Actualizar datos             U
-     public function actualizarDatosCategoria($id_get)
-     {
+     public function actualizarDatosCategoria($id_get){
         $sql = "UPDATE sicloud.categoria SET nom_categoria = :nom_categoria  WHERE ID_categoria = :ID_categoria ";
         $consulta = $this->db->prepare($sql);
         $consulta->bindValue(":ID_categoria", $this->$id_get);
@@ -133,17 +125,11 @@ class Categoria extends Conexion{
          $result = $consulta->fetchAll();
          return $result;
      }
-
-    
-
     // Ver categorias por id    R
     //static function verCategoriaId($id)
 
-    
-
     //Capturar id
-    static function capturarId()
-    {
+    static function capturarId(){
         include_once 'class.conexon.php';
         $con = new Conexion;
         $sql = "SELECT * FROM sicloud.categoria ORDER BY ID_categoria DESC LIMIT 1 ";
@@ -154,8 +140,7 @@ class Categoria extends Conexion{
     } // fin de metodo capturar ID
 
     // Ver categiria sin conexion
-    public function verCategorias()
-    {
+    public function verCategorias(){
         //include_once 'class.conexon.php';
         //$d = new Conexion;
         $sql = "SELECT * FROM categoria

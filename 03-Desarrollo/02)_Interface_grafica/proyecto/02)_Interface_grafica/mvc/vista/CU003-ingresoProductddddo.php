@@ -1,13 +1,6 @@
 <?php
-include_once 'session/sessiones.php';
-include_once 'session/valsession.php';
-
-
-//comprobacion de rol
-
-
-
-
+     include_once '../controlador/ControladorSession.php';
+   //comprobacion de rol
     include_once 'plantillas/cuerpo/inihtmlN1.php';
     include_once 'clases/class.conexion.php';
     include_once 'clases/class.categoria.php';

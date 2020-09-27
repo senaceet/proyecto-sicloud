@@ -4,6 +4,7 @@ include_once '../global/plantillas/plantilla.php';
 include_once '../global/plantillas/nav/navgeneral.php';
 include_once '../global/plantillas/cuerpo/inihtmlN1.php';
 include_once '../modelo/class.usuario.php';
+include_once '../controlador/ControladorSession.php';
 
 ?>
 

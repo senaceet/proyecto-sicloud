@@ -1,29 +1,29 @@
 <?php
-
-/*
-//include_once 'session/sessiones.php';
-//include_once 'session/valsession.php';
+include_once '../controlador/ControladorSession.php';
 //comprobacion de rol
 $in = false;
-if ($_SESSION['usuario']['ID_rol_n']   == 1) {
-    $in = true;
-} elseif ($_SESSION['usuario']['ID_rol_n']   == 4) {
-    $in = true;
+switch ($_SESSION['usuario']['ID_rol_n']) {
+    case 1:
+        $in = true;
+    break;
+    case 4:
+        $in = true;
+    break;
+    case 0:
+        $in = true;
+    break;
+    default:
+        echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
+        echo "<script>window.location.replace('index.php');</script>";
+    break;
 }
-
-if ($_SESSION['usuario']['estado'] == 0) {
-    $in = false;
-}
-
-
 if ($in == false) {
     echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
     echo "<script>window.location.replace('index.php');</script>";
 } else {
+
     //------------------------------------------------------------------------------------
 
-
-   */ 
     include_once '../global/plantillas/plantilla.php';
    // include_once 'clases/class.usuario.php';
     include_once '../modelo/class.factura.php';
@@ -31,8 +31,6 @@ if ($in == false) {
 
 ?>
     <!-- col 12 -->
-
-
     <!DOCTYPE html>
     <html lang="es">
     <head>
@@ -170,7 +168,7 @@ if ($in == false) {
 <?php
     include_once '../global/plantillas/cuerpo/footerN1.php';
 
-//} // fin de validacion permisos de ingreso
+} // fin de validacion permisos de ingreso
 ?>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

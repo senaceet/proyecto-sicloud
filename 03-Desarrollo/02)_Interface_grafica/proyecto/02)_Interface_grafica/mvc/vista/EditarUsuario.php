@@ -4,6 +4,7 @@ include_once '../controlador/post.php';
 include_once '../global/plantillas/plantilla.php';
 include_once '../global/plantillas/cuerpo/inihtmlN1.php';
 include_once '../global/plantillas/nav/navN1.php';
+include_once '../controlador/ControladorSession.php';
 ?>
 <?php
 function selectDocumeto(){
@@ -23,6 +24,11 @@ function selectRol(){
         <option value="<?= $d[0]   ?>"><?=  $d[1]   ?></option>
     <?php  }
 }
+$objConRol =  Rol::ningunDato();
+$datosRol  =  $objConRol->verRol();
+
+echo '<pre>'; print_r($datosRol); echo '</pre>';
+
 cardtitulo("Actualizar Usuario");
 ?>
 <div class="container">

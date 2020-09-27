@@ -2,9 +2,10 @@
 //include_once 'session/config.php';
 include_once 'carrito.php';
 include_once '../global/plantillas/cuerpo/inihtmlN1.php';
-//include_once 'session/sessiones.php';
+include_once '../controlador/ControladorSession.php';
 include_once '../global/plantillas/nav/navN1.php';
 include_once '../global/plantillas/plantilla.php';
+include_once '../controlador/ControladorSession.php';
 ?>
 
 <br>
@@ -43,7 +44,7 @@ include_once '../global/plantillas/plantilla.php';
                 <?php foreach ($_SESSION['CARRITO'] as $indice => $producto) {    ?>
                     <tbody>
                         <tr>
-                            <td><img class="card-body mx-auto" src="fonts/img/<?php echo $producto['IMG'];  ?>" alt="Card image cap" height="200px" width="300px">
+                            <td><img class="card-body mx-auto" src="../global/fonts/img/<?php echo $producto['IMG'];  ?>" alt="Card image cap" height="200px" width="300px">
                             <td><?php echo $producto['NOMBRE'] ?></td>
                             <td class="text-center"><?php echo $producto['CANTIDAD'] ?></td>
                             <td class="text-center"> <?php echo "$" . number_format($producto['PRECIO'], 0, ',', '.'); ?></td>

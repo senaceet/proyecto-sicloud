@@ -1,49 +1,45 @@
 <?php
 
-//include_once 'session/sessiones.php';
-//include_once 'session/valsession.php';
-
-
-
-
+include_once '../controlador/ControladorSession.php';
 //comprobacion de rol
-//$in = false;
-//if(  $_SESSION['usuario']['ID_rol_n']   == 1    ){
-//$in = true; 
-//}elseif( $_SESSION['usuario']['ID_rol_n']   == 2  ){
-//$in = true;    
-//}
-//
-//if( $_SESSION['usuario']['estado'] == 0 ){
-//    $in = false;   
-//}
-//
-//
-//if($in == false){
-//    echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";  echo "<script>window.location.replace('index.php');</script>" ; 
-//}else{
+$in = false;
+switch ($_SESSION['usuario']['ID_rol_n']) {
+    case 1:
+        $in = true;
+    break;
+    case 2:
+        $in = true;
+    break;
+    case 0:
+        $in = true;
+    break;
+    default:
+        echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
+        echo "<script>window.location.replace('index.php');</script>";
+    break;
+}
+if ($in == false) {
+    echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
+    echo "<script>window.location.replace('index.php');</script>";
+} else {
+
 //------------------------------------------------------------------------------------
-
-
-
-
 include_once '../global/plantillas/plantilla.php';
-include_once '../modelo/class.categoria.php';
-include_once '../modelo/class.producto.php';
-include_once '../modelo/class.medida.php';
-include_once '../modelo/class.usuario.php';
-include_once '../modelo/class.medida.php';
-include_once '../modelo/class.proveedor.php';
-include_once '../modelo/class.conexion.php';
+// include_once '../modelo/class.categoria.php';
+// include_once '../modelo/class.producto.php';
+// include_once '../modelo/class.medida.php';
+// include_once '../modelo/class.usuario.php';
+// include_once '../modelo/class.medida.php';
+// include_once '../modelo/class.proveedor.php';
+// include_once '../modelo/class.conexion.php';
+include_once '../controlador/Controlador.php';
+include_once '../controlador/ControladorSession.php';
 include_once '../global/plantillas/cuerpo/inihtmlN1.php';
 include_once '../global/plantillas/nav/navN1.php';
 
-
+$objCon = new ControllerDoc();
 cardtitulo("Registro producto");
-
 ?>
-
-
 <div class="card card-body text-center  col-md-10 mx-auto ">
     <div class=" container-fluid ">
         <div class="card card-body shadow p-3 mb-4 bg-white"> <br>
@@ -51,13 +47,15 @@ cardtitulo("Registro producto");
 
                 <div class="col-md-4">
                     <!-- inicio de divicion 1 -->
-                    <form action="metodos/post.php" method="POST" enctype="multipart/form-data">
+                    <form action="../global/api.php?apicall=insertProducto" method="POST" enctype="multipart/form-data">
                         <!-- derecha -->
 
                         <div class="form-group"><label for="">ID Producto</label><input class="form-control" type="text" placeholder="ID producto" name="ID_prod"></div>
                         <div class="form-group"><label for="">Nombre Producto</label><input class="form-control" type="text" class="form-control" placeholder="Nombre producto" name="nom_prod"></div>
                         <div class="form-group"><label for="">Valor Producto</label><input class="form-control" type="number" class="form-control" placeholder="Valor" name="val_prod"></div>
-                        <input type="hidden" name="accion" value="insertProducto">
+                   <!-- 
+                       <input type="hidden" name="accion" value="insertProducto">
+                    -->     
                         <div class="form-group"> <input class="btn btn-primary form-control" type="submit" name="submit" value="Registrar producto"> </div>
 
                 </div><!-- fin de primera divicion-->
@@ -65,6 +63,8 @@ cardtitulo("Registro producto");
                 <div class="col-md-4">
                     <!-- inicio de 2 divicion -->
                     <!-- Izquierda -->
+
+
 
                     <label for="">Estado de Precio</label>
                     <div class="form-group">
@@ -76,14 +76,17 @@ cardtitulo("Registro producto");
 
                     <div class="form-group"><label for="">Stock Inicial</label><input type="number" class="form-control" placeholder="Stock inicial" name="stok_prod" required autofocus></div>
                     <div class="form-group"><label for="">ID factura Proveedor</label><input type="text" class="form-control" placeholder="Factura proveedor" name="num_fac_ing" autofocus></div>
-                    Imagen: 
+                    Imagen:  
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile" name="foto">
+                    <!-- class="custom-file-input" id="customFile" -->  
+                    <input type="text"  name="foto">
+              <!--  
                     <label class="custom-file-label" for="customFile">Seleccione una imagen desde su equipo</label>
+               -->    
                 </div><br><br>
                 
                     <?php if($_SESSION['usuario']['ID_rol_n'] ==  1 || $_SESSION['usuario']['ID_rol_n'] ==  2 ){ ?>
-                    <a class="btn btn-block btn-primary by-2" href="CU003-ingresoproducto.php">Ingresar productos</a>
+                    <a class="btn btn-block btn-primary by-2" href="../vista/CU003-ingresoproducto.php">Ingresar productos</a>
 
                     <?php } ?>
 
@@ -95,12 +98,13 @@ cardtitulo("Registro producto");
                     <div class="form-group"><label for="">Categoria de producto</label>
                         <select class="form-control" name="CF_categoria">
                             <?php
-                            $categoria = Categoria::ningunDatoC();
-                            $datos = $categoria->verCategorias();
-                            while ($row = $datos->fetch_array()) {
+                  
+
+                             $datos =   $objCon->verCategorias();
+                            foreach( $datos as $i => $row ) {
 
                             ?>
-                                <option value="<?php echo $row['ID_categoria'] ?>"><?php echo $row['nom_categoria'] ?></option>
+                                <option value="<?= $row['ID_categoria'] ?>"><?= $row['nom_categoria'] ?></option>
                             <?php }
                             ?>
                         </select>
@@ -110,11 +114,13 @@ cardtitulo("Registro producto");
                     <div class="form-group"><label for="">Medida</label>
                         <select class="form-control" name="CF_tipo_medida">
                             <?php
-                            $medida = Medida::ningunDatoM();
-                            $datos = $medida->verMedida();
-                            while ($row = $datos->fetch_array()) {
+                            
+                            
+                           
+                            $datos =  $objCon->verMedida();
+                            foreach($datos as $i => $row ){
                             ?>
-                                <option value="<?php echo $row['ID_medida'] ?>"><?php echo $row['nom_medida'] ?></option>
+                                <option value="<?= $row['ID_medida'] ?>"><?= $row['nom_medida'] ?></option>
                             <?php }
                             ?>
                         </select>
@@ -123,12 +129,10 @@ cardtitulo("Registro producto");
                     <div class=" form-group"><label for="">Provedor</label>
                         <select class="form-control" name="FK_rut">
                             <?php
-                            $proveedor =  Proveedor::ningunDatoP();
-                            $datos = $proveedor->verProveedor();
-                            while ($row = $datos->fetch_array()) {
-
+                            $datos   = $objCon->verProveedor();
+                            foreach($datos as $i => $row) {
                             ?>
-                                <option value="<?php echo $row['ID_rut']  ?>"> <?php echo $row['nom_empresa']  ?> </option>
+                                <option value="<?= $row['ID_rut']  ?>"> <?= $row['nom_empresa']  ?> </option>
                             <?php  } ?>
                         </select>
                     </div><!--  fin de form-group Provedor-->
@@ -144,10 +148,7 @@ cardtitulo("Registro producto");
 
 <?php
 if (isset($_SESSION['message'])) {
-
-
 ?>
-
     <!-- alerta boostrap -->
     <div class="col-md-4 mx-auto alert alert-<?php echo $_SESSION['color']   ?> alert-dismissible fade show" role="alert">
         <?php
@@ -166,11 +167,7 @@ if (isset($_SESSION['message'])) {
 if (isset($_GET['accion'])) {
     //echo print_r($_GET);
     if ($_GET['accion'] == 'verProducto'); {
-
-
 ?>
-
-
 <div class="container">
             <div class="card card-body bg-while col-lg-12 shadow  mx-auto">
                 <div class="row">
@@ -189,10 +186,10 @@ if (isset($_GET['accion'])) {
                             </tr>
                         </thead>
                         <?php
-                        $datos = Producto::verProductos();
-                        while ($row = $datos->fetch_array()) {
+                       // $datos = Producto::verProductos();
+                       $datos = $objCon->verProductos();
+                        foreach( $datos as $i => $row ){
                             $p  =  $row['stok_prod'];
-
 
                             $c = "text";
                             if ($p < 2) {
@@ -212,14 +209,11 @@ if (isset($_GET['accion'])) {
                                     <td class=" <?php echo  $c  ?>"><?php echo $row['stok_prod'] ?></td>
                                     <td><?php echo $row['estado_prod'] ?></td>
                                     <td><?php echo $row['nom_categoria'] ?></td>
-                                    <td><img class="card card-body  mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="130px" width="150px"></td>
+                                    <td><img class="card card-body  mx-auto" src="../global/fonts/img/<?= $row['img']; ?>" alt="Card image cap" height="130px" width="150px"></td>
                                     <td><?php echo $row['nom_medida'] ?></td>
-                                
                                     <?php if($_SESSION['usuario']['ID_rol_n'] == 1 || $_SESSION['usuario']['ID_rol_n'] == 1 ){   ?>
                                     <td>
-                                        <a class = "btn  btn-success" href="CU003-ingresoProducto.php?consulta=Validar+exitencia&&p=<?php echo $row['ID_prod']?>">ingreso</a>
-
-
+                                        <a class = "btn  btn-success" href="CU003-ingresoProducto.php?consulta=Validar+exitencia&&p=<?= $row['ID_prod']?>">ingreso</a>
                                     </td><?php }  ?>
                                     <td>
                                         
@@ -230,10 +224,6 @@ if (isset($_GET['accion'])) {
                         } // fin de while tabla
                         ?>
                     </table>
-
-
-
-
             <?php  } // fin de while 
             ?>
         </table>
@@ -245,12 +235,8 @@ if (isset($_GET['accion'])) {
 
     } // fin de accion ver producto
 //} // fin de asset get accion
-
-
-
-
-
-include_once 'plantillas/cuerpo/footerN1.php'; 
-include_once 'plantillas/cuerpo/finhtml.php';
+include_once '../global/plantillas/cuerpo/footerN1.php'; 
+include_once '../global/plantillas/cuerpo/finhtml.php';
 // fin de validacion sesion y permisos de perfil
+}
 ?>

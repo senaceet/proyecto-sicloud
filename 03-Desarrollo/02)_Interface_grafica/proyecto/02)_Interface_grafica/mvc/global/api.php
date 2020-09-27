@@ -1,6 +1,10 @@
 <?php
+//session_start();
+//session_destroy();
 // http://localhost/javier/global/appi.php?apicall=readusuarios
 require_once '../controlador/Controlador.php';
+$db = new ControllerDoc();
+//session_destroy();
 
 // se pasan los parametros requeridos a esta funcion
 function isTheseParametersAvailable($params){
@@ -41,7 +45,7 @@ if(isset($_GET['apicall'])){
       case 'createusuario':
       // Primero haremos la verificacion de parametros.
       isTheseParametersAvailable(  [ 'ID_us','nom1','nom2', 'ape1', 'ape2','fecha', 'pass', 'foto', 'correo','FK_tipo_doc' ]  );
-      $db = new ControllerDoc();
+     // $db = new ControllerDoc();
       $result = $db->createUsuariosController(
          $_POST['ID_us'], 
          $_POST['nom1'],
@@ -74,13 +78,13 @@ if(isset($_GET['apicall'])){
       }
       break;
       case 'readusuario';
-         $db = new ControllerDoc();
+         //$db = new ControllerDoc();
          $response['error'] = false;
          $response['message'] = 'Solicitud completada correctamente';
          $response['contenido'] = $db->readUsuariosController();
       break;
       case 'elimianarUsuario';
-         $db = new ControllerDoc();
+        // $db = new ControllerDoc();
          $bool =   $db->eliminarUsuario($_GET['id'] );
          if( $bool ){
            $response['error'] = false;
@@ -91,7 +95,7 @@ if(isset($_GET['apicall'])){
          }
       break;        
       case 'actualizarUsuario';
-         $db = new ControllerDoc();
+      //   $db = new ControllerDoc();
          $array =
          [  
          $_POST['ID_us'], 
@@ -116,7 +120,7 @@ if(isset($_GET['apicall'])){
       break;
       case 'loginusuario':
          isTheseParametersAvailable( ['nDoc', 'pass', 'tDoc'] );
-         $db = new ControllerDoc();
+     //    $db = new ControllerDoc();
          $result = $db->loginUsuarioController(
             $_POST['nDoc'],
             $_POST['pass'],
@@ -130,6 +134,60 @@ if(isset($_GET['apicall'])){
             $response['contenido']  = $result;
          }
       break;
+      case 'activarCuenta':
+       //  $db = new ControllerDoc();
+         $result = $db->activarCuenta($_GET['id'] );
+         if(!$result){
+            $response['error']      = true;
+            $response['menssage']   = 'No activo cuenta';
+         }else{
+            $response['error']      = false;
+            $response['message']    = 'Activo cuenta'; 
+            $response['contenido']  = $result;
+         }
+      break;
+      case 'desactivarUsuario':
+       //  $db = new ControllerDoc();
+         $result = $db->desactivarCuenta($_GET['id'] );
+         if(!$result){
+            $response['error']      = true;
+            $response['menssage']   = 'Error, no desactivo cuenta';
+            $response['contenido']  = $result;
+            
+         }else{
+            $response['error']      = false;
+            $response['message']    = 'Desactivo cuenta'; 
+            $response['contenido']  = $result;
+         }
+      break;
+      // insertar producto modulo - CU004-crearproductos.php
+      case 'insertProducto':
+         $a =[
+            $_POST['ID_prod'],
+            $_POST['nom_prod'],
+            $_POST['val_prod'],
+            $_POST['stok_prod'],
+            $_POST['estado_prod'],
+            $_POST['CF_categoria'],
+            $_POST['CF_tipo_medida']
+         ];
+         $result = $db->insertarProducto( $a );
+         if(!$result){
+            $response['error']      = true;
+            $response['menssage']   = 'no inserto producto';
+            $response['contenido']  = $result;
+            
+         }else{
+            $response['error']      = false;
+            $response['message']    = 'Inserto producto'; 
+            $response['contenido']  = $result;
+         }
+         
+      break;
+
+
+
+
       default:
       $response['error']      = true;
       $response['message']    = 'ingreso a api "no esta en ningun metodo"'; 
@@ -140,4 +198,5 @@ if(isset($_GET['apicall'])){
    // Empujar los valores apropiados en la consulta json
    $response['message'] = 'Llamado invalido del api';
 }
+
 echo json_encode($response);

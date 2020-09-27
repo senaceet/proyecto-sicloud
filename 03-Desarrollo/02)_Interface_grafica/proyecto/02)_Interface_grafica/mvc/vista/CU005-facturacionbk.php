@@ -1,30 +1,31 @@
 <?php
-include_once 'session/sessiones.php';
-include_once 'session/valsession.php';
+include_once '../controlador/ControladorSession.php';
 //comprobacion de rol
 $in = false;
-if ($_SESSION['usuario']['ID_rol_n']   == 1) {
-    $in = true;
-} elseif ($_SESSION['usuario']['ID_rol_n']   == 4) {
-    $in = true;
+switch ($_SESSION['usuario']['ID_rol_n']) {
+    case 1:
+        $in = true;
+    break;
+    case 4:
+        $in = true;
+    break;
+    case 0:
+        $in = true;
+    break;
+    default:
+        echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
+        echo "<script>window.location.replace('index.php');</script>";
+    break;
 }
-
-if ($_SESSION['usuario']['estado'] == 0) {
-    $in = false;
-}
-
-
 if ($in == false) {
     echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
     echo "<script>window.location.replace('index.php');</script>";
 } else {
     //------------------------------------------------------------------------------------
-
     include_once 'plantillas/plantilla.php';
     include_once 'clases/class.usuario.php';
     include_once 'clases/class.factura.php';
     include_once 'clases/class.producto.php';
-
 ?>
     <!-- col 12 -->
 

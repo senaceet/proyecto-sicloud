@@ -4,14 +4,23 @@
 include_once '../modelo/class.documento.php';
 include_once '../modelo/class.usuario.php';
 include_once '../modelo/class.rol.php';
+include_once '../modelo/class.categoria.php';
+include_once '../modelo/class.medida.php';
+include_once '../modelo/class.proveedor.php';
+include_once '../modelo/class.producto.php';
 class ControllerDoc{
     public $obModDoc;
     public $objModUs;
     public $objModRol;
+    public $objModCat;
     public function __construct() {
         $this->obModDoc   =  Documento::ningunDatoD();
         $this->objModUs   =  Usuario::ningunDato();
         $this->objModRol  =  Rol::ningunDato();
+        $this->objModCat  =  Categoria::ningunDatoC();
+        $this->objModMed  =  Medida::ningunDatoM();
+        $this->objModPro  =  Proveedor::ningunDatoP();
+        $this->objModProd =  Producto::ningunDatoP();
     }
     public function selectDocumento(){
         return $this->objModDoc->verDocumeto();
@@ -21,7 +30,8 @@ class ControllerDoc{
     }
      public function loginUsuarioController($ID_us,  $pass, $doc){
         $datosController[] = [ $ID_us, $pass, $doc ];
-        session_start();
+      //  if( isset($_SESSION['usuario']  ) ){
+      //  session_start(); }
 
         return $this->objModUs->loginUsuarioModel($datosController);
     } 
@@ -40,6 +50,16 @@ class ControllerDoc{
                  9         =>  $FK_tipo_doc
         ];
         return $this->objModUs->InsertUsuario($datosController, 'usuario');
+        /*
+           // Insercion de foto
+           $foto = $_FILES['foto']['name'];
+           $ruta = $_FILES['foto']['tmp_name'];
+           $destino = '../global/fonts/us/'.$foto;
+           copy($ruta, $destino);
+           $us = Usuario::ningunDato();
+          $i = $us->inserTfoto($destino, $ID_us);
+
+          */
     }
     public function readUsuariosController(){
         return $this->objModUs->readUsuarioModel('vendedor');
@@ -50,7 +70,82 @@ class ControllerDoc{
     public function actualizarDatosUsuario($id  , $array ){
         return $this->objModUs->actualizarDatosUsuario($id , $array );
     }
+
+    //Metodos de entidad usuario form CU009-controlusuarios.php
+    public function selectUsuarioRol($id_rol){
+        return $this->objModUs->selectUsuarioRol($id_rol);
+    }
+    public function conteoUsuariosActivos(){
+        return $this->objModUs->conteoUsuariosActivos();
+    }
+    public function conteoUsuariosInactivos(){
+        return $this->objModUs->conteoUsuariosInactivos();
+    }
+    public function selectIdUsuario($id){
+        return $this->objModUs->selectIdUsuario($id);
+    }
+    public function selectUsuariosPendientes($est){
+        return $this->objModUs->selectUsuariosPendientes($est);
+    }
+   public function activarCuenta($id){
+       return $this->objModUs-> activarCuenta($id);
+   }
+
+   public function desactivarCuenta($id){
+       return $this->objModUs->desactivarCuenta($id);
+   }
+
+   // Metodos de categoria 
+   //"CU004-crearProductos.php"
+   public function verCategorias(){
+       return $this->objModCat->verCategorias();
+   }
+   public function verMedida(){
+       return $this->objModMed->verMedida();
+   }
+   public function verProveedor(){
+       return $this->objModPro->verProveedor();
+   }
+   public function verProductos(){ // CU003-ingresoproducto.php
+       return $this->objModProd->verProductos();
+   }
+   public function tablaProducto($id){
+       return $this->objModProd->verJoin($id);
+   }
+   // U004-crearproductos.php
+   public function insertarProducto($a){
+       return $this->objModProd->insertarProducto($a);
+   }
+   // Catalogo
+   public function buscarPorNombreProducto($id){
+       return $this->objModProd->buscarPorNombreProducto($id);
+   } 
+   public function verPorCategoria($id){
+       return $this->objModProd->verPorCategoria($id);
+   }
+
+   //CU006-acomulaciondepuntos.php
+   public function verPuntosUs(){
+       return $this->objModUs->verPuntosUs();
+   }
+
+   //formCategoria.php
+   public function verCategoria(){
+       return $this->objModCat->verCategoria();
+   }
+
+
+
+  
 }
+
+
+
+
+
+
+
+
 
 
 /*

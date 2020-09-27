@@ -26,16 +26,16 @@ cardtitulo('Promociones');
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="fonts/promociones.jpg" alt="First slide">
+                        <img class="d-block w-100" src="../global/fonts/promociones.jpg" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="fonts/imagen1.jpg" alt="Second slide">
+                        <img class="d-block w-100" src="../global/fonts/imagen1.jpg" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="fonts/imagen2.jpg" alt="Second slide">
+                        <img class="d-block w-100" src="../global/fonts/imagen2.jpg" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="fonts/imagen3.jpg" alt="Second slide">
+                        <img class="d-block w-100" src="../global/fonts/imagen3.jpg" alt="Second slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">

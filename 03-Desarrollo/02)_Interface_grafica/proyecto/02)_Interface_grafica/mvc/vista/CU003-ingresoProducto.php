@@ -1,74 +1,68 @@
 <?php
-//include_once 'session/sessiones.php';
-//include_once 'session/valsession.php';
+include_once '../controlador/ControladorSession.php';
+//comprobacion de rol
+$in = false;
+switch ($_SESSION['usuario']['ID_rol_n']) {
+    case 1:
+        $in = true;
+    break;
+    case 2:
+        $in = true;
+    break;
+    case 0:
+        $in = true;
+    break;
+    default:
+        echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
+        echo "<script>window.location.replace('index.php');</script>";
+    break;
+}
+if ($in == false) {
+    echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
+    echo "<script>window.location.replace('index.php');</script>";
+} else {
 
-//
-////comprobacion de rol
-//$in = false;
-//if (($_SESSION['usuario']['ID_rol_n']   == 1)) {
-//    $in = true;
-//} elseif ($_SESSION['usuario']['ID_rol_n']   == 2) {
-//    $in = true;
-//}
-//
-//if ($_SESSION['usuario']['estado'] == 0) {
-//    $in = false;
-//}
-//
-//
-//if ($in == false) {
-//    echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
-//    echo "<script>window.location.replace('index.php');</script>";
-//} else {
-
-
-
-
-    include_once '../global/plantillas/cuerpo/inihtmlN1.php';
-    include_once '../modelo/class.conexion.php';
-    include_once '../modelo/class.categoria.php';
-    include_once '../modelo/class.producto.php';
-    include_once '../modelo/class.medida.php';
-    include_once '../modelo/class.proveedor.php';
-    include_once '../global/plantillas/nav/navN1.php';
-    include_once '../global/plantillas/plantilla.php';
+include_once '../global/plantillas/cuerpo/inihtmlN1.php';
 
 
-  
+/*
+include_once '../modelo/class.conexion.php';
+include_once '../modelo/class.categoria.php';
+include_once '../modelo/class.producto.php';
+include_once '../modelo/class.medida.php';
+include_once '../modelo/class.proveedor.php';
+*/
+
+include_once '../controlador/Controlador.php';
+include_once '../global/plantillas/nav/navN1.php';
+include_once '../global/plantillas/plantilla.php';
+
+
 function selectProducto(){
- 
-    $datos = Producto::verProductos();
+    $objCon = new ControllerDoc();
+    $datos = $objCon->verProductos();
     foreach($datos as $row) {
     ?>
-        <option value="<?php echo $row['ID_prod'] ?>"><?php echo $row['nom_prod'] ?></option>
+        <option value="<?= $row['ID_prod'] ?>"><?= $row['nom_prod'] ?></option>
     <?php } 
-    $formulario = false; 
 }
-
-
-
+$objCon = new ControllerDoc();
     cardtitulo("Ingreso de producto-Bodega");
-
-
-
-
 //=======================================================================
 // Resepcion de datos
-
-
-
-    if (isset($_GET['consulta'])) {
         $id = $_GET['p'];
-        $formulario = true;  
-    }  
-   
-
+        $formulario = true;
+        echo $id;
 //========================================================================
 // Captura de datos
 
 
-
-$datos = Producto::verJoin($id);
+$id1    = 2041172460;
+$datos = $objCon->tablaProducto($id1);
+echo '<pre>';
+var_dump($datos);
+print_r($datos);
+echo '</pre>';
 
 foreach($datos as $row ){
     $idProd       =    $row['ID_prod']	 ;        
@@ -184,12 +178,7 @@ if ($formulario == true){  ?>
 <?php
       }else{ echo "No hay datos";} // fin del while
                     // }// fin de mostrar formulario
-
-
-
-
-
-                    include_once 'plantillas/cuerpo/footerN1.php';
-                    include_once 'plantillas/cuerpo/finhtml.php';
-
+                    include_once '../global/plantillas/cuerpo/footerN1.php';
+                    include_once '../global/plantillas/cuerpo/finhtml.php';
+    }
 ?>

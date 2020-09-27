@@ -26,82 +26,72 @@ class Producto extends Conexion
         $this->CF_tipo_medida = $_CF_tipo_medida;
     }
 
-    public function get_ID_prod()
-    {
+    public function get_ID_prod(){
         return   $this->ID_prod;
     }
 
-    public function get_nom_prod()
-    {
+    public function get_nom_prod(){
         return   $this->nom_prod;
     }
 
-    public function get_val_prod()
-    {
+    public function get_val_prod(){
         return   $this->val_prod;
     }
 
 
-    public function get_stok_prod()
-    {
+    public function get_stok_prod(){
         return   $this->stok_prod;
     }
 
 
-    public function get_estado_prod()
-    {
+    public function get_estado_prod(){
         return   $this->estado_prod;
     }
 
-    public function get_CF_categoria()
-    {
+    public function get_CF_categoria(){
         return   $this->CF_categoria;
     }
 
-    public function get_CF_tipo_medida()
-    {
+    public function get_CF_tipo_medida(){
         return   $this->tipo_medida;
     }
-
-
     //Funcion estatica
-    static function ningunDatoP()
-    {
+    static function ningunDatoP(){
         return new self('', '', '', '', '', '', '');
     }
 
     //query insertar producto                                     C
-    public function insertarProducto()
+    public function insertarProducto($a)
     {
-        //include_once 'class.conexion.php';
-        $db = new Conexion;
-        $sql = "INSERT INTO sicloud.producto (ID_prod, nom_prod, val_prod, stok_prod, estado_prod, CF_categoria, CF_tipo_medida)VALUES('$this->ID_prod','$this->nom_prod', '$this->val_prod' , '$this->stok_prod' , '$this->estado_prod', '$this->CF_categoria' , '$this->CF_tipo_medida')";
+        $sql = "INSERT INTO sicloud.producto (ID_prod, nom_prod, val_prod, stok_prod, estado_prod, CF_categoria, CF_tipo_medida)
+        VALUES(?, ? ,? , ? ,? ,? ,?)";
         //      $sql = "INSERT INTO sicloud.tipo_medida(nom_medida, acron_medida)VALUES('$this->nom_medida','$this->acron_medida')";
         //$ejecucion = $db->query($sql);
         $stm = $this->db->prepare($sql);
-        $stm->bindValue(":ID_prod",$this->ID_prod);
-        $stm->bindValue(":nom_prod",$this->nom_prod);
-        $stm->bindValue(":val_prod",$this->val_prod);
-        $stm->bindValue(":stok_prod",$this->stok_prod);
-        $stm->bindValue(":estado_prod",$this->estado_prod);
-        $stm->bindValue(":CF_coategoria",$this->CF_categoria);
-        $stm->bindValue(":CF_tipo_medida",$this->CF_tipo_medida);
+        $stm->bindValue(1, $a[0] );
+        $stm->bindValue(2, $a[1] );
+        $stm->bindValue(3, $a[2] );
+        $stm->bindValue(4, $a[3] );
+        $stm->bindValue(5, $a[4] );
+        $stm->bindValue(6, $a[5] );
+        $stm->bindValue(7, $a[6] );
         $ejecucion = $stm->execute();
         if ($ejecucion) {
             $_SESSION['message'] = "Se creo producto";
             $_SESSION['color'] = "success";
+            return true;
         } else {
             $_SESSION['message'] = "No se creo producto";
             $_SESSION['color'] = "danger";
+            return false;
         }
-        header("location: ../CU004-crearProductos.php");
+       // header("location: ../CU004-crearProductos.php");
     } // fin de javaScript
 
 
 
     //query ver productos                                        R
-    public function verProductos()
-    {
+    public function verProductos(){
         //include_once 'class.conexion.php';
         //$db = new Conexion;
         $sql = "SELECT P.ID_prod , P.img , P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod , C.nom_categoria , M.nom_medida
@@ -279,10 +269,7 @@ public function verProductosGrafica(){
         header("location: ../CU003-ingresoProducto.php?accion=verProducto");
     }
 
-
-
-    public function verProductosAlfa($id)
-    {
+    public function verProductosAlfa($id){
        // include_once 'class.conexion.php';
        // $c = new Conexion;
         $sql = "SELECT nom_prod , stok_prod , nom_categoria  from sicloud.producto sp
@@ -297,10 +284,7 @@ public function verProductosGrafica(){
         //return $dat;
     }
 
-
-
-    public function ConteoProductosT()
-    {
+    public function ConteoProductosT(){
         //include_once 'class.conexion.php';
         //$c = new Conexion;
         $sql = "SELECT nom_prod , sum(stok_prod) as total FROM sicloud.producto GROUP BY nom_prod
@@ -315,18 +299,15 @@ public function verProductosGrafica(){
         //return $dat;
     }
 
-
-
     // METODO para ver los productos de una categoria 
-    public function verPorCategoria($id)
-    {
-        //include_once 'class.conexion.php';
-        //$c = new Conexion;
-        $sql = "SELECT  P.ID_prod ,  P.nom_prod ,P.img , P.val_prod , P.stok_prod , P.estado_prod  , P.CF_tipo_medida , C.ID_categoria , C.nom_categoria
+    public function verPorCategoria($id){
+        $sql = "SELECT  P.ID_prod ,  P.nom_prod ,P.img , P.val_prod , P.stok_prod , P.estado_prod  , P.CF_tipo_medida , 
+            C.ID_categoria , C.nom_categoria
             FROM producto P JOIN categoria C ON  P.CF_categoria = C.ID_categoria
-            where C.ID_categoria = $id 
+            where C.ID_categoria = :id
             order by P.nom_prod asc";
         $consulta= $this->db->prepare($sql);
+        $consulta->bindValue(':id' , $id );
         $result = $consulta->execute();
         $result = $consulta->fetchAll();
         return $result;
@@ -397,10 +378,7 @@ public function verProductosGrafica(){
     }
 
 
-
-
-    public function inserTfoto($destino, $id)
-    {
+    public function inserTfoto($destino, $id){
         //include_once 'class.conexion.php';
         //$c = new Conexion;
         $sql = "UPDATE  producto SET img = ('$destino') where ID_prod = '$id'";

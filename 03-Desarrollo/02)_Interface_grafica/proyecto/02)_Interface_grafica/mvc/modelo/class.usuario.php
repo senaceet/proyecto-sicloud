@@ -1,18 +1,9 @@
 <?php
 include_once '../modelo/class.conexion.php';
+include_once '../controlador/ControladorSession.php';
 class Usuario extends Conexion{
-   public $ID_us, $nom1, $nom2,  $ape1, $ape2, $fecha, $pass, $foto, $correo, $FK_tipo_doc, $db;
-   public function __construct($ID_us, $nom1, $nom2,  $ape1, $ape2, $fecha, $pass, $foto, $correo, $FK_tipo_doc) {
-      $this->ID_us = $ID_us;
-      $this->nom1 = $nom1;
-      $this->nom2 = $nom2;
-      $this->ape1 = $ape1;
-      $this->ape2 = $ape2;
-      $this->fecha = $fecha;
-      $this->pass = $pass;
-      $this->foto = $foto;
-      $this->correo = $correo;
-      $this->FK_tipo_doc = $FK_tipo_doc;
+   public $db;
+   public function __construct() {
       $this->db = Conexion::conexionPDO();
    } 
    public function LoginVista(){
@@ -80,10 +71,19 @@ class Usuario extends Conexion{
    }
    $consulta->execute();
   // $array = $consulta->fetchAll();
-      if( $consulta->rowCount() > 0 ){ $USER = $consulta->fetch(PDO::FETCH_ASSOC); if( !isset( $_SESSION['usuario']) ) session_start();  $_SESSION['usuario']  = $USER;  
-         echo 'hola';
+      if( $consulta->rowCount() > 0 ){ 
+         $USER = $consulta->fetch(PDO::FETCH_ASSOC);
+         
+         if( !isset( $_SESSION['usuario']) ){
+            session_start(); 
+            $_SESSION['usuario']  = $USER;
+         }   
          echo '<pre>'; print_r( $_SESSION['usuario'] );  echo '</pre>';
       //   echo '<br> hola'.$_SESSION['usuario']['nom1'];
+      $_SESSION['message'] = "Login extoso";
+      $_SESSION['color'] = "success";
+      $objConSes= new Session(); 
+      $objConSes->verificarAcceso();
 
          return  $USER ;
       }else{
@@ -128,7 +128,7 @@ class Usuario extends Conexion{
       $sql = "UPDATE sicloud.usuario SET ID_us = ?, nom1 = ?, nom2 = ?, ape1 = ?, ape2 = ?, fecha = ?, pass = ?, foto = ?, correo = ?, FK_tipo_doc = ?
       WHERE ID_us = ?";
       $insertar = $this->db->prepare($sql);
-      $bool = $insertar->execute([$a[0],$a[1],$a[2],$a[3], $a[4], $a[5],$a[6], $a[7], $a[8], $a[9], $id]);       
+      $bool = $insertar->execute([$a[0], $a[1], $a[2], $a[3], $a[4], $a[5], $a[6], $a[7], $a[8], $a[9], $id]);       
       $bool =  $insertar->execute();
       if($bool){
          return true;
@@ -143,8 +143,169 @@ class Usuario extends Conexion{
          $result = $consulta->fetchAll();
          return $result;
       }
+      public function  selectUsuarioRol($r){
+         $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.pass, U.foto, U.correo,
+            R.nom_rol,  
+            R_U.estado
+            FROM sicloud.usuario U 
+            JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
+            JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n
+            WHERE R.ID_rol_n  = :id
+            ORDER BY u.nom1 asc";
+         $consulta= $this->db->prepare($sql);
+         $consulta->bindValue(":id", $r);
+         $result = $consulta->execute();
+         $result = $consulta->fetchAll();
+         return $result;
+         // consulta para mensaje de rol 
+         //if ($result) {   
+         //   $sql2 = "SELECT nom_rol FROM rol 
+         //      WHERE ID_rol_n = $r 
+         //      LIMIT 1";
+         //   $datos  = $this->db->query($sql2);
+         //   $row = $datos->fetch_assoc();
+         //   $rol = $row['nom_rol'];
+         //   $_SESSION['message'] = "Filtro por rol:  " . $rol;
+         //   $_SESSION['color'] = "info";
+         //   return $resultConsulta;
+      }
+
+      public function conteoUsuariosActivos(){
+         $sql = "SELECT count(*) AS usuariosActivos 
+            FROM usuario  U JOIN rol_usuario RU ON RU.FK_us = U.ID_us
+            WHERE RU.estado = 1";
+         $c= $this->db->prepare($sql);
+          $c->execute();
+         $r = $c->fetchAll();
+         foreach( $r as $d ){
+            $con =   $d[0];
+         }
+         return $con;
+      }
+      public function conteoUsuariosInactivos(){
+         $sql = "SELECT count(*) AS usuariosActivos 
+            FROM usuario  U 
+            JOIN rol_usuario RU ON RU.FK_us = U.ID_us
+            WHERE RU.estado = 0";
+         $c= $this->db->prepare($sql);
+         $c->execute();
+        $r = $c->fetchAll();
+        foreach($r as  $d){
+           $con= $d[0];
+        }
+         return $con;
+      }
+
+        //busqueda por ID
+  public function selectIdUsuario($id){
+   $sql = "SELECT distinct U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.pass, U.foto, U.correo, 
+      R.nom_rol,  R.nom_rol,
+      R_U.estado
+      FROM sicloud.usuario U 
+      JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
+      JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n 
+      WHERE ID_us = :id
+       ";
+   $c = $this->db->prepare($sql);
+   $c->bindValue(":id", $id);
+   $c->execute();
+   $r = $c->fetchAll();
+
+   return $r;
+ } // fin de busqueda por ID
+
+ public function selectUsuariosPendientes($est){
+   $sql = "SELECT U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.pass, U.foto, U.correo,  
+      R.nom_rol, 
+      R_U.estado
+      FROM sicloud.usuario U 
+      JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
+      JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n 
+      WHERE R_U.estado =:id ";
+   $c = $this->db->prepare($sql);
+   $c->bindValue(":id",$est);
+   $c->execute();
+   $r = $c->fetchAll();
+   return $r;
+ } //Busqueda por estado pendiente
+
+
+
+
+   //aprobar solicitud
+   public function activarCuenta($id){
+      $sql = "UPDATE sicloud.rol_usuario 
+         SET rol_usuario.estado = 1 
+         WHERE rol_usuario.FK_us = ?";
+            $c = $this->db->prepare($sql);
+            $bool = $c->execute( [$id]  );       
+           
+    //  $c->bindParam(":id",$id);
+      if ($bool) {
+         $_SESSION['message'] = "Desactivo cuenta de usuario";
+         $_SESSION['color'] = "danger";
+         return true;
+      } else {
+         $_SESSION['message'] = "Error al descativar cuenta";
+         $_SESSION['color'] = "danger";
+         return false;
+      }
+      //header("location: ../CU009-controlUsuarios.php ");
+   } // fin de desactibar cuenta
+ 
+
+
+      ///header("location: ../CU009-controlUsuarios.php ");
+     // fin de aprbar solicitud
+  
+
+
+    public function desactivarCuenta($id){
+      $sql = "UPDATE sicloud.rol_usuario 
+         SET rol_usuario.estado = 0 
+         WHERE rol_usuario.FK_us = ?";
+            $c = $this->db->prepare($sql);
+            $bool = $c->execute( [$id]  );       
+           
+    //  $c->bindParam(":id",$id);
+      if ($bool) {
+         $_SESSION['message'] = "Desactivo cuenta de usuario";
+         $_SESSION['color'] = "danger";
+         return true;
+      } else {
+         $_SESSION['message'] = "Error al descativar cuenta";
+         $_SESSION['color'] = "danger";
+         return false;
+      }
+      //header("location: ../CU009-controlUsuarios.php ");
+   } // fin de desactibar cuenta
+ 
+
+
+
+   public function verPuntosUs(){
+      $sql = "SELECT P.id_puntos, P.puntos, P.fecha , 
+         U.nom1 , U.nom2 , U.ape1
+         FROM puntos P 
+         JOIN usuario U ON  P.FK_us =  U.ID_us
+         ORDER BY U.nom1 asc";
+   $c = $this->db->prepare($sql);
+   $c->execute();
+   $r = $c->fetchAll();
+   return $r;
+   }
+
+
+
+
+
 
 } //Fin Clase Usuario
+
+
+
+//$objCont = new Usuario();
+//  echo '<pre>';  print_r($objCont->selectUsuarioRol(1)); echo '</pre>';
         
           # Pasar en el mismo orden de los ?
 
@@ -384,18 +545,7 @@ class Usuario extends Conexion{
 
 
 
-  //busqueda por ID
-  public function selectIdUsuario($id){
-    $sql = "SELECT distinct U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.pass, U.foto, U.correo, 
-       R.nom_rol,  R.nom_rol,
-       R_U.estado
-       FROM sicloud.usuario U 
-       JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
-       JOIN sicloud.rol  R ON R_U.FK_rol = R.ID_rol_n 
-       WHERE ID_us = '$id' ";
-    $result = $this->db->query($sql);
-    return $result;
-  } // fin de busqueda por ID
+
 
 
   public function verUsuarios(){
@@ -619,7 +769,6 @@ class Usuario extends Conexion{
 
 
 
-//$objMod = new Usuario();
 //$objMod->insertUsuario( 1030 ,' nom1' ,'nom2','ape1','ape2','10-04-2020','pass','foto','correo','CC'  );
 
 ?> 
