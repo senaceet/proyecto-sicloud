@@ -1,5 +1,4 @@
 <?php
-
 include_once '../../controlador/ControladorSession.php';
 include_once '../../controlador/Controlador.php';
 include_once '../../global/plantillas/plantilla.php';

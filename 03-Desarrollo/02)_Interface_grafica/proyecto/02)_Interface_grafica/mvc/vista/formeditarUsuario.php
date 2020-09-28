@@ -1,18 +1,14 @@
 <?php
-require_once '../global/plantillas/plantilla.php';
-include_once '../global/plantillas/cuerpo/inihtmlN1.php';
-include_once '../global/plantillas/nav/navN1.php';
-include_once '../controlador/ControladorSession.php';
-include_once '../controlador/controlador';
+include_once '../plantillas/plantilla.php';
 
-
-/*
+include_once '../plantillas/cuerpo/inihtmlN2.php';
+include_once '../plantillas/nav/navN2.php';
 include_once '../clases/class.documento.php';
 include_once '../clases/class.rol.php';
 include_once '../clases/class.login.php';
 include_once '../clases/class.usuario.php';
 include_once '../session/sessiones.php';
-*/
+
 cardtitulo("Actualizar datos de Usuarios");
 
 ?>

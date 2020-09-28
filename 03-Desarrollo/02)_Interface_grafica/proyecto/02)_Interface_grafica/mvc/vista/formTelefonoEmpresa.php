@@ -1,27 +1,14 @@
 <?php
 include_once '../plantillas/plantilla.php';
-require_once '../global/plantillas/plantilla.php';
-include_once '../global/plantillas/cuerpo/inihtmlN1.php';
-include_once '../global/plantillas/nav/navN1.php';
-include_once '../controlador/ControladorSession.php';
-include_once '../controlador/controlador';
-
-/*
 include_once '../clases/class.medida.php';
-include_once '../clases/class.empresa.php';
-*/
+include_once '../clases/class.telefono.php';
 
-cardtitulo("Empresa");
+include_once '../plantillas/cuerpo/inihtmlN2.php';
+include_once '../plantillas/nav/navN2.php';
+cardtitulo("Directorio telefonico Usuarios");
+include_once '../metodos/get.php';
+include_once '../session/sessiones.php';
 ?>
-
-<script>
-    function eliminarEm(id_em){
-        var confirmacion = confirm('Esta seguro de eliminar empresa con id: ' + id_em +' ?' );
-        if(confirmacion){
-            window.location ="../metodos/get.php?accion=eliminarEmpresa&&id=" + id_em ;
-        }
-    }
-</script>
 
 <div class="container-fluid col-md col-xl-7">
     <div class="row">
@@ -40,13 +27,15 @@ cardtitulo("Empresa");
                     </button>
                 </div>
 
+
+
             <?php setMessage();
             } ?>
             <div class="card">
-                <div class="card-header">Registro Empresa</div>
+                <div class="card-header">Registro Telefono</div>
                 <div class="card-body">
                     <form action="../metodos/post.php" method="POST">
-                        <div class="form-group"><input class="form-control" type="text" name="ID_rut" placeholder="Rut" required autofocus maxlength="20"></div>
+                        <div class="form-group"><input class="form-control" type="text" name="ID_tel" placeholder="Rut" required autofocus maxlength="20"></div>
                         <div class="form-group"><input class="form-control" type="text" name="nom_empresa" placeholder="Empresa" required autofocus maxlength="50"></div>
                         <input type="hidden" name="accion" value="insertEmpresa">
                         <div class="form-group"><input class="form-control btn btn-primary" type="submit" name="submit" value="enviar"></div>
@@ -65,6 +54,8 @@ cardtitulo("Empresa");
                         <th>Nombre</th>
                         <th>Accion</th>
                         <?php
+
+
                         //$medida = Medida::ningunDatoM();
                         $datos  = Empresa::verEmpresa();
                         if (isset($datos)) {
@@ -80,8 +71,8 @@ cardtitulo("Empresa");
 
                     <!-- formEdicion.php?accion=editarMedia&&id=<?php// echo $row['ID_medida'] ?> -->
                     <td>
-                        <a  href="../forms/formEdicionEmpresa.php?id=<?php echo $row['ID_rut'] ?> " class="btn btn-circle btn-secondary"><i class="fas fa-marker"></i></a>
-                        <a onclick="eliminarEm(<?php echo $row['ID_rut'] ?>)"  href="#" class="  btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
+                        <a href="   ../forms/formEdicionEmpresa.php?id=<?php echo $row['ID_rut'] ?> " class="btn btn-circle btn-secondary"><i class="fas fa-marker"></i></a>
+                        <a href="../metodos/get.php?accion=eliminarEmpresa&&id=<?php echo $row['ID_rut'] ?>" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
 
                         <!--  get.php?accion=editarMedia?id= -->
                         <!-- edit.php?id=<?//php  echo  $row['id_sitio']  ?> -->

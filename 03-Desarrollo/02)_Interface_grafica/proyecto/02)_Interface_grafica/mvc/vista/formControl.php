@@ -1,24 +1,26 @@
 <?php
-/*
 include_once '../clases/class.factura.php'; 
-include_once '../clases/class.error.php';
-*/
-require_once '../global/plantillas/plantilla.php';
-include_once '../global/plantillas/cuerpo/inihtmlN1.php';
-include_once '../global/plantillas/nav/navN1.php';
-include_once '../controlador/ControladorSession.php';
-include_once '../controlador/controlador';
-cardtitulo("Log error");
+include_once '../clases/class.modificacion.php';
+include_once '../plantillas/plantilla.php';
+
+
+
+include_once '../plantillas/cuerpo/inihtmlN2.php';
+include_once '../plantillas/nav/navN2.php';
+
+include_once '../metodos/get.php';
+include_once '../session/sessiones.php';
+cardtitulo("Control de modificaiones");
 ?>
 
-<div class="container-fluid col-md col-xl-7">
+<div class="container-fluid ">
     <div class="row">
-        <!-- formulario de registro --
+        <!-- formulario de registro -->
             <?php
             if (isset($_SESSION['message'])) {
             ?>
 
-                <!-- alerta boostrap -->
+          
                 <div class="alert alert-<?php echo $_SESSION['color']   ?> alert-dismissible fade show" role="alert">
                     <?php
                     echo  $_SESSION['message']  ?>
@@ -34,31 +36,43 @@ cardtitulo("Log error");
           
 
         <!-- inicia segunda divicion -->
-        <div class="col-md-8 p-2 mx-auto ">
-            <table class=" table table-bordered  table-striped bg-white table-sm mx-auto   text-center">
+        <div class="col-md-12 p-2 mx-auto ">
+            <table class=" table table-bordered table-sm table-striped bg-white  mx-auto   text-center">
                 <thead>
 
-                    <tr>
-                        <th>ID error</th>
-                        <th>descrip error</th>
-                        <th>fecha</th>
-                        <th>hora</th>
+                   
+                        <th>ID modicacion</th>
+                        <th>Descripcion</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>ID usuario</th>
+                        <th>Documento</th>
+                        <th>P.nombre</th>
+                        <th>P.apellido</th>
+                        <th>Modificacion</th>
+                        <th>Rol</th>
+                         </tr>
+                        
+
                         <?php
-
-
                         //$medida = Medida::ningunDatoM();
-                        $datos  =  ErrorLog::verError();
-                        if (isset($datos)) {
+                        $datos  =  Modificacion::verJoinModificacionesDB();
                             while ($row = $datos->fetch_array()) {
                         ?>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Los nombres que estan son los mismos de los atributos de la base de datos de lo contrario dara un error -->
-                    <td><?php echo $row['ID_error'] ?></td>
-                    <td><?php echo $row['descrip_error'] ?></td>
+                    <td><?php echo $row['ID_modifc'] ?></td>
+                    <td><?php echo $row['descrip'] ?></td>
                     <td><?php echo $row['fecha'] ?></td>
                     <td><?php echo $row['hora'] ?></td>
+                    <td><?php echo $row['FK_us'] ?></td>
+                    <td><?php echo $row['FK_doc'] ?></td>
+                    <td><?php echo $row['nom1'] ?></td>
+                    <td><?php echo $row['ape1'] ?></td>
+                    <td><?php echo $row['nom_modific'] ?></td>
+                    <td><?php echo $row['nom_rol'] ?></td>
 
 
                     <!-- formEdicion.php?accion=editarMedia&&id=<?php// echo $row['ID_medida'] ?> -->
@@ -72,7 +86,7 @@ cardtitulo("Log error");
         <?php
 
                             } //fin del while
-                        } // fin de ver empresa
+               
         ?>
             </table>
 

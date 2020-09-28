@@ -1,13 +1,8 @@
 <?php
-require_once '../global/plantillas/plantilla.php';
-include_once '../global/plantillas/cuerpo/inihtmlN1.php';
-include_once '../global/plantillas/nav/navN1.php';
-include_once '../controlador/ControladorSession.php';
-
-/*
+include_once '../plantillas/plantilla.php';
+include_once '../plantillas/cuerpo/inihtmlN2.php';
+include_once '../plantillas/nav/navN2.php';
 include_once '../clases/class.factura.php'; // Se requiere para los datos de la tabla
-
-*/
 $us = Factura::ningunDato();
 
 ?>
@@ -37,8 +32,7 @@ $us = Factura::ningunDato();
              </thead>
              <?php
             $datos = $us->usuariosComprasRealizadas();
-           // while( $row = $datos->fetch_assoc()){
-               foreach( $datos as $i => $row ){
+            while( $row = $datos->fetch_assoc()){
             ?>
              <tbody>
 

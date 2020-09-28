@@ -189,7 +189,7 @@ class Usuario extends Conexion{
             WHERE RU.estado = 0";
          $c= $this->db->prepare($sql);
          $c->execute();
-        $r = $c->fetchAll();
+         $r = $c->fetchAll();
         foreach($r as  $d){
            $con= $d[0];
         }
@@ -228,10 +228,6 @@ class Usuario extends Conexion{
    $r = $c->fetchAll();
    return $r;
  } //Busqueda por estado pendiente
-
-
-
-
    //aprobar solicitud
    public function activarCuenta($id){
       $sql = "UPDATE sicloud.rol_usuario 
@@ -253,12 +249,8 @@ class Usuario extends Conexion{
       //header("location: ../CU009-controlUsuarios.php ");
    } // fin de desactibar cuenta
  
-
-
       ///header("location: ../CU009-controlUsuarios.php ");
      // fin de aprbar solicitud
-  
-
 
     public function desactivarCuenta($id){
       $sql = "UPDATE sicloud.rol_usuario 
@@ -279,9 +271,6 @@ class Usuario extends Conexion{
       }
       //header("location: ../CU009-controlUsuarios.php ");
    } // fin de desactibar cuenta
- 
-
-
 
    public function verPuntosUs(){
       $sql = "SELECT P.id_puntos, P.puntos, P.fecha , 
