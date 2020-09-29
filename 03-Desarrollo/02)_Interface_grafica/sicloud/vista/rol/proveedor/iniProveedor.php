@@ -25,9 +25,9 @@ if ($in == false) {
 
 //--------------------------------------------------------------------------
 
-include_once '../../../global/plantillas/cuerpo/inihtmlN3.php';
-include_once '../../../global/plantillas/nav/navN3.php';
-include_once '../../../global/plantillas/plantilla.php';
+include_once '../../plantillas/cuerpo/inihtmlN3.php';
+include_once '../../plantillas/nav/navN3.php';
+include_once '../../plantillas/plantilla.php';
 
 ?>
 <div class="my-4">
@@ -80,13 +80,13 @@ if(isset($_SESSION['usuario'])){
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="../../../global/fonts/prov1.png" alt="First slide">
+                            <img class="d-block w-100" src="../../fonts/prov1.png" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="../../../global/fonts/prov2.jpg" alt="tree slide">
+                            <img class="d-block w-100" src="../../fonts/prov2.jpg" alt="tree slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="../../../global/fonts/prov3.png" alt="Second slide">
+                            <img class="d-block w-100" src="../../fonts/prov3.png" alt="Second slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">
@@ -161,7 +161,7 @@ if(isset($_SESSION['usuario'])){
 
 <?php
 //}
-include_once '../../../global/plantillas/cuerpo/footerN3.php';
-include_once '../../../global/plantillas/cuerpo/finhtml.php';
+include_once '../../plantillas/cuerpo/footerN3.php';
+include_once '../../plantillas/cuerpo/finhtml.php';
 }
 ?>

@@ -23,9 +23,9 @@ if ($in == false) {
 } else {
 
     //--------------------------------------------------------------------------
-    include_once '../../../global/plantillas/cuerpo/inihtmlN3.php';
-    include_once '../../../global/plantillas/nav/navN3.php';
-    include_once '../../../global/plantillas/plantilla.php';
+    include_once '../../plantillas/cuerpo/inihtmlN3.php';
+    include_once '../../plantillas/nav/navN3.php';
+    include_once '../../plantillas/plantilla.php';
 
 ?>
     <div class="my-4">
@@ -73,10 +73,10 @@ if ($in == false) {
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="../../../global/fonts/slideprod0.jpg" alt="First slide">
+                            <img class="d-block w-100" src="../../fonts/slideprod0.jpg" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="../../../global/fonts/slideprod1.jpg" alt="Second slide">
+                            <img class="d-block w-100" src="../../fonts/slideprod1.jpg" alt="Second slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">
@@ -124,7 +124,7 @@ if ($in == false) {
     </div>
 <?php
 //} //fin de validar permisos
-include_once '../../../global/plantillas/cuerpo/footerN3.php';
-include_once '../../../global/plantillas/cuerpo/finhtml.php';
+include_once '../../plantillas/cuerpo/footerN3.php';
+include_once '../../plantillas/cuerpo/finhtml.php';
 }
 ?>
