@@ -1,6 +1,6 @@
 <?php
 //comprobacion de rol
-include_once '../../../controlador/ControladorSession.php';
+include_once '../../../controlador/controladorsession.php';
 //comprobacion de rol
 $in = false;
 switch ($_SESSION['usuario']['ID_rol_n']) {
