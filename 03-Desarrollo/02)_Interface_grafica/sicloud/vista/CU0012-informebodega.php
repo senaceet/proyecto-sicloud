@@ -2,7 +2,7 @@
 
 include_once '../controlador/controladorsession.php';
 //comprobacion de rol
-$in = false;
+$in = true;
 switch ($_SESSION['usuario']['ID_rol_n']) {
     case 1:
         $in = true;
@@ -31,9 +31,10 @@ include_once 'plantillas/cuerpo/inihtmlN1.php';
 include_once 'plantillas/nav/navN1.php';
 include_once '../modelo/class.factura.php';
 include_once '../modelo/class.conexion.php';
+include_once '../controlador/controlador.php';
 
 cardtitulo("Informe de Bodega");
-
+$objModFact = new ControllerDoc();
 ?>
 <div class="card card-body text-center col-md-10 mx-auto">
     <!--<div class="container">-->
@@ -93,12 +94,13 @@ if (isset($_POST['consulta'])) {
                             <th>sub total</th>
                         </tr>
                     </thead>
-                    <?php /*
-                    $datos = Factura::verIntervaloFecha($f1, $f2);
-                    while ($row = $datos->fetch_array()) {
+                    <?php 
+                    //$datos = Factura::verIntervaloFecha($f1, $f2);
+                    $datos = $objModFact->verIntervaloFecha($f1, $f2);
+                    //while ($row = $datos->fetch_array()) {
+                        foreach($datos as $i => $row){
 
-
-                   */ ?>
+                    ?>
                         <tbody>
                             <tr>
                                 <td><?php echo $row['ID_factura'] ?></td>
@@ -112,22 +114,14 @@ if (isset($_POST['consulta'])) {
                     } // fin de while tabla
                     ?>
                 </table>
-
-
-
-
             </div>
         </div>
     </div>
-
-
-
-
 <?php
 }
 
 include_once 'plantillas/cuerpo/footerN1.php'; 
 include_once 'plantillas/cuerpo/finhtml.php';
-//}// fin de validacion permisos
-// }
+}// fin de validacion permisos
+
 ?>

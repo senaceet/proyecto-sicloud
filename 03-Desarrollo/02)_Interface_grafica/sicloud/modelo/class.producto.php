@@ -88,7 +88,7 @@ class Producto extends Conexion
        // header("location: ../CU004-crearProductos.php");
     } // fin de javaScript
 
-
+ 
 
     //query ver productos                                        R
     public function verProductos(){
@@ -139,7 +139,7 @@ public function verProductosGrafica(){
 
     //query ver productos                                       
     public function verProductosId($id)
-    {
+    { 
         //include_once 'class.conexion.php';
         //$db = new Conexion;
         $sql = "SELECT P.ID_prod , P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod , C.nom_categoria, T_M.nom_medida

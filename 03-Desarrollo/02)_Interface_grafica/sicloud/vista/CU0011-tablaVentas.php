@@ -33,9 +33,9 @@ include_once '../modelo/class.producto.php';
 include_once '../modelo/class.factura.php';
 include_once 'plantillas/cuerpo/inihtmlN1.php';
 include_once 'plantillas/nav/navN1.php';
+include_once '../controlador/controlador.php';
 
-
-
+$objModFact = new ControllerDoc();
 cardtitulo("Informe de venta");
 
 //$d = new Conexion;
@@ -55,22 +55,22 @@ cardtitulo("Informe de venta");
                 <th>Total</th>
             </tr>
             </thead>
-        <?php  /*
-        
-        $datos = Factura::verjoinFactura();
-        while($row = $datos->fetch_array()  ){
-
+        <?php  
+        //$datos = Factura::verjoinFactura();
+        $datos = $objModFact->verjoinFactura();
+        //while($row = $datos->fetch_array()  ){
+        foreach($datos as $i => $row){
              
-         */ ?>
+         ?>
             <tbody>
                 <tr>
-                     <td> <?php  // echo $row['ID_us']    ?></td>
-                     <td><?php   //echo $row['nom1']    ?> </td>
-                     <td><?php  // echo $row['ape1']    ?> </td>
-                     <td><?php  // echo $row['nom_prod']    ?> </td>
-                     <td><?php   //echo $row['fecha']    ?> </td>
-                     <td><?php  // echo $row['nom_tipo_pago']    ?> </td>
-                     <td><?php   //echo $row['total']    ?> </td>
+                     <td><?php echo $row['ID_us']    ?></td>
+                     <td><?php echo $row['nom1']    ?> </td>
+                     <td><?php echo $row['ape1']    ?> </td>
+                     <td><?php echo $row['nom_prod']    ?> </td>
+                     <td><?php echo $row['fecha']    ?> </td>
+                     <td><?php echo $row['nom_tipo_pago']    ?> </td>
+                     <td><?php echo $row['total']    ?> </td>
                 </tr> 
             </tbody>
 
@@ -84,5 +84,5 @@ cardtitulo("Informe de venta");
 
 include_once 'plantillas/cuerpo/footerN1.php'; 
 include_once 'plantillas/cuerpo/finhtml.php';
- //       }// finde validar permisos
+    }// finde validar permisos
 ?>

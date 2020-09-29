@@ -1,6 +1,6 @@
 <?php
 include_once 'plantillas/plantilla.php';
-
+include_once '../controlador/controlador.php';
 include_once '../modelo/class.empresa.php';
 include_once '../modelo/class.conexion.php';
 include_once 'plantillas/cuerpo/inihtmlN2.php';
@@ -27,16 +27,15 @@ if ((isset($_GET['id']))) {
                     <div class="card-body">
                         <form action="../controlador/post.php?id=<?php echo $_GET['id'] ?>" method="POST">
 
-                            <?php /*
-
-                            $c = new Conexion;
-                            $datos = Empresa::verDatoPorId($id);
-                            while ($row = $datos->fetch_array()) {
-
-                            */ ?>
+                            <?php 
+                            $objModEmp = new ControllerDoc();
+                            $datos = $objModEmp->verDatoPorId($id);
+                            //while ($row = $datos->fetch_array()) {
+                                foreach($datos as $i => $row){
+                             ?>
                                 <div class="form-group"><input class="form-control" type="text" name="ID_rut" placeholder="ID_rut" value="<?php echo $row['ID_rut']  ?>" required autofocus maxlength="35"></div>
                                 <div class="form-group"><input class="form-control" type="text" name="nom_empresa" placeholder="nom_empresa" value="<?php echo $row['nom_empresa']  ?>" required autofocus maxlength="50"></div>
-                            <?php // } ?>
+                            <?php  } ?>
 
                             <input type="hidden" name="accion" value="insertUdateEmpresa">
                             <div class="form-group"><input class="form-control btn btn-primary" type="submit" name="submit"></div>

@@ -60,47 +60,28 @@ public function insertCiudad(){
   }
 }
 
-
-
-
 //-----------------------------------------------------------------
 // fin de metodo registrar datos ciudad
 //----------------------------------------------------------------
 
-
-
 //-----------------------------------------------------------------
-static function verCiudadId($ID_ciudad){
-  include_once 'class.conexion.php';
-  $c = new Conexion;
+public function verCiudadId($ID_ciudad){
+  //include_once 'class.conexion.php';
+  //$c = new Conexion;
   $sql = "SELECT id_ciudad , nom_ciudad FROM ciudad WHERE ID_ciudad = '$ID_ciudad' ORDER BY nom_ciudad ASC ";
-  $result = $c->query($sql);
+  $stm = $this->db->prepare($sql);
+  $stm->execute();
+  $result=$stm->fetchAll();
   return $result;
+  //$result = $c->query($sql);
+  //return $result;
 }// fin de metodo ver datos ciudad
   //----------------------------------------------------------------
-  
-
-
-
-
-
-
-
-
-
-}// fin de clase ciudad
-
+  }// fin de clase ciudad
 
 $objMod = Ciudad::ningunDato();
 $array =  $objMod->verCiudad();
 
-echo '<pre>'; print_r($array); echo '</pre>';
-
-
-
-
-
-
-
+//echo '<pre>'; print_r($array); echo '</pre>';
 ?>
 

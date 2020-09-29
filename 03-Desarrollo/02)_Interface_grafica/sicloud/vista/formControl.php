@@ -2,15 +2,12 @@
 include_once '../modelo/class.factura.php'; 
 include_once '../modelo/class.modificacion.php';
 include_once 'plantillas/plantilla.php';
-
-
-
 include_once 'plantillas/cuerpo/inihtmlN2.php';
 include_once 'plantillas/nav/navN2.php';
-
 include_once '../controlador/controlador.php';
 include_once '../controlador/controladorsession.php';
 cardtitulo("Control de modificaiones");
+$objModModi = new ControllerDoc();
 ?>
 
 <div class="container-fluid ">
@@ -54,25 +51,27 @@ cardtitulo("Control de modificaiones");
                          </tr>
                         
 
-                        <?php /*
+                        <?php 
                         //$medida = Medida::ningunDatoM();
-                        $datos  =  Modificacion::verJoinModificacionesDB();
-                            while ($row = $datos->fetch_array()) {
-                       */ ?>
+                        //$datos  =  Modificacion::verJoinModificacionesDB();
+                        $datos = $objModModi->verJoinModificacionesDB();
+                            //while ($row = $datos->fetch_array()) {
+                            foreach($datos as $i => $row){    
+                        ?>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Los nombres que estan son los mismos de los atributos de la base de datos de lo contrario dara un error -->
-                    <td><?php // echo $row['ID_modifc'] ?></td>
-                    <td><?php // echo $row['descrip'] ?></td>
-                    <td><?php // echo $row['fecha'] ?></td>
-                    <td><?php // echo $row['hora'] ?></td>
-                    <td><?php // echo $row['FK_us'] ?></td>
-                    <td><?php // echo $row['FK_doc'] ?></td>
-                    <td><?php // echo $row['nom1'] ?></td>
-                    <td><?php // echo $row['ape1'] ?></td>
-                    <td><?php // echo $row['nom_modific'] ?></td>
-                    <td><?php // echo $row['nom_rol'] ?></td>
+                    <td><?php  echo $row['ID_modifc'] ?></td>
+                    <td><?php  echo $row['descrip'] ?></td>
+                    <td><?php  echo $row['fecha'] ?></td>
+                    <td><?php  echo $row['hora'] ?></td>
+                    <td><?php  echo $row['FK_us'] ?></td>
+                    <td><?php  echo $row['FK_doc'] ?></td>
+                    <td><?php  echo $row['nom1'] ?></td>
+                    <td><?php  echo $row['ape1'] ?></td>
+                    <td><?php  echo $row['nom_modific'] ?></td>
+                    <td><?php  echo $row['nom_rol'] ?></td>
 
 
                     <!-- formEdicion.php?accion=editarMedia&&id=<?php// echo $row['ID_medida'] ?> -->
@@ -85,7 +84,7 @@ cardtitulo("Control de modificaiones");
                 </tbody>
         <?php
 
-                          //  } //fin del while
+                            } //fin del while
                
         ?>
             </table>

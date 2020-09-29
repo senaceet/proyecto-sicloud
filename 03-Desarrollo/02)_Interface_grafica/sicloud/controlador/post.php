@@ -1,33 +1,17 @@
 <?php
-//include 'class.producto.php'; 
-  //      <include_once '../clases/class.medida.php';
-  //      include_once '../clases/class.producto.php';
-  //      
-    //    include_once '../clases/class.categoria.php';
-  //      include_once '../clases/class.rol.php';
-        include_once '../modelo/class.usuario.php';
-  //      include_once '../clases/class.rol_usuario.php';
-  //      include_once '../clases/class.login.php';
-  //      include_once '../clases/class.notificacion.php';
-  //      include_once '../clases/class.modificacion.php';
+include_once '../modelo/class.producto.php'; 
+include_once '../modelo/class.medida.php';
+include_once '../modelo/class.producto.php'; 
+include_once '../modelo/class.categoria.php';
+include_once '../modelo/class.rol.php';
+include_once '../modelo/class.usuario.php';
+include_once '../modelo/class.rol_usuario.php';
+include_once '../modelo/class.login.php';
+include_once '../modelo/class.notificacion.php';
+include_once '../modelo/class.modificacion.php';
+include_once '../modelo/class.empresa.php';
 
-
-
-
-//include_once '../clases/class.empresa.php';
 //$us=Usuario::ningunDato();
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if (isset($_POST['submit'])) {

@@ -89,13 +89,15 @@ confirm('Esta seguro de eliminar el telefono con el id=' + id_tel + ' ?');
                     <div class="form-group">
                         <form action="formTelefono.php" method="POST">
                             <select name="rol" class="form-control ">
-                                <?php /*
-                                $datos = Rol::verRol();
-                                while ($row = $datos->fetch_array()) {
-                                */?>
+                                <?php 
+                                $objModRol = new ControllerDoc();
+                                $datos = $objModRol->verRol();
+                                //while ($row = $datos->fetch_array()) {
+                                    foreach($datos as $i =>$row){
+                                ?>
                                     <option value="<?php echo $row['ID_rol_n'] ?>"><?php echo $row['nom_rol'] ?></option>
                                 <?php
-                               // }  ?>
+                                }  ?>
                             </select>
                     </div><!-- fin de form control -->
                     <div class="form-group"><input class="form-control btn btn-primary" name="consultaRol" type="submit" value="Filtrar por rol"></div>
@@ -175,11 +177,6 @@ confirm('Esta seguro de eliminar el telefono con el id=' + id_tel + ' ?');
         setMessage();
    // }
     ?>
-
-
-
-
-
     <?php
 
 
@@ -205,8 +202,8 @@ confirm('Esta seguro de eliminar el telefono con el id=' + id_tel + ' ?');
                         </tr>
 
                         <?php
-
-                        while ($row = $datos->fetch_array()) {
+                        //while ($row = $datos->fetch_array()) {
+                            foreach($datos as $i=>$row){
                         ?>
 
                             </tr>
@@ -249,7 +246,8 @@ confirm('Esta seguro de eliminar el telefono con el id=' + id_tel + ' ?');
                  
                                          <?php
                  
-                                         while ($row = $datos->fetch_array()) {
+                                         //while ($row = $datos->fetch_array()) {
+                                             foreach($datos as $i=>$row){
                                          ?>
                  
                                              </tr>
@@ -270,29 +268,6 @@ confirm('Esta seguro de eliminar el telefono con el id=' + id_tel + ' ?');
                              <?php
                                          }// fin de while muestra telefonos de empresa
                                      }// fin de comprobasion de $us = true
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

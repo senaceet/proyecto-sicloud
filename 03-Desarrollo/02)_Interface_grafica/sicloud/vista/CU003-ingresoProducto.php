@@ -33,6 +33,7 @@ include_once '../modelo/class.medida.php';
 include_once '../modelo/class.proveedor.php';
 */
 
+
 include_once '../controlador/controlador.php';
 include_once 'plantillas/nav/navN1.php';
 include_once 'plantillas/plantilla.php';
@@ -41,7 +42,7 @@ include_once 'plantillas/plantilla.php';
 function selectProducto(){
     $objCon = new ControllerDoc();
     $datos = $objCon->verProductos();
-    foreach($datos as $row) {
+    foreach($datos as $row) { 
     ?>
         <option value="<?= $row['ID_prod'] ?>"><?= $row['nom_prod'] ?></option>
     <?php } 

@@ -104,11 +104,12 @@ include_once 'plantillas/nav/navN1.php';
                 <td>Tipo medida</td>
                 <td>Valor unitario</td>
                 <td>Valor total</td>
-
-
-
             </tr>
         </thead>
+        <?php
+        $objModFact = new ControllerDoc();
+        
+        ?>
         <tbody>
             <td></td>
             <td></td>

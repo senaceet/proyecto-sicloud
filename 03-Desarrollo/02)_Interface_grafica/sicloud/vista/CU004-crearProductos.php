@@ -98,7 +98,7 @@ cardtitulo("Registro producto");
                     <div class="form-group"><label for="">Categoria de producto</label>
                         <select class="form-control" name="CF_categoria">
                             <?php
-                  
+                   
 
                              $datos =   $objCon->verCategorias();
                             foreach( $datos as $i => $row ) {

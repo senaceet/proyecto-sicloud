@@ -26,7 +26,9 @@ public function __construct(  $_descrip, $_fecha, $_hora, $_FK_us, $_FK_doc, $_F
 
 
 //METODOS
-
+static function ningunDato(){
+    return new self("","","","","","");
+}
 
 //------------------------------------------
 //Ver fecha actual

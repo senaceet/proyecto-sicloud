@@ -13,7 +13,7 @@ function selectDocumeto(){
         <option value="<?= $d[0] ?>"><?= $d[1] ?></option>
     <?php  }   
 }
-
+ 
 function selectRol(){
     $objConRol =  Rol::ningunDato();
     $datosRol  =  $objConRol->verRol();

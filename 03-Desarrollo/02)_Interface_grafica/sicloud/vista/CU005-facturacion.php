@@ -1,5 +1,7 @@
 <?php
 include_once '../controlador/controladorsession.php';
+include_once '../controlador/controlador.php';
+
 //comprobacion de rol
 $in = false;
 switch ($_SESSION['usuario']['ID_rol_n']) {
@@ -35,12 +37,13 @@ if ($in == false) {
     <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <?php //include_once 'js/scripts.php';  
-        include_once 'plantillas/cuerpo/inihtmlN1.php';
+        <?php include_once 'js/scripts.php';  
+        include_once '/plantillas/cuerpo/inihtmlN1.php';
+        
         ?>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Facturacion</title>
         <script type="text/javascript" src = "js/funcions.js"></script>
     </head>
     <body>
@@ -63,9 +66,12 @@ if ($in == false) {
                     <?php
                     if (isset($_GET['ID'])){
                         $id_us=$_GET['ID'];
-                        $us = Factura::verUsuarioFactura($_GET['ID']);
-                    while ($row = $us->fetch_assoc()) {
-                    ?>
+                        $objModFact = new ControllerDoc();
+                        $datos = $objModFact->verUsuarioFactura($id);
+                        //$us = Factura::verUsuarioFactura($_GET['ID']);
+                    //while ($row = $us->fetch_assoc()) {
+                        foreach($datos as $i=>$row){
+                       ?>
 
                         <div class="col-md-4">
                             <div class="form-group"><label for="">Nombre</label><input type=»text» readonly=»readonly» class="form-control" value="<?php echo $row['nom1'] . $row['nom2'] . " " . $row['ape1'] . " " . $row['ape2'];  ?>" /></div>
@@ -74,7 +80,8 @@ if ($in == false) {
                             <div class="form-group"><label for="">Telefono</label><input type=»text» readonly=»readonly» class="form-control" value="<?php echo $row['tel'] ?>" /></div>
                         </div><!-- fin de tercera divicion de 3 -->
                         <div class="form-group col-md-12"><label for="">Direccion</label><input type=»text» readonly=»readonly» class="form-control" value="<?php echo $row['dir'] ?>" /></div>
-                    <?php } } ?>
+                        <?php       } 
+                            } ?>
                 </div><!-- fin de div row -->
             </div><!-- fin de card -->
         </div><!-- fin de card -->
@@ -92,7 +99,7 @@ if ($in == false) {
                 <div class="row">
                     <p>
                         <label for="">Vendedor</label><br>
-                        <?php echo $_SESSION['usuario']['nom1'] . " " . $_SESSION['usuario']['ape1'] ?>
+                        <?php echo $_SESSION['usuario']['nom1'] . " " . $_SESSION['usuario']['ape1']; ?>
                     </p>
 
                     <div class="ml-auto"><label for="">Accion</label><br><a href="#" class="btn btn-danger  ">Anular</a></div>
@@ -127,8 +134,7 @@ if ($in == false) {
                     <td><input type="text" name="txt_cod_producto" id="txt_cod_producto"></td>
                     <td id= "txt_description">-</td>
                     <td id= "txt_existencia">-</td>
-                    <td><input type="text" name="txt_cant_producto" id="txt_cant_producto" value="0" min="1"
-                    disabled></td>
+                    <td><input type="text" name="txt_cant_producto" id="txt_cant_producto" value="0" min="1" disabled></td>
                     <td id="txt_precion" class="text-right">0.00</td>
                     <td id="txt_precion" class="text-right">0.00</td>
                     <td><a href="#" id="add_product_venta" class="btn btn-circle btn-success"><i class ="fass fa-plus"></i>
@@ -136,9 +142,12 @@ if ($in == false) {
                 </tr>
 
                     <?php
-                   // if (isset($_GET['id_p'])) {
+                    if (isset($_GET['id_p'])) {
                    //     $datos = Producto::verProductosId($_GET['id_p']);
+                   $objModProd = new ControllerDoc();
+                   $datos = $objModProd->verProductosId($id_p);
                    //     while ($row = $datos->fetch_array()) {
+                    foreach($datos as $i => $row){
                     ?>
 
                 <thead class="bg-dark text-white text-center">
@@ -152,7 +161,7 @@ if ($in == false) {
                 </tr>
                 </thead>
             </tbody>
-    <?php //  } ?>
+    <?php  } ?>
         </table>
 
         <div class="col-lg-2 mx-auto">
@@ -168,7 +177,7 @@ if ($in == false) {
 <?php
     include_once 'plantillas/cuerpo/footerN1.php';
 
-} // fin de validacion permisos de ingreso
+} ;// fin de validacion permisos de ingreso
 ?>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

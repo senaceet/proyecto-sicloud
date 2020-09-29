@@ -129,14 +129,18 @@ class Categoria extends Conexion{
     //static function verCategoriaId($id)
 
     //Capturar id
-    static function capturarId(){
-        include_once 'class.conexon.php';
-        $con = new Conexion;
+    public function capturarId(){
+        //include_once 'class.conexon.php';
+        //$con = new Conexion;
         $sql = "SELECT * FROM sicloud.categoria ORDER BY ID_categoria DESC LIMIT 1 ";
-        $datos = $con->query($sql);
-        while ($row = $datos->fetch_array());
-        $id = $row['ID_categoria'];
-        return $id;
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll(); 
+        return $result;
+        //$datos = $con->query($sql);
+        //while ($row = $datos->fetch_array());
+        //$id = $row['ID_categoria'];
+        //return $id;
     } // fin de metodo capturar ID
 
     // Ver categiria sin conexion
