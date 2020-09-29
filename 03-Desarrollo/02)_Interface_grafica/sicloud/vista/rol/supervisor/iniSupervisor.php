@@ -23,9 +23,9 @@ if ($in == false) {
 } else {
 
   //--------------------------------------------------------------------------
-  include_once '../../../global/plantillas/plantilla.php';
-  include_once '../../../global/plantillas/cuerpo/inihtmlN3.php';
-  include_once '../../../global/plantillas/nav/navN3.php';
+  include_once '../../plantillas/plantilla.php';
+  include_once '../../plantillas/cuerpo/inihtmlN3.php';
+  include_once '../../plantillas/nav/navN3.php';
 
   cardtitulo("Modulo de Supervisor");
   ?>
@@ -129,7 +129,7 @@ if ($in == false) {
 
           <?php
         }
-        include_once '../../../global/plantillas/cuerpo/finhtml.php';
-        include_once '../../../global/plantillas/cuerpo/footerN3.php';
+        include_once '../../plantillas/cuerpo/finhtml.php';
+        include_once '../../plantillas/cuerpo/footerN3.php';
 
           ?>

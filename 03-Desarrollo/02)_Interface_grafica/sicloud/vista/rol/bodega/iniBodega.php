@@ -23,9 +23,9 @@ if ($in == false) {
     echo "<script>window.location.replace('index.php');</script>";
 } else {
 
-include_once '../../../global/plantillas/plantilla.php';
-include_once '../../../global/plantillas/cuerpo/inihtmlN3.php';
-include_once '../../../global/plantillas/nav/navN3.php';
+include_once '../../plantillas/plantilla.php';
+include_once '../../plantillas/cuerpo/inihtmlN3.php';
+include_once '../../plantillas/nav/navN3.php';
   cardtitulo("Modulo de inventario");
 ?>
 
@@ -146,7 +146,7 @@ include_once '../../../global/plantillas/nav/navN3.php';
                   </div><!-- fin de col de 4 1 -->
                   <div class="col-md-4 ">
                     <a class="btn btn-info mx-auto btn-block" href="../../CU003-ingresoproducto.php "> <i class="fas fa-check"></i>Ingreso de producto pedido</a>
-                    <a class="btn btn-primary mx-auto btn-block" href="../../forms/edicionProductoTabla.php"> <i class="fas fa-fw fa-wrench"></i>Editar productos</a>
+                    <a class="btn btn-primary mx-auto btn-block" href="../../edicionProductoTabla.php"> <i class="fas fa-fw fa-wrench"></i>Editar productos</a>
 
                   </div><!-- fin de col de 4 2 -->
                   <div class="col-md-4 ">
@@ -166,7 +166,7 @@ include_once '../../../global/plantillas/nav/navN3.php';
 
 <?php
 //} // fin de validar permisos
-include_once '../../../global/plantillas/cuerpo/footerN3.php';
-include_once '../../../global/plantillas/cuerpo/finhtml.php';
+include_once '../../plantillas/cuerpo/footerN3.php';
+include_once '../../plantillas/cuerpo/finhtml.php';
 }
 ?>

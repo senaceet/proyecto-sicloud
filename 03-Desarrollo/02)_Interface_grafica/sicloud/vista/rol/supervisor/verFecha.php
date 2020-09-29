@@ -2,15 +2,19 @@
 
 <?php
 
+include_once '../../plantillas/plantilla.php';
+include_once '../../plantillas/cuerpo/inihtmlN3.php';
+include_once '../../plantillas/nav/navN3.php';
 
-include_once '../../../global/plantillas/plantilla.php';
+/*
 include_once '../../../modelo/class.categoria.php';
 include_once '../../../modelo/class.producto.php';
 include_once '../../../modelo/class.conexion.php';
 include_once '../../../modelo/class.factura.php';
+
+*/
 include_once '../../../controlador/ControladorSession.php';
-include_once '../../../global/plantillas/cuerpo/inihtmlN3.php';
-include_once '../../../global/plantillas/nav/navN3.php';
+
 
 /*
 
@@ -132,7 +136,7 @@ if(isset($_POST['accion'])){
         <?php
         }// fin de isset consulta
 
-        include_once '../../../global/plantillas/cuerpo/finhtml.php';
+        include_once '../../plantillas/cuerpo/finhtml.php';
         ?>
 
 

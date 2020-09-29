@@ -22,12 +22,15 @@ if ($in == false) {
     echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
     echo "<script>window.location.replace('index.php');</script>";
 } else {
-    include_once '../../../global/plantillas/plantilla.php';
-    include_once '../../../global/plantillas/cuerpo/inihtmlN3.php';
-    include_once '../../../global/plantillas/nav/navN3.php';
+    include_once '../../plantillas/plantilla.php';
+    include_once '../../plantillas/cuerpo/inihtmlN3.php';
+    include_once '../../plantillas/nav/navN3.php';
+
+    /*
     include_once '../../clases/class.categoria.php';
     include_once '../../clases/class.producto.php';
     include_once '../../plantillas/plantilla.php';
+    */
 ?>
 
     <div class="my-4">
