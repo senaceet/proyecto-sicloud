@@ -144,8 +144,8 @@ if ($in == false) {
                     <?php
                     if (isset($_GET['id_p'])) {
                    //     $datos = Producto::verProductosId($_GET['id_p']);
-                   $objModProd = new ControllerDoc();
-                   $datos = $objModProd->verProductosId($id_p);
+                    $objModProd = new ControllerDoc();
+                    $datos = $objModProd->verProductosId($id_p);
                    //     while ($row = $datos->fetch_array()) {
                     foreach($datos as $i => $row){
                     ?>

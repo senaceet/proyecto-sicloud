@@ -8,6 +8,7 @@ include_once '../modelo/class.rol.php';
 include_once 'plantillas/cuerpo/inihtmlN2.php';
 include_once 'plantillas/nav/navN2.php';
 include_once '../controlador/controladorsession.php';
+include_once '../controlador/controlador.php';
 
 
 //-----------------------------------------------------------------------------------
@@ -28,12 +29,18 @@ if ((isset($_GET['id']))) {
           <div class="card-body">
             <form action="../metodos/post.php?id=<?php echo $_GET['id'] ?>" method="POST">
 
-              <?php /*
+              <?php 
+              $objModRol = new ControllerDoc();
+              $datos = $objModRol -> verRolId($id);
+              foreach($datos as $i => $row){
 
+              
+              
+              /*              
               $datos = Rol::verRolId($id);
-              while ($row = $datos->fetch_array()) {
-
-             */ ?>
+              while ($row = $datos->fetch_array())*/ 
+              
+              ?>
                 <div class="form-group"><input class="form-control" type="text" name="ID_rol_n" placeholder="Id" value="<?php echo $row['ID_rol_n']  ?>" required autofocus maxlength="30"></div>
                 <div class="form-group"><input class="form-control" type="text" name="nom_rol" placeholder="Rol" value="<?php echo $row['nom_rol']  ?>" required autofocus maxlength="30"></div>
               <?php } ?>
@@ -48,6 +55,6 @@ if ((isset($_GET['id']))) {
   </div><!-- Fin de container -->
   <!--  -->
 <?php
-// }
+}
 include_once 'plantillas/cuerpo/finhtml.php';
 ?>

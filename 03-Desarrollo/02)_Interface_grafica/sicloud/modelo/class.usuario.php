@@ -281,6 +281,34 @@ class Usuario extends Conexion{
    $r = $c->fetchAll();
    return $r;
    }
+   
+
+   // Actualzacion de datos por rol usuario---------------------------------------------------------
+  public function insertUpdateUsuarioCliente($idg){
+   
+   $sql1 = "SET FOREIGN_KEY_CHECKS = 0 ";
+   $consulta1 = $this->db->prepare($sql1);
+        $res =  $consulta1->execute();   
+   if ($res) {
+      $sql2 = "UPDATE sicloud.usuario SET  nom1 = :nom1 ,  nom2 = :nom2 ,ape1 = :ape1 , ape2 = :ape2 , fecha = :fecha   , correo = :correo  WHERE  ID_us = :ID_us ";
+      $res1 = $this->db->prepare($sql2);
+   }   
+   if ($res1) {
+      $sql3 = "SET FOREIGN_KEY_CHECKS = 1";
+      $res2 = $this->db->prepare($sql3);
+   }
+   if ($res2) {
+      $_SESSION['message'] = $_SESSION['usuario']['nom1'] . ' Actualizo datos';
+      $_SESSION['color'] = 'success';
+   } else {
+      $_SESSION['message'] = 'Error al actualizar datos';
+      $_SESSION['color'] = 'danger';
+   }
+}
+
+   
+
+   
 
 
 

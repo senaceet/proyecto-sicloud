@@ -76,7 +76,7 @@ $objModModi = new ControllerDoc();
 
                     <!-- formEdicion.php?accion=editarMedia&&id=<?php// echo $row['ID_medida'] ?> -->
                     <td>
-                        <a href="../controlador/controlador.php?accion=eliminarError&&id=<?php echo $row['ID_error'] ?>" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
+                        <a href="../controlador/controlador.php?accion=eliminarError&&id=<?= $row['ID_error'] ?>" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
 
                         <!--  get.php?accion=editarMedia?id= -->
                         <!-- edit.php?id=<?//php  echo  $row['id_sitio']  ?> -->
