@@ -56,7 +56,7 @@ include_once '../controlador/controladorsession.php';
                         <?php
                         $objModEmp = new ControllerDoc();
                         $datos = $objModEmp->verEmpresa();
-                        foreach ($variable as $key => $value) {
+                        foreach ($datos as $i => $row) {
                         ?>
                     </tr>
                 </thead>
