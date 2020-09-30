@@ -1,6 +1,6 @@
 <?php
 //comprobacion de rol
-include_once '../../../controlador/controladorsession.php';
+include_once '../../../controlador/ControladorSession.php';
 //comprobacion de rol
 $in = false;
 switch ($_SESSION['usuario']['ID_rol_n']) {
@@ -23,9 +23,9 @@ if ($in == false) {
     echo "<script>window.location.replace('index.php');</script>";
 } else {
 
-include_once '../../plantillas/plantilla.php';
-include_once '../../plantillas/cuerpo/inihtmlN3.php';
-include_once '../../plantillas/nav/navN3.php';
+include_once '../../../global/plantillas/plantilla.php';
+include_once '../../../global/plantillas/cuerpo/inihtmlN3.php';
+include_once '../../../global/plantillas/nav/navN3.php';
   cardtitulo("Modulo de inventario");
 ?>
 
@@ -166,7 +166,7 @@ include_once '../../plantillas/nav/navN3.php';
 
 <?php
 //} // fin de validar permisos
-include_once '../../plantillas/cuerpo/footerN3.php';
-include_once '../../plantillas/cuerpo/finhtml.php';
+include_once '../../../global/plantillas/cuerpo/footerN3.php';
+include_once '../../../global/plantillas/cuerpo/finhtml.php';
 }
 ?>

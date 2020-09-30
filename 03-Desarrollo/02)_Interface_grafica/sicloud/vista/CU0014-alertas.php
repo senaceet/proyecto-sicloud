@@ -1,6 +1,7 @@
 <?php
 //comprobacion de rol
 include_once '../controlador/controladorsession.php';
+include_once '../controlador/controlador.php';
 //comprobacion de rol
 $in = false;
 switch ($_SESSION['usuario']['ID_rol_n']) {
@@ -128,10 +129,15 @@ $(function () {
             name: 'Producto',
             data: [
 
-            <?php /*
-                $datos = Producto::verProductosGrafica();
-                while( $row = $datos->fetch_assoc()){
-           */ ?>
+            <?php
+                $objModProd = new ControllerDoc();
+                $datos = $objModProd->verProductosGrafica();
+                foreach ($datos as $i => $row) {
+                
+            
+                // $datos = Producto::verProductosGrafica();
+                // while( $row = $datos->fetch_assoc())
+            ?>
                 [ '<?php echo $row['nom_prod'] ?> '  , <?php echo $row['stok_prod'] ?> ],
               <?php // } ?>
 
@@ -182,7 +188,7 @@ $(function () {
                     </div>
 
                 <?php
-                //} // fin de ver productos-------------------------------------------------------------------
+                } // fin de ver productos-------------------------------------------------------------------
 
                 // evento de busqueda producto por ID
                 if ($_GET['filtro'] == 2) { ?>

@@ -1,7 +1,6 @@
 <?php
 
-include_once '../../../controlador/controladorsession.php';
-include_once '../../../controlador/controlador.php';
+include_once '../../../controlador/ControladorSession.php';
 //comprobacion de rol
 $in = false;
 switch ($_SESSION['usuario']['ID_rol_n']) {
@@ -23,10 +22,11 @@ if ($in == false) {
     echo "<script>alert('No tiene permiso para ingresar a este modulo');</script>";
     echo "<script>window.location.replace('index.php');</script>";
 } else {
-    include_once '../../plantillas/plantilla.php';
-    include_once '../../plantillas/cuerpo/inihtmlN3.php';
-    include_once '../../plantillas/nav/navN3.php';
-    
+    include_once '../../../global/plantillas/plantilla.php';
+    include_once '../../../global/plantillas/cuerpo/inihtmlN3.php';
+    include_once '../../../global/plantillas/nav/navN3.php';
+    include_once '../../clases/class.categoria.php';
+    include_once '../../clases/class.producto.php';
 
 ?>
     <div class="my-4">
@@ -58,13 +58,11 @@ if ($in == false) {
             <form action="tablaCategoria.php" method="GET">
                 <select name="p" class="form-control">
                     <?php
-                    $objC=new ControllerDoc();
-                    $datos = $objC->verCategoria();
-                    //while ($row = $datos->fetch_array()) {
-                        foreach($datos as $i =>$row){
+                    $datos = Categoria::verCategoria();
+                    while ($row = $datos->fetch_array()) {
 
                     ?>
-                        <option value="<?= $row['ID_categoria'] ?>"><?= $row['nom_categoria'] ?></option>
+                        <option value="<?php echo $row['ID_categoria'] ?>"><?php echo $row['nom_categoria'] ?></option>
 
                     <?php } ?>
                 </select>

@@ -29,8 +29,7 @@ if ($in == false) {
     include_once 'plantillas/plantilla.php';
    // include_once 'clases/class.usuario.php';
     include_once '../modelo/class.factura.php';
-    include_once '../modelo/class.producto.php';
-
+  //  include_once 'clases/class.producto.php';
 
 ?>
     <!-- col 12 -->
@@ -38,8 +37,8 @@ if ($in == false) {
     <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <?php include_once 'estilos/js/scripts.php';  
-        include_once 'plantillas/cuerpo/inihtmlN1.php';
+        <?php include_once 'js/scripts.php';  
+        include_once '/plantillas/cuerpo/inihtmlN1.php';
         
         ?>
 
@@ -68,19 +67,19 @@ if ($in == false) {
                     if (isset($_GET['ID'])){
                         $id_us=$_GET['ID'];
                         $objModFact = new ControllerDoc();
-                        $datos = $objModFact->verUsuarioFactura($id_us);
+                        $datos = $objModFact->verUsuarioFactura($id);
                         //$us = Factura::verUsuarioFactura($_GET['ID']);
                     //while ($row = $us->fetch_assoc()) {
                         foreach($datos as $i=>$row){
                        ?>
 
                         <div class="col-md-4">
-                            <div class="form-group"><label for="">Nombre</label><input type=»text» readonly=»readonly» class="form-control" value="<?= $row['nom1'] . $row['nom2'] . " " . $row['ape1'] . " " . $row['ape2'];  ?>" /></div>
+                            <div class="form-group"><label for="">Nombre</label><input type=»text» readonly=»readonly» class="form-control" value="<?php echo $row['nom1'] . $row['nom2'] . " " . $row['ape1'] . " " . $row['ape2'];  ?>" /></div>
                         </div><!-- fin de segunda divicion de 3 -->
                         <div class="col-md-4">
-                            <div class="form-group"><label for="">Telefono</label><input type=»text» readonly=»readonly» class="form-control" value="<?= $row['tel'] ?>" /></div>
+                            <div class="form-group"><label for="">Telefono</label><input type=»text» readonly=»readonly» class="form-control" value="<?php echo $row['tel'] ?>" /></div>
                         </div><!-- fin de tercera divicion de 3 -->
-                        <div class="form-group col-md-12"><label for="">Direccion</label><input type=»text» readonly=»readonly» class="form-control" value="<?= $row['dir'] ?>" /></div>
+                        <div class="form-group col-md-12"><label for="">Direccion</label><input type=»text» readonly=»readonly» class="form-control" value="<?php echo $row['dir'] ?>" /></div>
                         <?php       } 
                             } ?>
                 </div><!-- fin de div row -->
@@ -100,7 +99,7 @@ if ($in == false) {
                 <div class="row">
                     <p>
                         <label for="">Vendedor</label><br>
-                        <?= $_SESSION['usuario']['nom1'] . " " . $_SESSION['usuario']['ape1'] ?>
+                        <?php echo $_SESSION['usuario']['nom1'] . " " . $_SESSION['usuario']['ape1']; ?>
                     </p>
 
                     <div class="ml-auto"><label for="">Accion</label><br><a href="#" class="btn btn-danger  ">Anular</a></div>
@@ -144,9 +143,9 @@ if ($in == false) {
 
                     <?php
                     if (isset($_GET['id_p'])) {
-                  
-                   $objModProd = new ControllerDoc();
-                   $datos = $objModProd->verProductosId($id_p);
+                   //     $datos = Producto::verProductosId($_GET['id_p']);
+                    $objModProd = new ControllerDoc();
+                    $datos = $objModProd->verProductosId($id_p);
                    //     while ($row = $datos->fetch_array()) {
                     foreach($datos as $i => $row){
                     ?>
@@ -177,8 +176,8 @@ if ($in == false) {
 
 <?php
     include_once 'plantillas/cuerpo/footerN1.php';
-                    }
-} // fin de validacion permisos de ingreso
+
+} ;// fin de validacion permisos de ingreso
 ?>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -186,7 +185,4 @@ if ($in == false) {
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
    <script src="https://kit.fontawesome.com/451d49791e.js" crossorigin="anonymous"></script>
 </body>
-</html>
-
-
-?>
+   </html>

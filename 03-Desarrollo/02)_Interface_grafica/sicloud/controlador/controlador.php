@@ -197,6 +197,10 @@ class ControllerDoc
     {
         return $this->objModProd->insertarProducto($a);
     }
+    public function verProductosGrafica()
+    {
+        return $this->objModProd->verProductosGrafica();
+    }
 
 
 
