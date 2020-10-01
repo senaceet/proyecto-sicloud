@@ -6,7 +6,7 @@ include_once 'plantillas/nav/navN2.php';
 cardtitulo("Rol");
 include_once '../controlador/controlador.php';
 include_once '../controlador/controladorsession.php';
-include_once '../controlador/controladorsession.php';
+include_once '../controlador/controlador.php';
 ?>
 
 <script>
@@ -60,12 +60,13 @@ include_once '../controlador/controladorsession.php';
                         <th>ID rol</th>
                         <th>Categoria</th>
                         <th>Accion</th>
-                        <?php /*
-
-                        $datos  = Rol::verRol();
+                        <?php 
+                        $objModRol = new ControllerDoc();
+                        $datos  = $objModRol->verRol();
                         if (isset($datos)) {
-                            while ($row = $datos->fetch_array()) {
-                      */  ?>
+                            //while ($row = $datos->fetch_array()) {
+                                foreach($datos as $i =>$row){
+                        ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,8 +86,8 @@ include_once '../controlador/controladorsession.php';
                 </tbody>
         <?php
 
-                       //     } //fin del while
-                     //   }
+                            } //fin del while
+                        }
         ?>
             </table>
         </div><!-- fin de div col table -->

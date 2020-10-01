@@ -5,6 +5,7 @@ include_once 'plantillas/plantilla.php';
 //include_once '../clases/class.categoria.php';
 include_once 'plantillas/cuerpo/inihtmlN2.php';
 include_once 'plantillas/nav/navN2.php';
+include_once '../controlador/controlador.php';
 cardtitulo("Categoria");
 $objCon = new ControllerDoc();
 ?>
@@ -58,11 +59,12 @@ window.location = "../controlador/controlador.php?accion=eliminarCategoria&&id="
                         <td>ID categoria</td>
                         <td>Categoria</td>
                         <td>Accion</td>
-                        <?php /*
-    
-                        $datos  = $objCon->verCategoria();
+                        <?php 
+                        $objModCat = new ControllerDoc();
+                        $datos  = $objModCat->verCategoria();
                         if (isset($datos)) {
-                            while ($row = $datos->fetch_array()) { */
+                          //  while ($row = $datos->fetch_array()) { 
+                              foreach($datos as $i => $row){
                         ?>
                     </tr>
                 </thead>
@@ -78,8 +80,8 @@ window.location = "../controlador/controlador.php?accion=eliminarCategoria&&id="
                     </td>
                 </tbody>
         <?php
-                          //  } //fin del while
-                      //  } // fin de ver categoria
+                            } //fin del while
+                       } // fin de ver categoria
         ?>
             </table>
         </div><!-- fin de div col tabla -->

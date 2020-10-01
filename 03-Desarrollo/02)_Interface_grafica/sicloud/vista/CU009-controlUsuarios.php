@@ -196,6 +196,7 @@ if ((isset($datos))  && ($tabla == true)) {
 
 <?php
 foreach ($datos as $i  => $d) {
+    
 ?>
                             </tr>
                     </thead>

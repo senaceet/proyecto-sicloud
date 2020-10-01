@@ -7,7 +7,7 @@ include_once 'plantillas/nav/navN2.php';
 
 include '../controlador/controlador.php';
 include_once '../controlador/controladorsession.php';
-include_once '../controlador/controladorsession.php';
+include_once '../controlador/controlador.php';
 cardtitulo("Medida");
 ?>
 
@@ -70,13 +70,14 @@ function eliminarMed(id_med){
                         <th>Medida</th>
                         <th>Acronimo</th>
                         <th>Accion</th>
-                        <?php /*
+                        <?php 
 
-
-                        //$medida = Medida::ningunDatoM();
-                        $datos  = Medida::verMedida();
+                        
+                        $objModMed = new ControllerDoc();
+                        $datos  = $objModMed->verMedida();
                         if (isset($datos)) {
-                            while ($row = $datos->fetch_array()) { */
+                            //while ($row = $datos->fetch_array()) { 
+                                foreach($datos as $i => $row){
                         ?>
                     </tr>
                 </thead>
@@ -92,8 +93,8 @@ function eliminarMed(id_med){
                 </tbody>
         <?php
 
-                          //  } //fin del while
-                      //  }
+                           } //fin del while
+                        }
         ?>
             </table>
         </div>

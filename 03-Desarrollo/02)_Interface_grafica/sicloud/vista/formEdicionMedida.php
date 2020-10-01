@@ -6,7 +6,7 @@ include_once '../modelo/class.conexion.php';
 include_once 'plantillas/cuerpo/inihtmlN2.php';
 include_once 'plantillas/nav/navN2.php';
 include_once '../controlador/controladorsession.php';
-
+include_once '../controlador/controlador.php';
 
 
 //-----------------------------------------------------------------------------------
@@ -20,9 +20,10 @@ if ((isset($_GET['id']))) {
     $id = $_GET['id'];
 
     // se llama un metodo estatic si ser extancia de la clase
-    //$medida = Medida::ningunDatoM();
-    //$datos = Medida::verDatoPorId($id);
-    while ($row = $datos->fetch_array()) {
+    $objModMed = new ControllerDoc();
+    $datos = $objModMed->verDatoPorId($id);
+    //while ($row = $datos->fetch_array()) {
+        foreach($datos as $i => $row){
 ?>
 
 

@@ -1,33 +1,18 @@
 <?php
-//include 'class.producto.php'; 
-  //      <include_once '../clases/class.medida.php';
-  //      include_once '../clases/class.producto.php';
-  //      
-    //    include_once '../clases/class.categoria.php';
-  //      include_once '../clases/class.rol.php';
-        include_once '../modelo/class.usuario.php';
-  //      include_once '../clases/class.rol_usuario.php';
-  //      include_once '../clases/class.login.php';
-  //      include_once '../clases/class.notificacion.php';
-  //      include_once '../clases/class.modificacion.php';
+include_once '../modelo/class.producto.php'; 
+include_once '../modelo/class.medida.php';
+include_once '../modelo/class.producto.php'; 
+include_once '../modelo/class.categoria.php';
+include_once '../modelo/class.rol.php';
+include_once '../modelo/class.usuario.php';
+include_once '../modelo/class.rol_usuario.php';
+include_once '../modelo/class.login.php';
+include_once '../modelo/class.notificacion.php';
+include_once '../modelo/class.modificacion.php';
+include_once '../modelo/class.empresa.php';
 
-
-
-
-//include_once '../clases/class.empresa.php';
 //$us=Usuario::ningunDato();
-
-
-
-
-
-
-
-
-
-
-
-
+$objC=Categoria::ningunDatoC();
 
 
 if (isset($_POST['submit'])) {
@@ -58,6 +43,40 @@ if (isset($_POST['submit'])) {
          $usuario = Usuario::ningunDato();
 
     }
+
+    //update desde rol usuaurio "mismdatos"
+
+    if ($_POST['accion'] == 'insetUpdateUsuarioUsuario') {
+        echo "estoy dentro de insersion usuario";
+        $id = $_SESSION['usuario']['ID_us'];
+        $pass = "";
+        $i = "";
+        $foto = "";
+        $FK_tipo_doc  = "1";
+        $nom1 =  $_POST['nom1'];
+        $nom2 = $_POST['nom2'];
+        $ape1 = $_POST['ape1'];
+        $ape2 = $_POST['ape2'];
+        $fecha = $_POST['fecha'];
+        $correo = $_POST['correo'];
+        $us = new Usuario($i, $nom1, $nom2, $ape1, $ape2, $fecha, $pass, $foto,   $correo, $FK_tipo_doc);
+        $us->insertUpdateUsuarioCliente($id);
+        echo print_r($us);
+        header("location: ../vista/misDatos.php");
+    }
+
+     //CATEGORIA
+    //Update
+    if ($_POST['accion'] == 'insertUdateCategoria') {
+        // include_once '../session/sessiones.php';
+         $categoria = $_POST['categoria'];
+         $id = $_GET['id'];
+         $categoria = $objC->actualizarDatosCategoria($id);
+         print_r($_POST);
+     } // fin de insert update categoria
+     ///------------------------------------------------------
+
+    
 
 }
 
@@ -619,8 +638,3 @@ header("location:../index.php ");
 
 
 */
-
-
-
-
-?>

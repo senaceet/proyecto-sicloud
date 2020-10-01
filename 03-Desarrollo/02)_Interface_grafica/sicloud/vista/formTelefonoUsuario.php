@@ -53,14 +53,11 @@ include_once '../controlador/controladorsession.php';
                         <th>Rut</th>
                         <th>Nombre</th>
                         <th>Accion</th>
-                        <?php /*
-
-
-                        //$medida = Medida::ningunDatoM();
-                        $datos  = Empresa::verEmpresa();
-                        if (isset($datos)) {
-                            while ($row = $datos->fetch_array()) {
-                        */ ?>
+                        <?php
+                        $objModEmp = new ControllerDoc();
+                        $datos = $objModEmp->verEmpresa();
+                        foreach ($datos as $i => $row) {
+                        ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,11 +75,11 @@ include_once '../controlador/controladorsession.php';
                         <!-- edit.php?id=<?//php  echo  $row['id_sitio']  ?> -->
                     </td>
                 </tbody>
-        <?php
+            <?php
 
-                          //  } //fin del while
-                      //  } // fin de ver empresa
-        ?>
+                        } //fin del while
+
+            ?>
             </table>
 
 

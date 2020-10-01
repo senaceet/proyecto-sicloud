@@ -49,22 +49,22 @@ cardtitulo("Log error");
                         <th>descrip error</th>
                         <th>fecha</th>
                         <th>hora</th>
-                        <?php /*
-
-
+                        <?php 
                         //$medida = Medida::ningunDatoM();
-                        $datos  =  ErrorLog::verError();
+                        $objModError = new ControllerDoc();
+                        $datos  =  $objModError->verError();
                         if (isset($datos)) {
-                            while ($row = $datos->fetch_array()) {
-                        */ ?>
+                            //while ($row = $datos->fetch_array()) {
+                                foreach($datos as $i => $row){
+                        ?>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Los nombres que estan son los mismos de los atributos de la base de datos de lo contrario dara un error -->
-                    <td><?php // echo $row['ID_error'] ?></td>
-                    <td><?php // echo $row['descrip_error'] ?></td>
-                    <td><?php //echo $row['fecha'] ?></td>
-                    <td><?php // echo $row['hora'] ?></td>
+                    <td><?php  echo $row['ID_error'] ?></td>
+                    <td><?php  echo $row['descrip_error'] ?></td>
+                    <td><?php  echo $row['fecha'] ?></td>
+                    <td><?php  echo $row['hora'] ?></td>
 
 
                     <!-- formEdicion.php?accion=editarMedia&&id=<?php// echo $row['ID_medida'] ?> -->
@@ -77,8 +77,8 @@ cardtitulo("Log error");
                 </tbody>
         <?php
 
-                          //  } //fin del while
-                    //   } // fin de ver empresa
+                           } //fin del while
+                      } // fin de ver empresa
         ?>
             </table>
 

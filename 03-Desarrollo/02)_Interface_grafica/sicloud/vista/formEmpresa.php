@@ -61,11 +61,13 @@ cardtitulo("Empresa");
                         <th>Rut</th>
                         <th>Nombre</th>
                         <th>Accion</th>
-                        <?php /*
+                        <?php 
+                        $objModEmp = new ControllerDoc();
                         //$medida = Medida::ningunDatoM();
-                        $datos  = Empresa::verEmpresa();
+                        $datos  = $objModEmp->verEmpresa();
                         if (isset($datos)) {
-                            while ($row = $datos->fetch_array()) { */
+                           // while ($row = $datos->fetch_array()) { 
+                               foreach($datos as $i => $row){
                         ?>
                     </tr>
                 </thead>
@@ -86,8 +88,8 @@ cardtitulo("Empresa");
                 </tbody>
         <?php
 
-                          //  } //fin del while
-                     //   } // fin de ver empresa
+                            } //fin del while
+                        } // fin de ver empresa
         ?>
             </table>
 

@@ -2,6 +2,7 @@
 include_once 'plantillas/plantilla.php';
 include_once 'plantillas/nav/navgeneral.php';
 include_once 'plantillas/cuerpo/inihtmlN1.php';
+include_once '../controlador/controlador.php';
 
 
 cardtitulo('Promociones');
@@ -11,8 +12,8 @@ cardtitulo('Promociones');
 <div class="col-md-12 mt-5 my-5">
     <div class="row">
         <div class="col-md-12 text-center text-white">
-            
-    
+
+
 
             <hr class="border" />
         </div>
@@ -50,7 +51,7 @@ cardtitulo('Promociones');
         </div>
     </div>
 </div>
-<hr class="border"/>
+<hr class="border" />
 
 
 
@@ -80,73 +81,77 @@ include_once '../modelo/class.categoria.php';
     </div>
 
 
-    <h5 class = "mx-auto text-center my-4 e  animate__animated animate__bounce animate__tada animate__delay-3s">Promocion por tiempo limitado !!</h5>
+    <h5 class="mx-auto text-center my-4 e  animate__animated animate__bounce animate__tada animate__delay-3s">Promocion por tiempo limitado !!</h5>
     <div class="col-lg-10   card card-body mx-auto">
 
         <div class="card card-body shadow">
             <div class="row">
-              
+
             </div><!-- fin de row -->
         </div><!-- fin de card de busqda -->
 
 
 
 
-    
-                <?php /*
-                $num = 0;
+
+            <!-- <?php 
+                // $num = 0;
                 $datos = Producto::verPromociones();
-             */   ?>
+            ?> -->
 
-                <div class="container">
-                <div class="row">
-                    <?php
-                    while ($row = $datos->fetch_assoc()) {
-                    ?>
-    
-    
-                        <div class="mx-2 col-lg-4 col-md-2  card card-body shadow mx-auto  my-4 shadow cards animate__animated  animate__pulse animate__delay-1s">
-                            <img class="mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="250px" width="240px">
-    
-                            <div class="">
-                                <h5 class="card-title"><?php echo $row['nom_prod']; ?></h5>
-                                <p class="card-text lead"><strong><?php echo "$" . number_format(($row['val_prod']), 0, ',', '.'); ?></strong></p>
-                                <p class="card-text text-success"><?php $c = $row['val_prod'];
-                                                                    echo "36 cuotas " . "$" . number_format(($c / 36), 1, ',', '.') . " Sin interes";
-                                                                    if ($row['estado_prod'] == "Promoción") {
-                                                                        echo "<br>" .  $row['estado_prod'];
-                                                                    } ?>
-    
-    
-                                </p>
-                                <!-- Formulario de envio e incriptacion ------------------------------------>
-                               
-                            
-    
-    
-    
-                                <!-- -------------------------------------------------- -->
-    
-                            </div>
-    
-    
+        <div class="container">
+            <div class="row">
+                <?php
+                $objModProd = new ControllerDoc();
+                $datos = $objModProd ->verPromociones();
+                foreach ($datos as $i => $row) {
+                
+                // while ($row = $datos->fetch_assoc())
+                ?>
+
+
+                    <div class="mx-2 col-lg-4 col-md-2  card card-body shadow mx-auto  my-4 shadow cards animate__animated  animate__pulse animate__delay-1s">
+                        <img class="mx-auto" src="fonts/img/<?php echo $row['img']; ?>" alt="Card image cap" height="250px" width="240px">
+
+                        <div class="">
+                            <h5 class="card-title"><?php echo $row['nom_prod']; ?></h5>
+                            <p class="card-text lead"><strong><?php echo "$" . number_format(($row['val_prod']), 0, ',', '.'); ?></strong></p>
+                            <p class="card-text text-success"><?php $c = $row['val_prod'];
+                                                                echo "36 cuotas " . "$" . number_format(($c / 36), 1, ',', '.') . " Sin interes";
+                                                                if ($row['estado_prod'] == "Promoción") {
+                                                                    echo "<br>" .  $row['estado_prod'];
+                                                                } ?>
+
+
+                            </p>
+                            <!-- Formulario de envio e incriptacion ------------------------------------>
+
+
+
+
+
+                            <!-- -------------------------------------------------- -->
+
                         </div>
-    
-    
-    
-    
-                    <?php } ?>
-                </div>
+
+
+                    </div>
+
+
+
+
+                <?php } ?>
             </div>
+        </div>
 
 
 
 
 
-<hr class="border my-4" />
-</div>
+        <hr class="border my-4" />
+    </div>
 
-<?php
-include_once 'plantillas/cuerpo/footerN1.php';
-include_once 'plantillas/cuerpo/finhtml.php';
-?>
+    <?php
+    include_once 'plantillas/cuerpo/footerN1.php';
+    include_once 'plantillas/cuerpo/finhtml.php';
+    ?>

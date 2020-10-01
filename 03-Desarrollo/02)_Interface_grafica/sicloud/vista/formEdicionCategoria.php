@@ -7,6 +7,7 @@ include_once '../modelo/class.categoria.php';
 include_once 'plantillas/cuerpo/inihtmlN2.php';
 include_once 'plantillas/nav/navN2.php';
 include_once '../controlador/controladorsession.php';
+include_once '../controlador/controlador.php';
 //-----------------------------------------------------------------------------------
 
 cardtitulo('Edicion categoria');
@@ -19,14 +20,17 @@ if ((isset($_GET['id']))) {
             <div class="card-header">Registro</div>
             <div class="card-body">
                 <form action="../metodos/post.php?id=<?php echo $_GET['id'] ?>" method="POST">
-                    <?php /*
+                    <?php 
+                    $objModCat = new ControllerDoc();
+                    $datos = $objModCat->verCategoriaId($id);
+                    foreach($datos as $i=> $row){
                     //$sql = "SELECT * FROM sicloud.empresa_provedor WHERE ID_rut = $id ";
-                    $datos = Categoria::verCategoriaId($id);
+                    //$datos = Categoria::verCategoriaId($id);
                     //$datos = $c->query($sql);
                     //$datos = Empresa::verDatoPorId($id);
-                    while ($row = $datos->fetch_array()) {
+                    //while ($row = $datos->fetch_array()) {
 
-                    */ ?>
+                     ?>
                     
                         <div class="form-group"><input class="form-control" type="text" name="categoria" placeholder="Categoria" value="<?php echo $row['nom_categoria']  ?>" required autofocus maxlength="30"></div>
                     <?php } ?>
@@ -37,6 +41,6 @@ if ((isset($_GET['id']))) {
         </div><!-- fin de card -->
     </div>
 <?php
-// }
+ }
 include_once 'plantillas/cuerpo/finhtml.php';
 ?>

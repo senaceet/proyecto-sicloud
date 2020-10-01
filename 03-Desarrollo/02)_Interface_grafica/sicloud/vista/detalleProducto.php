@@ -8,25 +8,20 @@ include_once 'plantillas/nav/navN1.php';
 include_once '../controlador/controladorsession.php';
 include_once '../modelo/class.producto.php';
 include_once '../controlador/carrito.php';
+include_once '../controlador/controlador.php';
 
-/*
 
-(openssl_decrypt($_REQUEST['id'], COD, KEY));
+/*(openssl_decrypt($_REQUEST['id'], COD, KEY));
     $ID = openssl_decrypt($_REQUEST['id'], COD, KEY);
     $mensajeId = "OK ID" . $ID;
+  echo $ID;*/
+$objModProd = new ControllerDoc();
+$datos = $objModProd->verProductosIdCarrito($ID);
 
-
-
-  echo $ID;
-
-
-*/
-
-
-
-    /*$datos = Producto::verProductosIdCarrito($ID);
-    while ($row = $datos->fetch_assoc()) {
-*/?>
+    //$datos = Producto::verProductosIdCarrito($ID);
+    //while ($row = $datos->fetch_assoc()) {
+    foreach($datos as $i => $row){
+?>
 
         <div class="col-md-12 mt-5">
             <div class="row">
@@ -82,8 +77,8 @@ include_once '../controlador/carrito.php';
 
 
 
-                    <?php  // }
-           //} ?>
+                    <?php   }
+            ?>
                         </div>
                     </div>
                 </div>
