@@ -64,8 +64,9 @@ public function verTelefonosUsuarioPorID($id){
         from rol R join rol_usuario R_U on R.ID_rol_n = R_U.FK_rol
         join usuario U on R_U.FK_us = U.ID_us
         join telefono T on  U.ID_us = T.CF_us
-        where CF_us = $id";
+        where CF_us = :id";
         $consulta= $this->db->prepare($sql);
+        $consulta->bindValue(':id', $id);
         $result = $consulta->execute();
         $result = $consulta->fetchAll();
         return $result;
@@ -105,8 +106,10 @@ public function verTelefonosUsuarioRol($rol){
             from rol R join rol_usuario R_U on R.ID_rol_n = R_U.FK_rol
             join usuario U on R_U.FK_us = U.ID_us
             join telefono T on  U.ID_us = T.CF_us
-            where R_U.FK_rol = $rol";
+            where R_U.FK_rol = :rol";
+
     $consulta= $this->db->prepare($sql);
+    $consulta -> bindValue (":rol",$rol);
     $result = $consulta->execute();
     $result = $consulta->fetchAll();
     return $result;
@@ -117,7 +120,7 @@ public function verTelefonosUsuarioRol($rol){
     // Fin de mostrar telefono rol
     //------------------------------------------------------------------------------------------
 
-
+    
 
     
 // muestra telefonos de empresa------------------------------------------------------------
@@ -195,7 +198,43 @@ public function verTelefonosEmpresa(){
   }
 
 
+  public function eliminarTelefono($idg){
+   
+    $sql1 = "SET FOREIGN_KEY_CHECKS = 0 ";
+    $consulta2 = $this->db->prepare($sql1);
+         $rest1 =  $consulta2->execute();   
+    if ($rest1) {
+       $sql2 = "DELETE FROM sicloud.telefono WHERE CF_us =:CF_us ";   
+       $consulta3 = $this->db->prepare($sql2);
+       $consulta3->bindValue(":CF_us",$idg);
+        $res2 = $consulta3->execute();  
+    }   
+    if ($res2) {
+       $sql3 = "SET FOREIGN_KEY_CHECKS = 1";
+       $consulta4 = $this->db->prepare($sql3);
+        $res3 = $consulta4->execute();
+    }
+    if ($res3) {
+        
+
+       $_SESSION['message'] = $_SESSION['usuario']['nom1'] . 'Elimino telefono';
+       $_SESSION['color'] = 'success';
+       return true;
+    } else {
+
+       $_SESSION['message'] = 'No elimino telefono';
+       $_SESSION['color'] = 'danger';
+       return false;
+    }
+ }
+
+
 }// fin de la clase telefono
+
+
+// $objMod = Telefono::ningunDato();
+// $a = $objMod->verTelefonosUsuarioPorID(1);
+// echo '<pre>'; print_r($a);  echo '</pre>';
 
 
 ?>

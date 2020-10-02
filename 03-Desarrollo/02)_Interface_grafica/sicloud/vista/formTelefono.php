@@ -1,27 +1,55 @@
 <?php
 
 include_once '../controlador/controladorsession.php';
-include_once '../controlador/controladorsession.php';
+//include_once '../controlador/controladorsession.php';
 include_once '../controlador/controlador.php';
 include_once 'plantillas/plantilla.php';
 include_once '../modelo/class.rol.php';
 include_once 'plantillas/cuerpo/inihtmlN2.php';
 include_once 'plantillas/nav/navN2.php';
-include_once '../modelo/class.telefono.php';
-include_once '../controlador/controladorforms.php';
+$us = false;
+$em = false;
+//include_once '../controlador/controladorforms.php';
+$objModRol = new ControllerDoc();
+$a = $objModRol->verTelefonosUsuarioPorID(1);
+// verTelefonosUsuarioPorID
 
-
-
+if( isset($_POST['accion'])){
+    switch ($_POST['accion']) {
+        case 'bId':
+            $datosTabla = $objModRol->verTelefonosUsuarioPorID($_POST['documento']  );
+            $us =  true;
+            $em = false;
+        break;
+        case 'empresa':
+            $datosTabla = $objModRol->verTelefonosEmpresa();
+            $em = true;
+            $us = false;
+        break;
+        case 'usuario':
+            $datosTabla = $objModRol->verTelefonosUsuario();
+            $em = false;
+            $us = true;
+        break;
+        case 'rolTelefono':
+            $datosTabla = $objModRol->verTelefonosUsuarioRol($_POST['rol']);
+            $em = false;
+            $us = true;
+        break;
+ }
+    
+}
 ?>
-
-
-
 <script>
-    function eliminarT(id_tel) {
-        var conf =
-            confirm('Esta seguro de eliminar el telefono con el id=' + id_tel + ' ?');
 
-    }
+
+
+    function eliminarT(id_us) {
+            var confirmation = confirm('Esta seguro que desea eliminarTelefono: ' + id_us + ' ?');
+            if (confirmation) {
+               window.location = "../controlador/api.php?apicall=eliminarTelefono&&id=" + id_us;
+            }
+        }
 </script>
 <?php cardtituloS("Directorio telefonico") ?>
 
@@ -39,7 +67,7 @@ include_once '../controlador/controladorforms.php';
             <h6>Busqueda por ID Usuario</h6>
             <div class="card card-body mx-auto col-10 my-2 shadow border">
                 <!-- form por id -->
-                <form action="formTelefono.php" method="GET">
+                <form action="formTelefono.php" method="POST">
                     <div class="form-group"><input type="text" class="form-control " placeholder="ID usuario " name="documento"></div>
                     <input type="hidden" value="bId" name="accion">
                     <div class="form-group "><input class="btn btn-primary form-control " type="submit" value="Buscar id"></div>
@@ -58,13 +86,13 @@ include_once '../controlador/controladorforms.php';
             <div class="card card-body mx-auto col-10 my-2 shadow border">
                 <form action="formTelefono.php" method="POST">
                     <div class="form-group">
-                        <select name="entidad" class="form-control ">
-                            <option value="p">Empresas</option>
-                            <option value="a">Usuario</option>
+                        <select name="accion" class="form-control">
+                            <option value="empresa">Empresas</option>
+                            <option value="usuario">Usuario</option>
                         </select>
                     </div>
 
-                    <input type="hidden" value="entidad" name="accion">
+                    
                     <div class="form-group "><input class="btn btn-primary form-control " type="submit" value="Registros"></div>
                 </form><!-- fin de form estado filtro estado de cuenta -->
             </div><!-- fin de card -->
@@ -83,7 +111,7 @@ include_once '../controlador/controladorforms.php';
                     <form action="formTelefono.php" method="POST">
                         <select name="rol" class="form-control ">
                             <?php
-                            $objModRol = new ControllerDoc();
+                          
                             $datos = $objModRol->verRol();
                             foreach ($datos as $i => $row) {
                             //while ($row = $datos->fetch_array()) 
@@ -94,6 +122,7 @@ include_once '../controlador/controladorforms.php';
                             }  ?>
                         </select>
                 </div><!-- fin de form control -->
+                <input type="hidden" name="accion" value="rolTelefono">
                 <div class="form-group"><input class="form-control btn btn-primary" name="consultaRol" type="submit" value="Filtrar por rol"></div>
                 </form><!-- fin form ver por rol -->
             </div><!-- fin de card -->
@@ -124,10 +153,11 @@ setMessage();
 <?php
 
 
-if ((isset($datos))) {
+if ((isset($datosTabla))) {
 
 
     if ($us ==  true) {
+        echo 'here';
 ?>
 
         <div class="col-lg-12">
@@ -146,10 +176,10 @@ if ((isset($datos))) {
                         </tr>
 
                         <?php
-                        //while ($row = $datos->fetch_array()) {
-                        foreach ($datos as $i => $row) {
-                        ?>
 
+                        //while ($row = $datos->fetch_array()) {
+                        foreach ($datosTabla as $i => $row) {
+                        ?>
                             </tr>
                     </thead>
                     <tbody>
@@ -160,10 +190,9 @@ if ((isset($datos))) {
                         <td><?php echo $row['nom_rol'] ?></td>
                         <td><?php echo $row['tel'] ?></td>
                         <td>
-                            <a href="EditarUsuario.php?id= <?php echo $row['ID_us'] ?> " class="btn btn-secondary btn-circle"><i class="fas fa-marker"></i></a>
+                            <a href="EditarUsuario.php?ID_us= <?php echo $row['ID_us'] ?> " class="btn btn-secondary btn-circle"><i class="fas fa-marker"></i></a>
                             <?php if ($_SESSION['usuario']['ID_rol_n'] == 1) {     ?>
-                                <a href="../controlador/controlador.php?accion=aprobarUsuario&&id= <?php echo $row['ID_us']   ?>" class="btn btn-circle btn-success"><i class="fas fa-check-square"></i> </a>
-                                <a onclick="eliminarT(<td><?php echo $row['id_tel'] ?></td>)" href="#" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
+                                <a onclick="eliminarT(<?= $row['ID_us'] ?>)"    href="#" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
                             <?php }  ?>
                         </td>
                     </tbody>
@@ -191,7 +220,7 @@ if ((isset($datos))) {
                                 <?php
 
                                 //while ($row = $datos->fetch_array()) {
-                                foreach ($datos as $i => $row) {
+                                foreach ($datosTabla as $i => $row) {
                                 ?>
 
                                     </tr>
@@ -253,7 +282,7 @@ if ((isset($datos))) {
         </div>
 
         <?php
-
+        include_once 'plantillas/cuerpo/finhtml.php';
         include_once 'plantillas/cuerpo/footerN2.php';
         // fin de validadcion y ejecucion de permisos por rol
         ?>

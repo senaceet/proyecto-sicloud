@@ -271,6 +271,7 @@ class ControllerDoc
 
 
 
+
     //metodos de ciudad
     public function verCiudad()
     {
@@ -287,12 +288,45 @@ class ControllerDoc
         return $this->objModEmp->verEmpresa();
     }
 
+    public function verTelefonosUsuario(){
+        return $this->objModTel->verTelefonosUsuario();
+    }
+    public function verTelefonosUsuarioPorID($id){
+        return $this->objModTel->verTelefonosUsuarioPorID($id);
+    }
+    public function verTelefonosEmpresa(){
+        return $this->objModTel->verTelefonosEmpresa();
+    }
+    public function verTelefonosUsuarioRol($rol){
+        return $this->objModTel->verTelefonosUsuarioRol($rol);
+    }
+
+    public function eliminarTelefono($id){
+        return $this->objModTel->eliminarTelefono($id);
+    }
+
+ 
+
     //metodos de error
     public function verError()
     {
         return $this->objModError->verError();
     }
    
+    public function ver($dato, $sale=0, $float= false, $email=''){
+        echo '<div style="background-color:#fbb; border:1px solid maroon;  margin:auto 5px; text-align:left;'. ($float? ' float:left;':'').' padding:7px; border-radius:7px; margin-top:10px">';
+        if(is_array($dato) || is_object($dato) ){
+            echo '<pre><br><b>&raquo;&raquo;&raquo; DEBUG</b><br>'; print_r($dato); echo '</pre>'; 
+        }else{
+            if(isset($dato)){
+                echo '<b>&raquo;&raquo;&raquo; DEBUG &laquo;&laquo;&laquo;</b><br><br>'.nl2br($dato); 	
+            }else{
+                echo 'LA VARIABLE NO EXISTE';
+            }
+        }
+        echo '</div>';
+        if($sale==1) die();
+    }
 
 
     //metodos telefonos

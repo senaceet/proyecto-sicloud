@@ -184,6 +184,19 @@ if(isset($_GET['apicall'])){
          }
          
       break;
+      case 'eliminarTelefono':
+         $r= $db->eliminarTelefono($_GET['id']);
+         if(!$r){
+            $response['error']      = true;
+            $response['menssage']   = 'No elimino telefono';
+            $response['contenido']  = $r;
+            
+         }else{
+            $response['error']      = false;
+            $response['message']    = 'Elimino telefono'; 
+            $response['contenido']  = $r;
+         }
+      break;
 
 
 
