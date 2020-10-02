@@ -13,6 +13,7 @@ include_once '../modelo/class.modificacion.php';
 include_once '../modelo/class.ciudad.php';
 include_once '../modelo/class.empresa.php';
 include_once '../modelo/class.error.php';
+include_once '../modelo/class.telefono.php';
 class ControllerDoc
 {
     public $obModDoc;
@@ -26,7 +27,8 @@ class ControllerDoc
     public $objModModi;
     public $objModCiu;
     public $objModEmp;
-    public $obbModError;
+    public $objModError;
+    public $objModTel;
 
 
     public function __construct()
@@ -42,7 +44,8 @@ class ControllerDoc
         $this->objModModi =  Modificacion::ningunDato();
         $this->objModCiu  =  Ciudad::ningunDato();
         $this->objModEmp  =  Empresa::ningunDatoP();
-        $this->objModError =  ErrorLog::ningunDato();
+        $this->objModError=  ErrorLog::ningunDato();
+        $this->objModTel =  Telefono::ningunDato();
     }
     public function selectDocumento()
     {
@@ -290,6 +293,10 @@ class ControllerDoc
         return $this->objModError->verError();
     }
    
+
+
+    //metodos telefonos
+    
 }
 
 

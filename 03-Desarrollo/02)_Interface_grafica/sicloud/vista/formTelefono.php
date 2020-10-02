@@ -3,19 +3,12 @@
 include_once '../controlador/controladorsession.php';
 include_once '../controlador/controladorsession.php';
 include_once '../controlador/controlador.php';
-
-
-
-
-//--------------------------------------------------------------------------
-
-
 include_once 'plantillas/plantilla.php';
 include_once '../modelo/class.rol.php';
 include_once 'plantillas/cuerpo/inihtmlN2.php';
 include_once 'plantillas/nav/navN2.php';
 include_once '../modelo/class.telefono.php';
-
+include_once '../controlador/controladorforms.php';
 
 
 
@@ -113,57 +106,7 @@ include_once '../modelo/class.telefono.php';
 
 
 
-<?php /*
-    $us = false; $em = false;
 
-    //--- EVENTOS DE FORMULARIO----------------------------------------------------------------------
-
-    // Filtro por id
-    if ((isset($_GET['accion'])) &&  ($_GET['accion'] == 'bId')) {
-        if ($_GET['documento'] > 0) {
-            $us = True; $em = false;
-            $id = $_GET['documento'];
-            $datos = Telefono::verTelefonosUsuarioPorID($id);
-            //$datos = $telefono->selectIdUsuario($id);
-            $_SESSION['message'] = "Filtro por id";
-            $_SESSION['color'] = "info";
-        } else {
-            $_SESSION['message'] = "No ha digitado el ID del usuario";
-            $_SESSION['color'] = "danger";
-        } // fin de consulta por id
-    } // fin de isset accion
-
-
-
-    // Filtro por entidad
-    if ((isset($_POST['accion'])) &&  ($_POST['accion'] == 'entidad')) {
-        $us = true; $em = false;
-        if ((isset($_POST['entidad']))) {
-            if ($_POST['entidad'] == "a") {
-                $entidad = 1;
-                $datos = Telefono::verTelefonosUsuario();
-                $_SESSION['message'] = "Filtro por telefono de usuario";
-                $_SESSION['color'] = "info";
-            } else {
-                $us = false; $em = true;
-                $entidad = 0;
-                $datos = Telefono::verTelefonosEmpresa();
-                $_SESSION['message'] = "Filtro por telefono de empresa";
-                $_SESSION['color'] = "info";
-            }
-        } // fin consulta por entidad
-    } // fin isset accion
-
-
-    // Filtro por rol de usuario
-    if (isset($_POST['consultaRol'])) {
-        $us = True; $em = false;
-        $rol = $_POST['rol'];
-        $datos= Telefono::verTelefonosUsuarioRol($rol);
-    } // fin de isset consulta rol
-
-
-    if (isset($_SESSION['message'])) {  */ ?>
 
 <!-- alerta boostrap -->
 <div class="alert text-center col-md-4 mx-auto alert-<?php echo $_SESSION['color']   ?> alert-dismissible fade show" role="alert">
