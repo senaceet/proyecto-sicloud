@@ -172,11 +172,13 @@ $(function () {
                             <h5 class="card-title text-center ">Seleccione Producto</h5>
                             <form action="CU0014-alertas.php" method="POST">
                                 <select name="producto" class="form-control">
-                                    <?php /*
-                                    $datos = Producto::verProductos();
-                                    while ($row = $datos->fetch_array()) {
-                                    */?>
-                                        <option value="<?php echo $row['ID_prod']  ?>"><?php echo $row['nom_prod']  ?></option>
+                                    <?php 
+                                    $objp= new ControllerDoc();
+                                    $datos = $objp->verProductos();
+                                    foreach($datos as $i =>$row){
+                                    //while ($row = $datos->fetch_array()) {
+                                    ?>
+                                        <option value="<?= $row['ID_prod']  ?>"><?= $row['nom_prod']  ?></option>
                                     <?php } // fin de while productos    
                                     ?>
 
@@ -215,11 +217,13 @@ $(function () {
                             <h5 class="card-title text-center ">Seleccione Producto</h5>
                             <form action="CU0014-alertas.php" method="POST">
                                 <select name="categoria" class="form-control">
-                                    <?php /*
-                                    $datos = Categoria::verCategoria();
-                                    while ($row = $datos->fetch_array()) {
-                                   */ ?>
-                                        <option value="<?php echo $row['ID_categoria']  ?>"><?php echo $row['nom_categoria']  ?></option>
+                                    <?php 
+                                    $objC = new ControllerDoc();
+                                    $datos = $objC->verCategoria();
+                                    foreach($datos as $i =>$row){
+                                    //while ($row = $datos->fetch_array()) {
+                                    ?>
+                                        <option value="<?= $row['ID_categoria']  ?>"><?= $row['nom_categoria']  ?></option>
                                     <?php //} ?>
                                 </select>
                                 <input type="hidden" name="accion" value='selectCategoria'>
@@ -252,32 +256,32 @@ $(function () {
 //----------------------------------------------------------------------------------------------------------------------------------
                 // CAPTURA DE DATOS SEGUN EL EVENTO
 
-/*
+
 
                 if (isset($_POST['accion'])) {
                     // ver cantidad de productos por nombre
                     if ($_POST['accion'] == 'alertaVerProducto') {
                         $id = $_POST['producto'];
-                        $prod = Producto::verProductosId($id);
+                        $prod = $objp->verProductosId($id);
                     } // Fin de evento ver cantidad de productos por nombre
 
                     // ver cantidad de productos por ID producto
                     if ($_POST['accion'] == 'alertaVerProductoID') {
                         $id = $_POST['idProducto'];
-                        $prod = Producto::verProductosId($id);
+                        $prod = $objp->verProductosId($id);
                     }// Fin de evento ver cantidad de productos por ID
 
                     // ver cantidad de productos por categoria
                     if($_POST['accion'] == 'selectCategoria'){
                         $id = $_POST['categoria'];
-                        $prod = Producto::verPorCategoria($id);
+                        $prod = $objp->verPorCategoria($id);
                     }// Fin de evento ver cantidad de productos por categoria
 
                     //FIN DE EVENTOS-----------------------------------------------------------------------------------------------------------
 
 
-
-                    while ($row = $prod->fetch_array()) {
+                    foreach($prod as $i =>$row){
+                    //while ($row = $prod->fetch_array()) {
                         $p  =  $row['stok_prod'];
                         $po  = 10 * $row['stok_prod'];
                         $po = $po . "%";
@@ -292,20 +296,20 @@ $(function () {
                         }
                         $c = "bg-" . $c;
 
-               */ ?>
-                        <h4 class="small font-weight-bold"><?php echo $row['nom_prod']  ?> <span class="float-right"><?php echo  " Cantidad de productos; " . $p ?></span> </h4>
+               ?>
+                        <h4 class="small font-weight-bold"><?= $row['nom_prod']  ?> <span class="float-right"><?=  " Cantidad de productos; " . $p ?></span> </h4>
                         <div class="progress mb-4">
-                            <div class="progress-bar <?php echo $c ?>" role="progressbar" style="width:<?php echo $po; ?>" aria-valuenow=<?php echo $c ?> aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar <?= $c ?>" role="progressbar" style="width:<?= $po; ?>" aria-valuenow=<?= $c ?> aria-valuemin="0" aria-valuemax="100"></div>
 
                 
                         </div>
                     <?php
-                   // } // fin de while producto
+                    } // fin de while producto
                     ?>
             </div><!-- fin de card body -->
         </div><!-- fin de col categoria  -->
 
-<?php  //  } // fin de isset accion ?>
+<?php    } // fin de isset accion ?>
        
 
 <?php  
@@ -328,9 +332,10 @@ if(isset($_GET['stockGeneral'])){
                                     <th>Accion</th><?php }  ?>
                             </tr>
                         </thead>
-                        <?php /*
-                        $datos = Producto::verProductos();
-                        while ($row = $datos->fetch_array()) {
+                        <?php 
+                        $datos = $objp->verProductos();
+                        foreach($datos as $i =>$row){
+                        //while ($row = $datos->fetch_array()) {
                             $p  =  $row['stok_prod'];
 
 
@@ -344,7 +349,7 @@ if(isset($_GET['stockGeneral'])){
                             }
                             $c = "bg-" . $c;
 
-                       */ ?>
+                        ?>
                             <tbody>
                                 <tr>
                                     <td><?php echo $row['nom_prod'] ?></td>
@@ -360,7 +365,7 @@ if(isset($_GET['stockGeneral'])){
                                         <a class = "btn  btn-success" href="CU003-ingresoProducto.php?consulta=Validar+exitencia&&p=<?php echo $row['ID_prod']?>">ingreso</a>
 
 
-                                    </td><?php // }  ?>
+                                    </td><?php  }  ?>
                                     <td>
                                         
                                     </td>
@@ -385,8 +390,8 @@ if(isset($_GET['stockGeneral'])){
 
         
     <?php
-   // }// fin de tabla StockGeneral
-// }// fin de permisos por rol
+    }// fin de tabla StockGeneral
+}// fin de permisos por rol
 
              
 

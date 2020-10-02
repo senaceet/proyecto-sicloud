@@ -197,8 +197,18 @@ if(isset($_GET['apicall'])){
             $response['contenido']  = $r;
          }
       break;
-
-
+      case 'EliminarProducto':
+         $r= $db->EliminarProducto($_GET['ID_prod']);
+         if(!$r){
+            $response['error']      = true;
+            $response['menssage']   = 'No elimino telefono';
+            $response['contenido']  = $r;
+            
+         }else{
+            $response['error']      = false;
+            $response['message']    = 'Elimino telefono'; 
+            $response['contenido']  = $r;
+         }
 
 
       default:

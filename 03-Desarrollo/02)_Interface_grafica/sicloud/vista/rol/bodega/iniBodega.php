@@ -1,6 +1,6 @@
 <?php
 //comprobacion de rol
-include_once '../../../controlador/ControladorSession.php';
+include_once '../../../controlador/controladorsession.php';
 //comprobacion de rol
 $in = false;
 switch ($_SESSION['usuario']['ID_rol_n']) {
@@ -120,10 +120,10 @@ include_once '../../plantillas/nav/navN3.php';
                 <!-- sesion de prodcutos -->
                 <div class="row">
                   <div class="col-md-4 ">
-                    <a class="btn btn-primary mx-auto btn-block" href="tablaCategoria.php"> <i class="fas fa-fw fa-folder"></i>Productos por categoria</a>
+                    <a class="btn btn-primary mx-auto btn-block" href="../../tablaCategoria.php"> <i class="fas fa-fw fa-folder"></i>Productos por categoria</a>
                   </div><!-- fin de col de 4 1 -->
                   <div class="col-md-4 ">
-                    <a class="btn btn-primary mx-auto btn-block" href="tablaRegistro.php"> <i class="fas fa-fw fa-chart-area"></i>Cantidad de productos</a>
+                    <a class="btn btn-primary mx-auto btn-block" href="../../tablaRegistro.php"> <i class="fas fa-fw fa-chart-area"></i>Cantidad de productos</a>
 
                   </div><!-- fin de col de 4 2 -->
                   <div class="col-md-4 ">
