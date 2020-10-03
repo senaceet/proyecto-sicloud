@@ -247,9 +247,11 @@ class Producto extends Conexion
         if ($res2) {
             $_SESSION['message'] = "Elimino producto";
             $_SESSION['color'] = "danger";
+            return true;
         } else {
             $_SESSION['message'] = "Error al eliminar producto";
             $_SESSION['color'] = "danger";
+            return false;
         }
         header("location: ../vista/CU004-crearProductos.php?accion=verProducto");
     }

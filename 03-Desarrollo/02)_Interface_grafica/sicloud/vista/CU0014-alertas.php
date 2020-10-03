@@ -84,72 +84,15 @@ if (isset($_SESSION['message'])) {
             <!--   fin de form Filtro---------------------------------------------------------------------------------------------- -->
 
 
+<?php
 
+$objModProd = new ControllerDoc();
+$datos = $objModProd->verProductosGrafica();
+//echo '<pre>'; print_r($datos);  echo '</pre>'; //die('FIN');
+?>
 <div class="col-md-9">
-
-
 <!-- --------------------------------------------------------------------- -->
-<!-- Grafica torta -->
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Highcharts Example</title>
-
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<style type="text/css">
-		</style>
-		<script type="text/javascript">
-$(function () {
-    $('#container').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false
-        },
-        title: {
-            text: 'Productos'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Producto',
-            data: [
-
-            <?php
-                $objModProd = new ControllerDoc();
-                $datos = $objModProd->verProductosGrafica();
-                foreach ($datos as $i => $row) {
-                
-            
-                // $datos = Producto::verProductosGrafica();
-                // while( $row = $datos->fetch_assoc())
-            ?>
-                [ '<?php echo $row['nom_prod'] ?> '  , <?php echo $row['stok_prod'] ?> ],
-              <?php // } ?>
-
-
-
-            ]
-        }]
-    });
-});
-
-
-		</script>
 	</head>
 	<body>
 <script src="estilos/js/highcharts.js"></script>
@@ -162,10 +105,14 @@ $(function () {
 
 </div>
             <?php
-            if (isset($_GET['select'])) {
 
-                // evento select producto--------------------------------------------------------------------------------------------------------
-                if ($_GET['filtro'] == 1) {
+    //        if (isset($_GET['select'])) 
+                
+if(isset($_REQUEST['filtro'])){
+            // evento select producto--------------------------------------------------------------------------------------------------------
+    switch ($_REQUEST['filtro']) {
+        case 1:
+               // if ($_GET['filtro'] == 1) {
             ?>
                     <div class="card col-md-8 mx-auto my-4 shadow ">
                         <div class="card-body ">
@@ -175,6 +122,8 @@ $(function () {
                                     <?php 
                                     $objp= new ControllerDoc();
                                     $datos = $objp->verProductos();
+                                    
+                                  $objModProd->ver($datos);
                                     foreach($datos as $i =>$row){
                                     //while ($row = $datos->fetch_array()) {
                                     ?>
@@ -190,11 +139,11 @@ $(function () {
                     </div>
 
                 <?php
-                } // fin de ver productos-------------------------------------------------------------------
-
+             //   } // fin de ver productos-------------------------------------------------------------------
+        break;
+        case 2:
                 // evento de busqueda producto por ID
-                if ($_GET['filtro'] == 2) { ?>
-
+               // if ($_GET['filtro'] == 2) { ?>
                     <div class="card col-md-8 mx-auto my-4 shadow ">
                         <div class="card-body ">
                             <h5 class="card-title text-center ">Digite id de producto</h5>
@@ -207,11 +156,11 @@ $(function () {
                     </div>
 
                 <?php
-                } // fin de filtro 2 busqueda por ID---------------------------------------------------------------------
-
+              //  } // fin de filtro 2 busqueda por ID---------------------------------------------------------------------
+        break;
+        case 3:
                 // Evento de busquda por categoria
-                if ($_GET['filtro'] == 3) {  ?>
-
+           //     if ($_GET['filtro'] == 3) {  ?>
                     <div class="card col-md-8 mx-auto my-4 shadow ">
                         <div class="card-body ">
                             <h5 class="card-title text-center ">Seleccione Producto</h5>
@@ -221,20 +170,26 @@ $(function () {
                                     $objC = new ControllerDoc();
                                     $datos = $objC->verCategoria();
                                     foreach($datos as $i =>$row){
-                                    //while ($row = $datos->fetch_array()) {
+
                                     ?>
                                         <option value="<?= $row['ID_categoria']  ?>"><?= $row['nom_categoria']  ?></option>
-                                    <?php //} ?>
+                                    <?php } ?>
                                 </select>
                                 <input type="hidden" name="accion" value='selectCategoria'>
                                 <br> <input class="btn btn-primary btn-block my-2" type="submit" name="consulta" value="consulta">
                             </form>
                         </div>
                     </div>
+<?php
+            // fin de filtro 3 busquda por categoria--------------------------------------------------------------------
+        break;
+        default:
+        echo '<script>("la opcion no es valida")</script>';
+        break;
+             // fin de isset fitrO                       
+    }
+}
 
-            <?php
-                }// fin de filtro 3 busquda por categoria--------------------------------------------------------------------
-            } // fin de isset fitro
             ?>
         </div><!-- fin de row -->
     </div><!-- fin de col md  -->
@@ -248,7 +203,7 @@ $(function () {
         <!-- Project Card -->
         <div class="card shadow mb-4">
             <div class="card-header py-3 shadow p-3 mb-5 bg-white">
-                <h6 class="m-0 font-weight-bold text-primary"><?php echo "Producos" ?></h6>
+                    <h6 class="m-0 font-weight-bold text-primary"><?php echo "Producos" ?></h6>
             </div>
             <div class="card-body">
                 <?php
@@ -258,24 +213,60 @@ $(function () {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                $objp = $objModProd;
                 if (isset($_POST['accion'])) {
                     // ver cantidad de productos por nombre
-                    if ($_POST['accion'] == 'alertaVerProducto') {
-                        $id = $_POST['producto'];
-                        $prod = $objp->verProductosId($id);
-                    } // Fin de evento ver cantidad de productos por nombre
+                    switch ($_POST['accion']) {
+                        case 'alertaVerProducto':
+                            $id = $_POST['producto'];
+                            $prod = $objp->verProductosId($id);
+                        break;
+                        case 'alertaVerProductoID':
+                            $id = $_POST['idProducto'];
+                            $prod = $objp->verProductosId($id);
+                        break;
+                        case 'selectCategoria':
+                            $id = $_POST['categoria'];
+                            $prod = $objp->verPorCategoria($id);
+                        default:
+                        break;
+                    }
 
-                    // ver cantidad de productos por ID producto
-                    if ($_POST['accion'] == 'alertaVerProductoID') {
-                        $id = $_POST['idProducto'];
-                        $prod = $objp->verProductosId($id);
-                    }// Fin de evento ver cantidad de productos por ID
 
-                    // ver cantidad de productos por categoria
-                    if($_POST['accion'] == 'selectCategoria'){
-                        $id = $_POST['categoria'];
-                        $prod = $objp->verPorCategoria($id);
-                    }// Fin de evento ver cantidad de productos por categoria
+
+
+
+
+
+
+
+               
+                    
+     
 
                     //FIN DE EVENTOS-----------------------------------------------------------------------------------------------------------
 
@@ -372,6 +363,7 @@ if(isset($_GET['stockGeneral'])){
                                 </tr>
                             </tbody>
                         <?php
+                            }// fin de tabla StockGeneral
                        // } // fin de while tabla
                         ?>
                     </table>
@@ -390,15 +382,15 @@ if(isset($_GET['stockGeneral'])){
 
         
     <?php
-    }// fin de tabla StockGeneral
+
 }// fin de permisos por rol
 
              
 
          
                 include_once 'plantillas/cuerpo/finhtml.php';
-                                    }
+
                                 }
-                            }
+
 
     ?>

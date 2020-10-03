@@ -5,7 +5,6 @@
 require_once '../controlador/controlador.php';
 $db = new ControllerDoc();
 //session_destroy();
-
 // se pasan los parametros requeridos a esta funcion
 function isTheseParametersAvailable($params){
    $avaible = true;
@@ -28,16 +27,13 @@ function isTheseParametersAvailable($params){
       die();
    }
 }
-
    //Una matriz que muestra la respuesta de la api
    $response = [];
-
    /*
    Si se trata de una llamada api
    que significa que un parameetro get llamado se establece una URL
    y con estos parametros estamos concluyendo que es una llamada api
    */
-
 if(isset($_GET['apicall'])){
    // Aqui van todos los llamados de la api
    switch ($_GET['apicall']) {
@@ -182,7 +178,6 @@ if(isset($_GET['apicall'])){
             $response['message']    = 'Inserto producto'; 
             $response['contenido']  = $result;
          }
-         
       break;
       case 'eliminarTelefono':
          $r= $db->eliminarTelefono($_GET['id']);
@@ -198,19 +193,18 @@ if(isset($_GET['apicall'])){
          }
       break;
       case 'EliminarProducto':
-         $r= $db->EliminarProducto($_GET['ID_prod']);
+        // echo 'estoy en eliminar producto '.$_GET['id']; die('Fin');
+         $r= $db->EliminarProducto($_GET['id']);
          if(!$r){
             $response['error']      = true;
-            $response['menssage']   = 'No elimino telefono';
+            $response['menssage']   = 'No elimino producto';
             $response['contenido']  = $r;
-            
          }else{
             $response['error']      = false;
-            $response['message']    = 'Elimino telefono'; 
+            $response['message']    = 'Elimino producto'; 
             $response['contenido']  = $r;
          }
-
-
+      break;
       default:
       $response['error']      = true;
       $response['message']    = 'ingreso a api "no esta en ningun metodo"'; 
