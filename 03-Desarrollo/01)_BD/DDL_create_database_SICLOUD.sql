@@ -117,7 +117,7 @@ nom2 varchar(20),
 ape1 varchar(20)not null,
 ape2 varchar(20),
 fecha date not null,
-pass varchar(25) not null,
+pass varchar(100) not null,
 foto blob,
 correo varchar(25) not null,
 FK_tipo_doc varchar(5) not null);
