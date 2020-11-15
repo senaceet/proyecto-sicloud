@@ -46,17 +46,18 @@ if (isset($_POST['btnCatalogo'])) {
                 ];
 
                 // Almacena los datos en session
-                $_SESSION['CARRITO'][0] = $producto; // almacena en la pocion 0 "en el primer lemento del carrito"
-                $_SESSION['message'] =  'Agrego el prodicto ' . $producto['NOMBRE'] . " al carrito de compras";
-                $_SESSION['color'] = 'success';
+                $_SESSION['CARRITO'][0] = $producto; // almacena en la pocion 0 "en el primer elemento del carrito"
+                $_SESSION['message']    =  'Agrego el prodicto ' . $producto['NOMBRE'] . " al carrito de compras";
+                $_SESSION['color']      = 'success';
             } // fin de isset carrito "primer producto"
             else {
                 //--------------------------------------------------------------------------
                 //Valida si el producto ya existe en el carrito
                 $idProducto = array_column($_SESSION['CARRITO'], "ID"); // captura todos los id del arreglo
                 if (in_array($ID, $idProducto)) { // verifica si en exiten duplicados
-                    $_SESSION['message'] =  'Error El producto ' . $producto['NOMBRE'] . " ya ha sido seleccionado";
-                    $_SESSION['color'] = 'danger';
+                    $p =  ( isset($producto['NOMBRE']) )? $producto['NOMBRE'] : '';
+                    $_SESSION['message'] =  'Error El producto ' . $p . " ya ha sido seleccionado";
+                    $_SESSION['color']   = 'danger';
                     break;
                 }
                 //-------------------------------------------------------------------------

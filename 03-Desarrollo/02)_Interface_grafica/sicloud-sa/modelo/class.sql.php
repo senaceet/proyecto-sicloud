@@ -130,8 +130,8 @@ public function loginUsuarioModel($datosModel){
    JOIN usuario U ON TD.ID_acronimo = U.FK_tipo_doc 
    JOIN rol_usuario RU ON U.ID_us = RU.FK_us 
    JOIN rol R ON FK_rol = R.ID_rol_n  
-   WHERE U.ID_us       =  :ID_us  
-   AND TD.ID_acronimo  =  :ID_acronimo";
+   WHERE U.ID_us        = :ID_us  
+   AND TD.ID_acronimo   = :ID_acronimo";
    $consulta = $this->db->prepare($sql);
    foreach($datosModel as $i =>  $d ){
      // $pass_cifrado = password_hash($d[1], PASSWORD_DEFAULT);
@@ -175,39 +175,39 @@ public function loginUsuarioModel($datosModel){
       */
 
 
-            //Cambio contraseña por usuario
-            public function validarPass($id, $pass){
-               $sql = "SELECT * FROM usuario 
-                  WHERE ID_us = :ID_us ";
-               $c =$this->db->prepare($sql);
-               $c->bindValue(':ID_us', $id, PDO::PARAM_STR );
-               $c->execute();
-               $USER = $c->fetch(PDO::FETCH_ASSOC);
-               if( ($c->rowCount() > 0) &&  password_verify($pass, $USER['pass'])){
-                  return  true;
-               }else{
-                  return false;
-               }
-            }
+   //Cambio contraseña por usuario
+   public function validarPass($id, $pass){
+      $sql = "SELECT * FROM usuario 
+         WHERE ID_us = :ID_us ";
+      $c =$this->db->prepare($sql);
+      $c->bindValue(':ID_us', $id, PDO::PARAM_STR );
+      $c->execute();
+      $USER = $c->fetch(PDO::FETCH_ASSOC);
+      if( ($c->rowCount() > 0) &&  password_verify($pass, $USER['pass'])){
+         return  true;
+      }else{
+         return false;
+      }
+   }
 
 
       // Cambiar contraseña
       //Cambio de contraseña
-  public function cambioPass($id,  $contraseñaNueva){
-   $sql = "UPDATE usuario 
-      SET pass = :pass 
-      WHERE ID_us = :ID_us ";
-     $c =$this->db->prepare($sql);
-     $pass_cifrado = password_hash($contraseñaNueva , PASSWORD_DEFAULT );
-     $c->bindValue( ':ID_us', $id,            PDO::PARAM_STR  );
-     $c->bindValue( ':pass', $pass_cifrado,   PDO::PARAM_STR  );
-     $r = $c->execute();
-     if($r){
-        return true;
-     }else{
-        return false;
-     }
-  }
+   public function cambioPass($id,  $contraseñaNueva){
+    $sql = "UPDATE usuario 
+       SET pass = :pass 
+       WHERE ID_us = :ID_us ";
+      $c =$this->db->prepare($sql);
+      $pass_cifrado = password_hash($contraseñaNueva , PASSWORD_DEFAULT );
+      $c->bindValue( ':ID_us', $id,            PDO::PARAM_STR  );
+      $c->bindValue( ':pass', $pass_cifrado,   PDO::PARAM_STR  );
+      $r = $c->execute();
+      if($r){
+         return true;
+      }else{
+         return false;
+      }
+   }
   //-------------------------------------------------------------------------
 
    public function validarCredecilesCorrreo($a){
@@ -262,7 +262,8 @@ public function loginUsuarioModel($datosModel){
    //METODO UPDATE USUARIO PDO MVC-------------------------(FALTA METODO API)-------------------------------
    public function actualizarDatosUsuario($id, $a){ 
       ///echo '<pre>'; print_r($a); echo '</pre>';  echo '<pre>'; print_r($id); echo '</pre>';    die();
-      $sql = "UPDATE usuario SET ID_us = ?, nom1 = ?, nom2 = ?, ape1 = ?, ape2 = ?, fecha = ?, foto = ?, correo = ?, FK_tipo_doc = ?
+      $sql = "UPDATE usuario SET ID_us = ?, nom1 = ?, nom2 = ?, ape1 = ?, ape2 = ?, 
+      fecha = ?, foto = ?, correo = ?, FK_tipo_doc = ?
       WHERE ID_us = ?";
       $insertar = $this->db->prepare($sql);
       $bool = $insertar->execute([$a[0], $a[1], $a[2], $a[3], $a[4], $a[5], $a[7], $a[8], $a[9], $id]);       
@@ -293,47 +294,48 @@ public function loginUsuarioModel($datosModel){
 
  */
 
-public function  selectUsuarioRol($id){
-    $sql = "SELECT distinct U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, U.ape1, U.ape2, U.pass, U.foto, U.correo, 
-    R.nom_rol,  R.nom_rol,
-    R_U.estado
-    FROM usuario U 
-    JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
-    JOIN rol  R ON R_U.FK_rol = R.ID_rol_n 
-    WHERE R.ID_rol_n  = :id
-     ";
-    $c = $this->db->prepare($sql);
-    $c->bindValue(":id", $id);
-    $c->execute();
-    $r = $c->fetchAll();
-return $r;
-}
+   public function  selectUsuarioRol($id){
+       $sql = "SELECT distinct U.FK_tipo_doc, U.ID_us, U.nom1, U.nom2, 
+       U.ape1, U.ape2, U.pass, U.foto, U.correo, 
+       R.nom_rol,  R.nom_rol,
+       R_U.estado
+       FROM usuario U 
+       JOIN  rol_usuario R_U ON R_U.FK_us = U.ID_us
+       JOIN rol  R ON R_U.FK_rol = R.ID_rol_n 
+       WHERE R.ID_rol_n  = :id
+        ";
+       $c = $this->db->prepare($sql);
+       $c->bindValue(":id", $id);
+       $c->execute();
+       $r = $c->fetchAll();
+   return $r;
+   }
 
-      public function conteoUsuariosActivos(){
-         $sql = "SELECT count(*) AS usuariosActivos 
-            FROM usuario  U JOIN rol_usuario RU ON RU.FK_us = U.ID_us
-            WHERE RU.estado = 1";
-         $c= $this->db->prepare($sql);
-          $c->execute();
-         $r = $c->fetchAll();
-         foreach( $r as $d ){
-            $con =   $d[0];
-         }
-         return $con;
+   public function conteoUsuariosActivos(){
+      $sql = "SELECT count(*) AS usuariosActivos 
+         FROM usuario  U JOIN rol_usuario RU ON RU.FK_us = U.ID_us
+         WHERE RU.estado = 1";
+      $c= $this->db->prepare($sql);
+       $c->execute();
+      $r = $c->fetchAll();
+      foreach( $r as $d ){
+         $con =   $d[0];
       }
-      public function conteoUsuariosInactivos(){
-         $sql = "SELECT count(*) AS usuariosActivos 
-            FROM usuario  U 
-            JOIN rol_usuario RU ON RU.FK_us = U.ID_us
-            WHERE RU.estado = 0";
-         $c= $this->db->prepare($sql);
-         $c->execute();
-         $r = $c->fetchAll();
-        foreach($r as  $d){
-           $con= $d[0];
-        }
-         return $con;
-      }
+      return $con;
+   }
+   public function conteoUsuariosInactivos(){
+      $sql = "SELECT count(*) AS usuariosActivos 
+         FROM usuario  U 
+         JOIN rol_usuario RU ON RU.FK_us = U.ID_us
+         WHERE RU.estado = 0";
+      $c= $this->db->prepare($sql);
+      $c->execute();
+      $r = $c->fetchAll();
+     foreach($r as  $d){
+        $con= $d[0];
+     }
+      return $con;
+   }
 
         //busqueda por ID
   public function selectIdUsuario($id){
@@ -426,7 +428,6 @@ return $r;
 
    // Actualzacion de datos por rol usuario---------------------------------------------------------
   public function insertUpdateUsuarioCliente($a){
-   
    $sql1 = "SET FOREIGN_KEY_CHECKS = 0 ";
    $consulta1 = $this->db->prepare($sql1);
         $res =  $consulta1->execute();   
@@ -875,7 +876,8 @@ public function eliminarErrorLog($id)
       return $result;
    }
    public function verFactura($id){
-      $sql = "SELECT   U.nom2 , U.ape1 , U.ape2 , U.correo , U.nom1 , F.ID_factura, F.fecha   , D.dir , TP.nom_tipo_pago , DF.cantidad , Pr.val_prod , TD.nom_doc , U.ID_us
+      $sql = "SELECT   U.nom2 , U.ape1 , U.ape2 , U.correo , U.nom1 , F.ID_factura, F.fecha   , 
+      D.dir , TP.nom_tipo_pago , DF.cantidad , Pr.val_prod , TD.nom_doc , U.ID_us
          FROM factura F join tipo_pago TP on F.FK_c_tipo_pago = TP.ID_tipo_pago
          JOIN det_factura DF on F.ID_factura = DF.FK_det_factura
          JOIN producto Pr on Pr.ID_prod = DF.FK_det_prod
@@ -890,7 +892,9 @@ public function eliminarErrorLog($id)
       return $result;
    }
    public function verFactural($id){
-      $sql = "SELECT  U.nom2 , U.ape1 , U.ape2 , U.correo , U.nom1 , F.ID_factura, F.fecha   , D.dir , TP.nom_tipo_pago , DF.cantidad , Pr.val_prod , Pr.nom_prod
+      $sql = "SELECT  U.nom2 , U.ape1 , U.ape2 , U.correo , U.nom1 , 
+      F.ID_factura, F.fecha   , D.dir , TP.nom_tipo_pago , DF.cantidad , 
+      Pr.val_prod , Pr.nom_prod
          from factura F join tipo_pago TP on F.FK_c_tipo_pago = TP.ID_tipo_pago
          join det_factura DF on F.ID_factura = DF.FK_det_factura
          join producto Pr on Pr.ID_prod = DF.FK_det_prod
@@ -1145,7 +1149,8 @@ public function insertModificacion($a){
 
    //query ver productos                                       
    public function verProductosId($id){
-      $sql = "SELECT P.ID_prod , P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod , C.nom_categoria, T_M.nom_medida
+      $sql = "SELECT P.ID_prod , P.nom_prod , P.val_prod , P.stok_prod , P.estado_prod , 
+      C.nom_categoria, T_M.nom_medida
          from producto P 
          join categoria C on P.CF_categoria = C.ID_categoria 
          join tipo_medida T_M on P.CF_tipo_medida = T_M.ID_medida 

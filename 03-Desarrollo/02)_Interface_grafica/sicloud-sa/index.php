@@ -1,6 +1,8 @@
 <?php
 include_once 'controlador/controladorrutas.php';
 rutIniFromIndexRaiz();
+date_default_timezone_set("America/Bogota");
+
 ?>
 
 <article>

@@ -3,34 +3,39 @@
 //session_destroy();
 include_once '../modelo/class.sql.php';
 include_once 'controladorsession.php';
+date_default_timezone_set("America/Bogota");
+
+
+
 
 class ControllerDoc
 {
-    public $objModUs;
-
-    public function __construct()
-    {
-        $this->objModUs   =  SQL::ningunDato();
+    private $session, $objModUs;
 
 
+    public function __construct(){
+        $this->objModUs    = SQL::ningunDato();
+        $this->objSession  = Session::ningunDato();
     }
-    public function selectDocumento()
-    {
+    public function selectDocumento(){
         return $this->objModUs->verDocumeto();
     }
+    
+    public function loginUsuarioController($ID_us,  $pass, $doc){
+        $datosController[]        = [$ID_us, $pass, $doc];
+        $USER                     = $this->objModUs->loginUsuarioModel($datosController);
+    
 
-    public function loginUsuarioController($ID_us,  $pass, $doc)
-    {
-        $datosController[] = [$ID_us, $pass, $doc];
-        $USER = $this->objModUs->loginUsuarioModel($datosController);
-        //$this->ver( $USER  );
         if( $USER ){ 
-        
-        $objSession = new Session();
-        $_SESSION['usuario']  = $USER;
-        $_SESSION['notic']    =  $this->verNotificaciones(  $_SESSION['usuario']['ID_rol_n']  );
-        $objSession->verificarAcceso();
-            return  $USER ;
+            $_SESSION['usuario']  =  $this->objSession->encriptaSesion($USER);
+            $this->session         = $this->objSession->desencriptaSesion();
+            $id_rol               =  openssl_decrypt( $_SESSION['usuario']['ID_rol_n'], COD, KEY);
+            $_SESSION['notic']    =  $this->verNotificaciones(   $id_rol  );
+            $id_rol               =  null;
+            $this->objSession->verificarAcceso();
+            $this->session        =  $this->objSession->desencriptaSesion();
+
+            return  $USER;
         }else{
             header("location: ../vista/loginregistrar.php");
             $_SESSION['message'] = 'Contraseña incorreta o usuario no registrado';
@@ -38,8 +43,6 @@ class ControllerDoc
         }
     }
         
-
-
 
     public function createUsuariosController(
         $ID_us,
@@ -109,13 +112,13 @@ class ControllerDoc
                     $descrip = $datosController[0][0];
                     $FK_rol = 1;
                     $FK_not = 1;
-                    $an =[ 
+                    $aN =[ 
                         $est,
                         $descrip,
                         $FK_not,
                         $FK_rol
                     ];
-                    $bool3 = $this->objModUs->notInsertUsuarioAdmin($an);
+                    $bool3 = $this->objModUs->notInsertUsuarioAdmin($aN);
                     if($bool3){
                         return true;
                     }else{
@@ -143,9 +146,8 @@ class ControllerDoc
 
           */
     
-    public function readUsuariosController()
-    {
-        return $this->objModUs->readUsuarioModel('vendedor');
+    public function readUsuariosController(){
+        return $this->objModUs->readUsuarioModel();
     }
     public function readUsuarioModel(){
         return $this->objModUs->readUsuarioModel();
@@ -153,12 +155,13 @@ class ControllerDoc
     public function eliminarUsuario($id_get){
         $r1 = $this->objModUs->eliminarUsuario($id_get);
         if($r1){
-            $fecha  = date('Y-m-d');
-            $descrip = "Usario eliminado ID " .$id_get;
-            $FK_modific = "2";
-            $hora = '00:00:00';
-            $tDoc_us_session = $_SESSION['usuario'] ['ID_acronimo'] ;
-            $ID_us_session = $_SESSION['usuario']['ID_us'];
+            $hora            = date("h:i:sa");
+            $hora            = substr( $hora , 0, 8 );
+            $fecha           = date('Y-m-d');
+            $descrip         = "Usario eliminado ID " .$id_get;
+            $FK_modific      = "2";
+            $tDoc_us_session = $this->session['usuario']['ID_acronimo'] ;
+            $ID_us_session   = $this->session['usuario']['ID_us'];
             $arm=[
                 $descrip,
                 $fecha,
@@ -173,26 +176,24 @@ class ControllerDoc
             }else{
                 return false;    
             }
-
         }
     }
     public function actualizarDatosUsuario($id, $array){
         $r1 = $this->objModUs->actualizarDatosUsuario($id, $array);
-   
         if ($r1) {
-           
             //METODO DE INSERSION ROL_USUARIO UPDATE
             $r2 = $this->objModUs->insertUpdateRol( $array);
             if($r2){
                 $_SESSION['message'] = 'Actualizo rol';
                 $_SESSION['danger']  = 'Error al actualizar rol';
-
-                $fecha  = date('Y-m-d');
-                $descrip = "Usario modificado ID " . $array[0];
-                $FK_modific = "4";
-                $hora = '00:00:00';
-                $tDoc_us_session = $_SESSION['usuario'] ['ID_acronimo'] ;
-                $ID_us_session = $_SESSION['usuario']['ID_us'];
+                $hora                = date("h:i:sa");
+                $hora                = substr( $hora , 0, 8 );
+                $fecha               = date('Y-m-d');
+                $descrip             = "Usario modificado ID " . $array[0];
+                $FK_modific          = "4";
+                $this->session       = $this->objSession->desencriptaSesion();
+                $tDoc_us_session     = $this->session['usuario'] ['ID_acronimo'] ;
+                $ID_us_session       = $this->session['usuario']['ID_us'];
                
                 $arm=[
                     $descrip,
@@ -202,6 +203,8 @@ class ControllerDoc
                     $tDoc_us_session,
                     $FK_modific
                 ];
+
+
                 $r4 = $this->objModUs->insertModificacion($arm);
                 if($r4){
                     return true;
@@ -514,10 +517,11 @@ class ControllerDoc
                     $pass,
                     $t_doc
                 ];
+                die();
               
                 $USER = $this->objModUs->loginUsuarioModel($ar);
-                $_SESSION['usuario'] = $USER;
-                $this->ver( $USER );
+              //  $_SESSION['usuario'] = $USER;
+
                 header( 'location:  ../vista/cambioContraseña.php');
                  die();
             }else{
@@ -541,7 +545,7 @@ class ControllerDoc
     public function notificacionLeida($a){
         return $this->objModUs->notificacionLeida($a);
     }
-    public function ver($dato, $sale=0, $float= false, $email=''){
+    static function ver($dato, $sale=0, $float= false, $email=''){
         echo '<div style="background-color:#fbb; border:1px solid maroon;  margin:auto 5px; text-align:left;'. ($float? ' float:left;':'').' padding:7px; border-radius:7px; margin-top:10px">';
         if(is_array($dato) || is_object($dato) ){
             echo '<pre><br><b>&raquo;&raquo;&raquo; DEBUG</b><br>'; print_r($dato); echo '</pre>'; 

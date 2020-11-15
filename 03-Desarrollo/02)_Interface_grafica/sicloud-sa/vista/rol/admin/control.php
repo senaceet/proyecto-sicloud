@@ -1,9 +1,12 @@
 <?php
 //  rol/admin/iniAdmin.php
 include_once '../../../controlador/controladorsession.php';
+$objSession =new Session();
+$u = $objSession->desencriptaSesion();
+
 //comprobacion de rol
 $in = false;
-switch ($_SESSION['usuario']['ID_rol_n']) {
+switch ($u['usuario']['ID_rol_n']) {
     case 1:
         $in = true;
     break;
@@ -26,12 +29,6 @@ if ($in == false) {
   include_once '../../plantillas/cuerpo/inihtmlN3.php';
   include_once '../../plantillas/nav/navN3.php';
 
-  if (isset($_SESSION['usuario'])) {
-    print_r($_SESSION['usuario']);
-    $usuario = $_SESSION['usuario'];
-    echo  "Hola: " . $_SESSION['usuario']['ape1'];
-    setMessage();
-  }
   cardtitulo("Controlador de sistema");
 ?>
 
@@ -46,12 +43,7 @@ if ($in == false) {
       </button>
     </div>
 
-    <h5 class="mx-auto text-center text-success "><?php if (isset($_SESSION['usuario'])) {
-                                                    echo "Hola: " . $_SESSION['usuario']['nom1']; ?>
 
-        <img src="/jpg;base64," <?php echo base64_encode($_SESSION['usuario']['foto']); ?> />
-      <?php
-                                                  } ?></h5>
   <?php $_SESSION['message'] == false;
   } ?>
 
@@ -137,12 +129,12 @@ if ($in == false) {
             </ul>
           </div>
 
-          <a href="../../index.php" class="mx-auto">
+          <a href="iniAdmin.php" class="mx-auto">
             <button type="button" class="btn btn-primary">
               <svg class="bi bi-house-door-fill mr-1" width="1.1em" height="1.1em" viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z" />
                 <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-              </svg>Regresar al portal
+              </svg>Control general
             </button>
           </a>
         </div>

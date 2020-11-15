@@ -1,9 +1,12 @@
 <?php
 include_once '../controlador/controladorrutas.php';
 rutFromIni();
+$objSession =new Session();
+$u = $objSession->desencriptaSesion();
+
 //comprobacion de rol
 $in = false;
-switch ($_SESSION['usuario']['ID_rol_n']) {
+switch ($u['usuario']['ID_rol_n']) {
     case 1:
         $in = true;
     break;
@@ -35,9 +38,9 @@ $objCon = new ControllerDoc();
     cardtitulo("Ingreso de producto-Bodega");
 //=======================================================================
 // Resepcion de datos
-        $id = $_GET['p'];
+         if(isset($_GET['p'])) $id = $_GET['p'];
         $formulario = true;
-        echo $id;
+      //  echo $id;
 //========================================================================
 // Captura de datos
 $id1    = 2041172460;
@@ -55,7 +58,6 @@ foreach($datos as $row ){
   } 
 
 ?>
-
 
     <?php
     if (isset($_SESSION['message'])) {

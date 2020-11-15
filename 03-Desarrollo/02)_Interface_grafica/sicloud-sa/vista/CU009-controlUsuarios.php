@@ -1,9 +1,12 @@
 <?php
 include_once '../controlador/controladorrutas.php';
 rutFromIni();
+$objSession =new Session();
+$u = $objSession->desencriptaSesion();
+
 //comprobacion de rol
 $in = false;
-switch ($_SESSION['usuario']['ID_rol_n']) {
+switch ($u['usuario']['ID_rol_n']) {
     case 1:
         $in = true;
     break;
@@ -216,7 +219,7 @@ foreach ($datos as $i  => $d) {
                             }  ?></td>
                         <td>
                             <a href="EditarUsuario.php?ID_us=<?= $d['ID_us'] ?> " class="btn btn-circle btn-dark"><i class="fas fa-marker"></i></a>
-                            <?php if ($_SESSION['usuario']['ID_rol_n'] == 1) {     ?>
+                            <?php if ($u['usuario']['ID_rol_n'] == 1) {     ?>
                                 <a onclick="activarCuenta( <?php echo $d['ID_us']   ?> )" href="#" class="btn btn-circle btn-success"><i class="fas fa-check-square"></i> </a>
                                 <a onclick="desactivarCuenta( <?php echo $d['ID_us']   ?> )" href="#" class="btn btn-circle btn-danger"><i class="far fa-trash-alt"></i></a>
                             <?php }  ?>
