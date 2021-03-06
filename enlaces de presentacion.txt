@@ -1,0 +1,33 @@
+que se utilizo para levantamiento de informacion 
+
+- Se realizo encuesta con la que se obtuvo la mayoria de requerimientos
+https://docs.google.com/forms/d/e/1FAIpQLSfCyL1PL5WNQOn3lTrg8UUARSkglznXMGGloMv_Jf-W3NG3KQ/viewform 
+link de encuesta
+- Se visto el sitio y se evidenciaron formartos 
+- Entrvista 
+- Resultados de encuenta
+C:\Users\Javier\Documents\GitHub\proyecto-sicloud\01-Analisis\02-Levantamiento_informacion
+
+Mapa de proceso
+BPN
+https://sites.google.com/misena.edu.co/trimestre-iii/trimestres/trimestre-i
+
+inventario de hardware
+https://sites.google.com/misena.edu.co/trimestre-iii/trimestres/trimestre-iv
+
+diagra de gant
+C:\Users\Javier\Documents\GitHub\proyecto-sicloud\02-Diseño\05-Diagrama GANT\Informes
+
+
+Manual tecnico
+C:\Users\Javier\Documents\GitHub\proyecto-sicloud\01-Analisis
+
+
+Caso de uso 
+https://sites.google.com/misena.edu.co/trimestre-iii/trimestres/trimestre-ii
+
+Prue software
+file:///C:/Users/Javier/Documents/GitHub/proyecto-sicloud/01-Analisis/Sicloud_test_report-2020-07-11.htm
+
+
+
