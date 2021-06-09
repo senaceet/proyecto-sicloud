@@ -32,5 +32,5 @@ Se ha identificado la pérdida de tiempo a la hora de la búsqueda de informaci�
 ### ALCANCE:
 
 El alcance del proyecto está enfocado al manejo de inventario de insumos, bases de datos de clientes, llevando una implementación sistemática al proceso que existen actualmente en cuanto almacenamiento y facturación de productos, sin realizar los pagos a proveedores.
-                                          ![SICLOUD LOGO  ](http://i65.tinypic.com/2u93n09.png) 
+                                       
 
