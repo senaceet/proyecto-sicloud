@@ -118,7 +118,7 @@ if( isset($_POST['accion']) && $_POST['accion'] == 'filtroCategoria'  ){
             </tbody>
             <tr>
                <td><strong>Total de productos</strong> </td>
-               <td><?= $this->datos[1] ?></td>
+               <td><?= array_sum(array_column($this->datos[0], 4))   ?></td>
             </tr>
         </table>
     </div><!-- fin de div tabla responce -->
