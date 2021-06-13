@@ -9,67 +9,16 @@
 
 <footer class="footer py-4">
     <div class="container">
-        <div class="row text-center">
-            <div class="col-lg-4 text-lg-left">Copyright SICLOUD <?= date('Ys') ?></div>
-            <div class="col-lg-4 my-3 my-lg-0">
-                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-github"></i></a>
-                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-            </div>
-            <div class="col-lg-4 text-lg-right">
-                <a class="mr-3" href="<?= BASE_URL . 'index/terminos' ?> ">Politica de privacidad</a>
-
-            </div>
-        </div>
-    </div>
-
-
-</footer>
-
-
-<!-- 
-
-
-div class="seccion3">
-    <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <h5>Categorías</h5><br>
-                <a href="#" class="subpaginas e">Herramientas Manuales</a><br><br>
-                <a href="#" class="subpaginas">Herramientas Electricas</a><br><br>
-                <a href="#" class="subpaginas">Trajes y Equipos</a><br><br>
-            </div class="row">
-
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <h5>Información</h5><br>
-                <a href="#" class="subpaginas">Promociones especiales</a><br><br>
-                <a href="#" class="subpaginas">Novedades</a><br><br>
-                <a href="#" class="subpaginas">Términos y condiciones</a><br><br>
+            <div class="col-md-4 ">
+                <a class="mr-3 text-white" href="<?= BASE_URL . 'index/terminos' ?> ">Politica de privacidad</a>
             </div>
-
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <h5 class="contact">Contáctanos</h5>
-                <img src="<?= RUTAS_APP['ruta_img'] ?>ubicacion.png" class="ubicacion">
-                <small>CALLE 78 SUR 78 71 IN 123, BOGOTA, BOGOTA, COLOMBIA</small><br><br>
-                <img src="<?= RUTAS_APP['ruta_img'] ?>telefono.png" class="telefono">
-                <small>(1)4493237</small><br><br>
-                <img src="<?= RUTAS_APP['ruta_img'] ?>email.png" class="correo">
-                <small>imcoabhersas@imcoabher.com</small>
+            <div class="col-md-4 ">
+                <span class="col-lg-4 h6 text-muted text-white ">Copyright SICLOUD <?= date('Y') ?> &copy</span>
             </div>
-        </div>
-    </div>
-</div>
-
-</div>
-<footer class="sticky-footer bg-dark">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Sicloud</span>
         </div>
     </div>
 </footer>
-
-
- -->
 <script>
     //$('table').addClass('box-card').addClass('text-center').addClass('mx-3')
     $('table').addClass('tablesorte table-hover bg-white table-sm table-bordered table-striped  text-center')
