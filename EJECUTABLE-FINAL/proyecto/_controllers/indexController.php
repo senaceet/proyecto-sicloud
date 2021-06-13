@@ -16,7 +16,7 @@ class indexController extends Controller {
       $this->_view->setCss( ['jav','bootstrap.min', 'fontawesome-all.css'] );
       $this->_view->setJs( ['login']  );
       //
-         $this->_view->renderizar('terminos',3,0,1); // 1 con js de ur - 2 sin js url 
+         $this->_view->renderizar('terminos',0,0,1); // 1 con js de ur - 2 sin js url 
    }
 
    //
