@@ -192,6 +192,12 @@ if (isset($this->tabla) &&  $this->tabla['response_status'] == 'ok') {
                 <tbody>
 <?php
 foreach ($this->tabla['response_msg'] as $i  => $d) {
+
+    $btnAccion =  (($d[11] == 0)? '<a onclick="activarCuenta( '. $d['ID_us'] .' )" href="#" class="btn btn-circle btn-success" data-bs-toggle="tooltip" data-bs-placement="right" title="Activar cuenta">
+                                    <i class="fas fa-check-square"></i>
+                                    </a>' : ' <a onclick="desactivarCuenta( '.$d['ID_us'] .')" href="#" class="btn btn-circle btn-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Desactivar cuenta">
+                                    <i class="far fa-trash-alt"></i></a>');
+    $status = ($d['estado'] == 1) ? '<div class="text-success" title="Acrtivo"><i class="fas fa-user"> Activo</i><div>' : '<div class="text-danger" title="Inactivo"><i class="fas fa-user"> Inactivo</i><div>';
 ?>
                         <tr>
                             <!-- Los nombres que estan en [''] son los mismos de los atributos de la base de datos de lo contrario dara un error -->
@@ -202,7 +208,7 @@ foreach ($this->tabla['response_msg'] as $i  => $d) {
                             <td><?= $d['ape1'] . ' ' . $d['ape2']  ?></td>
                             <td><?= $d['nom_rol'] ?></td>
                             <td><?= $d['correo'] ?></td>
-                            <td><?= ($d['estado'] == 1) ? 'Activo' : 'Inactivo'; ?></td>
+                            <td><?= $status ?></td>
 <?php 
 if($s ['usuario']['ID_rol_n'] == 1 ){
 ?>
@@ -210,16 +216,11 @@ if($s ['usuario']['ID_rol_n'] == 1 ){
                                 <form action="<?= BASE_URL.'admin/edit' ?>" method="post">
                                     <input type="hidden" name="id" value="<?= $d['ID_us'] ?>">
                                     <button class="btn btn-circle btn-dark" type="submit" data-bs-toggle="tooltip" data-bs-placement="right" title="Editar usuario">
-                                        <i class="fas fa-marker"></i>
+                                        <i class="fas fa-marker"></i> 
                                     </button>
-                                <?php //if ($u['usuario']['ID_rol_n'] == 1) {     
-                                ?>
-                                <a onclick="activarCuenta( <?= $d['ID_us']   ?> )" href="#" class="btn btn-circle btn-success" data-bs-toggle="tooltip" data-bs-placement="right" title="Activar cuenta">
-                                    <i class="fas fa-check-square"></i>
-                                </a>
-                                <a onclick="desactivarCuenta( <?= $d['ID_us']   ?> )" href="#" class="btn btn-circle btn-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Desactivar cuenta">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
+                                <?=  $btnAccion  ?>
+
+                               
                                 </form>
                             </td>
 <?php
