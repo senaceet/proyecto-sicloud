@@ -11,6 +11,9 @@ class productoController extends Controller{
    }
    //
    public function index(){
+      if($_GET['edit']){
+      $this->getSeguridad('S1CCSM');
+      }
       $this->getSeguridad('S1SDF');
       if( isset($_POST['accion']) ){
          $this->getSeguridad('S1PLE');

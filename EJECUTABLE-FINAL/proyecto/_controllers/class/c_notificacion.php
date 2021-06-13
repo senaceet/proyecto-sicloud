@@ -26,7 +26,7 @@ class c_notificacion extends Controller {
                  $id   =  $row['descript'];
                  $ac   =  'bId';
                  break;
-               case 3: // producto agotado - logistica
+               case 3: // producto agitado - logistica
                  $ruta = '/producto';
                  $m    =  $row[5];
                  break;

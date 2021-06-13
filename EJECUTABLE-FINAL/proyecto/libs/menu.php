@@ -1,6 +1,7 @@
 <?php
 
     $aP= [];
+    // ADMIN
     $aMenu['A'][1]         = [ 'USUARIOS'];
     $aMenu['A'][1][1]      = [ 'Admin Solicitud', ''.BASE_URL.'admin/ControlUsuarios', 'S1S'];
     $aMenu['A'][1][2]      = [ 'Acumulación de puntos',''.BASE_URL.'comercial/puntos', 'S1P'];
@@ -10,7 +11,6 @@
     $aMenu['A'][1][6]      = [ 'Inf Ventas general', ''.BASE_URL.'supervisor/infvrango', 'INVF'];
     $aMenu['A'][1][7]      = [ 'Solicitudes "comercial"',''.BASE_URL.'comercial/solicitud', 'FGRJIO'];
     $aMenu['A'][1][8]      = [ 'Solicitudes "proveedor"',''.BASE_URL.'proveedor/pedidos','WSGOS1C'];
-
     $aMenu['A'][2]         = [ 'PRODUCTOS'];
     $aMenu['A'][2][1]      = [ 'Catálogo',''.BASE_URL.'cliente/catalogo','S1C'] ;
     $aMenu['A'][2][2]      = [ 'Crear producto', ''.BASE_URL.'producto/create','S1PCL'];
@@ -30,11 +30,11 @@
     $aMenu['A'][4][1]      = [ 'Categorías',''.BASE_URL. 'categoria', 'S1CC'];
     $aMenu['A'][4][2]      = [ 'Empresas',''.BASE_URL. 'empresa', 'S1CE'];
     $aMenu['A'][4][3]      = [ 'Unid medida',''.BASE_URL. 'medida', 'S1CM'];
-    $aMenu['A'][4][4]      = [ 'Productos', ''.BASE_URL.'producto?edit','S1PLE'];  
+    $aMenu['A'][4][4]      = [ 'Productos', ''.BASE_URL.'producto?edit=1','S1PLE'];  
     $aMenu['A'][4][5]      = [ 'Teléfonos',''.BASE_URL.'admin/directorioTelefonico','SFASD'];
     $aMenu['A'][4][6]      = [ 'Cuentas', ''.BASE_URL.'user', 'S1CCSM' ];// OJO  NO CAMBIAR EL TOKEN, ES EL DE EDITAR USARIO
     $aMenu['A'][5]         = [ 'INICIO',''.BASE_URL.'admin/index', 'S1AAFRT'];
-
+    // BODEGA
     $aMenu['B'][1]         = [ 'CONSTITUCIÓN'];
     $aMenu['B'][1][1]      = [ 'QUIENES SOMOS',''.BASE_URL.'index/entidad'];
     $aMenu['B'][1][2]      = [ 'MISIÓN Y VISIÓN', ''.BASE_URL.'Index/mision'];
@@ -52,7 +52,7 @@
     $aMenu['B'][4][3]      = [ 'EDITAR PRODUCTOS', ''.BASE_URL.'producto?edit=1','S1PLE'];
     $aMenu['B'][4][4]      = [ 'SOLICITAR PEDIDO', ''.BASE_URL.'proveedor/pedido','DFERA' ];
     $aMenu['B'][5]         = [ 'INICIO',''.BASE_URL.'logistica/index', 'S1AADFR'];
-
+    // SUPERVIOR 
     $aMenu['S'][1]         = [ 'CONSTITUCIÓN'];
     $aMenu['S'][1][1]      = [ 'QUIENES SOMOS',''.BASE_URL.'index/entidad'];
     $aMenu['S'][1][2]      = [ 'MISIÓN Y VISIÓN', ''.BASE_URL.'index/mision'];
@@ -67,7 +67,7 @@
     $aMenu['S'][5][2]      = [ 'ALERTAS',''.BASE_URL.'logistica/cantidad','S1CT'];
     $aMenu['S'][5][3]      = [ 'STOCK',''.BASE_URL.'producto','S1SDF'];
     $aMenu['S'][6]         = [ 'INICIO',''.BASE_URL.'supervisor/index', 'S1FAHFK'];
-
+    // VENDEDOR
     $aMenu['V'][1]         = [ 'CONSTITUCIÓN'];
     $aMenu['V'][1][1]      = [ 'QUIENES SOMOS',''.BASE_URL.'index/entidad'];
     $aMenu['V'][1][2]      = [ 'MISIÓN Y VISIÓN', ''.BASE_URL.'index/mision'];
@@ -86,7 +86,7 @@
     $aMenu['V'][4][5]      = [ 'CONSULTA FACTURA',''.BASE_URL.'supervisor/consFactura', 'S1CF'];
     $aMenu['V'][4][6]      = [ 'SOLICITUD USARIO',''.BASE_URL.'comercial/solicitud', 'FGRJIO'];
     $aMenu['V'][5]         = [ 'INICIO',''.BASE_URL.'comercial/index', 'DFEGAAG'];
-
+    // PROVEEDOR
     $aMenu['P'][1]         = [ 'CONSTITUCIÓN'];
     $aMenu['P'][1][1]      = [ 'QUIENES SOMOS',''.BASE_URL.'index/entidad'];
     $aMenu['P'][1][2]      = [ 'MISIÓN Y VISIÓN', ''.BASE_URL.'index/mision'];
@@ -94,7 +94,7 @@
     $aMenu['P'][3]         = [ 'CATÁLOGO',''.BASE_URL.'cliente/catalogo','S1C'];
     $aMenu['P'][4]         = [ 'PEDIDOS',''.BASE_URL.'proveedor/pedidos','WSGOS1C'];
     $aMenu['P'][5]         = [ 'INICIO',''.BASE_URL.'proveedor/index', 'PFPGAAG'];
-
+    // COMERCIAL
     $aMenu['C'][1]         = [ 'FERRETERIA'];
     $aMenu['C'][1][1]      = [ 'QUIENES SOMOS',''.BASE_URL.'index/entidad'];
     $aMenu['C'][1][2]      = [ 'MISIÓN Y VISIÓN', ''.BASE_URL.'index/mision'];

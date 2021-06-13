@@ -208,6 +208,7 @@ class facturaController extends Controller{
         $ID = $this->session['usuario']['ID_us'];
         switch ($tipo) {
         // Facturacion interna
+       
             case 0:
                $total = array_sum(array_column($a, 6));
                $iva = ($total * 0.19);
@@ -222,10 +223,6 @@ class facturaController extends Controller{
                 ];
                 //
                $id_factura = $this->db->facturar($aF);
-
-             
-                //
-                Controller::ver($a);
                 foreach( $a as $i => $d ){
                     $aP= [
                         $id_factura,
@@ -236,6 +233,7 @@ class facturaController extends Controller{
                         $_POST['FK_tipo_doc']
                     ];
                     // 14-03-2012 se implementa descuento de porducto en innventario // by J.R.N
+
                    $r1= $this->db->updateCantidadProducto([($d[2] - $d[3] ) ,$aP[1]]);  
                    if($r1){
                     
@@ -253,6 +251,7 @@ class facturaController extends Controller{
                     $_SESSION['color']   = "danger";
                  }
                 }
+               
                 $this->redireccionar('factura');
              //   header("Location: ../vista/CU005-facturacion.php?ID=$ID");
             break;  

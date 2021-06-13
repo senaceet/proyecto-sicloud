@@ -1,10 +1,12 @@
 <?php
 
 class errorController extends Controller {
-// Guarda notificaicones en varible $this->_view->notificacion 
       //
 	   public function __construct(){
          parent::__construct(1);
+         if(isset($_POST['login'])){
+            $this->redireccionar('index');
+         }
          $this->db            = $this->loadModel('consultas.sql', 'sql');
          $this->objSession    = new Session();
          $this->_view->setCss( ['jav','bootstrap.min', 'fontawesome-all.css'] );

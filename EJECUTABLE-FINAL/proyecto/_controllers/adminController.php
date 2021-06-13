@@ -161,12 +161,12 @@ class adminController extends Controller{
     }
     //
     public function controlUsuarios(){
+        $this->getSeguridad('S1S');
         $this->datosFijos();
         if( isset($_POST) && count($_POST) != 0){
             $this->consulta();
         }
         // vista
-        $this->getSeguridad('S1S');
         $this->_view->setCss(array('google', 'bootstrap.min', 'jav', 'animate', 'font-awesome'));
         $this->_view->renderizar('controlUsuarios');
     }
@@ -189,6 +189,7 @@ class adminController extends Controller{
     }
     //
     public function directorioTelefonico(){
+        $this->getSeguridad('S1S');
         if(!isset($_POST['usuario'])){
             $s = new Session(); $p = $s->desencriptaSesion();
             $this->_view->elimina = ( $p['usuario']['ID_rol_n'] == 1 ) ? 1 : 0; 
@@ -199,6 +200,7 @@ class adminController extends Controller{
     }
 
     public function directorioDirecciones(){
+        $this->getSeguridad('S1S');
         $this->verificaResul( $this->db->verDirecciones());
         $this->_view->renderizar('directorioDirecciones');
     }
